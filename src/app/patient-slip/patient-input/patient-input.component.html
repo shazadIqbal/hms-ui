@@ -1,0 +1,227 @@
+<div class="ui-g-12 ui-fluid  ">
+    <div class="ui-g-12 ui-md-12">
+    
+<div class="">
+
+        <p-card header="PATIENT SLIP(OTHER SERVICES)" [style]="{'width': '100%','margin-top':'5px !important','color':'#3EB650','text-align':'center','height':'30% !important'}">
+            <hr>
+            <form #userform="ngForm" (ngSubmit)="onclick(userform.value)">
+            <div class="ui-g ui-fluid">
+                <div class="ui-g-12 ui-md-4">
+                    <div class="ui-inputgroup">
+                        <span class="ui-inputgroup-addon"><i class="fa fa-user"></i></span>
+                        <input #abc="ngModel" type="text" required pInputText placeholder="PATIENT NO" name="pn"
+                            ngModel>
+
+                    </div>
+                    <div [hidden]="abc.valid || abc.pristine" class="alert alert-danger" style="padding:0px;margin-bottom:0% ">
+                        REQUIRED
+                    </div>
+                </div>
+                <div class="ui-md-1">
+                </div>
+
+                <div class="ui-g-12 ui-md-7">
+                    <div class="ui-inputgroup">
+                        <span class="ui-inputgroup-addon">DS</span>
+                        <input #aaa="ngModel" type="text" required pInputText placeholder="Depart Selection" name="ds"
+                            ngModel>
+
+                    </div>
+                    <div [hidden]="aaa.valid || aaa.pristine" class="alert alert-danger" style="padding:0px;margin-bottom:0% ">
+                        REQUIRED
+
+                    </div>
+                </div>
+
+                <div class="ui-g-12 ui-md-12">
+                    <div class="ui-inputgroup">
+                        <span class="ui-inputgroup-addon">PA</span>
+                        <input #tlp="ngModel" type="text" required pInputText placeholder="Panel" name="pa" ngModel>
+
+                    </div>
+                    <div [hidden]="tlp.valid || tlp.pristine" class="alert alert-danger"style="padding:0px;margin-bottom:0%; ">
+                        REQUIRED
+
+                    </div>
+
+                </div>
+
+                <div class="ui-g-12 ui-md-4">
+                    <div class="ui-inputgroup">
+                        <span class="ui-inputgroup-addon">MB</span>
+                        <input #tlp2="ngModel" type="text" required pInputText placeholder="Mobile" name="mb" ngModel>
+
+                    </div>
+                    <div [hidden]="tlp2.valid || tlp2.pristine" class="alert alert-danger" style="padding:0px;margin-bottom:0% ">
+                        REQUIRED
+
+                    </div>
+                </div>
+
+                <div class="ui-md-1">
+                </div>
+
+
+                <div class="ui-g-12 ui-md-3">
+                    <div class="ui-inputgroup">
+                        <span class="ui-inputgroup-addon">MR</span>
+                        <input #tlp3="ngModel" type="text" required pInputText placeholder="MR NO" name="mno" ngModel>
+
+                    </div>
+                    <div [hidden]="tlp3.valid || tlp3.pristine" class="alert alert-danger"style="padding:0px;margin-bottom:0% ">
+                        REQUIRED
+
+                    </div>
+                </div>
+
+                <div class="ui-md-1">
+                </div>
+
+                <div class="ui-g-12 ui-md-3">
+                    <div class="ui-inputgroup">
+                        <span class="ui-inputgroup-addon">GR</span>
+                        <input #tlp4="ngModel" type="text" required pInputText placeholder="GENGER" name="gn" ngModel>
+
+                    </div>
+                    <div [hidden]="tlp4.valid || tlp4.pristine" class="alert alert-danger" style="padding:0px;margin-bottom:0% ">
+                        REQUIRED
+
+                    </div>
+                </div>
+
+
+                <div class="ui-g-12 ui-md-12">
+                    <div class="ui-inputgroup">
+                        <span class="ui-inputgroup-addon">PN</span>
+                        <input #tlp5="ngModel" type="text" required pInputText placeholder="PATIENT NAME" name="ppa"
+                            ngModel>
+
+                    </div>
+                    <div [hidden]="tlp5.valid || tlp5.pristine" class="alert alert-danger" style="padding:0px;margin-bottom:0% ">
+                        REQUIRED
+
+                    </div>
+
+                </div>
+
+
+                <div class="ui-g-12 ui-md-7">
+                    <div class="ui-inputgroup">
+                        <span class="ui-inputgroup-addon">AR</span>
+                        <input #tlp6="ngModel" type="text" required pInputText placeholder="AREA LOCATION " name="al"
+                            ngModel>
+
+                    </div>
+                    <div [hidden]="tlp6.valid || tlp6.pristine" class="alert alert-danger"style="padding:0px;margin-bottom:0%; ">
+                        REQUIRED
+
+                    </div>
+                </div>
+
+                <div class="ui-md-1">
+                </div>
+
+
+                <div class="ui-g-12 ui-md-4">
+                    <div class="ui-inputgroup">
+                        <span class="ui-inputgroup-addon">AG</span>
+                        <input #tlp7="ngModel" type="text" required pInputText placeholder="AGE" name="age" ngModel>
+
+                    </div>
+                    <div [hidden]="tlp7.valid || tlp7.pristine" class="alert alert-danger" style="padding:0px;margin-bottom:0%; ">
+                        REQUIRED
+                    </div>
+                </div>
+
+
+
+
+                <div class="ui-g-12 ui-md-12">
+                    <div class="ui-inputgroup">
+                        <span class="ui-inputgroup-addon">DN</span>
+                        <input #aab="ngModel" type="text" required  pInputText placeholder="DOCTORS NAME" name="dnn" ngModel >
+                            
+
+                    </div>
+                    <div [hidden]="aab.valid || aab.pristine" class="alert alert-danger"style="padding:0px;margin-bottom:0%">
+                        REQUIRED
+
+                    </div>
+                </div>
+                <div class="ui-g-12 ui-md-7">
+                    <div class="ui-inputgroup">
+                        <span class="ui-inputgroup-addon">SS</span>
+                        <input #aac="ngModel" type="text" required pInputText placeholder="SCEARCH SERVICES" name="don1"
+                            ngModel>
+
+
+
+
+                    </div>
+                    <div [hidden]="aac.valid || aac.pristine" class="alert alert-danger"style="padding:0px;margin-bottom:0%;">
+                        REQUIRED
+
+                    </div>
+                </div>
+
+
+
+                <div class="ui-md-1">
+                </div>
+
+                <div class="ui-g-12 ui-md-4">
+                    <div class="ui-inputgroup">
+                        <span class="ui-inputgroup-addon">SS</span>
+                        <input #aad="ngModel" type="text" required pInputText placeholder="SHARE" name="don2" ngModel>
+
+
+
+
+                    </div>
+                    <div [hidden]="aad.valid || aad.pristine" class="alert alert-danger" style="padding:0px; margin-bottom:0%;">
+                        REQUIRED
+
+                    </div>
+                </div>
+
+
+                <div class="ui-g-12 ">
+                    <div class=" ui-g-12 ui-md-2">
+                        <button pButton type="submit" label="Save" class=" ui-button-raised  one" style="width:100%; margin-bottom:0% "></button></div>
+                    <div class=" ui-g-12 ui-md-2">
+                        <button pButton type="button" label="Refresh" class=" ui-button-raised  one"></button></div>
+                    <div class="ui-g-12 ui-md-2">
+                        <button pButton type="button" label="Print" class=" ui-button-raised  one"></button></div>
+
+                        <div class="ui-g-12 ui-md-2">
+                                <button pButton type="button"  label="print view" class=" ui-button-raised  one" ></button></div>
+                                <div class="ui-g-12 ui-md-2">
+                                        <button pButton type="button"  label="close" class=" ui-button-raised  one" ></button></div>
+                                        <div class="ui-g-12 ui-md-1">
+                                                <button pButton type="button"  label="&lt;" class=" ui-button-raised  one" ></button></div>
+                                                <div class="ui-g-12 ui-md-1">
+                                                        <button pButton type="button"  label=">" class=" ui-button-raised one " ></button></div>
+                                
+                
+
+
+
+
+
+
+
+                </div>
+
+
+
+            </div>
+
+
+        </form>
+    </p-card>
+</div>
+
+</div>
+
+</div>
