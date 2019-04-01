@@ -25,7 +25,7 @@ import {TableModule} from 'primeng/table';
 import {CalendarModule} from 'primeng/calendar';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {TabMenuModule} from 'primeng/tabmenu';
-import {MenuItem} from 'primeng/api';
+import {MenuItem, MessageService} from 'primeng/api';
 import {PanelModule} from 'primeng/panel';
 import {InputTextModule} from 'primeng/inputtext';
 import {DialogModule} from 'primeng/dialog';
@@ -41,9 +41,13 @@ import { TableComponent } from './table/table.component';
 import { DoctorListComponent } from './doctor-list/doctor-list.component';
 import { AdddoctorComponent } from './adddoctor/adddoctor.component';
 import {InputTextareaModule} from 'primeng/inputtextarea';
-
 import { HttpClientModule,HttpClientXsrfModule } from '@angular/common/http';
 import { DoctorService } from './adddoctor/doctor.service';
+import { PanelListComponent } from './panel-list/panel-list.component';
+import { AddpanellistComponent } from './addpanellist/addpanellist.component';
+import {MultiSelectModule} from 'primeng/multiselect';
+import { AddpanellistseviceService } from './addpanellist/addpanellistsevice.service';
+import {ProgressSpinnerModule} from 'primeng/progressspinner';
 
 
 
@@ -65,16 +69,17 @@ import { DoctorService } from './adddoctor/doctor.service';
     MrComponentComponent,
     AddPanelComponent,
     SearchbarComponent,
-    ModalComponent, PatientSlipComponent,PatientInputComponent,PatientCardComponent,ButtonsComponent,MasterTableComponent,ChildTableComponent,PatientPaymentComponent, TableComponent, DoctorListComponent, AdddoctorComponent
+    ModalComponent, PatientSlipComponent,PatientInputComponent,PatientCardComponent,ButtonsComponent,MasterTableComponent,ChildTableComponent,PatientPaymentComponent, TableComponent, DoctorListComponent, AdddoctorComponent, PanelListComponent, AddpanellistComponent
   ],
   imports: [
     BrowserModule,FormsModule,
     AppRoutingModule,AccordionModule,ButtonModule,CardModule,TableModule,CalendarModule,
     HttpClientModule,
     HttpClientXsrfModule.disable(),
-    BrowserAnimationsModule,TabMenuModule,PanelModule,InputTextModule,DialogModule,ToastModule,ReactiveFormsModule,DropdownModule,InputTextareaModule
+    BrowserAnimationsModule,TabMenuModule,PanelModule,InputTextModule,DialogModule,ToastModule,ReactiveFormsModule,DropdownModule,InputTextareaModule,MultiSelectModule,ProgressSpinnerModule
+    
   ],
-  providers: [DoctorService],
+  providers: [DoctorService,AddpanellistseviceService,MessageService],
   bootstrap: [AppComponent],
   exports:[FormsModule],
 })

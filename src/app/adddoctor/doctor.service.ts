@@ -7,7 +7,7 @@ import { Doctor } from './doctor';
 export class DoctorService {
 
   
- private baseUrl=`http://localhost:8080/api/doctor/`;
+ private baseUrl=`http://192.168.0.122:8080/api/doctor/`;
 
  constructor(private http:HttpClient){}
 
