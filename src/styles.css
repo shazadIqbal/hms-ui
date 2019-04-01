@@ -3,18 +3,30 @@
 
 
 @keyframes ui-progress-spinner-color {
-    100%,
-    0% {
-        stroke: #8f8b8b;
-    }
-    40% {
-        stroke: #37cc19;
-    }
-    66% {
-        stroke: #858686;
-    }
-    80%,
-    90% {
-        stroke: #5fac17;
-    }
+  100%,
+  0% {
+      stroke: #d62d20;
+  }
+  40% {
+      stroke: #0057e7;
+  }
+  66% {
+      stroke: #008744;
+  }
+  80%,
+  90% {
+      stroke: #ffa700;
+  }
+}
+.loading-indicator {
+
+  width: 40%;
+  margin-left:44%;
+  overflow:hidden;
+  background: none;
+
+
+
+
+
 }

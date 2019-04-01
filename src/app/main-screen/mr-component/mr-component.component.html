@@ -1,29 +1,79 @@
 <div class="container">
-  <p-card header="" [style]="{'width': '100%','margin-top':'5px' ,'color':'#3EB650','text-align':'left','height':'30% !important'}">
-        <h3> PATIENT LOOKUP </h3>
-        <hr>
-        <h4> Patient Mr </h4>
-<div  class="ui-g " >
- <div class=" ui-md- 6" style="margin-bottom:2px; margin-right:4px; " >
-    <input id="float-input" type="text" (keypress)="numberOnly($event)"  ng-model="maxvalue" required size="43%" pInputText placeholder="Enter MR-NO" #ppp="ngModel" ngModel>
-    <div [hidden]="ppp.valid || ppp.pristine" class="alert alert-danger" style="padding:0px;margin-bottom:0% ">
-        REQUIRED
-    </div> 
-    
+  <p-card
+    header=""
+    [style]="{
+      width: '100%',
+      'margin-top': '5px',
+      color: '#3EB650',
+      'text-align': 'left',
+      height: '30% !important'
+    }"
+  >
+    <h3>PATIENT LOOKUP</h3>
+    <hr />
+    <h4>Patient Mr</h4>
+    <div class="ui-g ">
+      <div class=" ui-md- 6" style="margin-bottom:2px; margin-right:4px; ">
+        <input
+
+          type="text"
+          (keypress)="numberOnly($event)"
+          ng-model="maxvalue"
+          required
+          size="43%"
+          pInputText
+          placeholder="Enter MR-NO"
+          #mrNo="ngModel"
+          ngModel
+        />
+        <div
+          [hidden]="mrNo.valid || mrNo.pristine"
+          class="alert alert-danger"
+          style="padding:0px;margin-bottom:0% "
+        >
+          REQUIRED
+        </div>
+      </div>
+      <div class=" ui-md- 6 " style="margin-bottom:15px;">
+        <app-searchbar> </app-searchbar>
+      </div>
+      <br />
     </div>
+
     <div class=" ui-md- 6 " style="margin-bottom:5px;" >
    <app-searchbar > </app-searchbar>
    </div>
   <br>
-    
-    </div>
+
+
     <div class= "ui-g ui-fluid">
+
       <div class=" ui-md-1 ">
-      <button pButton type="button"label="OK" class="ui-button-raised ui-button-success"></button>
-  </div>
-       </div>
-    </p-card>
+        <button
+          pButton
+          type="button"
+          label="OK"
+          (click)="check(mrNo.value)"
+          class="ui-button-raised ui-button-success"
+        ></button>
+        <!-- <p-toast position="center" key="c" (onClose)="onReject()" [modal]="true" [baseZIndex]="5000">
+            <ng-template let-message pTemplate="message">
+                <div style="text-align: center">
+                    <i class="pi pi-exclamation-triangle" style="font-size: 3em"></i>
+                </div>
+                <div class="ui-g ui-fluid">
+                    <div class="ui-g-6">
+                        <button type="button" pButton (click)="onConfirm()" label="Yes" class="ui-button-success"></button>
+                    </div>
+                    <div class="ui-g-6">
+                        <button type="button" pButton (click)="onReject()" label="No" class="ui-button-secondary"></button>
+                    </div>
+                </div>
+            </ng-template>
+        </p-toast> -->
+        <p-toast [style]="{ marginTop: '40px'}" position="top-right" life='3000'>
+        </p-toast>
+      </div>
     </div>
-    
-      
-    
+  </p-card>
+</div>

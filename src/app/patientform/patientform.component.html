@@ -1,0 +1,212 @@
+<div class="container">
+  <div class="ui-g-12">
+    <p-card>
+      <!-- back button and heading div -->
+      <div class="ui-g ui-fluid">
+        <div class="ui-g-4 ui-md-2 ui-lg-2">
+          <button type="button" class="btn btn-success btn-block" (click)="goBack()">Back</button>
+        </div>
+        <div class="ui-g-12 ui-md-8">
+          <h3 style="text-align: center;text-decoration-line: underline">
+            ADD A NEW PATIENT
+          </h3>
+        </div>
+      </div>
+      <hr />
+      <!-- ADD PATIENT FORM -->
+      <form #userForm="ngForm" (ngSubmit)="onSubmit(); userForm.reset()">
+        <!-- Row 1 -->
+        <div class="ui-g ui-fluid">
+          <div class="ui-g-12 ui-md-6">
+            <div class="ui-inputgroup">
+              <span class="ui-inputgroup-addon"
+                ><i class="fa fa-user"></i
+              ></span>
+              <!-- Full name -->
+              <input
+                type="text"
+                [(ngModel)]="patient.name"
+                #nameref="ngModel"
+                required
+                pInputText
+                placeholder="&ensp;Full Name"
+                style="width:100%"
+                name="fullName"
+              />
+              <span class="ui-inputgroup-addon"></span>
+            </div>
+            <div
+              style="padding:0px;margin-bottom:0px"
+              [hidden]="nameref.valid || nameref.pristine"
+              class="alert alert-danger"
+            >
+              Please Enter a Name
+            </div>
+          </div>
+
+          <div class="ui-md-1"></div>
+          <!-- cnic_n0 -->
+          <div class="ui-g-12 ui-md-5">
+            <div class="ui-inputgroup">
+              <span class="ui-inputgroup-addon"
+                ><i class="fa fa-user"></i
+              ></span>
+              <input
+                type="text"
+                #position="ngModel"
+                pInputText
+                placeholder="&ensp;Cnic (Optional)"
+                style="width:100%"
+                name="position"
+                [(ngModel)]="patient.cnic"
+                ngModel
+              />
+              <span class="ui-inputgroup-addon"></span>
+            </div>
+
+            <div
+              [hidden]="position.valid || position.pristine"
+              style="padding:0px;margin-bottom:0px"
+              class="alert alert-danger"
+            >
+              ! required
+            </div>
+          </div>
+        </div>
+
+        <!-- Row 2 -->
+        <div class="ui-g ui-fluid">
+          <!-- Age No -->
+          <div class="ui-g-12 ui-md-6">
+            <div class="ui-inputgroup">
+              <span class="ui-inputgroup-addon"
+                ><i class="pi pi-mobile"></i
+              ></span>
+              <input
+                type="text"
+                (keypress)="numberOnly($event)"
+                #agRef="ngModel"
+                pInputText
+                required
+                placeholder="&ensp;Age"
+                style="width:100%"
+                name="age"
+                ngModel
+                [(ngModel)]="patient.age"
+              />
+              <span class="ui-inputgroup-addon"></span>
+            </div>
+            <div
+              style="padding:0px;margin-bottom:0px"
+              [hidden]="agRef.valid || agRef.pristine"
+              class="alert alert-danger"
+            >
+              !required
+            </div>
+          </div>
+
+          <div class="ui-md-1"></div>
+          <!-- Gender Dropdown -->
+          <div class="ui-g-12 ui-md-5">
+            <div class="ui-inputgroup">
+              <span class="ui-inputgroup-addon"><b>GEN</b><i></i></span>
+              <p-dropdown
+                [options]="gender"
+                name="gender"
+                placeholder="Select Gender"
+                [(ngModel)]="patient.gender"
+                required
+                #genderRef="ngModel"
+                [autoWidth]="false"
+                [style]="{'width':'100%'}"
+                [ngStyle]="{'width':'100%'}"
+              >
+              </p-dropdown>
+
+              <span class="ui-inputgroup-addon"></span>
+              <!-- <label style="margin-top:5px">{{ patient.gender }}</label> -->
+            </div>
+            <div
+              style="padding:0px;margin-bottom:0px"
+              [hidden]="genderRef.valid || genderRef.pristine"
+              class="alert alert-danger"
+            >
+              !required
+            </div>
+          </div>
+        </div>
+        <!-- ROW 3 -->
+        <div class="ui-g ui-fluid">
+          <!-- Mobile No -->
+          <div class="ui-g-12 ui-md-6">
+            <div class="ui-inputgroup">
+              <span class="ui-inputgroup-addon"
+                ><i class="pi pi-mobile"></i
+              ></span>
+              <input
+                type="text"
+                #TelRef="ngModel"
+                pInputText
+                required
+                placeholder="&ensp;PhoneNo"
+                style="width:100%"
+                name="MobileNo"
+                ngModel
+                [(ngModel)]="patient.phoneNo"
+              />
+              <span class="ui-inputgroup-addon"></span>
+            </div>
+            <div
+              style="padding:0px;margin-bottom:0px"
+              [hidden]="TelRef.valid || TelRef.pristine"
+              class="alert alert-danger"
+            >
+              Please Enter a Valid Mobile No.
+            </div>
+          </div>
+
+          <div class="ui-md-1"></div>
+          <!-- adionality -->
+          <div class="ui-g-12 ui-md-5">
+            <div class="ui-inputgroup">
+              <span class="ui-inputgroup-addon"><b>AD</b><i></i></span>
+              <input
+                type="text"
+                #adRef="ngModel"
+                pInputText
+                placeholder="&ensp;Address (Optional)"
+                style="width:100%"
+                name="Address"
+                ngModel
+                [(ngModel)]="patient.address"
+              />
+              <span class="ui-inputgroup-addon"></span>
+            </div>
+            <div
+              style="padding:0px;margin-bottom:0px"
+              [hidden]="adRef.valid || adRef.pristine"
+              class="alert alert-danger"
+            >
+              !required
+            </div>
+          </div>
+        </div>
+        <!-- Row 4 -->
+        <div class="ui-g ui-fluid">
+          <!-- Submit button -->
+          <div class="ui-g-12 ui-md-12">
+            <button
+              type="submit"
+              [disabled]="userForm.invalid"
+              class="btn btn-success btn-block"
+            >
+              Submit
+            </button>
+            <p-toast [style]="{ marginTop: '40px' }" position="top-right">
+            </p-toast>
+          </div>
+        </div>
+      </form>
+    </p-card>
+  </div>
+</div>

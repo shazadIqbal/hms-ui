@@ -1,341 +1,462 @@
 <div class="ui-g-12 ui-fluid ">
 <div class="ui-g-12 ui-md-12">
-
-<div class="container">
-<p-card header="ADD DOCTOR"
-[style]="{'width': '100%','margin-top':'5px !important','color':'#3EB650','text-align':'center','height':'30% !important'}">
-<hr>
-<form (ngSubmit)="onclick()" #form="ngForm">
-<div class="ui-g ui-fluid">
-<div class="ui-g-12 ui-md-4">
-<div class="ui-inputgroup">
-<span class="ui-inputgroup-addon"><i class="fa fa-user"></i></span>
-<input type="text" required #abc="ngModel" pInputText placeholder="Full Name"
-    [(ngModel)]="doctor.fullName" name="fullName" ngModel>
-
-
-
-</div>
-<div style="padding:0px;margin-bottom:4px" [hidden]="abc.valid || abc.pristine"
-class="alert alert-danger" >
-Please Enter a fullName
-</div>
-
-</div>
-<div class="ui-md-1">
-</div>
-
-<div class="ui-g-12 ui-md-4">
-<div class="ui-inputgroup">
-<span class="ui-inputgroup-addon">SG</span>
-<p-dropdown  [options]="gender" name="gender" [(ngModel)]="doctor.gender" placeholder="Select Gender"></p-dropdown>
-
-</div>
-</div>
-
-<div class="ui-g-12 ui-md-3">
-<div class="ui-inputgroup">
-<span class="ui-inputgroup-addon">DOB</span>
-<p-calendar  ></p-calendar>
-</div>
-
-</div>
-
-<div class="ui-g-12 ui-md-4">
-<div class="ui-inputgroup">
-<span class="ui-inputgroup-addon">MB</span>
-<input type="text" required pInputText placeholder="Mobile"
-    (keypress)="numberOnly($event)" #abd="ngModel" name="mobile"
-    [(ngModel)]="doctor.mobile" ngModel>
-
-
-</div>
-
-<div style="padding:0px;margin-bottom:4px" [hidden]="abd.valid || abd.pristine"
-class="alert alert-danger">
-Please Enter a fullName
-</div>
-
-</div>
-
-<div class="ui-md-1">
-</div>
-
-
-<div class="ui-g-12 ui-md-3">
-<div class="ui-inputgroup">
-<span class="ui-inputgroup-addon">EMR</span>
-<input type="text" required pInputText (keypress)="numberOnly($event)" #abe="ngModel"
-    [(ngModel)]="doctor.emrNo" name="emrno" placeholder="EMR NO" ngModel>
-
-</div>
-
-<div style="padding:0px;margin-bottom:4px" [hidden]="abe.valid || abe.pristine"
-class="alert alert-danger">
-Please Enter an emr no
-</div>
-
-</div>
-
-<div class="ui-md-1">
-</div>
-
-<div class="ui-g-12 ui-md-3">
-<div class="ui-inputgroup">
-<span class="ui-inputgroup-addon">NA</span>
-<input type="text" required [(ngModel)]="doctor.nationality" pInputText
-    placeholder="Nationality" #abf="ngModel" name="nationality" ngModel>
-
-</div>
-<div style="padding:0px;margin-bottom:4px" [hidden]="abf.valid || abf.pristine"
-class="alert alert-danger">
-Please Enter your nationality
-</div>
-
-</div>
-
-
-<div class="ui-g-12 ui-md-12">
-<div class="ui-inputgroup">
-<span class="ui-inputgroup-addon">AD</span>
-<input type="text" pInputText required placeholder="Address" name="Address" #abg="ngModel" [(ngModel)]="doctor.address" ngModel >
-
-</div>
-<div style="padding:0px;margin-bottom:4px" [hidden]="abg.valid || abg.pristine"
-class="alert alert-danger">
-Please Enter youR address
-</div>
-
-
-
-
-</div>
-
-
-<div class="ui-g-12 ui-md-3">
-<div class="ui-inputgroup">
-<span class="ui-inputgroup-addon" style="width:40%">TimeIN</span>
-<p-calendar [timeOnly]="true" ></p-calendar>
-</div>
-
-</div>
-
-<div class="ui-md-1">
-</div>
-
-
-<div class="ui-g-12 ui-md-4">
-<div class="ui-inputgroup">
-<span class="ui-inputgroup-addon" style="width:40%;">Timeout</span>
-<p-calendar  [timeOnly]="true"></p-calendar>
-
-</div>
-
-</div>
-
-
-
-
-<div class="ui-g-12 ui-md-4">
-<div class="ui-inputgroup">
-<span class="ui-inputgroup-addon">EM</span>
-<input type="text" pInputText required placeholder="daysservice/week" name="daysservice"  #abh="ngModel" [(ngModel)]="doctor.daysservice" ngModel >
-
-
-</div>
-<div style="padding:0px;margin-bottom:4px" [hidden]="abh.valid || abh.pristine"
-class="alert alert-danger">
-Please Enter days of service
-</div>
-
-
-</div>
-<div class="ui-g-12 ui-md-3">
-<div class="ui-inputgroup">
-<span class="ui-inputgroup-addon">CN</span>
-<input type="text" required pInputText #abi="ngModel"  (keypress)="numberOnly($event)" placeholder="CNIC" name="cnic" [(ngModel)]="doctor.cnic" ngModel>
-
-
-
-
-
-</div>
-<div style="padding:0px;margin-bottom:4px" [hidden]="abi.valid || abi.pristine"
-class="alert alert-danger">
-Please Enter your cnic 
-</div>
-
-</div>
-
-
-
-<div class="ui-md-1">
-</div>
-
-<div class="ui-g-12 ui-md-4">
-<div class="ui-inputgroup">
-<span class="ui-inputgroup-addon">Email</span>
-<input type="text" required pInputText placeholder="EMAIL" name="email" #abj="ngModel"  [(ngModel)]="doctor.email" ngModel >
-
-
-
-
-</div>
-<div style="padding:0px;margin-bottom:4px" [hidden]="abj.valid || abj.pristine"
-class="alert alert-danger">
-Please Enter your email
-</div>
-
-
-</div>
-<div class="ui-g-12 ui-md-4">
-<div class="ui-inputgroup">
-<span class="ui-inputgroup-addon">SS</span>
-<input type="text" required pInputText placeholder="Speciality" #abk="ngModel"
-    name="speciality" [(ngModel)]= "doctor.speciality" ngModel>
-
-</div>
-<div style="padding:0px;margin-bottom:4px" [hidden]="abk.valid || abk.pristine"
-class="alert alert-danger">
-Please Enter speciality
-</div>
-
-</div>
-<div class="ui-g-12 ui-md-4">
-<div class="ui-inputgroup">
-<span class="ui-inputgroup-addon">SS</span>
-<input type="text" required pInputText placeholder="Qualification"  #abl="ngModel"
-name="qualification" [(ngModel)]="doctor.qualification" ngModel>
-
-
-
-
-</div>
-<div style="padding:0px;margin-bottom:4px" [hidden]="abl.valid || abl.pristine"
-class="alert alert-danger">
-Please Enter qualification
-</div>
-
-</div>
-<div class="ui-g-12 ui-md-4">
-<div class="ui-inputgroup">
-<span class="ui-inputgroup-addon">SS</span>
-<input ngModel type="text" required pInputText placeholder="Hours/day" #abm="ngModel" name="hoursday"[(ngModel)]="doctor.hoursday" >
-
-
-
-
-</div>
-<div style="padding:0px;margin-bottom:4px" [hidden]="abm.valid || abm.pristine"
-class="alert alert-danger">
-Please Enter hours/day
-</div>
-
-</div>
-<div class="ui-g-12 ui-md-4">
-<div class="ui-inputgroup">
-<span class="ui-inputgroup-addon">SS</span>
-<input ngModel type="text" required pInputText placeholder="Position" name="position" #abn="ngModel" [(ngModel)]="doctor.position">
-
-
-
-
-</div>
-<div style="padding:0px;margin-bottom:4px" [hidden]="abn.valid || abn.pristine"
-class="alert alert-danger">
-Please Enter position
-</div>
-
-
-</div>
-<div class="ui-g-12 ui-md-4">
-<div class="ui-inputgroup">
-<span class="ui-inputgroup-addon">RE</span>
-<input ngModel type="text" required pInputText placeholder="Religion"  [(ngModel)]="doctor.religion" name="religion" #abo="ngModel">
-
-
-
-
-</div>
-<div style="padding:0px;margin-bottom:4px" [hidden]="abo.valid || abo.pristine"
-class="alert alert-danger">
-Please Enter religion
+  <div class="container">
+    <p-card
+      header="ADD DOCTOR"
+      [style]="{
+        width: '100%',
+        'margin-top': '5px !important',
+        color: '#3EB650',
+        'text-align': 'center',
+        height: '30% !important'
+      }"
+    >
+      <hr />
+      <form (ngSubmit)="onclick()" #form="ngForm">
+        <div class="ui-g ui-fluid">
+          <div class="ui-g-12 ui-md-4">
+            <div class="ui-inputgroup">
+              <span class="ui-inputgroup-addon"
+                ><i class="fa fa-user"></i
+              ></span>
+              <input
+                type="text"
+                required
+                #abc="ngModel"
+                pInputText
+                placeholder="Full Name"
+                [(ngModel)]="doctor.fullName"
+                name="fullName"
+                ngModel
+              />
+            </div>
+            <div
+              style="padding:0px;margin-bottom:4px"
+              [hidden]="abc.valid || abc.pristine"
+              class="alert alert-danger"
+            >
+              Please Enter a fullName
+            </div>
+          </div>
+          <div class="ui-md-1"></div>
+
+          <div class="ui-g-12 ui-md-4">
+            <div class="ui-inputgroup">
+              <span class="ui-inputgroup-addon">SG</span>
+              <p-dropdown
+                [options]="gender"
+                name="gender"
+                [(ngModel)]="doctor.gender"
+                placeholder="Select Gender"
+              ></p-dropdown>
+            </div>
+          </div>
+
+          <div class="ui-g-12 ui-md-3">
+            <div class="ui-inputgroup">
+              <span class="ui-inputgroup-addon">DOB</span>
+              <p-calendar></p-calendar>
+            </div>
+          </div>
+
+          <div class="ui-g-12 ui-md-4">
+            <div class="ui-inputgroup">
+              <span class="ui-inputgroup-addon">MB</span>
+              <input
+                type="text"
+                required
+                pInputText
+                placeholder="Mobile"
+                (keypress)="numberOnly($event)"
+                #abd="ngModel"
+                name="mobile"
+                [(ngModel)]="doctor.mobile"
+                ngModel
+              />
+            </div>
+
+            <div
+              style="padding:0px;margin-bottom:4px"
+              [hidden]="abd.valid || abd.pristine"
+              class="alert alert-danger"
+            >
+              Please Enter a fullName
+            </div>
+          </div>
+
+          <div class="ui-md-1"></div>
+
+          <div class="ui-g-12 ui-md-3">
+            <div class="ui-inputgroup">
+              <span class="ui-inputgroup-addon">EMR</span>
+              <input
+                type="text"
+                required
+                pInputText
+                (keypress)="numberOnly($event)"
+                #abe="ngModel"
+                [(ngModel)]="doctor.emrNo"
+                name="emrno"
+                placeholder="EMR NO"
+                ngModel
+              />
+            </div>
+
+            <div
+              style="padding:0px;margin-bottom:4px"
+              [hidden]="abe.valid || abe.pristine"
+              class="alert alert-danger"
+            >
+              Please Enter an emr no
+            </div>
+          </div>
+
+          <div class="ui-md-1"></div>
+
+          <div class="ui-g-12 ui-md-3">
+            <div class="ui-inputgroup">
+              <span class="ui-inputgroup-addon">NA</span>
+              <input
+                type="text"
+                required
+                [(ngModel)]="doctor.nationality"
+                pInputText
+                placeholder="Nationality"
+                #abf="ngModel"
+                name="nationality"
+                ngModel
+              />
+            </div>
+            <div
+              style="padding:0px;margin-bottom:4px"
+              [hidden]="abf.valid || abf.pristine"
+              class="alert alert-danger"
+            >
+              Please Enter your nationality
+            </div>
+          </div>
+
+          <div class="ui-g-12 ui-md-12">
+            <div class="ui-inputgroup">
+              <span class="ui-inputgroup-addon">AD</span>
+              <input
+                type="text"
+                pInputText
+                required
+                placeholder="Address"
+                name="Address"
+                #abg="ngModel"
+                [(ngModel)]="doctor.address"
+                ngModel
+              />
+            </div>
+            <div
+              style="padding:0px;margin-bottom:4px"
+              [hidden]="abg.valid || abg.pristine"
+              class="alert alert-danger"
+            >
+              Please Enter youR address
+            </div>
+          </div>
+
+          <div class="ui-g-12 ui-md-3">
+            <div class="ui-inputgroup">
+              <span class="ui-inputgroup-addon" style="width:40%"
+                >TimeIN</span
+              >
+              <p-calendar [timeOnly]="true"></p-calendar>
+            </div>
+          </div>
+
+          <div class="ui-md-1"></div>
+
+          <div class="ui-g-12 ui-md-4">
+            <div class="ui-inputgroup">
+              <span class="ui-inputgroup-addon" style="width:40%;"
+                >Timeout</span
+              >
+              <p-calendar [timeOnly]="true"></p-calendar>
+            </div>
+          </div>
+
+          <div class="ui-g-12 ui-md-4">
+            <div class="ui-inputgroup">
+              <span class="ui-inputgroup-addon">EM</span>
+              <input
+                type="text"
+                pInputText
+                required
+                placeholder="daysservice/week"
+                name="daysservice"
+                #abh="ngModel"
+                [(ngModel)]="doctor.daysservice"
+                ngModel
+              />
+            </div>
+            <div
+              style="padding:0px;margin-bottom:4px"
+              [hidden]="abh.valid || abh.pristine"
+              class="alert alert-danger"
+            >
+              Please Enter days of service
+            </div>
+          </div>
+          <div class="ui-g-12 ui-md-3">
+            <div class="ui-inputgroup">
+              <span class="ui-inputgroup-addon">CN</span>
+              <input
+                type="text"
+                required
+                pInputText
+                #abi="ngModel"
+                (keypress)="numberOnly($event)"
+                placeholder="CNIC"
+                name="cnic"
+                [(ngModel)]="doctor.cnic"
+                ngModel
+              />
+            </div>
+            <div
+              style="padding:0px;margin-bottom:4px"
+              [hidden]="abi.valid || abi.pristine"
+              class="alert alert-danger"
+            >
+              Please Enter your cnic
+            </div>
+          </div>
+
+          <div class="ui-md-1"></div>
+
+          <div class="ui-g-12 ui-md-4">
+            <div class="ui-inputgroup">
+              <span class="ui-inputgroup-addon">Email</span>
+              <input
+                type="text"
+                required
+                pInputText
+                placeholder="EMAIL"
+                name="email"
+                #abj="ngModel"
+                [(ngModel)]="doctor.email"
+                ngModel
+              />
+            </div>
+            <div
+              style="padding:0px;margin-bottom:4px"
+              [hidden]="abj.valid || abj.pristine"
+              class="alert alert-danger"
+            >
+              Please Enter your email
+            </div>
+          </div>
+          <div class="ui-g-12 ui-md-4">
+            <div class="ui-inputgroup">
+              <span class="ui-inputgroup-addon">SS</span>
+              <input
+                type="text"
+                required
+                pInputText
+                placeholder="Speciality"
+                #abk="ngModel"
+                name="speciality"
+                [(ngModel)]="doctor.speciality"
+                ngModel
+              />
+            </div>
+            <div
+              style="padding:0px;margin-bottom:4px"
+              [hidden]="abk.valid || abk.pristine"
+              class="alert alert-danger"
+            >
+              Please Enter speciality
+            </div>
+          </div>
+          <div class="ui-g-12 ui-md-4">
+            <div class="ui-inputgroup">
+              <span class="ui-inputgroup-addon">SS</span>
+              <input
+                type="text"
+                required
+                pInputText
+                placeholder="Qualification"
+                #abl="ngModel"
+                name="qualification"
+                [(ngModel)]="doctor.qualification"
+                ngModel
+              />
+            </div>
+            <div
+              style="padding:0px;margin-bottom:4px"
+              [hidden]="abl.valid || abl.pristine"
+              class="alert alert-danger"
+            >
+              Please Enter qualification
+            </div>
+          </div>
+          <div class="ui-g-12 ui-md-4">
+            <div class="ui-inputgroup">
+              <span class="ui-inputgroup-addon">SS</span>
+              <input
+                ngModel
+                type="text"
+                required
+                pInputText
+                placeholder="Hours/day"
+                #abm="ngModel"
+                name="hoursday"
+                [(ngModel)]="doctor.hoursday"
+              />
+            </div>
+            <div
+              style="padding:0px;margin-bottom:4px"
+              [hidden]="abm.valid || abm.pristine"
+              class="alert alert-danger"
+            >
+              Please Enter hours/day
+            </div>
+          </div>
+          <div class="ui-g-12 ui-md-4">
+            <div class="ui-inputgroup">
+              <span class="ui-inputgroup-addon">SS</span>
+              <input
+                ngModel
+                type="text"
+                required
+                pInputText
+                placeholder="Position"
+                name="position"
+                #abn="ngModel"
+                [(ngModel)]="doctor.position"
+              />
+            </div>
+            <div
+              style="padding:0px;margin-bottom:4px"
+              [hidden]="abn.valid || abn.pristine"
+              class="alert alert-danger"
+            >
+              Please Enter position
+            </div>
+          </div>
+          <div class="ui-g-12 ui-md-4">
+            <div class="ui-inputgroup">
+              <span class="ui-inputgroup-addon">RE</span>
+              <input
+                ngModel
+                type="text"
+                required
+                pInputText
+                placeholder="Religion"
+                [(ngModel)]="doctor.religion"
+                name="religion"
+                #abo="ngModel"
+              />
+            </div>
+            <div
+              style="padding:0px;margin-bottom:4px"
+              [hidden]="abo.valid || abo.pristine"
+              class="alert alert-danger"
+            >
+              Please Enter religion
+            </div>
+          </div>
+          <div class="ui-g-12 ui-md-4">
+            <div class="ui-inputgroup">
+              <span class="ui-inputgroup-addon">DS</span>
+              <textarea
+                rows="2"
+                cols="30"
+                pInputTextarea
+                autoResize="autoResize"
+                placeholder="Description"
+              ></textarea>
+            </div>
+          </div>
+          <div class="ui-g-12 ui-md-4">
+            <div class="ui-inputgroup">
+              <span class="ui-inputgroup-addon">SS</span>
+              <input
+                ngModel
+                type="text"
+                required
+                pInputText
+                placeholder="Sallary"
+                #abp="ngModel"
+                name="sallary"
+                [(ngModel)]="doctor.sallary"
+              />
+            </div>
+            <div
+              style="padding:0px;margin-bottom:4px"
+              [hidden]="abp.valid || abp.pristine"
+              class="alert alert-danger"
+            >
+              Please Enter sallary
+            </div>
+          </div>
+
+          <div class="ui-g-12 ">
+            <div class=" ui-g-12 ui-md-2">
+              <button
+                pButton
+                type="submit"
+                label="Save"
+                class=" ui-button-success  one"
+                style="width:100%; margin-bottom:0% "
+              ></button>
+            </div>
+            <div class=" ui-g-12 ui-md-2">
+              <button
+                pButton
+                type="button"
+                label="Refresh"
+                class=" ui-button-success  one"
+              ></button>
+            </div>
+            <div class="ui-g-12 ui-md-2">
+              <button
+                pButton
+                type="button"
+                label="Print"
+                class=" ui-button-success  one"
+              ></button>
+            </div>
+
+            <div class="ui-g-12 ui-md-2">
+              <button
+                pButton
+                type="button"
+                label="print view"
+                class=" ui-button-success  one"
+              ></button>
+            </div>
+            <div class="ui-g-12 ui-md-2">
+              <button
+                pButton
+                type="button"
+                label="close"
+                class=" ui-button-success  one"
+              ></button>
+            </div>
+            <div class="ui-g-12 ui-md-1">
+              <button
+                pButton
+                type="button"
+                label="&lt;"
+                class=" ui-button-success  one"
+              ></button>
+            </div>
+            <div class="ui-g-12 ui-md-1">
+              <button
+                pButton
+                type="button"
+                label=">"
+                class=" ui-button-success one "
+              ></button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </p-card>
+  </div>
 </div>
-
-</div>
-<div class="ui-g-12 ui-md-4">
-<div class="ui-inputgroup">
-<span class="ui-inputgroup-addon">DS</span>
-<textarea rows="2" cols="30" pInputTextarea autoResize="autoResize"
-    placeholder="Description"></textarea>
-
-
-
-
-
-</div>
-
-</div>
-<div class="ui-g-12 ui-md-4">
-<div class="ui-inputgroup">
-<span class="ui-inputgroup-addon">SS</span>
-<input ngModel type="text" required pInputText placeholder="Sallary"  #abp="ngModel" name="sallary" [(ngModel)]="doctor.sallary">
-
-
-
-
-</div>
-<div style="padding:0px;margin-bottom:4px" [hidden]="abp.valid || abp.pristine"
-class="alert alert-danger">
-Please Enter sallary
-</div>
-
-
-</div>
-
-
-<div class="ui-g-12 ">
-<div class=" ui-g-12 ui-md-2">
-<button pButton type="submit" label="Save" class=" ui-button-success  one"
-    style="width:100%; margin-bottom:0% " ></button></div>
-<div class=" ui-g-12 ui-md-2">
-<button pButton type="button" label="Refresh" class=" ui-button-success  one"></button>
-</div>
-<div class="ui-g-12 ui-md-2">
-<button pButton type="button" label="Print" class=" ui-button-success  one"></button>
-</div>
-
-<div class="ui-g-12 ui-md-2">
-<button pButton type="button" label="print view"
-    class=" ui-button-success  one"></button></div>
-<div class="ui-g-12 ui-md-2">
-<button pButton type="button" label="close" class=" ui-button-success  one"></button>
-</div>
-<div class="ui-g-12 ui-md-1">
-<button pButton type="button" label="&lt;" class=" ui-button-success  one"></button>
-</div>
-<div class="ui-g-12 ui-md-1">
-<button pButton type="button" label=">" class=" ui-button-success one "></button></div>
-
-
-
-
-
-
-
-
-
-</div>
-
-
-
-</div>
-
-
-</form>
-</p-card>
-</div>
-
-</div>
-
 </div>

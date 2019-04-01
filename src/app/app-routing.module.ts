@@ -1,3 +1,5 @@
+import { PatientformComponent } from "./patientform/patientform.component";
+import { PatientComponent } from "./patient/patient.component";
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { LoginFormComponent } from './login-form/login-form.component';
@@ -18,8 +20,9 @@ import { AddpanellistComponent } from './addpanellist/addpanellist.component';
 
 
 const routes: Routes = [
-  
- 
+
+
+
 {path:'',component:MainScreenComponent},
 {path:'doctorlist',component:DoctorListComponent},
 {path:'contact',component:ContactPageComponent},
@@ -30,6 +33,9 @@ const routes: Routes = [
 { path: 'addlabtest', component: AddLabTestComponent },
 { path: 'addlab', component: AddTestComponent },
 { path: 'addlabcat', component: AddLabCatComponent },
+{path: 'patient', component: PatientComponent},
+{path: 'patientform', component: PatientformComponent}
+
 
 
 
