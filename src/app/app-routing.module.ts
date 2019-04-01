@@ -8,24 +8,28 @@ import { ContactPageComponent } from './contact-page/contact-page.component';
 import { MainScreenComponent } from './main-screen/main-screen.component';
 import { DoctorListComponent } from './doctor-list/doctor-list.component';
 import { AdddoctorComponent } from './adddoctor/adddoctor.component';
+
 import { AddLabTestComponent } from './add-lab-test/add-lab-test.component';
 import { AddTestComponent } from './add-lab-test/add-test/add-test.component';
 import { AddLabCatComponent } from './add-lab-test/add-lab-cat/add-lab-cat.component';
 
-
+import { PanelListComponent } from './panel-list/panel-list.component';
+import { AddpanellistComponent } from './addpanellist/addpanellist.component';
 
 
 const routes: Routes = [
-
-
-  { path: '', component: MainScreenComponent },
-  { path: 'doctorlist', component: DoctorListComponent },
-  { path: 'contact', component: ContactPageComponent },
-  { path: 'adddoctor', component: AdddoctorComponent },
-  { path: 'addlabtest', component: AddLabTestComponent },
-  { path: 'addlab', component: AddTestComponent },
-  { path: 'addlabcat', component: AddLabCatComponent },
-
+  
+ 
+{path:'',component:MainScreenComponent},
+{path:'doctorlist',component:DoctorListComponent},
+{path:'contact',component:ContactPageComponent},
+{path:'adddoctor',component:AdddoctorComponent},
+{path: 'panellist',component:PanelListComponent},
+{path:'addpanellist',component:AddpanellistComponent},
+{path: 'mainscreen' ,component:MainScreenComponent},
+{ path: 'addlabtest', component: AddLabTestComponent },
+{ path: 'addlab', component: AddTestComponent },
+{ path: 'addlabcat', component: AddLabCatComponent },
 
 
 
