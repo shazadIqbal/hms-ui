@@ -10,47 +10,29 @@ import { DoctorService } from '../adddoctor/doctor.service';
   styleUrls: ['./doctor-list.component.css']
 })
 export class DoctorListComponent implements OnInit {
+  doctors: any;
 
- doctors:any;
+  cols: any[];
 
-cols: any[];
-
-
-  
-  constructor(private router : Router, private doctorService:DoctorService) { }
+  constructor(private router: Router, private doctorService: DoctorService) {}
 
   ngOnInit() {
-    
-    this.doctorService.getdoctors().subscribe((response)=>{
-        console.log("ye agaya response server se ",response);
-        this.doctors = response;
-    })
-
+    this.doctorService.getdoctors().subscribe(response => {
+      console.log('ye agaya response server se ', response);
+      this.doctors = response;
+    });
 
     this.cols = [
       { field: 'fullName', header: 'Full Name' },
-      {field: 'gender', header: 'Gender' },
-      {field: 'cnic', header: 'CNIC' },
-      {field: 'address', header: 'address' },
-      
+      { field: 'gender', header: 'Gender' },
+      { field: 'cnic', header: 'CNIC' },
+      { field: 'address', header: 'address' }
+    ];
 
-     
-  ];
-    
-  this.doctors= [
-    
-];
-        
-
-      
-    }
-
-    adddoctor() {
-
-      this.router.navigate(['/adddoctor']);
-    }
-    
+    this.doctors = [];
   }
 
-  
-
+  adddoctor() {
+    this.router.navigate(['/adddoctor']);
+  }
+}

@@ -1,3 +1,5 @@
+import { PatientformComponent } from "./patientform/patientform.component";
+import { PatientComponent } from "./patient/patient.component";
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { LoginFormComponent } from './login-form/login-form.component';
@@ -11,12 +13,15 @@ import { AdddoctorComponent } from './adddoctor/adddoctor.component';
 
 
 const routes: Routes = [
-  
- 
-{path:'',component:MainScreenComponent},
-{path:'doctorlist',component:DoctorListComponent},
-{path:'contact',component:ContactPageComponent},
-{path:'adddoctor',component:AdddoctorComponent}
+
+
+{path: '', component: MainScreenComponent},
+{path: 'doctorlist', component: DoctorListComponent},
+{path: 'contact', component: ContactPageComponent},
+{path: 'adddoctor', component: AdddoctorComponent},
+{path: 'patient', component: PatientComponent},
+{path: 'patientform', component: PatientformComponent}
+
 
 
 
