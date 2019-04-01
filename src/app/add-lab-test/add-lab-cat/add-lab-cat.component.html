@@ -1,0 +1,38 @@
+<div class="col-g-12">
+    <div class="ui-lg-12 ui-md-12 ui-sm-12">
+        <button pButton type="button" class=" ui-button-success" (click)="back()"  style="width:25%;margin-left:70%; " label="Back" ></button>
+    </div>
+  </div>
+  <div style="position: absolute;top:60%;" class="ui-g-12" *ngIf="loader">
+
+
+      <p-progressSpinner [style]="{'margin-left':'45%'}"></p-progressSpinner>
+
+  </div>
+<div class="ui-g-12">
+  <p-toast></p-toast>
+  <p-panel class="ui-panel" header="ADD LAB CATEGORY">
+    <form style="width:100%;" #categoryForm="ngForm"
+      (ngSubmit)="submitCategory(categoryForm.value); categoryForm.reset()">
+      <div class="ui-g ui-fluid">
+        <div class="ui-g-12 ui-md-12">
+          <div style="margin-left:20%;width:60%;" class="ui-inputgroup">
+            <span class="ui-inputgroup-addon"><i class="fa fa-user"></i></span>
+            <input style="height:40px;height:40px;" required [(ngModel)]="category" name="category" type="text" pInputText
+              placeholder="Add Lab Category">
+          </div>
+        </div>
+        <div class="ui-g-12 ui-md-12">
+          <div class="ui-g-12 ui-lg-12  ui-sm-12">
+            <button pButton type="submit" [disabled]="categoryForm.form.invalid" style="width:30%;margin-left:35%;" label="Add Lab Category"
+              class=" ui-button-success"></button>
+          </div>
+        </div>
+
+      </div>
+
+
+    </form>
+  </p-panel>
+
+</div>

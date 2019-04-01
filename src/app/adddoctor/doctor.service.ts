@@ -7,7 +7,11 @@ import { Doctor } from './doctor';
 export class DoctorService {
   private baseUrl = `http://192.168.0.135:8080/api/doctor/`;
 
-  constructor(private http: HttpClient) {}
+ constructor(private http: HttpClient) {}
+
+
+
+
 
   savedoctor(doctor): Observable<any> {
     return this.http.post(this.baseUrl, doctor);

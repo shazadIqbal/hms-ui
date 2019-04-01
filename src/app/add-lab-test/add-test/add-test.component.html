@@ -1,0 +1,101 @@
+<div class="col-g-12">
+  <div class="ui-lg-12 ui-md-12 ui-sm-12">
+      <button pButton type="button" class=" ui-button-success" (click)="back()"  style="width:25%;margin-left:70%; " label="Back" ></button>
+  </div>
+</div>
+<div style="position: absolute;top:70%;" class="ui-g-12" *ngIf="loader">
+
+
+    <p-progressSpinner [style]="{'margin-left':'45%'}"></p-progressSpinner>
+
+</div>
+
+<div class="ui-g-12">
+  <p-toast></p-toast>
+  
+
+
+  <p-card header="ADD TEST"
+    [style]="{'width':'80%','font-size':'26px','margin-left':'10%','text-align':'center','color':'green'}">
+    <div class="ui-g ui-fluid">
+      <hr style="height:2px;width:100%;background-color:green;" />
+      <form style="width:100%;" #myForm="ngForm" (ngSubmit)="submitlab(); myForm.reset()">
+        <div class="ui-g">
+          <div class="ui-md-3 ui-lg-3"></div>
+          <div class="ui-md-6 ui-lg-6 ui-sm-12">
+            <div class="ui-inputgroup">
+              <span class="ui-inputgroup-addon" style="width:100%;font-size:15px;height:2.2em;margin-top:5px"> Lab Test
+                Category:</span>
+              <p-dropdown required [options]="cities1" [(ngModel)]="selectedCity1" name="dropdown">
+              </p-dropdown>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="ui-g">
+          <div class="ui-md-3 ui-lg-3"></div>
+          <div class="ui-md-6 ui-lg-6 ui-sm-12">
+
+            <div class="ui-inputgroup">
+              <span class="ui-inputgroup-addon" style="width:40%;font-size:15px;">Test
+                Name:</span>
+              <input type="text" required [(ngModel)]="test.name" name="testname" pInputText>
+
+
+            </div>
+
+          </div>
+        </div>
+
+        <div class="ui-g">
+          <div class="ui-md-3 ui-lg-3"></div>
+          <div class="ui-md-6 ui-lg-6 ui-sm-12">
+
+            <div class="ui-inputgroup">
+              <span class="ui-inputgroup-addon" style="width:40%;font-size:15px;">Test
+                Price:</span>
+              <input type="text" (keypress)="numberOnly($event)" required [(ngModel)]="test.price" name="price"
+                pInputText>
+
+
+            </div>
+
+          </div>
+        </div>
+
+        <div class="ui-g">
+          <div class="ui-md-3 ui-lg-3"></div>
+          <div class="ui-md-6 ui-lg-6 ui-sm-12">
+
+            <div class="ui-inputgroup">
+              <span class="ui-inputgroup-addon" style="width:40%;font-size:15px;">Test
+                Detail:</span>
+              <!-- <input type="text" required [(ngModel)]="test.details" name="details" pInputText> -->
+              <textarea [rows]="3" maxlength="110" [cols]="30" required [(ngModel)]="test.details" name="details" pInputTextarea ></textarea>
+
+
+
+            </div>
+
+          </div>
+        </div>
+        <div class="ui-g" style="margin-top:-20px !important;">
+          <div class="ui-md-3 ui-lg-3"></div>
+          <div class="ui-md-6 ui-lg-6 ui-sm-12">
+            <button pButton type="submit" label="SUBMIT" [disabled]="myForm.form.invalid"
+              style="margin-top: 0px; background-color:green;width:100%;"></button>
+
+          </div>
+        </div>
+
+      </form>
+
+
+
+
+    </div>
+  </p-card>
+
+
+</div>
