@@ -1,1 +1,20 @@
+
 /* You can add global styles to this file, and also import other style files */
+
+
+@keyframes ui-progress-spinner-color {
+    100%,
+    0% {
+        stroke: #8f8b8b;
+    }
+    40% {
+        stroke: #37cc19;
+    }
+    66% {
+        stroke: #858686;
+    }
+    80%,
+    90% {
+        stroke: #5fac17;
+    }
+}
