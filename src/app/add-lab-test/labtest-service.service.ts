@@ -2,6 +2,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import {environment} from '../../environments/environment';
 
 
 @Injectable({
@@ -9,7 +10,7 @@ import { Observable } from 'rxjs';
 })
 export class LabtestServiceService {
 
-  private url:any="http://192.168.0.135:8080/api/labtest";
+  private url:any= environment.baseUrl+"/api/labtest";
   constructor(private http:HttpClient) { 
   }
 
