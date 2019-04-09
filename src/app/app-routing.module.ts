@@ -1,5 +1,7 @@
-import { PatientformComponent } from "./patientform/patientform.component";
-import { PatientComponent } from "./patient/patient.component";
+import { AddErComponent } from "./add-er/add-er.component";
+import { ErComponent } from "./er/er.component";
+import { PatientformComponent } from './patientform/patientform.component';
+import { PatientComponent } from './patient/patient.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { LoginFormComponent } from './login-form/login-form.component';
@@ -23,18 +25,21 @@ const routes: Routes = [
 
 
 
-{path:'',component:MainScreenComponent},
-{path:'doctorlist',component:DoctorListComponent},
-{path:'contact',component:ContactPageComponent},
-{path:'adddoctor',component:AdddoctorComponent},
-{path: 'panellist',component:PanelListComponent},
-{path:'addpanellist',component:AddpanellistComponent},
-{path: 'mainscreen' ,component:MainScreenComponent},
+{path: '', component: MainScreenComponent},
+{path: 'doctorlist', component: DoctorListComponent},
+{path: 'contact', component: ContactPageComponent},
+{path: 'adddoctor', component: AdddoctorComponent},
+{path: 'panellist', component: PanelListComponent},
+{path: 'addpanellist', component: AddpanellistComponent},
+{path: 'mainscreen' , component: MainScreenComponent},
 { path: 'addlabtest', component: AddLabTestComponent },
 { path: 'addlab', component: AddTestComponent },
 { path: 'addlabcat', component: AddLabCatComponent },
 {path: 'patient', component: PatientComponent},
-{path: 'patientform', component: PatientformComponent}
+{path: 'patientform', component: PatientformComponent},
+{path: 'er', component: ErComponent},
+{path: 'adder', component: AddErComponent}
+
 
 
 

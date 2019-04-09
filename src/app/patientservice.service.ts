@@ -8,7 +8,7 @@ import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
 })
 export class PatientserviceService {
   constructor(private http: HttpClient) {}
-  private baseUrl = `http://192.168.0.106:8080/api/patient/`;
+  private baseUrl: string = `http://192.168.0.106:8080/api/patient/`;
 
   getPatientsByMRNO(mrNo: number): Observable<any> {
     // const params = new HttpParams().set('id', mrNo.toString()); concatenation & params do the
@@ -26,7 +26,7 @@ export class PatientserviceService {
   }
   deletePatientByMRNO(mrNo: number): Observable<any> {
 
-    return this.http.delete(this.baseUrl + mrNo);
+    return this.http.delete(this.baseUrl+mrNo);
 
   }
 }

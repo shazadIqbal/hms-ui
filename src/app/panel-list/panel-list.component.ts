@@ -31,7 +31,7 @@ export class PanelListComponent implements OnInit {
     })
 
 
- 
+
 
 
     this.cols = [
@@ -42,7 +42,7 @@ export class PanelListComponent implements OnInit {
       {field: 'panelEndDate', header: 'Panel End Date' },
       {field: 'panelFacility', header: 'Panel Facility' }
     ];
-  
+
 
     this.panels=[];
 
@@ -66,7 +66,7 @@ export class PanelListComponent implements OnInit {
       },
       error => {
         console.log(error);
-        
+
       }
     );
   }
@@ -76,4 +76,3 @@ export class PanelListComponent implements OnInit {
   }
 
 }
- 

@@ -1,104 +1,191 @@
-<button pButton type="button" label="Back" class="ui-button-success" style="margin-left:14.5%;" (click)="addpanel()"></button>
+<button
+  pButton
+  type="button"
+  label="Back"
+  class="ui-button-success"
+  style="margin-left:14.5%;"
+  (click)="addpanel()"
+></button>
 <div class="ui-g-12 ui-fluid  ">
   <div class="ui-g-12 ui-md-12">
-
     <div class="container">
-      <p-card header="ADD PANEL"
-        [style]="{'width': '100%','margin-top':'5px !important','color':'#3EB650','text-align':'center','height':'30% !important'}">
-        <hr>
+      <p-card
+        header="ADD PANEL"
+        [style]="{
+          width: '100%',
+          'margin-top': '5px !important',
+          color: '#3EB650',
+          'text-align': 'center',
+          height: '30% !important'
+        }"
+      >
+        <hr />
         <form (ngSubmit)="Onsubmit()" #form="ngForm">
           <div class="ui-g ui-fluid">
             <div class="ui-g-12 ui-md-5">
               <div class="ui-inputgroup">
-                <span class="ui-inputgroup-addon"><i class="fa fa-user"></i></span>
-                <input type="text" required #abc="ngModel" [(ngModel)]="panels.panelName" pInputText
-                  placeholder="Panel Name" name="panelName" ngModel>
-
-
+                <span class="ui-inputgroup-addon"
+                  ><i class="fa fa-user"></i
+                ></span>
+                <input
+                  type="text"
+                  required
+                  #abc="ngModel"
+                  [(ngModel)]="panels.panelName"
+                  pInputText
+                  placeholder="Panel Name"
+                  name="panelName"
+                  ngModel
+                />
               </div>
-              <div style="padding:0px;margin-bottom:4px" [hidden]="abc.valid || abc.pristine"
-                class="alert alert-danger">
+              <div
+                style="padding:0px;margin-bottom:4px"
+                [hidden]="abc.valid || abc.pristine"
+                class="alert alert-danger"
+              >
                 Please Enter a Panel Name
               </div>
-
             </div>
-            <div class="ui-md-2">
-            </div>
+            <div class="ui-md-2"></div>
 
             <div class="ui-g-12 ui-md-5">
               <div class="ui-inputgroup">
-                <span class="ui-inputgroup-addon" style="width:50%;">PANEL TYPE</span>
-                <p-dropdown [options]="paneldrop" required name="panel" [(ngModel)]="panels.panelType"
-                  [style]="{'width':'300px'}" placeholder="Select Panel">
+                <span class="ui-inputgroup-addon" style="width:50%;"
+                  >PANEL TYPE</span
+                >
+                <p-dropdown
+                  [options]="paneldrop"
+                  required
+                  name="panel"
+                  [(ngModel)]="panels.panelType"
+                  [style]="{ width: '300px' }"
+                  placeholder="Select Panel"
+                >
                 </p-dropdown>
-
               </div>
             </div>
 
-            <!-- <div class="ui-g-12 ui-md-3">
-              <div class="ui-inputgroup">
-                <span class="ui-inputgroup-addon">DOB</span>
-                <p-calendar></p-calendar>
-              </div>
-
-            </div> -->
-
-
             <div class="ui-g-12 ui-md-5">
               <div class="ui-inputgroup">
-                <span class="ui-inputgroup-addon" style="width:50%">Panel Start Date</span>
-                <p-calendar [style]="{'width':'300px'}" [(ngModel)]="panels.panelStartDate" name="startdate" required>
+                <span class="ui-inputgroup-addon" style="width:50%"
+                  >Panel Start Date</span
+                >
+                <p-calendar
+                  [style]="{ width: '300px' }"
+                  [(ngModel)]="panels.panelStartDate"
+                  name="startdate"
+                  required
+                >
                 </p-calendar>
               </div>
-
             </div>
-            <div class="ui-md-2">
-            </div>
+            <div class="ui-md-2"></div>
             <div class="ui-g-12 ui-md-5">
               <div class="ui-inputgroup">
-                <span class="ui-inputgroup-addon" style="width:50%">Panel End Date</span>
-                <p-calendar [style]="{'width':'300px'}" [(ngModel)]="panels.panelEndDate" name="enddate" required>
+                <span class="ui-inputgroup-addon" style="width:50%"
+                  >Panel End Date</span
+                >
+                <p-calendar
+                  [style]="{ width: '300px' }"
+                  [(ngModel)]="panels.panelEndDate"
+                  name="enddate"
+                  required
+                >
                 </p-calendar>
               </div>
             </div>
             <div class="ui-g-12 ui-md-5 ">
               <div class="ui-inputgroup">
-                <span class="ui-inputgroup-addon" style="height:80%; width: 50%;">Panel Facility</span>
-                <p-multiSelect [options]="multidropdown" (onClick)=OnClickInMulti() [panelStyle]="{minWidth:'12em'}" [(ngModel)]="panels.panelFacility"
-                  [style]="{'width':'300px'}" name="pfacility" required></p-multiSelect>
+                <span
+                  class="ui-inputgroup-addon"
+                  style="height:80%; width: 50%;"
+                  >Panel Facility</span
+                >
+                <p-multiSelect
+                  [options]="multidropdown"
+                  (onClick)="OnClickInMulti()"
+                  [panelStyle]="{ minWidth: '12em' }"
+                  [(ngModel)]="panels.panelFacility"
+                  [style]="{ width: '300px' }"
+                  name="pfacility"
+                  required
+                ></p-multiSelect>
               </div>
             </div>
             <div class="ui-g-12 ui-md-5 ">
               <div class="ui-inputgroup">
-                <p-dialog header="Add Facility" [(visible)]="display" [modal]="true" [responsive]="true"
-                  [style]="{width: '500px', minWidth: '200px'}" [minY]="70" [maximizable]="true" [baseZIndex]="10000">
-                  <form  #addFacility="ngForm">
+                <p-dialog
+                  header="Add Facility"
+                  [(visible)]="display"
+                  [modal]="true"
+                  [responsive]="true"
+                  [style]="{ width: '500px', minWidth: '200px' }"
+                  [minY]="70"
+                  [maximizable]="true"
+                  [baseZIndex]="10000"
+                >
+                  <form #addFacility="ngForm">
                     <!-- <span class="ui-inputgroup-addon">Add Facility</span> -->
-                    <input type="text" pInputText placeholder="Add Facility " name="addFacility" [(ngModel)]="facilityObj.facilityName" required ngModel>
-                  
-                  <p-footer>
-                    <button type="submit" pButton icon="pi pi-check" class="ui-button-success"  
-                      label="Save" [disabled]="addFacility.invalid" (click)="OnFacilitysubmit(addFacility.value.addFacility)" (click)="display=false"></button>
-                    <button type="button" pButton icon="pi pi-close" (click)="display=false" label="Cancel"
-                      class="ui-button-secondary"></button>
-                  </p-footer>
-                </form>
+                    <input
+                      type="text"
+                      pInputText
+                      placeholder="Add Facility "
+                      name="addFacility"
+                      [(ngModel)]="facilityObj.facilityName"
+                      required
+                      ngModel
+                    />
+
+                    <p-footer>
+                      <button
+                        type="submit"
+                        pButton
+                        icon="pi pi-check"
+                        class="ui-button-success"
+                        label="Save"
+                        [disabled]="addFacility.invalid"
+                        (click)="
+                          OnFacilitysubmit(addFacility.value.addFacility)
+                        "
+                        (click)="display = false"
+                      ></button>
+                      <button
+                        type="button"
+                        pButton
+                        icon="pi pi-close"
+                        (click)="display = false"
+                        label="Cancel"
+                        class="ui-button-secondary"
+                      ></button>
+                    </p-footer>
+                  </form>
                 </p-dialog>
-                <button type="button" (click)="showDialog()" class="ui-button-success" pButton icon="pi pi-info-circle"
-                  label="ADD"></button>
+                <button
+                  type="button"
+                  (click)="showDialog()"
+                  class="ui-button-success"
+                  pButton
+                  icon="pi pi-info-circle"
+                  label="ADD"
+                ></button>
               </div>
             </div>
-           <div class="ui-g-12 ">
+            <div class="ui-g-12 ">
               <div class=" ui-g-12 ui-md-4">
-                <button pButton type="submit" label="Save" class=" ui-button-success  one"
-                  style="width:100%; margin-left:100% " [disabled]="form.invalid"></button></div>
+                <button
+                  pButton
+                  type="submit"
+                  label="Save"
+                  class=" ui-button-success  one"
+                  style="width:100%; margin-left:100% "
+                  [disabled]="form.invalid"
+                ></button>
+              </div>
               <p-toast position="top-center"></p-toast>
             </div>
-         </div>
+          </div>
         </form>
       </p-card>
     </div>
-
   </div>
-
 </div>

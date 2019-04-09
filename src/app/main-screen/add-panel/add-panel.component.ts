@@ -15,7 +15,7 @@ export class AddPanelComponent implements OnInit {
   }
 
   doctorList(){
-  
+
     this.router.navigate(['/doctorlist']);
   }
 
@@ -25,9 +25,12 @@ export class AddPanelComponent implements OnInit {
   }
 
 panelList(){
-  
+
   this.router.navigate(['/panellist']);
 }
+erList(){
+  this.router.navigate(['/er']);
+}
 
-  
+
 }

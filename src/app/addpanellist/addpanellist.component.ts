@@ -18,12 +18,12 @@ export class AddpanellistComponent implements OnInit {
   cars: any;
   selectedCars1: any;
   panels: Panel = new Panel();
-  multidropdown =[];
+  multidropdown = [];
   display: boolean = false;
   facilityObj: Facility = new Facility;
-  constructor(private panelService: AddpanellistseviceService,private messageService: MessageService,private router : Router) {
+  constructor(private panelService: AddpanellistseviceService, private messageService: MessageService, private router : Router) {
     this.paneldrop = [
-    
+
       { label: 'free', value: "free" },
       { label: '50% Off', value: "50% Off" }
 
@@ -50,29 +50,29 @@ export class AddpanellistComponent implements OnInit {
   }
 
   getFcilityInIt(){
-    this.multidropdown =[];
-    this.panelService.getFacility().subscribe((response)=>{
-      console.log("response is here",response);
-   
+    this.multidropdown = [];
+    this.panelService.getFacility().subscribe((response) => {
+      console.log("response is here", response);
+
        response.forEach(e => {
          this.multidropdown.push({
-           "label": e.facilityName,
-           "value":e.facilityName
+           label: e.facilityName,
+           value: e.facilityName
          })
        });
-      
+
     })
-    
+
   }
 
   save() {
-    this.panelService.savePanel(this.panels).subscribe((data) =>{
+    this.panelService.savePanel(this.panels).subscribe((data) => {
       console.log(data);
-      this.messageService.add({severity:'success', summary:'Status', detail:'Successfull'});
-    
-    }, error=>{
+      this.messageService.add({severity: 'success', summary: 'Status', detail: 'Successfull'});
+
+    }, error => {
       console.log(error);
-      this.messageService.add({severity:'success', summary:'Status', detail:'Successfull'});
+      this.messageService.add({severity: 'success', summary: 'Status', detail: 'Successfull'});
     })
 
   }
@@ -92,33 +92,33 @@ export class AddpanellistComponent implements OnInit {
 }
 
 onTest(value){
-  console.log("test value ",value)
+  console.log("test value ", value)
 }
 OnFacilitysubmit(value){
-  console.log("in facility")
+  console.log('in facility')
   this.multidropdown = [];
-  this.panels.panelFacility=[];
-  this.facilityObj.facilityName=this.facilityObj.facilityName.toUpperCase();
-  this.panelService.saveFacility(this.facilityObj).subscribe((data) =>{
+  this.panels.panelFacility = [];
+  this.facilityObj.facilityName = this.facilityObj.facilityName.toUpperCase();
+  this.panelService.saveFacility(this.facilityObj).subscribe((data) => {
     console.log(data);
     let stat = Object.keys(data);
-    if(stat[0] != "Already Exsist"){
-      this.messageService.add({severity:'success', summary:'Status', detail:'Successfull'});
+    if (stat[0] != "Already Exsist"){
+      this.messageService.add({severity: 'success', summary: 'Status', detail: 'Successfull'});
     }else{
-      this.messageService.add({severity:'error', summary:'Status', detail:'Already Exsist'});
+      this.messageService.add({severity: 'error', summary: 'Status', detail: 'Already Exsist'});
     }
-   
-  
-  }, error=>{
+
+
+  }, error => {
     console.log(error);
-    this.messageService.add({severity:'success', summary:'Status', detail:'Successfull'});
+    this.messageService.add({severity: 'success', summary: 'Status', detail: 'Successfull'});
   })
   this.getFcilityInIt();
 }
 // saveFacility(val:any){
 //     this.facilityObj.facilityName=val;
 OnClickInMulti(){
- 
+
   this.getFcilityInIt();
 }
 addpanel() {
@@ -129,4 +129,3 @@ console.log("jj")
 // //this.display="false";
 // }
 }
- 
