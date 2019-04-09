@@ -34,6 +34,12 @@ export class MainScreenComponent implements OnInit {
     this.router.navigate(['adddirectory'])
   }
 
+  addAppointment()
+  {
+    this.router.navigate(['appoinmentList'])
+  }
+
+
   check(mrNo: any) {
     this.patientService.getPatientsByMRNO(mrNo).subscribe(data => {
       // tslint:disable-next-line: triple-equals

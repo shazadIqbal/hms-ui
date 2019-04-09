@@ -9,7 +9,9 @@ import { environment } from 'src/environments/environment';
 })
 export class PatientserviceService {
   constructor(private http: HttpClient) {}
+
   private baseUrl = environment.baseUrl+ "api/patient/";
+
 
   getPatientsByMRNO(mrNo: number): Observable<any> {
     // const params = new HttpParams().set('id', mrNo.toString()); concatenation & params do the

@@ -20,5 +20,10 @@ addDirectory()
 {
   this.router.navigate(['adddirectory']);
 }
+
+appoinmentList(){
+  this.router.navigate(['/appoinmentList']);
+}
+
   
 }
