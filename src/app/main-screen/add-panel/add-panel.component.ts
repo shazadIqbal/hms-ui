@@ -28,6 +28,8 @@ panelList(){
   
   this.router.navigate(['/panellist']);
 }
-
+appoinmentList(){
+  this.router.navigate(['/appoinmentList']);
+}
   
 }

@@ -5,7 +5,7 @@ import { Doctor } from './doctor';
 
 @Injectable()
 export class DoctorService {
-  private baseUrl = `http://192.168.0.135:8080/api/doctor/`;
+  private baseUrl = `http://192.168.0.111:8080/api/doctor/`;
 
  constructor(private http: HttpClient) {}
 

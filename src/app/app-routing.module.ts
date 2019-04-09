@@ -17,6 +17,8 @@ import { AddLabCatComponent } from './add-lab-test/add-lab-cat/add-lab-cat.compo
 
 import { PanelListComponent } from './panel-list/panel-list.component';
 import { AddpanellistComponent } from './addpanellist/addpanellist.component';
+import { AddAppoinmentListComponent } from './add-appoinment-list/add-appoinment-list.component';
+import { ExistingPatientComponent } from './existing-patient/existing-patient.component';
 
 
 const routes: Routes = [
@@ -34,7 +36,9 @@ const routes: Routes = [
 { path: 'addlab', component: AddTestComponent },
 { path: 'addlabcat', component: AddLabCatComponent },
 {path: 'patient', component: PatientComponent},
-{path: 'patientform', component: PatientformComponent}
+{path: 'patientform', component: PatientformComponent},
+{path: 'appoinmentList', component:AddAppoinmentListComponent},
+{path: 'existingPatient',component:ExistingPatientComponent}
 
 
 

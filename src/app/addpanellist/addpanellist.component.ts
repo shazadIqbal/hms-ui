@@ -59,7 +59,7 @@ export class AddpanellistComponent implements OnInit {
            "label": e.facilityName,
            "value":e.facilityName
          })
-       });
+       }); 
       
     })
     
