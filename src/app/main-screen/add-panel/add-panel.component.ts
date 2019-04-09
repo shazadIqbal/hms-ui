@@ -16,5 +16,9 @@ export class AddPanelComponent implements OnInit {
 
 
 
+addDirectory()
+{
+  this.router.navigate(['adddirectory']);
+}
   
 }
