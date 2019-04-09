@@ -1,15 +1,16 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 @Injectable({
   providedIn: 'root'
 })
 export class AppointmentServiceService {
 
-  private url="http://192.168.0.111:8080/api/appoinment/";
-  private urlDone="http://192.168.0.111:8080/api/appoinment/complete/";
-  private statusUrl = "http://192.168.0.111:8080/api/appoinment/filterbystatus/"
-  private dateUrl = "http://192.168.0.111:8080/api/appoinment/filter/"
+  private url= environment.baseUrl+"/api/appoinment/";
+  private urlDone= environment.baseUrl+"/api/appoinment/complete/";
+  private statusUrl = environment.baseUrl+"/api/appoinment/filterbystatus/"
+  private dateUrl = environment.baseUrl+"/api/appoinment/filter/"
   constructor(private http: HttpClient) { }
 
   public saveAppointment(appointment: Object): Observable<Object>{
