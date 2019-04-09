@@ -14,7 +14,7 @@ import { LoginFormComponent } from './login-form/login-form.component';
 import { FooterComponent } from './footer/footer.component';
 import { HeaderComponent } from './header/header.component';
 import { MainScreenComponent } from './main-screen/main-screen.component';
-import { MrComponentComponent } from './main-screen/mr-component/mr-component.component';
+// import { MrComponentComponent } from './main-screen/mr-component/mr-component.component';
 import { AddPanelComponent } from './main-screen/add-panel/add-panel.component';
 import { SearchbarComponent } from './searchbar/searchbar.component';
 import { ModalComponent } from './modal/modal.component';
@@ -78,7 +78,7 @@ import {ProgressSpinnerModule} from 'primeng/progressspinner';
     FooterComponent,
     HeaderComponent,
     MainScreenComponent,
-    MrComponentComponent,
+    // MrComponentComponent,
     AddPanelComponent,
     SearchbarComponent,
 

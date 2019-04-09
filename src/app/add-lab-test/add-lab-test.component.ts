@@ -27,11 +27,11 @@ export class AddLabTestComponent implements OnInit {
     this.labServ.getlabtest().subscribe((data) => {
       this.loader = false;
       this.tests = [];
-      
+
 
       !data.length?this.empty=true:"";
       data.map((value) => {
-       
+
         this.tests.push({
           'id': value.id,
           'category': value.category,
@@ -67,7 +67,7 @@ export class AddLabTestComponent implements OnInit {
       !response.length?this.empty=true:"";
       this.delete = false;
       response.map((value) => {
-        
+
         this.tests.push({
           'id': value.id,
           'category': value.category,
@@ -75,12 +75,12 @@ export class AddLabTestComponent implements OnInit {
           'testprice': value.price,
           'testdetails': value.details
         })
-        
+
       })
 
-      
+
       this.messageService.add({severity:'success', summary:'Service Message', detail:name+' successfully deleted!'});
-    },error=>{console.log(error) 
+    },error=>{console.log(error)
       this.delete=false;
       this.messageService.add({severity:'error', summary:'Service Message', detail:'Error deleting Lab Test!'});
     })
@@ -90,6 +90,10 @@ export class AddLabTestComponent implements OnInit {
   }
   addlabcat() {
     this.route.navigate(['/addlabcat']);
+  }
+
+  backtomain(){
+    this.route.navigate(['mainscreen']);
   }
 
 }

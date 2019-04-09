@@ -19,8 +19,8 @@
         <div class="ui-g ui-fluid">
           <div class="ui-g-12 ui-md-6">
             <div class="ui-inputgroup">
-              <span class="ui-inputgroup-addon"
-                ><i class="fa fa-user"></i
+              <span style="width:30%;" class="ui-inputgroup-addon"
+                ><b>Full Name&ensp;</b><i></i
               ></span>
               <!-- Full name -->
               <input
@@ -30,7 +30,7 @@
                 required
                 pInputText
                 placeholder="&ensp;Full Name"
-                style="width:100%"
+                style="width:100%;"
                 name="fullName"
               />
               <span class="ui-inputgroup-addon"></span>
@@ -48,15 +48,13 @@
           <!-- cnic_n0 -->
           <div class="ui-g-12 ui-md-5">
             <div class="ui-inputgroup">
-              <span class="ui-inputgroup-addon"
-                ><i class="fa fa-user"></i
-              ></span>
+              <span style="width:30%;" class="ui-inputgroup-addon"><b>CNIC&ensp;</b><i></i></span>
               <input
                 type="text"
+                (keypress)="numberOnly($event)"
                 #position="ngModel"
                 pInputText
                 placeholder="&ensp;Cnic (Optional)"
-                style="width:100%"
                 name="position"
                 [(ngModel)]="patient.cnic"
                 ngModel
@@ -79,9 +77,7 @@
           <!-- Age No -->
           <div class="ui-g-12 ui-md-6">
             <div class="ui-inputgroup">
-              <span class="ui-inputgroup-addon"
-                ><i class="pi pi-mobile"></i
-              ></span>
+              <span style="width:30%" class="ui-inputgroup-addon"><b>Age&ensp;</b><i></i></span>
               <input
                 type="text"
                 (keypress)="numberOnly($event)"
@@ -89,7 +85,6 @@
                 pInputText
                 required
                 placeholder="&ensp;Age"
-                style="width:100%"
                 name="age"
                 ngModel
                 [(ngModel)]="patient.age"
@@ -109,7 +104,7 @@
           <!-- Gender Dropdown -->
           <div class="ui-g-12 ui-md-5">
             <div class="ui-inputgroup">
-              <span class="ui-inputgroup-addon"><b>GEN</b><i></i></span>
+              <span style="width: 30%" class="ui-inputgroup-addon"><b>GENDER&ensp;</b><i></i></span>
               <p-dropdown
                 [options]="gender"
                 name="gender"
@@ -118,8 +113,7 @@
                 required
                 #genderRef="ngModel"
                 [autoWidth]="false"
-                [style]="{'width':'100%'}"
-                [ngStyle]="{'width':'100%'}"
+                [ngStyle]="{ width: '100%' }"
               >
               </p-dropdown>
 
@@ -140,16 +134,16 @@
           <!-- Mobile No -->
           <div class="ui-g-12 ui-md-6">
             <div class="ui-inputgroup">
-              <span class="ui-inputgroup-addon"
-                ><i class="pi pi-mobile"></i
+              <span style="width:30%" class="ui-inputgroup-addon"
+                ><b>Phone No&ensp;</b><i></i
               ></span>
               <input
                 type="text"
+                (keypress)="numberOnly($event)"
                 #TelRef="ngModel"
                 pInputText
                 required
                 placeholder="&ensp;PhoneNo"
-                style="width:100%"
                 name="MobileNo"
                 ngModel
                 [(ngModel)]="patient.phoneNo"
@@ -169,13 +163,12 @@
           <!-- adionality -->
           <div class="ui-g-12 ui-md-5">
             <div class="ui-inputgroup">
-              <span class="ui-inputgroup-addon"><b>AD</b><i></i></span>
+              <span style="width:30%" class="ui-inputgroup-addon"><b>ADDRESS&ensp;</b><i></i></span>
               <input
                 type="text"
                 #adRef="ngModel"
                 pInputText
                 placeholder="&ensp;Address (Optional)"
-                style="width:100%"
                 name="Address"
                 ngModel
                 [(ngModel)]="patient.address"
@@ -195,15 +188,10 @@
         <div class="ui-g ui-fluid">
           <!-- Submit button -->
           <div class="ui-g-12 ui-md-12">
-            <button
-              type="submit"
-              [disabled]="userForm.invalid"
-              class="btn btn-success btn-block"
-            >
+            <button type="submit" [disabled]="userForm.invalid" class="btn btn-success btn-block">
               Submit
             </button>
-            <p-toast [style]="{ marginTop: '40px' }" position="top-right">
-            </p-toast>
+            <p-toast [style]="{ marginTop: '40px' }" position="top-right"> </p-toast>
           </div>
         </div>
       </form>

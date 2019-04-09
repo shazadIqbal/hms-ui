@@ -3,6 +3,7 @@ import { LabtestServiceService } from '../labtest-service.service';
 import { MessageService } from 'primeng/api';
 import { Router } from '@angular/router';
 
+
 @Component({
   selector: 'app-add-lab-cat',
   templateUrl: './add-lab-cat.component.html',

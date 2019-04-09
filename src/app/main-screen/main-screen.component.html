@@ -1,5 +1,125 @@
+<div class="container">
+  <div class="ui-g ui-fluid">
+    <div class="ui-g-12">
+      <p-panel header="Patient Lookup" [style]="{ 'margin-bottom': '20px' }">
+        <div class="ui-lg-12 ui-md-12 ui-sm-12 ">
+          <input
+            style="display:inline"
+            (keypress)="numberOnly($event)"
+            id="input"
+            required
+            style="height:35px;margin-left:25%;width:50%; text-align: center;"
+            #mr="ngModel"
+            placeholder="Enter MR NO:"
+            type="text"
+            pInputText
+            size="35%"
+            ngModel
+          />
 
-<app-mr-component> </app-mr-component>
-<br>
- <app-add-panel> </app-add-panel> 
- 
+          <span style="margin-left: 1em;width:10px; margin-top: 0px !important;">
+            <app-searchbar></app-searchbar>
+          </span>
+        </div>
+
+        <div
+          style="padding:0px;margin-bottom:0px;width:50%;margin-left:25%; text-align:center;"
+          class="alert alert-danger"
+          [hidden]="mr.valid || mr.pristine"
+        >
+          Provide Mr no:
+        </div>
+
+        <div class="ui-md-12 ui-lg-12 ui-sm-12">
+          <button
+            pButton
+            type="button"
+            label="OK"
+            style="margin-left:40%;width:20%"
+            (click)="check(mr.value)"
+            class="ui-button-success"
+          ></button>
+          <p-toast [style]="{ marginTop: '40px' }" position="top-right" life="3000"> </p-toast>
+        </div>
+      </p-panel>
+    </div>
+
+    <div class="ui-g-12">
+      <p-panel header="Add Panel" [style]="{ 'margin-bottom': '20px' }">
+        <div class="ui-g">
+          <div class="ui-g-3 ui-sm-12">
+            <!-- <span class="icon1"> -->
+
+            <button
+              pButton
+              type="image"
+              label="Add Doctor"
+              class="ui-button-success"
+              (click)="doctorList()"
+            >
+              <img src="https://img.icons8.com/color/48/000000/medical-doctor.png" />
+            </button>
+            <!-- </span> -->
+          </div>
+          <div class="ui-g-3 ui-sm-12">
+            <button
+              pButton
+              type="button"
+              label="Add Panel"
+              (click)="panelList()"
+              class="ui-button-success"
+            >
+              <img src="https://img.icons8.com/color/48/000000/hospital.png" />
+            </button>
+          </div>
+          <div class="ui-g-3 ui-sm-12">
+            <button
+              pButton
+              type="button"
+              label="Add Lab Test"
+              (click)="addlabtest()"
+              class="ui-button-success"
+            >
+              <img src="https://img.icons8.com/color/48/000000/test-tube.png" />
+            </button>
+          </div>
+          <div class="ui-g-3 ui-sm-12">
+            <button pButton type="button" label="Package" class="ui-button-success">
+              <img src="https://img.icons8.com/color/48/000000/cash-in-hand.png" />
+            </button>
+          </div>
+        </div>
+        <div class="ui-g">
+          <div class="ui-g-3 ui-sm-12">
+            <button pButton type="button" label="Reports" class="ui-button-success">
+              <img src="https://img.icons8.com/color/48/000000/report-card.png" />
+            </button>
+          </div>
+          <div class="ui-g-3 ui-sm-12">
+            <button pButton type="button" label="Reports" class="ui-button-success">
+              <img src="https://img.icons8.com/color/48/000000/hospital-3.png " />
+            </button>
+          </div>
+          <div class="ui-g-3 ui-sm-12">
+            <button pButton type="button" label="Directory" class="ui-button-success">
+              <img src="https://img.icons8.com/color/48/000000/opened-folder.png" />
+            </button>
+          </div>
+          <div class="ui-g-3 ui-sm-12">
+            <button pButton type="button" label="CashFlow" class="ui-button-success">
+              <img src="https://img.icons8.com/color/48/000000/purchase-order.png" />
+            </button>
+          </div>
+        </div>
+        <div class="ui-g">
+          <div class="ui-lg-3 ui-sm-3 ui-md-3"></div>
+          <div class="ui-g-6 ui-sm-12">
+            <button pButton type="button" label="Appointment" class="ui-button-success">
+              <img src="https://img.icons8.com/color/48/000000/planner.png" />
+            </button>
+          </div>
+        </div>
+      </p-panel>
+    </div>
+  </div>
+</div>

@@ -4,6 +4,8 @@ import { DoctorService } from './doctor.service';
 
 import { error } from '@angular/compiler/src/util';
 import { SelectItem } from 'primeng/api';
+import { Router } from '@angular/router'
+import { from } from 'rxjs';
 
 @Component({
   selector: 'app-adddoctor',
@@ -12,7 +14,7 @@ import { SelectItem } from 'primeng/api';
 })
 export class AdddoctorComponent implements OnInit {
   doctor:Doctor=new Doctor();
-  
+
   date8:any;
   gender: SelectItem[];
   date1:any;
@@ -20,21 +22,21 @@ export class AdddoctorComponent implements OnInit {
   selectedcity1: any;
 
 
-  constructor(private drservice:DoctorService) { 
+  constructor(private drservice: DoctorService, private router: Router) {
     this.gender = [
-     
+
       {label:'male', value:"Male "},
       {label:'female', value:"Female"}
 
-     
+
   ];
 
   }
 
   ngOnInit() {
-   
 
-  
+
+
   }
 
   numberOnly(event): boolean {
@@ -49,14 +51,23 @@ export class AdddoctorComponent implements OnInit {
     console.log(this.doctor)
     this.drservice.savedoctor(this.doctor).subscribe(data=>
       console.log(data), error=>console.log(error)
-    
+
         );
   }
-  
+
   onclick(){
 this.save();
-    
+
       }
-    
+
+      routePage(){
+        this.router.navigate(['doctorlist']);
+
+
+      }
+
+
+
+
 
 }
