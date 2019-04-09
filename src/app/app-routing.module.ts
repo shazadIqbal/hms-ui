@@ -17,26 +17,28 @@ import { AddLabCatComponent } from './add-lab-test/add-lab-cat/add-lab-cat.compo
 
 import { PanelListComponent } from './panel-list/panel-list.component';
 import { AddpanellistComponent } from './addpanellist/addpanellist.component';
+import { AddDirectoryComponent } from './add-directory/add-directory.component';
+import {DirectoryFormComponent} from './directory-form/directory-form.component'
 
 
 const routes: Routes = [
 
 
 
-{path:'',component:MainScreenComponent},
-{path:'doctorlist',component:DoctorListComponent},
-{path:'contact',component:ContactPageComponent},
-{path:'adddoctor',component:AdddoctorComponent},
-{path: 'panellist',component:PanelListComponent},
-{path:'addpanellist',component:AddpanellistComponent},
-{path: 'mainscreen' ,component:MainScreenComponent},
-{ path: 'addlabtest', component: AddLabTestComponent },
-{ path: 'addlab', component: AddTestComponent },
-{ path: 'addlabcat', component: AddLabCatComponent },
-{path: 'patient', component: PatientComponent},
-{path: 'patientform', component: PatientformComponent}
-
-
+  { path: '', component: MainScreenComponent },
+  { path: 'doctorlist', component: DoctorListComponent },
+  { path: 'contact', component: ContactPageComponent },
+  { path: 'adddoctor', component: AdddoctorComponent },
+  { path: 'panellist', component: PanelListComponent },
+  { path: 'addpanellist', component: AddpanellistComponent },
+  { path: 'mainscreen', component: MainScreenComponent },
+  { path: 'addlabtest', component: AddLabTestComponent },
+  { path: 'addlab', component: AddTestComponent },
+  { path: 'addlabcat', component: AddLabCatComponent },
+  { path: 'patient', component: PatientComponent },
+  { path: 'patientform', component: PatientformComponent },
+  { path: 'adddirectory', component :AddDirectoryComponent},
+  {path:'directoryform',component:DirectoryFormComponent}
 
 
 ];

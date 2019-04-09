@@ -2,7 +2,7 @@ import {SelectItem} from 'primeng/api';
 
 export class Doctor{
     fullName:string;
-    mobile:Number;
+    mobile:string;
     emrNo:number;
     nationality:string;
     address:string;

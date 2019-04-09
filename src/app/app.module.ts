@@ -61,6 +61,8 @@ import { AddpanellistComponent } from './addpanellist/addpanellist.component';
 import {MultiSelectModule} from 'primeng/multiselect';
 import { AddpanellistseviceService } from './addpanellist/addpanellistsevice.service';
 import {ProgressSpinnerModule} from 'primeng/progressspinner';
+import { AddDirectoryComponent } from './add-directory/add-directory.component';
+import { DirectoryFormComponent } from './directory-form/directory-form.component';
 
 
 
@@ -85,7 +87,7 @@ import {ProgressSpinnerModule} from 'primeng/progressspinner';
 
   //  PatientSlipComponent, PatientInputComponent, PatientCardComponent, ButtonsComponent, MasterTableComponent, ChildTableComponent, PatientPaymentComponent, TableComponent, DoctorListComponent, AdddoctorComponent, AddLabTestComponent, AddTestComponent, AddLabCatComponent
 
-    ModalComponent, PatientSlipComponent, PatientInputComponent, PatientCardComponent, ButtonsComponent, MasterTableComponent, ChildTableComponent, PatientPaymentComponent, TableComponent, DoctorListComponent, AdddoctorComponent, PanelListComponent, AddpanellistComponent, AddLabTestComponent, AddTestComponent, AddLabCatComponent, PatientComponent, PatientformComponent
+    ModalComponent, PatientSlipComponent, PatientInputComponent, PatientCardComponent, ButtonsComponent, MasterTableComponent, ChildTableComponent, PatientPaymentComponent, TableComponent, DoctorListComponent, AdddoctorComponent, PanelListComponent, AddpanellistComponent, AddLabTestComponent, AddTestComponent, AddLabCatComponent, PatientComponent, PatientformComponent, AddDirectoryComponent, DirectoryFormComponent
 
   ],
   imports: [

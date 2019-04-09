@@ -29,5 +29,9 @@ panelList(){
   this.router.navigate(['/panellist']);
 }
 
+addDirectory()
+{
+  this.router.navigate(['/adddirectory']);
+}
   
 }
