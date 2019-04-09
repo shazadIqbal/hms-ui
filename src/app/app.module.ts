@@ -14,7 +14,7 @@ import { LoginFormComponent } from './login-form/login-form.component';
 import { FooterComponent } from './footer/footer.component';
 import { HeaderComponent } from './header/header.component';
 import { MainScreenComponent } from './main-screen/main-screen.component';
-import { MrComponentComponent } from './main-screen/mr-component/mr-component.component';
+// import { MrComponentComponent } from './main-screen/mr-component/mr-component.component';
 import { AddPanelComponent } from './main-screen/add-panel/add-panel.component';
 import { SearchbarComponent } from './searchbar/searchbar.component';
 import { ModalComponent } from './modal/modal.component';
@@ -61,8 +61,13 @@ import { AddpanellistComponent } from './addpanellist/addpanellist.component';
 import {MultiSelectModule} from 'primeng/multiselect';
 import { AddpanellistseviceService } from './addpanellist/addpanellistsevice.service';
 import {ProgressSpinnerModule} from 'primeng/progressspinner';
+
 import { AddAppoinmentListComponent } from './add-appoinment-list/add-appoinment-list.component';
 import { ExistingPatientComponent } from './existing-patient/existing-patient.component';
+
+import { AddDirectoryComponent } from './add-directory/add-directory.component';
+import { DirectoryFormComponent } from './directory-form/directory-form.component';
+
 
 
 
@@ -80,14 +85,16 @@ import { ExistingPatientComponent } from './existing-patient/existing-patient.co
     FooterComponent,
     HeaderComponent,
     MainScreenComponent,
-    MrComponentComponent,
+    // MrComponentComponent,
     AddPanelComponent,
     SearchbarComponent,
 
 
   //  PatientSlipComponent, PatientInputComponent, PatientCardComponent, ButtonsComponent, MasterTableComponent, ChildTableComponent, PatientPaymentComponent, TableComponent, DoctorListComponent, AdddoctorComponent, AddLabTestComponent, AddTestComponent, AddLabCatComponent
 
-    ModalComponent, PatientSlipComponent, PatientInputComponent, PatientCardComponent, ButtonsComponent, MasterTableComponent, ChildTableComponent, PatientPaymentComponent, TableComponent, DoctorListComponent, AdddoctorComponent, PanelListComponent, AddpanellistComponent, AddLabTestComponent, AddTestComponent, AddLabCatComponent, PatientComponent, PatientformComponent,  AddAppoinmentListComponent, ExistingPatientComponent
+
+    ModalComponent, PatientSlipComponent, PatientInputComponent, PatientCardComponent, ButtonsComponent, MasterTableComponent, ChildTableComponent, PatientPaymentComponent, TableComponent, DoctorListComponent, AdddoctorComponent, PanelListComponent, AddpanellistComponent, AddLabTestComponent, AddTestComponent, AddLabCatComponent, PatientComponent, PatientformComponent, AddDirectoryComponent, DirectoryFormComponent,ExistingPatientComponent,AddAppoinmentListComponent
+
 
   ],
   imports: [

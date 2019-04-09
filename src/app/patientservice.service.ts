@@ -2,13 +2,16 @@ import { Patient } from './patientform/patient';
 import { Injectable, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PatientserviceService {
   constructor(private http: HttpClient) {}
-  private baseUrl = `http://192.168.0.111:8080/api/patient/`;
+
+  private baseUrl = environment.baseUrl+ "api/patient/";
+
 
   getPatientsByMRNO(mrNo: number): Observable<any> {
     // const params = new HttpParams().set('id', mrNo.toString()); concatenation & params do the
