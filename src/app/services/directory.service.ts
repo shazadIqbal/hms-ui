@@ -17,16 +17,16 @@ export class DirectoryService {
   getDirectory(): Observable<any> {
 
 
-   return this.http.get(environment.directory);
+   return this.http.get(environment.baseUrl+"/api/directory/");
 
   }
   postDirectory(obj):Observable<any>
   {
-    return this.http.post(environment.directory,obj);
+    return this.http.post(environment.baseUrl+"/api/directory/",obj);
   }
 
   deleteDirectory(id):Observable<any>
   {
-    return this.http.delete(environment.directory+id);
+    return this.http.delete(environment.baseUrl+"/api/directory/"+id);
   }
 }

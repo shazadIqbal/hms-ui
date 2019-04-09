@@ -4,7 +4,10 @@
 
 export const environment = {
   production: false,
-  directory:"http://localhost:8080/api/directory/"
+
+  baseUrl: 'http://localhost:8080/'
+
+
 };
 
 /*
