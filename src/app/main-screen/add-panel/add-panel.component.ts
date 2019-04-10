@@ -14,15 +14,14 @@ export class AddPanelComponent implements OnInit {
   ngOnInit() {
   }
 
+
   doctorList(){
 
     this.router.navigate(['/doctorlist']);
   }
 
-  addlabtest()
-  {
-    this.router.navigate(['/addlabtest']);
-  }
+
+
 
 panelList(){
 
@@ -33,4 +32,12 @@ erList(){
 }
 
 
+
+addDirectory()
+{
+  this.router.navigate(['adddirectory']);
+}
+addlabtest(){
+  
+}
 }

@@ -3,6 +3,7 @@ import { analyzeAndValidateNgModules } from '@angular/compiler';
 import { Router } from '@angular/router';
 import { AdddoctorComponent } from '../adddoctor/adddoctor.component';
 import { DoctorService } from '../adddoctor/doctor.service';
+import {environment } from '../../environments/environment';
 
 @Component({
   selector: 'app-doctor-list',
@@ -34,5 +35,10 @@ export class DoctorListComponent implements OnInit {
 
   adddoctor() {
     this.router.navigate(['/adddoctor']);
+  }
+
+
+  backToMain() {
+    this.router.navigate(['mainscreen']);
   }
 }

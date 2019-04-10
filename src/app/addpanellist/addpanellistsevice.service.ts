@@ -1,15 +1,16 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, from } from 'rxjs';
+import{ environment } from '../../environments/environment'
 
 @Injectable({
   providedIn: 'root'
 })
 export class AddpanellistseviceService {
-  private url = "http://192.168.0.122:8080/api/panel/";
-  private facilityurl = "http://192.168.0.122:8080/api/panel/panelfacility/";
+  private url = environment.baseUrl+'/api/panel/';
+  private facilityurl =  environment.baseUrl+'/api/panel/panelfacility/';
   
-  constructor(private http:HttpClient) {}
+  constructor(private http: HttpClient) {}
   public savePanel(panel: Object): Observable<Object>{
     return this.http.post(`${this.url}`,panel);
       }

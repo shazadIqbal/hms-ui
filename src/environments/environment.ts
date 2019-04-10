@@ -4,10 +4,9 @@
 
 export const environment = {
   production: false,
-  baseUrl: "http://192.168.0.106:8080/api/patient/",
-  Erurl : "http://192.168.0.106:8080/api/er/",
-  Erfacilityurl : "http://192.168.0.106:8080/api/facility/",
-  ErfacilityPriceurl : "http://192.168.0.106:8080/api/facility/price"
+
+
+  baseUrl: 'http://localhost:8080/'
 
 };
 

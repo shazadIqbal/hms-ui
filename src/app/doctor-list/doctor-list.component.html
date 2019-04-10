@@ -1,11 +1,13 @@
+<button pButton type="button" class="ui-button-success" style="margin-left:1%; margin-bottom: 1%; height:30px; width: 70px" (click)="backToMain()"><p><img src="https://img.icons8.com/material-sharp/24/000000/back.png">Back</p></button>
+
 <p-card header="DOCTOR LIST" [style]="{'width': '100%','color':'#3EB650'}">
     <hr>
         <button pButton type="button"label="Add Doctor" class=" ui-button-success" (click)="adddoctor()"  ></button>
         <hr>
     <p-table #dt [columns]="cols" [value]="doctors" [paginator]="true" [rows]="10">
-    
+
     <ng-template pTemplate="caption">
-        <div style="text-align: right">        
+        <div style="text-align: right">
             <i class="fa fa-search" style="margin:4px 4px 0 0"></i>
             <input type="text" pInputText size="50" placeholder="Global Filter" (input)="dt.filterGlobal($event.target.value, 'contains')" style="width:auto">
         </div>
@@ -16,7 +18,7 @@
                 {{col.header}}
             </th>
         </tr>
-       
+
     </ng-template>
     <ng-template pTemplate="body" let-rowData let-columns="columns">
         <tr [pSelectableRow]="rowData">

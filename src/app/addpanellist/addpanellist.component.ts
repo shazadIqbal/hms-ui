@@ -24,8 +24,8 @@ export class AddpanellistComponent implements OnInit {
   constructor(private panelService: AddpanellistseviceService, private messageService: MessageService, private router : Router) {
     this.paneldrop = [
 
-      { label: 'free', value: "free" },
-      { label: '50% Off', value: "50% Off" }
+      { label: 'free', value: 'free' },
+      { label: '50% Off', value: '50% Off' }
 
 
     ];
@@ -52,7 +52,7 @@ export class AddpanellistComponent implements OnInit {
   getFcilityInIt(){
     this.multidropdown = [];
     this.panelService.getFacility().subscribe((response) => {
-      console.log("response is here", response);
+      console.log('response is here', response);
 
        response.forEach(e => {
          this.multidropdown.push({
@@ -92,7 +92,7 @@ export class AddpanellistComponent implements OnInit {
 }
 
 onTest(value){
-  console.log("test value ", value)
+  console.log('test value ', value)
 }
 OnFacilitysubmit(value){
   console.log('in facility')
@@ -102,7 +102,7 @@ OnFacilitysubmit(value){
   this.panelService.saveFacility(this.facilityObj).subscribe((data) => {
     console.log(data);
     let stat = Object.keys(data);
-    if (stat[0] != "Already Exsist"){
+    if (stat[0] != 'Already Exsist'){
       this.messageService.add({severity: 'success', summary: 'Status', detail: 'Successfull'});
     }else{
       this.messageService.add({severity: 'error', summary: 'Status', detail: 'Already Exsist'});
@@ -122,7 +122,7 @@ OnClickInMulti(){
   this.getFcilityInIt();
 }
 addpanel() {
-console.log("jj")
+console.log('jj')
   this.router.navigate(['panellist']);
 }
 

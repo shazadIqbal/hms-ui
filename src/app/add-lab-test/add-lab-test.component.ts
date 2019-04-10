@@ -73,7 +73,8 @@ export class AddLabTestComponent implements OnInit {
 
       this.messageService.add({severity:'success', summary:'Service Message', detail:name+' successfully deleted!'});
     },error=>{console.log(error)
-      // this.delete=false;
+
+      this.delete=false;
       this.messageService.add({severity:'error', summary:'Service Message', detail:'Error deleting Lab Test!'});
     })
   }
@@ -82,6 +83,10 @@ export class AddLabTestComponent implements OnInit {
   }
   addlabcat() {
     this.route.navigate(['/addlabcat']);
+  }
+
+  backtomain(){
+    this.route.navigate(['mainscreen']);
   }
 
 }
