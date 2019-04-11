@@ -10,7 +10,9 @@ import { environment } from 'src/environments/environment';
 export class PatientserviceService {
   constructor(private http: HttpClient) {}
 
+
   private baseUrl = environment.baseUrl+ "api/patient/";
+
 
 
   getPatientsByMRNO(mrNo: number): Observable<any> {

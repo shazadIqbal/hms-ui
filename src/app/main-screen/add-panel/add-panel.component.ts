@@ -15,15 +15,36 @@ export class AddPanelComponent implements OnInit {
   }
 
 
+  doctorList(){
+
+    this.router.navigate(['/doctorlist']);
+  }
+
+
+
+
+panelList(){
+
+  this.router.navigate(['/panellist']);
+}
+erList(){
+  this.router.navigate(['/er']);
+}
+
+
 
 addDirectory()
 {
   this.router.navigate(['adddirectory']);
 }
 
-appoinmentList(){
-  this.router.navigate(['/appoinmentList']);
+addlabtest(){
+
 }
 
-  
+appoinmentList(){
+  this.router.navigate(['/appoinmentList']);
+
+
+}
 }

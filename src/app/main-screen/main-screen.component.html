@@ -2,6 +2,7 @@
   <div class="ui-g ui-fluid">
     <div class="ui-g-12">
       <p-panel header="Patient Lookup" [style]="{ 'margin-bottom': '20px' }">
+
         <div class="ui-lg-12 ui-md-12 ui-sm-12 ">
           <input
             style="display:inline"
@@ -112,10 +113,17 @@
           </div>
         </div>
         <div class="ui-g">
+
           <div class="ui-lg-3 ui-sm-3 ui-md-3"></div>
           <div class="ui-g-6 ui-sm-12">
             <button pButton type="button" label="Appointment" class="ui-button-success" (click)="addAppointment()" >
+
               <img src="https://img.icons8.com/color/48/000000/planner.png" />
+            </button>
+          </div>
+          <div class="ui-g-3 ui-sm-12">
+            <button pButton type="button" label="Emergency Service" (click)="gotoErService()" class="ui-button-success">
+              <img src="https://img.icons8.com/color/48/000000/ambulance.png">
             </button>
           </div>
         </div>
