@@ -62,12 +62,17 @@ import {MultiSelectModule} from 'primeng/multiselect';
 import { AddpanellistseviceService } from './addpanellist/addpanellistsevice.service';
 import {ProgressSpinnerModule} from 'primeng/progressspinner';
 
+
+
+
 import { ErComponent } from './er/er.component';
 import { AddErComponent } from './add-er/add-er.component';
-
 import { AddDirectoryComponent } from './add-directory/add-directory.component';
 import { DirectoryFormComponent } from './directory-form/directory-form.component';
 import { MrComponentComponent } from './main-screen/mr-component/mr-component.component';
+import { AddAppoinmentListComponent } from './add-appoinment-list/add-appoinment-list.component';
+import { ExistingPatientComponent } from './existing-patient/existing-patient.component';
+
 
 
 
@@ -94,7 +99,11 @@ import { MrComponentComponent } from './main-screen/mr-component/mr-component.co
   //  PatientSlipComponent, PatientInputComponent, PatientCardComponent, ButtonsComponent, MasterTableComponent, ChildTableComponent, PatientPaymentComponent, TableComponent, DoctorListComponent, AdddoctorComponent, AddLabTestComponent, AddTestComponent, AddLabCatComponent
 
 
-    ModalComponent, PatientSlipComponent, PatientInputComponent, PatientCardComponent, ButtonsComponent, MasterTableComponent, ChildTableComponent, PatientPaymentComponent, TableComponent, DoctorListComponent, AdddoctorComponent, PanelListComponent, AddpanellistComponent, AddLabTestComponent, AddTestComponent, AddLabCatComponent, PatientComponent, PatientformComponent, AddDirectoryComponent, DirectoryFormComponent, ErComponent, AddErComponent
+
+
+    ModalComponent, PatientSlipComponent, PatientInputComponent, PatientCardComponent, ButtonsComponent, MasterTableComponent, ChildTableComponent, PatientPaymentComponent, TableComponent, DoctorListComponent, AdddoctorComponent, PanelListComponent, AddpanellistComponent, AddLabTestComponent, AddTestComponent, AddLabCatComponent, PatientComponent, PatientformComponent, AddDirectoryComponent, DirectoryFormComponent,ExistingPatientComponent,AddAppoinmentListComponent,ErComponent, AddErComponent
+
+
 
   ],
   imports: [

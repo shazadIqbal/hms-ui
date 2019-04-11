@@ -74,5 +74,5 @@ export class PanelListComponent implements OnInit {
   backToMain(){
     this.router.navigate(['mainscreen']);
   }
-
+ 
 }

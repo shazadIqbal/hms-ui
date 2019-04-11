@@ -58,8 +58,10 @@ export class AddpanellistComponent implements OnInit {
          this.multidropdown.push({
            label: e.facilityName,
            value: e.facilityName
-         })
+         });
        });
+
+
 
     })
 

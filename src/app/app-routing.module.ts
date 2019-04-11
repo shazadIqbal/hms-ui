@@ -19,8 +19,12 @@ import { AddLabCatComponent } from './add-lab-test/add-lab-cat/add-lab-cat.compo
 
 import { PanelListComponent } from './panel-list/panel-list.component';
 import { AddpanellistComponent } from './addpanellist/addpanellist.component';
+
+import { AddAppoinmentListComponent } from './add-appoinment-list/add-appoinment-list.component';
+import { ExistingPatientComponent } from './existing-patient/existing-patient.component';
 import { AddDirectoryComponent } from './add-directory/add-directory.component';
 import {DirectoryFormComponent} from './directory-form/directory-form.component'
+
 
 
 const routes: Routes = [
@@ -40,10 +44,14 @@ const routes: Routes = [
   { path: 'addlabcat', component: AddLabCatComponent },
   { path: 'patient', component: PatientComponent },
   { path: 'patientform', component: PatientformComponent },
-  { path: 'adddirectory', component : AddDirectoryComponent},
+
+  { path: 'adddirectory', component :AddDirectoryComponent},
+  {path:'directoryform',component:DirectoryFormComponent},
   {path: 'er', component: ErComponent},
-{path: 'adder', component: AddErComponent},
-  {path: 'directoryform', component: DirectoryFormComponent}
+  {path: 'adder', component: AddErComponent},
+  {path: 'appoinmentList', component:AddAppoinmentListComponent},
+ {path: 'existingPatient',component:ExistingPatientComponent}
+
 
 
 ];

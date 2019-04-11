@@ -37,7 +37,14 @@ addDirectory()
 {
   this.router.navigate(['adddirectory']);
 }
+
 addlabtest(){
-  
+
+}
+
+appoinmentList(){
+  this.router.navigate(['/appoinmentList']);
+
+
 }
 }
