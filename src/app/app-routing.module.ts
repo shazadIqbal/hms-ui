@@ -1,4 +1,4 @@
-import { AddErComponent } from "./add-er/add-er.component";
+import { AddErComponent } from './add-er/add-er.component';
 import { ErComponent } from "./er/er.component";
 import { PatientformComponent } from './patientform/patientform.component';
 import { PatientComponent } from './patient/patient.component';
@@ -23,7 +23,7 @@ import { AddpanellistComponent } from './addpanellist/addpanellist.component';
 import { AddAppoinmentListComponent } from './add-appoinment-list/add-appoinment-list.component';
 import { ExistingPatientComponent } from './existing-patient/existing-patient.component';
 import { AddDirectoryComponent } from './add-directory/add-directory.component';
-import {DirectoryFormComponent} from './directory-form/directory-form.component'
+import {DirectoryFormComponent} from './directory-form/directory-form.component';
 
 
 
@@ -45,12 +45,12 @@ const routes: Routes = [
   { path: 'patient', component: PatientComponent },
   { path: 'patientform', component: PatientformComponent },
 
-  { path: 'adddirectory', component :AddDirectoryComponent},
-  {path:'directoryform',component:DirectoryFormComponent},
+  { path: 'adddirectory', component : AddDirectoryComponent},
+  {path: 'directoryform', component: DirectoryFormComponent},
   {path: 'er', component: ErComponent},
   {path: 'adder', component: AddErComponent},
-  {path: 'appoinmentList', component:AddAppoinmentListComponent},
- {path: 'existingPatient',component:ExistingPatientComponent}
+  {path: 'appoinmentList', component: AddAppoinmentListComponent},
+ {path: 'existingPatient', component: ExistingPatientComponent}
 
 
 

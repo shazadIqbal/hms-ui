@@ -19,9 +19,9 @@ export class AddpanellistComponent implements OnInit {
   selectedCars1: any;
   panels: Panel = new Panel();
   multidropdown = [];
-  display: boolean = false;
-  facilityObj: Facility = new Facility;
-  constructor(private panelService: AddpanellistseviceService, private messageService: MessageService, private router : Router) {
+  display = false;
+  facilityObj: Facility = new Facility();
+  constructor(private panelService: AddpanellistseviceService, private messageService: MessageService, private router: Router) {
     this.paneldrop = [
 
       { label: 'free', value: 'free' },
@@ -49,12 +49,12 @@ export class AddpanellistComponent implements OnInit {
     this.getFcilityInIt();
   }
 
-  getFcilityInIt(){
+  getFcilityInIt() {
     this.multidropdown = [];
     this.panelService.getFacility().subscribe((response) => {
       console.log('response is here', response);
 
-       response.forEach(e => {
+      response.forEach(e => {
          this.multidropdown.push({
            label: e.facilityName,
            value: e.facilityName
@@ -63,7 +63,7 @@ export class AddpanellistComponent implements OnInit {
 
 
 
-    })
+    });
 
   }
 
@@ -75,10 +75,10 @@ export class AddpanellistComponent implements OnInit {
     }, error => {
       console.log(error);
       this.messageService.add({severity: 'success', summary: 'Status', detail: 'Successfull'});
-    })
+    });
 
   }
-  Onsubmit(){
+  Onsubmit() {
     this.save();
   }
   numberOnly(event): boolean {
@@ -93,20 +93,21 @@ export class AddpanellistComponent implements OnInit {
     this.display = true;
 }
 
-onTest(value){
-  console.log('test value ', value)
+onTest(value) {
+  console.log('test value ', value);
 }
-OnFacilitysubmit(value){
-  console.log('in facility')
+OnFacilitysubmit(value) {
+  console.log('in facility');
   this.multidropdown = [];
   this.panels.panelFacility = [];
   this.facilityObj.facilityName = this.facilityObj.facilityName.toUpperCase();
   this.panelService.saveFacility(this.facilityObj).subscribe((data) => {
     console.log(data);
-    let stat = Object.keys(data);
-    if (stat[0] != 'Already Exsist'){
+    const stat = Object.keys(data);
+// tslint:disable-next-line: triple-equals
+    if (stat[0] != 'Already Exsist') {
       this.messageService.add({severity: 'success', summary: 'Status', detail: 'Successfull'});
-    }else{
+    } else {
       this.messageService.add({severity: 'error', summary: 'Status', detail: 'Already Exsist'});
     }
 
@@ -114,18 +115,18 @@ OnFacilitysubmit(value){
   }, error => {
     console.log(error);
     this.messageService.add({severity: 'success', summary: 'Status', detail: 'Successfull'});
-  })
+  });
   this.getFcilityInIt();
 }
 // saveFacility(val:any){
 //     this.facilityObj.facilityName=val;
-OnClickInMulti(){
+OnClickInMulti() {
 
   this.getFcilityInIt();
 }
 addpanel() {
-console.log('jj')
-  this.router.navigate(['panellist']);
+console.log('jj');
+this.router.navigate(['panellist']);
 }
 
 // //this.display="false";

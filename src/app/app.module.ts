@@ -96,12 +96,14 @@ import { ExistingPatientComponent } from './existing-patient/existing-patient.co
     SearchbarComponent,
 
 
+// tslint:disable-next-line: max-line-length
   //  PatientSlipComponent, PatientInputComponent, PatientCardComponent, ButtonsComponent, MasterTableComponent, ChildTableComponent, PatientPaymentComponent, TableComponent, DoctorListComponent, AdddoctorComponent, AddLabTestComponent, AddTestComponent, AddLabCatComponent
 
 
 
 
-    ModalComponent, PatientSlipComponent, PatientInputComponent, PatientCardComponent, ButtonsComponent, MasterTableComponent, ChildTableComponent, PatientPaymentComponent, TableComponent, DoctorListComponent, AdddoctorComponent, PanelListComponent, AddpanellistComponent, AddLabTestComponent, AddTestComponent, AddLabCatComponent, PatientComponent, PatientformComponent, AddDirectoryComponent, DirectoryFormComponent,ExistingPatientComponent,AddAppoinmentListComponent,ErComponent, AddErComponent
+// tslint:disable-next-line: max-line-length
+    ModalComponent, PatientSlipComponent, PatientInputComponent, PatientCardComponent, ButtonsComponent, MasterTableComponent, ChildTableComponent, PatientPaymentComponent, TableComponent, DoctorListComponent, AdddoctorComponent, PanelListComponent, AddpanellistComponent, AddLabTestComponent, AddTestComponent, AddLabCatComponent, PatientComponent, PatientformComponent, AddDirectoryComponent, DirectoryFormComponent, ExistingPatientComponent, AddAppoinmentListComponent, ErComponent, AddErComponent
 
 
 
