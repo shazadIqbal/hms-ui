@@ -25,6 +25,8 @@ import { ExistingPatientComponent } from './existing-patient/existing-patient.co
 import { AddDirectoryComponent } from './add-directory/add-directory.component';
 import {DirectoryFormComponent} from './directory-form/directory-form.component';
 
+import {MonitorScreenComponent} from './monitor-screen/monitor-screen.component';
+
 
 
 const routes: Routes = [
@@ -44,13 +46,14 @@ const routes: Routes = [
   { path: 'addlabcat', component: AddLabCatComponent },
   { path: 'patient', component: PatientComponent },
   { path: 'patientform', component: PatientformComponent },
-
+  {path:'monitor',component:MonitorScreenComponent},
   { path: 'adddirectory', component : AddDirectoryComponent},
   {path: 'directoryform', component: DirectoryFormComponent},
   {path: 'er', component: ErComponent},
   {path: 'adder', component: AddErComponent},
   {path: 'appoinmentList', component: AddAppoinmentListComponent},
  {path: 'existingPatient', component: ExistingPatientComponent}
+
 
 
 
