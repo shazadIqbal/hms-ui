@@ -4,6 +4,5 @@ export class Panel{
      panelType: SelectItem[];
      panelStartDate: string;
      panelEndDate: string;
-     panelFacility: string[];   
-    
+     panelFacility: string[];
 }

@@ -87,6 +87,7 @@ export class SearchbarComponent implements OnInit {
             summary: 'Can\'t delete',
             detail: 'You are not authorized for this action'
           });
+// tslint:disable-next-line: triple-equals
           if (this.loading == true) {
             this.loading = false;
           }

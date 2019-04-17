@@ -1,21 +1,19 @@
-
-<button pButton type="button" class="ui-button-success" style="margin-left:1%; margin-bottom: 1%; height:30px; width: 70px" (click)='backtomain()'><p><img src="https://img.icons8.com/material-sharp/24/000000/back.png">Back</p></button>
-
-<div style="z-index:3; position: absolute;top:70%;" class="ui-g-12" *ngIf="delete">
-
-
-    <p-progressSpinner [style]="{'margin-left':'45%'}"></p-progressSpinner>
-
-</div>
+<!-- <div
+  style="z-index:3; position: absolute;top:70%;"
+  class="ui-g-12"
+  *ngIf="delete"
+>
+  <p-progressSpinner [style]="{ 'margin-left': '45%' }"></p-progressSpinner> -->
+<!-- </div> -->
 <div class="ui-g">
   <p-toast></p-toast>
   <div class="ui-g-6 ui-lg-6 ui-sm-12">
     <button
       pButton
       type="button"
-      (click)="addlabtest()"
+      (click)="back()"
       style="width:80%;margin-left:10%;  height:40px;"
-      label="Add Lab Test"
+      label="BACK"
       class=" ui-button-success"
     ></button>
   </div>
@@ -23,9 +21,9 @@
     <button
       pButton
       type="button"
-      (click)="addlabcat()"
+      (click)="gotoErService()"
       style="width:80%;margin-left:10%; height: 40px;"
-      label="Add Lab Test Category"
+      label="ADD EMERGENCY SERVICE"
       class=" ui-button-success"
     ></button>
   </div>
@@ -33,15 +31,17 @@
   <p-table
     style="word-wrap:break-word;"
     #dt
+    [columns]="cols"
     [paginator]="true"
-    [value]="tests"
     [rows]="10"
     [style]="{ 'margin-top': '50px', width: '80%', 'margin-left': '10%' }"
-    [columns]="cols"
+    [totalRecords]="totalRecords"
+    [value]="erArray"
+
   >
     <ng-template pTemplate="caption">
       <div class="ui-g-12">
-        <h1 style="font-weight:bold;">LAB TESTS</h1>
+        <h1 style="font-weight:bold;">EMERGENCY LIST</h1>
         <hr style="background-color:rgb(17, 17, 17);height:3px;" />
       </div>
       <div style="text-align: right">
@@ -49,10 +49,10 @@
         <input
           type="text"
           pInputText
-          size="50"
+          size="35"
           placeholder="Global Filter"
           (input)="dt.filterGlobal($event.target.value, 'contains')"
-          style="width:auto"
+          style="width:auto;margin-right:14px"
         />
       </div>
     </ng-template>
@@ -63,6 +63,9 @@
         </th>
         <th style="text-align:center">Actions</th>
       </tr>
+      <div *ngIf="loading" style="margin-left: 325%;">
+        <p-progressSpinner></p-progressSpinner>
+      </div>
     </ng-template>
     <ng-template pTemplate="body" let-rowData let-columns="columns">
       <tr>
@@ -75,17 +78,11 @@
             style="width:60%;margin-left:20%;background-color: rgb(211, 56, 56);"
             type="button"
             label="Delete"
-            (click)="inactive(rowData['id'], rowData['testname'])"
+            (click)="deleteErByID(rowData['id'])"
           ></button>
         </td>
       </tr>
     </ng-template>
   </p-table>
-  <div class="ui-g-12" *ngIf="loader">
-    <p-progressSpinner [style]="{ 'margin-left': '45%' }"></p-progressSpinner>
-  </div>
-  <div class="ui-g-12" *ngIf="empty">
-    <p style="text-align:center;">No Lab test to show!</p>
-  </div>
 
 </div>

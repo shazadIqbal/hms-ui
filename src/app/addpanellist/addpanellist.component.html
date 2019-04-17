@@ -1,6 +1,8 @@
+
 <button
   pButton
   type="button"
+
   class="ui-button-success"
   style="margin-left:1.5%; height:30px; width: 70px "
   (click)="addpanel()"
@@ -26,7 +28,9 @@
           <div class="ui-g ui-fluid">
             <div class="ui-g-12 ui-md-5">
               <div class="ui-inputgroup">
+
                 <span class="ui-inputgroup-addon"><i class="fa fa-user"></i></span>
+
                 <input
                   type="text"
                   required
@@ -50,7 +54,9 @@
 
             <div class="ui-g-12 ui-md-5">
               <div class="ui-inputgroup">
+
                 <span class="ui-inputgroup-addon" style="width:50%;">PANEL TYPE</span>
+
                 <p-dropdown
                   [options]="paneldrop"
                   required
@@ -63,6 +69,7 @@
               </div>
             </div>
 
+
             <!-- <div class="ui-g-12 ui-md-3">
               <div class="ui-inputgroup">
                 <span class="ui-inputgroup-addon">DOB</span>
@@ -74,6 +81,7 @@
             <div class="ui-g-12 ui-md-5">
               <div class="ui-inputgroup">
                 <span class="ui-inputgroup-addon" style="width:50%">Panel Start Date</span>
+
                 <p-calendar
                   [style]="{ width: '300px' }"
                   [(ngModel)]="panels.panelStartDate"
@@ -86,8 +94,9 @@
             <div class="ui-md-2"></div>
             <div class="ui-g-12 ui-md-5">
               <div class="ui-inputgroup">
+
                 <span class="ui-inputgroup-addon" style="width:50%">Panel End Date</span>
-                <p-calendar
+  <p-calendar
                   [style]="{ width: '300px' }"
                   [(ngModel)]="panels.panelEndDate"
                   name="enddate"
@@ -98,6 +107,7 @@
             </div>
             <div class="ui-g-12 ui-md-5 ">
               <div class="ui-inputgroup">
+
                 <span class="ui-inputgroup-addon" style="height:80%; width: 50%;"
                   >Panel Facility</span
                 >
@@ -113,12 +123,15 @@
                 <!-- <p-multiSelect
                   [options]="multidropdown"
                   (click)="OnClickInMulti()"
+>>>>>>> master
                   [panelStyle]="{ minWidth: '12em' }"
                   [(ngModel)]="panels.panelFacility"
                   [style]="{ width: '300px' }"
                   name="pfacility"
                   required
+
                 ></p-multiSelect> -->
+
               </div>
             </div>
             <div class="ui-g-12 ui-md-5 ">
@@ -153,8 +166,9 @@
                         class="ui-button-success"
                         label="Save"
                         [disabled]="addFacility.invalid"
+
                         (click)="OnFacilitysubmit(addFacility.value.addFacility)"
-                        (click)="display = false"
+          (click)="display = false"
                       ></button>
                       <button
                         type="button"
@@ -196,3 +210,4 @@
     </div>
   </div>
 </div>
+

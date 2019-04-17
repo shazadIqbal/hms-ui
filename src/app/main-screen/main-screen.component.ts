@@ -11,6 +11,7 @@ import { DoctorListComponent } from '../doctor-list/doctor-list.component';
   styleUrls: ['./main-screen.component.css']
 })
 export class MainScreenComponent implements OnInit {
+  loading = false;
   constructor(
     private router: Router,
     private patientService: PatientserviceService,
@@ -34,7 +35,14 @@ export class MainScreenComponent implements OnInit {
     this.router.navigate(['adddirectory'])
   }
 
+  addAppointment()
+  {
+    this.router.navigate(['appoinmentList'])
+  }
+
+
   check(mrNo: any) {
+    this.loading = true;
     this.patientService.getPatientsByMRNO(mrNo).subscribe(data => {
       // tslint:disable-next-line: triple-equals
       if (data == null || mrNo == "") {
@@ -48,24 +56,25 @@ export class MainScreenComponent implements OnInit {
         });
 
         setTimeout(() => {
-          this.router.navigate(["/patientform"]);
+          this.router.navigate(['/patientform']);
         }, 3000);
       } else {
         //  console.log(mrNo+"hello");
         this.mesgService.add({
-          severity: "success",
-          summary: "SUCCESS",
+          severity: 'success',
+          summary: 'SUCCESS',
           detail: 'Patient Found'
         });
-        console.log("patientExists");
-        this.router.navigate(["/patient"]);
+        console.log('patientExists');
+        this.router.navigate(['/patient']);
       }
     }),
+// tslint:disable-next-line: no-unused-expression
       error => {
         this.mesgService.add({
-          severity: "error",
-          summary: "FAILED",
-          detail: "Please check your internet connection"
+          severity: 'error',
+          summary: 'FAILED',
+          detail: 'Please check your internet connection'
         });
       };
   }
@@ -89,4 +98,8 @@ export class MainScreenComponent implements OnInit {
   addlabtest(){
     this.router.navigate(["/addlabtest"]);
   }
+  gotoErService() {
+    this.router.navigate(["/er"]);
+  }
+
 }

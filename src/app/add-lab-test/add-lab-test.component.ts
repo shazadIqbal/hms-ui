@@ -17,7 +17,6 @@ export class AddLabTestComponent implements OnInit {
 
   cols: any = [];
   tests: any;
-
   loader: any = true;
   empty:any=false;
   delete:any=false;
@@ -49,13 +48,6 @@ export class AddLabTestComponent implements OnInit {
       { field: 'testdetails', header: 'Test Details' }
     ]
 
-
-
-
-
-
-
-
   }
 
 
@@ -81,6 +73,7 @@ export class AddLabTestComponent implements OnInit {
 
       this.messageService.add({severity:'success', summary:'Service Message', detail:name+' successfully deleted!'});
     },error=>{console.log(error)
+
       this.delete=false;
       this.messageService.add({severity:'error', summary:'Service Message', detail:'Error deleting Lab Test!'});
     })

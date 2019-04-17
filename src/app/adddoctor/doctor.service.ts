@@ -7,10 +7,9 @@ import {environment} from '../../environments/environment';
 @Injectable()
 export class DoctorService {
 
-  private baseUrl = environment.baseUrl + '/api/doctor/';
-
-
  constructor(private http: HttpClient) {}
+
+  private baseUrl = environment.baseUrl + '/api/doctor/';
 
   savedoctor(doctor): Observable<any> {
     return this.http.post(this.baseUrl, doctor);

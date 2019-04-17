@@ -1,5 +1,7 @@
-import { PatientformComponent } from "./patientform/patientform.component";
-import { PatientComponent } from "./patient/patient.component";
+import { AddErComponent } from './add-er/add-er.component';
+import { ErComponent } from "./er/er.component";
+import { PatientformComponent } from './patientform/patientform.component';
+import { PatientComponent } from './patient/patient.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { LoginFormComponent } from './login-form/login-form.component';
@@ -17,12 +19,18 @@ import { AddLabCatComponent } from './add-lab-test/add-lab-cat/add-lab-cat.compo
 
 import { PanelListComponent } from './panel-list/panel-list.component';
 import { AddpanellistComponent } from './addpanellist/addpanellist.component';
+
+import { AddAppoinmentListComponent } from './add-appoinment-list/add-appoinment-list.component';
+import { ExistingPatientComponent } from './existing-patient/existing-patient.component';
 import { AddDirectoryComponent } from './add-directory/add-directory.component';
 import {DirectoryFormComponent} from './directory-form/directory-form.component';
-import {MonitorScreenComponent} from './monitor-screen/monitor-screen.component'
+
+import {MonitorScreenComponent} from './monitor-screen/monitor-screen.component';
+
 
 
 const routes: Routes = [
+
 
 
 
@@ -38,9 +46,15 @@ const routes: Routes = [
   { path: 'addlabcat', component: AddLabCatComponent },
   { path: 'patient', component: PatientComponent },
   { path: 'patientform', component: PatientformComponent },
-  { path: 'adddirectory', component :AddDirectoryComponent},
-  {path:'directoryform',component:DirectoryFormComponent},
-  {path:'monitor',component:MonitorScreenComponent}
+  {path:'monitor',component:MonitorScreenComponent},
+  { path: 'adddirectory', component : AddDirectoryComponent},
+  {path: 'directoryform', component: DirectoryFormComponent},
+  {path: 'er', component: ErComponent},
+  {path: 'adder', component: AddErComponent},
+  {path: 'appoinmentList', component: AddAppoinmentListComponent},
+ {path: 'existingPatient', component: ExistingPatientComponent}
+
+
 
 
 ];
