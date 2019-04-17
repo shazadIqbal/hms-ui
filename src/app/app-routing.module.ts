@@ -18,7 +18,8 @@ import { AddLabCatComponent } from './add-lab-test/add-lab-cat/add-lab-cat.compo
 import { PanelListComponent } from './panel-list/panel-list.component';
 import { AddpanellistComponent } from './addpanellist/addpanellist.component';
 import { AddDirectoryComponent } from './add-directory/add-directory.component';
-import {DirectoryFormComponent} from './directory-form/directory-form.component'
+import {DirectoryFormComponent} from './directory-form/directory-form.component';
+import {MonitorScreenComponent} from './monitor-screen/monitor-screen.component'
 
 
 const routes: Routes = [
@@ -38,7 +39,8 @@ const routes: Routes = [
   { path: 'patient', component: PatientComponent },
   { path: 'patientform', component: PatientformComponent },
   { path: 'adddirectory', component :AddDirectoryComponent},
-  {path:'directoryform',component:DirectoryFormComponent}
+  {path:'directoryform',component:DirectoryFormComponent},
+  {path:'monitor',component:MonitorScreenComponent}
 
 
 ];

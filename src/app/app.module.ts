@@ -63,6 +63,9 @@ import { AddpanellistseviceService } from './addpanellist/addpanellistsevice.ser
 import {ProgressSpinnerModule} from 'primeng/progressspinner';
 import { AddDirectoryComponent } from './add-directory/add-directory.component';
 import { DirectoryFormComponent } from './directory-form/directory-form.component';
+import { MonitorScreenComponent } from './monitor-screen/monitor-screen.component';
+import { PatientMonitorComponent } from './monitor-screen/patient-monitor/patient-monitor.component';
+import { PatientPanelComponent } from './monitor-screen/patient-panel/patient-panel.component';
 
 
 
@@ -87,7 +90,7 @@ import { DirectoryFormComponent } from './directory-form/directory-form.componen
 
   //  PatientSlipComponent, PatientInputComponent, PatientCardComponent, ButtonsComponent, MasterTableComponent, ChildTableComponent, PatientPaymentComponent, TableComponent, DoctorListComponent, AdddoctorComponent, AddLabTestComponent, AddTestComponent, AddLabCatComponent
 
-    ModalComponent, PatientSlipComponent, PatientInputComponent, PatientCardComponent, ButtonsComponent, MasterTableComponent, ChildTableComponent, PatientPaymentComponent, TableComponent, DoctorListComponent, AdddoctorComponent, PanelListComponent, AddpanellistComponent, AddLabTestComponent, AddTestComponent, AddLabCatComponent, PatientComponent, PatientformComponent, AddDirectoryComponent, DirectoryFormComponent
+    ModalComponent, PatientSlipComponent, PatientInputComponent, PatientCardComponent, ButtonsComponent, MasterTableComponent, ChildTableComponent, PatientPaymentComponent, TableComponent, DoctorListComponent, AdddoctorComponent, PanelListComponent, AddpanellistComponent, AddLabTestComponent, AddTestComponent, AddLabCatComponent, PatientComponent, PatientformComponent, AddDirectoryComponent, DirectoryFormComponent, MonitorScreenComponent, PatientMonitorComponent, PatientPanelComponent
 
   ],
   imports: [
