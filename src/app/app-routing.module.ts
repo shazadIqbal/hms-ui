@@ -24,6 +24,7 @@ import { AddAppoinmentListComponent } from './add-appoinment-list/add-appoinment
 import { ExistingPatientComponent } from './existing-patient/existing-patient.component';
 import { AddDirectoryComponent } from './add-directory/add-directory.component';
 import {DirectoryFormComponent} from './directory-form/directory-form.component';
+import { OpdconsultancyComponent } from './opdconsultancy/opdconsultancy.component';
 
 
 
@@ -50,7 +51,9 @@ const routes: Routes = [
   {path: 'er', component: ErComponent},
   {path: 'adder', component: AddErComponent},
   {path: 'appoinmentList', component: AddAppoinmentListComponent},
- {path: 'existingPatient', component: ExistingPatientComponent}
+ {path: 'existingPatient', component: ExistingPatientComponent},
+ {path: 'opdconsultancy', component: OpdconsultancyComponent},
+
 
 
 

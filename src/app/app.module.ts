@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {NgxPrintModule} from 'ngx-print';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -72,6 +73,7 @@ import { DirectoryFormComponent } from './directory-form/directory-form.componen
 import { MrComponentComponent } from './main-screen/mr-component/mr-component.component';
 import { AddAppoinmentListComponent } from './add-appoinment-list/add-appoinment-list.component';
 import { ExistingPatientComponent } from './existing-patient/existing-patient.component';
+import { OpdconsultancyComponent } from './opdconsultancy/opdconsultancy.component';
 
 
 
@@ -103,7 +105,7 @@ import { ExistingPatientComponent } from './existing-patient/existing-patient.co
 
 
 // tslint:disable-next-line: max-line-length
-    ModalComponent, PatientSlipComponent, PatientInputComponent, PatientCardComponent, ButtonsComponent, MasterTableComponent, ChildTableComponent, PatientPaymentComponent, TableComponent, DoctorListComponent, AdddoctorComponent, PanelListComponent, AddpanellistComponent, AddLabTestComponent, AddTestComponent, AddLabCatComponent, PatientComponent, PatientformComponent, AddDirectoryComponent, DirectoryFormComponent, ExistingPatientComponent, AddAppoinmentListComponent, ErComponent, AddErComponent
+    ModalComponent, PatientSlipComponent, PatientInputComponent, PatientCardComponent, ButtonsComponent, MasterTableComponent, ChildTableComponent, PatientPaymentComponent, TableComponent, DoctorListComponent, AdddoctorComponent, PanelListComponent, AddpanellistComponent, AddLabTestComponent, AddTestComponent, AddLabCatComponent, PatientComponent, PatientformComponent, AddDirectoryComponent, DirectoryFormComponent, ExistingPatientComponent, AddAppoinmentListComponent, ErComponent, AddErComponent, OpdconsultancyComponent
 
 
 
@@ -115,10 +117,11 @@ import { ExistingPatientComponent } from './existing-patient/existing-patient.co
     HttpClientModule,
     HttpClientXsrfModule.disable(),
 
-    BrowserAnimationsModule, TabMenuModule, PanelModule, InputTextModule, DialogModule, ToastModule, ReactiveFormsModule, DropdownModule, InputTextareaModule, MultiSelectModule, ProgressSpinnerModule
+// tslint:disable-next-line: max-line-length
+    BrowserAnimationsModule, TabMenuModule, PanelModule, InputTextModule, DialogModule, ToastModule, ReactiveFormsModule, DropdownModule, InputTextareaModule, MultiSelectModule, ProgressSpinnerModule,NgxPrintModule
 
   ],
-  providers: [DoctorService, AddpanellistseviceService, MessageService],
+  providers: [DoctorService, AddpanellistseviceService, MessageService,AddErComponent],
   bootstrap: [AppComponent],
   exports: [FormsModule],
 
