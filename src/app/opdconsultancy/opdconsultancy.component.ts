@@ -19,6 +19,7 @@ export class OpdconsultancyComponent implements OnInit {
   calDiscount = 0;
   //object of opd consultancy
   opdObject: OpdConsultancy = new OpdConsultancy();
+  getStatus: boolean = true;
 
   constructor(
     private router: Router,
@@ -26,9 +27,15 @@ export class OpdconsultancyComponent implements OnInit {
     private comp: AddErComponent,
     private doctorService: DoctorService,
     private opd_Service: OpdService
-  ) {}
+  ) { }
 
   ngOnInit() {
+    this.getDoctorsOption();
+
+  }
+
+
+  getDoctorsOption() {
     let i = 0;
     this.opdObject.sallary = 0;
     this.doctors = [];
@@ -47,9 +54,9 @@ export class OpdconsultancyComponent implements OnInit {
       }
     );
   }
-
   //Getting Doctors'Fees
   doctorDropdown() {
+
     // console.log(this.selectedDoctor);
     console.log(this.opdObject.doctors["fullName"]);
     this.opdObject.sallary = 0; //it will also work for the negative
@@ -62,13 +69,12 @@ export class OpdconsultancyComponent implements OnInit {
   //FUNCTION FOR BACK BUTTON
   backbro() {
     // this.comp.back();
-    this.router.navigate(['/']);
+    this.router.navigate(["/"]);
   }
   //FUNCTION FOR SUBMIT OPD CONSULTANCY
   submitOpd(formdata: any) {
     this.opd_Service.saveOPD(formdata).subscribe(
       data => {
-
         console.log(formdata);
         this.messageService.add({
           severity: "success",
@@ -95,4 +101,6 @@ export class OpdconsultancyComponent implements OnInit {
     this.opdObject.cashRecieved = value;
     this.opdObject.total = this.opdObject.total;
   }
+
+
 }
