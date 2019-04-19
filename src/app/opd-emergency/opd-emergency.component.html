@@ -1,0 +1,120 @@
+<div [attr.id]="getIdWhenStatus_200" [hidden]="true">
+	<!-- <div *ngIf="addEmergency.facilities !== undefined"> -->
+
+	<h1 style="text-align: center; color: #3a64a8;">OPD EMERGENCY RECEIPT</h1>
+	<hr style="height: 2px">
+	<div class="container">
+			<p style="margin-top: 5%;  border-bottom: 1px solid black; padding: 10px; font-size: 20px; "><b
+					style="font-size: 20px;"> Emergency Service: </b>{{printFacilities}}</p>
+		<p style=" margin-top: 5%;  border-bottom: 1px solid black;padding: 10px; font-size: 20px;"><b
+				style="font-size: 20px;"> Facility Price: </b>{{addEmergency.price}}</p>
+		<p style=" margin-top: 5%;  border-bottom: 1px solid black;padding: 10px; font-size: 20px;"><b
+				style="font-size: 20px;"> Discount: </b>{{addEmergency.discount}}</p>
+		<p style=" margin-top: 5%;  border-bottom: 1px solid black;padding: 10px; font-size: 20px;"><b
+				style="font-size: 20px;"> Total: </b>{{addEmergency.total}}</p>
+
+</div>
+
+
+	</div>
+	<div class="col-g-12">
+		<div class="ui-lg-5 ui-md-5 ui-sm-12">
+			<button pButton type="button" class=" ui-button-success" (click)="back()" style="width:45%;margin-left:30% "
+				label="Back"></button>
+		</div>
+	</div>
+	<div class="ui-g-12">
+			<p-toast></p-toast>
+		<p-card header="OPD EMERGENCY SERVICE" [style]="{
+        width: '80%',
+        'font-size': '26px',
+        'margin-left': '10%',
+        'text-align': 'center',
+        color: 'green'
+      }">
+			<div class="ui-g ui-fluid">
+				<hr style="height:2px;width:100%;background-color:green; margin-top: 0px" />
+				<form style="width:100%"  #myForm="ngForm"  (ngSubmit)="saveOpdEmergency(myForm.value)">
+					<!-- Doctor Names Field -->
+					<div class="ui-g">
+						<div class="ui-md-2 ui-lg-2"></div>
+						<div class="ui-md-8 ui-lg-8 ui-sm-12">
+							<div class="ui-inputgroup">
+								<span class="ui-inputgroup-addon" style="width:37%;font-size:15px;font-weight: bold;">
+									Select ER</span>
+
+								<p-multiSelect name="multiDropdown" [options]="multiDropdown" [(ngModel)]="addEmergency.facilities"
+									(onChange)="onChangeFacility()" [ngStyle]="{width:'100%'}" [style]="{'height':'100%'}" required>
+								</p-multiSelect>
+							</div>
+
+						</div>
+					</div>
+					<!-- price of facility field -->
+					<div class="ui-g">
+						<div class="ui-md-2 ui-lg-2"></div>
+						<div class="ui-md-8 ui-lg-8 ui-sm-12">
+							<div class="ui-inputgroup">
+								<span class="ui-inputgroup-addon" style="width:37%;font-size:15px; font-weight: bold;">
+									Facility Price</span>
+								<input type="text" name="price"  [(ngModel)]="addEmergency.price"  [readOnly]="true" pInputText
+									placeholder="$" required>
+
+							</div>
+						</div>
+					</div>
+
+					<!-- Cash Recieved Field -->
+					<div class="ui-g">
+						<div class="ui-md-2 ui-lg-2"></div>
+						<div class="ui-md-8 ui-lg-8 ui-sm-12">
+							<div class="ui-inputgroup">
+								<span class="ui-inputgroup-addon" style="width:37%;font-size:15px; font-weight: bold;">
+									Cash Recieve</span>
+								<input type="text" name="cashRecieve" [(ngModel)]="addEmergency.cashRecieve"  pInputText placeholder="$" required>
+
+							</div>
+						</div>
+					</div>
+					<!-- Discount Field -->
+					<div class="ui-g">
+						<div class="ui-md-2 ui-lg-2"></div>
+						<div class="ui-md-8 ui-lg-8 ui-sm-12">
+							<div class="ui-inputgroup">
+								<span class="ui-inputgroup-addon" style="width:37%;font-size:15px;font-weight: bold;">
+									Discount</span>
+								<input type="number" min="0" name="discount" [(ngModel)]="addEmergency.discount" pInputText
+									placeholder="0"  required>
+
+							</div>
+						</div>
+					</div>
+					<!-- Total Field -->
+					<div class="ui-g">
+						<div class="ui-md-2 ui-lg-2"></div>
+						<div class="ui-md-8 ui-lg-8 ui-sm-12">
+							<div class="ui-inputgroup">
+								<span class="ui-inputgroup-addon" style="width:37%;font-size:15px;font-weight: bold;">
+									Total</span>
+								<input type="text" pInputText name="total" [(ngModel)]="addEmergency.total"
+									placeholder="Total Amount $$" required>
+
+							</div>
+						</div>
+					</div>
+					<!-- Save Button -->
+					<div class="ui-g">
+						<div class="ui-md-2 ui-lg-2"></div>
+						<div class="ui-md-8 ui-lg-8 ui-sm-12">
+							<button pButton type="submit" label="SAVE" 
+								class="ui-button-success" printSectionId="print-section" ngxPrint [disabled]="myForm.invalid"></button>
+						</div>
+					</div>
+
+
+				</form> 
+			</div>
+
+
+		</p-card>
+	</div>
