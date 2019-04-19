@@ -13,9 +13,10 @@ export class MonitorService {
   constructor(private http:HttpClient) {
    }
 
-   getPatientMonitor():Observable<any>{
+   getPatientMonitor(id):Observable<any>{
 
-    return this.http.get(environment.baseUrl+"/patient");
+   
+    return this.http.get(environment.baseUrl+"api/monitor/"+id);
 
    }
 
