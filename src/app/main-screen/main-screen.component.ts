@@ -59,7 +59,6 @@ export class MainScreenComponent implements OnInit {
           this.router.navigate(['/patientform']);
         }, 3000);
       } else {
-        //  console.log(mrNo+"hello");
         this.mesgService.add({
           severity: 'success',
           summary: 'SUCCESS',

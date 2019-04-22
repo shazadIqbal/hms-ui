@@ -28,17 +28,6 @@ export class MrComponentComponent implements OnInit {
   }
 
   check(mrNo: any) {
-
-    // this.mesgService.add({
-    //   severity: 'error',
-    //   summary: 'No Record Found',
-    //   detail: 'Add a new Patient Please'
-    // });
-
-    // setTimeout(() => {
-    //   this.router.navigate(['/patientform']);
-    // }, 3000);
-    // tslint:disable-next-line: triple-equals
     this.patientService.getPatientsByMRNO(mrNo).subscribe(data => {
       // tslint:disable-next-line: triple-equals
       if (data == null || mrNo == '') {

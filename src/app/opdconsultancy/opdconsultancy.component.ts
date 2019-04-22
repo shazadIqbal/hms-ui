@@ -1,3 +1,4 @@
+import { Status } from "./../add-appoinment-list/SelectStatus";
 import { OpdService } from "./../Services/opd.service";
 import { DoctorService } from "./../adddoctor/doctor.service";
 import { AddErComponent } from "./../add-er/add-er.component";
@@ -20,6 +21,8 @@ export class OpdconsultancyComponent implements OnInit {
   //object of opd consultancy
   opdObject: OpdConsultancy = new OpdConsultancy();
   getStatus: boolean = true;
+  checkStatus: boolean;
+  show : boolean = true;
 
   constructor(
     private router: Router,
@@ -30,28 +33,42 @@ export class OpdconsultancyComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    // this.checkStatus = true;
     this.getDoctorsOption();
-
   }
 
 
   getDoctorsOption() {
+
+    this.checkStatus = true;
     let i = 0;
     this.opdObject.sallary = 0;
     this.doctors = [];
     this.doctorService.getdoctors().subscribe(
       data => {
+        this.show = false; //this is for form hide property
         console.log(data);
         data.forEach(e => {
+          this.show = false;
+          this.checkStatus = false; //this is for loader
           this.doctors.push({
             label: e.fullName,
             value: e
           });
         });
+
+
       },
       error => {
         console.log("error agya yar");
-      }
+          this.checkStatus = true;
+          this.messageService.add({
+            severity: "error",
+            summary: "Error Found",
+            detail: "Something went wrong check your internet connection "
+          });
+        }
+
     );
   }
   //Getting Doctors'Fees
@@ -67,9 +84,9 @@ export class OpdconsultancyComponent implements OnInit {
   }
 
   //FUNCTION FOR BACK BUTTON
-  backbro() {
+  backToMonitor() {
     // this.comp.back();
-    this.router.navigate(["/"]);
+    this.router.navigate(["/monitor"]);
   }
   //FUNCTION FOR SUBMIT OPD CONSULTANCY
   submitOpd(formdata: any) {

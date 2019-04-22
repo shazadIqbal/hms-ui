@@ -24,12 +24,13 @@ export class PatientformComponent implements OnInit {
   }
 
   ngOnInit() {
-    
+
   }
 
   onSubmit() {
     this.patientService.postPatient(this.patient).subscribe(
       data => {
+        
         this.msgService.add({
           severity: 'success',
           summary: 'Service message',
