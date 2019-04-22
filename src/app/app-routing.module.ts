@@ -46,7 +46,7 @@ const routes: Routes = [
   { path: 'addlabcat', component: AddLabCatComponent },
   { path: 'patient', component: PatientComponent },
   { path: 'patientform', component: PatientformComponent },
-  {path:'monitor',component:MonitorScreenComponent},
+  {path:'monitor/:id',component:MonitorScreenComponent},
   { path: 'adddirectory', component : AddDirectoryComponent},
   {path: 'directoryform', component: DirectoryFormComponent},
   {path: 'er', component: ErComponent},
