@@ -18,22 +18,18 @@ import { MainScreenComponent } from './main-screen/main-screen.component';
 import { AddPanelComponent } from './main-screen/add-panel/add-panel.component';
 import { SearchbarComponent } from './searchbar/searchbar.component';
 import { ModalComponent } from './modal/modal.component';
-
-
-import {AccordionModule} from 'primeng/accordion';
-import {ButtonModule} from 'primeng/button';
-import {CardModule} from 'primeng/card';
-import {TableModule} from 'primeng/table';
-import {CalendarModule} from 'primeng/calendar';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {TabMenuModule} from 'primeng/tabmenu';
-import {MenuItem, MessageService} from 'primeng/api';
-import {PanelModule} from 'primeng/panel';
-import {InputTextModule} from 'primeng/inputtext';
-import {DialogModule} from 'primeng/dialog';
-import {ToastModule} from 'primeng/toast';
-
-
+import { AccordionModule } from 'primeng/accordion';
+import { ButtonModule } from 'primeng/button';
+import { CardModule } from 'primeng/card';
+import { TableModule } from 'primeng/table';
+import { CalendarModule } from 'primeng/calendar';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { TabMenuModule } from 'primeng/tabmenu';
+import { MenuItem, MessageService } from 'primeng/api';
+import { PanelModule } from 'primeng/panel';
+import { InputTextModule } from 'primeng/inputtext';
+import { DialogModule } from 'primeng/dialog';
+import { ToastModule } from 'primeng/toast';
 import { PatientSlipComponent } from './patient-slip/patient-slip.component';
 import { PatientInputComponent } from './patient-slip/patient-input/patient-input.component';
 import { PatientCardComponent } from './patient-slip/patient-card/patient-card.component';
@@ -44,29 +40,33 @@ import { PatientPaymentComponent } from './patient-slip/patient-payment/patient-
 import { TableComponent } from './table/table.component';
 import { DoctorListComponent } from './doctor-list/doctor-list.component';
 import { AdddoctorComponent } from './adddoctor/adddoctor.component';
-import {PaginatorModule} from 'primeng/paginator';
+import { PaginatorModule } from 'primeng/paginator';
 import { AddLabTestComponent } from './add-lab-test/add-lab-test.component';
 import { AddTestComponent } from './add-lab-test/add-test/add-test.component';
 import { AddLabCatComponent } from './add-lab-test/add-lab-cat/add-lab-cat.component';
 import { PatientComponent } from './patient/patient.component';
 import { PatientformComponent } from './patientform/patientform.component';
-import {InputTextareaModule} from 'primeng/inputtextarea';
+import { InputTextareaModule } from 'primeng/inputtextarea';
 import { HttpClientModule, HttpClientXsrfModule } from '@angular/common/http';
 import { DoctorService } from './adddoctor/doctor.service';
 import { PanelListComponent } from './panel-list/panel-list.component';
 import { AddpanellistComponent } from './addpanellist/addpanellist.component';
-import {MultiSelectModule} from 'primeng/multiselect';
+import { MultiSelectModule } from 'primeng/multiselect';
 import { AddpanellistseviceService } from './addpanellist/addpanellistsevice.service';
-import {ProgressSpinnerModule} from 'primeng/progressspinner';
+import { ProgressSpinnerModule } from 'primeng/progressspinner';
 import { ErComponent } from './er/er.component';
 import { AddErComponent } from './add-er/add-er.component';
 import { AddDirectoryComponent } from './add-directory/add-directory.component';
 import { DirectoryFormComponent } from './directory-form/directory-form.component';
+import { MonitorScreenComponent } from './monitor-screen/monitor-screen.component';
+import { PatientMonitorComponent } from './monitor-screen/patient-monitor/patient-monitor.component';
+import { PatientPanelComponent } from './monitor-screen/patient-panel/patient-panel.component';
 import { MrComponentComponent } from './main-screen/mr-component/mr-component.component';
 import { AddAppoinmentListComponent } from './add-appoinment-list/add-appoinment-list.component';
 import { ExistingPatientComponent } from './existing-patient/existing-patient.component';
 import { OpdEmergencyComponent } from './opd-emergency/opd-emergency.component';
-import {NgxPrintModule} from 'ngx-print';
+import { NgxPrintModule } from 'ngx-print';
+
 
 
 
@@ -88,17 +88,13 @@ import {NgxPrintModule} from 'ngx-print';
     MrComponentComponent,
     AddPanelComponent,
     SearchbarComponent,
-   
-
-
-// tslint:disable-next-line: max-line-length
-  //  PatientSlipComponent, PatientInputComponent, PatientCardComponent, ButtonsComponent, MasterTableComponent, ChildTableComponent, PatientPaymentComponent, TableComponent, DoctorListComponent, AdddoctorComponent, AddLabTestComponent, AddTestComponent, AddLabCatComponent
 
 
 
 
-// tslint:disable-next-line: max-line-length
-    ModalComponent, PatientSlipComponent, PatientInputComponent, PatientCardComponent, ButtonsComponent, MasterTableComponent, ChildTableComponent, PatientPaymentComponent, TableComponent, DoctorListComponent, AdddoctorComponent, PanelListComponent, AddpanellistComponent, AddLabTestComponent, AddTestComponent, AddLabCatComponent, PatientComponent, PatientformComponent, AddDirectoryComponent, DirectoryFormComponent, ExistingPatientComponent, AddAppoinmentListComponent, ErComponent, AddErComponent, OpdEmergencyComponent
+    // tslint:disable-next-line: max-line-length
+    //  PatientSlipComponent, PatientInputComponent, PatientCardComponent, ButtonsComponent, MasterTableComponent, ChildTableComponent, PatientPaymentComponent, TableComponent, DoctorListComponent, AdddoctorComponent, AddLabTestComponent, AddTestComponent, AddLabCatComponent
+    ModalComponent, PatientSlipComponent, PatientInputComponent, PatientCardComponent, ButtonsComponent, MasterTableComponent, ChildTableComponent, PatientPaymentComponent, TableComponent, DoctorListComponent, AdddoctorComponent, PanelListComponent, AddpanellistComponent, AddLabTestComponent, AddTestComponent, AddLabCatComponent, PatientComponent, PatientformComponent, AddDirectoryComponent, DirectoryFormComponent, MonitorScreenComponent, PatientMonitorComponent, PatientPanelComponent, ExistingPatientComponent, AddAppoinmentListComponent, ErComponent, OpdEmergencyComponent, AddErComponent
 
 
 
@@ -114,9 +110,9 @@ import {NgxPrintModule} from 'ngx-print';
     BrowserAnimationsModule, TabMenuModule, PanelModule, InputTextModule, DialogModule, ToastModule, ReactiveFormsModule, DropdownModule, InputTextareaModule, MultiSelectModule, ProgressSpinnerModule
 
   ],
-  providers: [DoctorService, AddpanellistseviceService, MessageService,AddErComponent],
+  providers: [DoctorService, AddpanellistseviceService, MessageService, AddErComponent],
   bootstrap: [AppComponent],
   exports: [FormsModule],
 
 })
-export class AppModule {}
+export class AppModule { }

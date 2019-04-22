@@ -24,10 +24,10 @@ export class ErserviceService {
   }
   // ER FACILITY
   public saveErFacility(facility: any): Observable<Object> {  // postFacility
-    return this.http.post(environment.baseUrl + 'api/facility/', facility);
+    return this.http.post(environment.baseUrl + '/facility', facility);
   }
   public getErFacility(): Observable<any> {  // GetFacility
-    return this.http.get(environment.baseUrl + 'facility');
+    return this.http.get(environment.baseUrl + '/facility');
   }
 
 }

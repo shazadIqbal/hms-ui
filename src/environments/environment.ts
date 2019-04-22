@@ -7,7 +7,8 @@ export const environment = {
 
 
 
-  baseUrl: 'http://localhost:3000/'
+  baseUrl: 'http://localhost:3000',
+  //huzaifaUrl: 'http://192.168.0.137:8080'
 
 };
 

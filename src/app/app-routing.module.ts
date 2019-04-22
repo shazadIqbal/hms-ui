@@ -27,6 +27,8 @@ import {DirectoryFormComponent} from './directory-form/directory-form.component'
 import { OpdEmergencyComponent } from './opd-emergency/opd-emergency.component';
 
 
+import {MonitorScreenComponent} from './monitor-screen/monitor-screen.component';
+
 
 
 const routes: Routes = [
@@ -46,15 +48,17 @@ const routes: Routes = [
   { path: 'addlabcat', component: AddLabCatComponent },
   { path: 'patient', component: PatientComponent },
   { path: 'patientform', component: PatientformComponent },
-
+  {path:'monitor',component:MonitorScreenComponent},
   { path: 'adddirectory', component : AddDirectoryComponent},
   {path: 'directoryform', component: DirectoryFormComponent},
   {path: 'er', component: ErComponent},
   {path: 'adder', component: AddErComponent},
   {path: 'appoinmentList', component: AddAppoinmentListComponent},
  {path: 'existingPatient', component: ExistingPatientComponent},
- {path:'opdEmergency',component:OpdEmergencyComponent},
+ {path:'opdEmergency/:id',component:OpdEmergencyComponent},
  
+ 
+
 
 
 

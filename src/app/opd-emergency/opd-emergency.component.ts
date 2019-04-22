@@ -23,6 +23,8 @@ export class OpdEmergencyComponent implements OnInit {
   printFacilities = [];
   getStatus : boolean = true;
   getIdWhenStatus_200 : any;
+  showLoading= true;
+  show = true;
   // printStatus : boolean;
   // 
   
@@ -39,8 +41,9 @@ export class OpdEmergencyComponent implements OnInit {
    
 
   back() {
-    this.router.navigate(['/'])
+    this.router.navigate(['/monitor']);
   }
+
   
   onChangeFacility(){
     // for(var i in this.addEmergency.facilities)
@@ -48,13 +51,13 @@ export class OpdEmergencyComponent implements OnInit {
     //   console.log(this.name);
     this.printFacilities = []
     this.addEmergency.facilities.map((f)=>{
-       this.printFacilities.push(f["facilities"])
+       this.printFacilities.push(f["name"])
      })
      this.printFacilities.join(',')
     ///let printfacilities = this.addEmergency.facilities.join(',')
     console.log(this.printFacilities)
   
-    this.addEmergency.price = 0 ;
+    this.addEmergency.price = 0;
     this.addEmergency.total = 0;
     this.addEmergency.facilities.map(f => {
     this.addEmergency.price = this.addEmergency.price + parseInt(f["price"]);
@@ -66,23 +69,31 @@ export class OpdEmergencyComponent implements OnInit {
   }
 
   getfacilitiesInDropdown() {
+   
     this.multiDropdown = [];
+   
     this.erService.getErFacility().subscribe(
       data => {
+        this.show = false;
         // for (var keys in data){
           //   this.name.push((data[keys].facilities));
           //   // this.name.push((data[keys].price));
           //   console.log("men names honn"+name);
           // }
           // // console.log(data[0]);
+          console.log("hello")
         data.forEach(e => {
+          this.show = false;
+          this.showLoading = false;
           this.multiDropdown.push({
             label: e.facilities,
             value: e
           });
         });
+       
       },
       error => {
+        this.showLoading = true;
         console.log("error agya yar");
       }
     );
