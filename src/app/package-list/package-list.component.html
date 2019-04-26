@@ -7,7 +7,7 @@
     <button
       pButton
       type="button"
-      (click)="back()"
+      (click)="backtoMain()"
       style="width:80%;margin-left:10%;  height:40px;"
       label="Back"
       class=" ui-button-success"
@@ -17,9 +17,9 @@
     <button
       pButton
       type="button"
-      (click)="routeDirectoryForm()"
+      (click)="toAddPackage()"
       style="width:80%;margin-left:10%;  height:40px;"
-      label="Add Directory"
+      label="Add Package"
       class=" ui-button-success"
     ></button>
   </div>
@@ -28,14 +28,14 @@
     style="word-wrap:break-word;"
     #dt
     [paginator]="true"
-    [value]="tests"
+    [value]="packages"
     [rows]="10"
     [style]="{ 'margin-top': '50px', width: '80%', 'margin-left': '10%' }"
     [columns]="cols"
   >
     <ng-template pTemplate="caption">
       <div class="ui-g-12">
-        <h1 style="font-weight:bold;">DIRECTORY</h1>
+        <h1 style="font-weight:bold;">PACKAGES</h1>
         <hr style="background-color:rgb(17, 17, 17);height:3px;" />
       </div>
       <div style="text-align: right">

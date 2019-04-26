@@ -19,20 +19,18 @@ import { AddPanelComponent } from './main-screen/add-panel/add-panel.component';
 import { SearchbarComponent } from './searchbar/searchbar.component';
 import { ModalComponent } from './modal/modal.component';
 
-
-import {AccordionModule} from 'primeng/accordion';
-import {ButtonModule} from 'primeng/button';
-import {CardModule} from 'primeng/card';
-import {TableModule} from 'primeng/table';
-import {CalendarModule} from 'primeng/calendar';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {TabMenuModule} from 'primeng/tabmenu';
-import {MenuItem, MessageService} from 'primeng/api';
-import {PanelModule} from 'primeng/panel';
-import {InputTextModule} from 'primeng/inputtext';
-import {DialogModule} from 'primeng/dialog';
-import {ToastModule} from 'primeng/toast';
-
+import { AccordionModule } from 'primeng/accordion';
+import { ButtonModule } from 'primeng/button';
+import { CardModule } from 'primeng/card';
+import { TableModule } from 'primeng/table';
+import { CalendarModule } from 'primeng/calendar';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { TabMenuModule } from 'primeng/tabmenu';
+import { MenuItem, MessageService } from 'primeng/api';
+import { PanelModule } from 'primeng/panel';
+import { InputTextModule } from 'primeng/inputtext';
+import { DialogModule } from 'primeng/dialog';
+import { ToastModule } from 'primeng/toast';
 
 import { PatientSlipComponent } from './patient-slip/patient-slip.component';
 import { PatientInputComponent } from './patient-slip/patient-input/patient-input.component';
@@ -45,25 +43,22 @@ import { TableComponent } from './table/table.component';
 import { DoctorListComponent } from './doctor-list/doctor-list.component';
 import { AdddoctorComponent } from './adddoctor/adddoctor.component';
 
-
-import {PaginatorModule} from 'primeng/paginator';
+import { PaginatorModule } from 'primeng/paginator';
 import { AddLabTestComponent } from './add-lab-test/add-lab-test.component';
 import { AddTestComponent } from './add-lab-test/add-test/add-test.component';
 import { AddLabCatComponent } from './add-lab-test/add-lab-cat/add-lab-cat.component';
 
 import { PatientComponent } from './patient/patient.component';
 import { PatientformComponent } from './patientform/patientform.component';
-import {InputTextareaModule} from 'primeng/inputtextarea';
+import { InputTextareaModule } from 'primeng/inputtextarea';
 import { HttpClientModule, HttpClientXsrfModule } from '@angular/common/http';
 import { DoctorService } from './adddoctor/doctor.service';
 import { PanelListComponent } from './panel-list/panel-list.component';
 import { AddpanellistComponent } from './addpanellist/addpanellist.component';
-import {MultiSelectModule} from 'primeng/multiselect';
+import { MultiSelectModule } from 'primeng/multiselect';
 import { AddpanellistseviceService } from './addpanellist/addpanellistsevice.service';
-import {ProgressSpinnerModule} from 'primeng/progressspinner';
-
-
-
+import { ProgressSpinnerModule } from 'primeng/progressspinner';
+import { NavBarService } from './Services/NavBarService';
 
 import { ErComponent } from './er/er.component';
 import { AddErComponent } from './add-er/add-er.component';
@@ -72,13 +67,10 @@ import { DirectoryFormComponent } from './directory-form/directory-form.componen
 import { MrComponentComponent } from './main-screen/mr-component/mr-component.component';
 import { AddAppoinmentListComponent } from './add-appoinment-list/add-appoinment-list.component';
 import { ExistingPatientComponent } from './existing-patient/existing-patient.component';
-
-
-
-
-
-
-
+import { HmslandingpageComponent } from './hmslandingpage/hmslandingpage.component';
+import { AuthGuard } from './auth.guard';
+import { AddpackageComponent } from './addpackage/addpackage.component';
+import { PackageListComponent } from './package-list/package-list.component';
 
 @NgModule({
   declarations: [
@@ -95,32 +87,65 @@ import { ExistingPatientComponent } from './existing-patient/existing-patient.co
     AddPanelComponent,
     SearchbarComponent,
 
+    // tslint:disable-next-line: max-line-length
+    //  PatientSlipComponent, PatientInputComponent, PatientCardComponent, ButtonsComponent, MasterTableComponent, ChildTableComponent, PatientPaymentComponent, TableComponent, DoctorListComponent, AdddoctorComponent, AddLabTestComponent, AddTestComponent, AddLabCatComponent
 
-// tslint:disable-next-line: max-line-length
-  //  PatientSlipComponent, PatientInputComponent, PatientCardComponent, ButtonsComponent, MasterTableComponent, ChildTableComponent, PatientPaymentComponent, TableComponent, DoctorListComponent, AdddoctorComponent, AddLabTestComponent, AddTestComponent, AddLabCatComponent
-
-
-
-
-// tslint:disable-next-line: max-line-length
-    ModalComponent, PatientSlipComponent, PatientInputComponent, PatientCardComponent, ButtonsComponent, MasterTableComponent, ChildTableComponent, PatientPaymentComponent, TableComponent, DoctorListComponent, AdddoctorComponent, PanelListComponent, AddpanellistComponent, AddLabTestComponent, AddTestComponent, AddLabCatComponent, PatientComponent, PatientformComponent, AddDirectoryComponent, DirectoryFormComponent, ExistingPatientComponent, AddAppoinmentListComponent, ErComponent, AddErComponent
-
-
-
+    // tslint:disable-next-line: max-line-length
+    ModalComponent,
+    PatientSlipComponent,
+    PatientInputComponent,
+    PatientCardComponent,
+    ButtonsComponent,
+    MasterTableComponent,
+    ChildTableComponent,
+    PatientPaymentComponent,
+    TableComponent,
+    DoctorListComponent,
+    AdddoctorComponent,
+    PanelListComponent,
+    AddpanellistComponent,
+    AddLabTestComponent,
+    AddTestComponent,
+    AddLabCatComponent,
+    PatientComponent,
+    PatientformComponent,
+    AddDirectoryComponent,
+    DirectoryFormComponent,
+    ExistingPatientComponent,
+    AddAppoinmentListComponent,
+    ErComponent,
+    AddErComponent,
+    HmslandingpageComponent,
+    AddpackageComponent,
+    PackageListComponent
   ],
   imports: [
-    BrowserModule, FormsModule,
+    BrowserModule,
+    FormsModule,
     ProgressSpinnerModule,
-    AppRoutingModule, AccordionModule, ButtonModule, CardModule, TableModule, CalendarModule,
+    AppRoutingModule,
+    AccordionModule,
+    ButtonModule,
+    CardModule,
+    TableModule,
+    CalendarModule,
     HttpClientModule,
     HttpClientXsrfModule.disable(),
 
-    BrowserAnimationsModule, TabMenuModule, PanelModule, InputTextModule, DialogModule, ToastModule, ReactiveFormsModule, DropdownModule, InputTextareaModule, MultiSelectModule, ProgressSpinnerModule
-
+    BrowserAnimationsModule,
+    TabMenuModule,
+    PanelModule,
+    InputTextModule,
+    DialogModule,
+    ToastModule,
+    ReactiveFormsModule,
+    DropdownModule,
+    InputTextareaModule,
+    MultiSelectModule,
+    ProgressSpinnerModule
   ],
-  providers: [DoctorService, AddpanellistseviceService, MessageService],
+  providers: [DoctorService, AddpanellistseviceService, MessageService, NavBarService, AuthGuard],
   bootstrap: [AppComponent],
-  exports: [FormsModule],
-
+  exports: [FormsModule]
 })
 export class AppModule {}
