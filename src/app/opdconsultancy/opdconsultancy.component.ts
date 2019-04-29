@@ -4,7 +4,7 @@ import { DoctorService } from "./../adddoctor/doctor.service";
 import { AddErComponent } from "./../add-er/add-er.component";
 import { MainScreenComponent } from "./../main-screen/main-screen.component";
 import { Component, OnInit } from "@angular/core";
-import { Router } from "@angular/router";
+import { Router, ActivatedRoute } from "@angular/router";
 import { MessageService, SelectItem } from "primeng/api";
 import { ErserviceService } from "../services/erservice.service";
 import { OpdConsultancy } from "./opdconsultancy";
@@ -21,84 +21,98 @@ export class OpdconsultancyComponent implements OnInit {
   //object of opd consultancy
   opdObject: OpdConsultancy = new OpdConsultancy();
   getStatus: boolean = true;
-  checkStatus: boolean;
-  show : boolean = true;
+  checkStatus: boolean = false;
+  show : boolean = false;
+  enable : boolean;
 
   constructor(
     private router: Router,
     private messageService: MessageService,
-    private comp: AddErComponent,
     private doctorService: DoctorService,
-    private opd_Service: OpdService
-  ) { }
+    private opd_Service: OpdService,
+    private activatedRoute : ActivatedRoute
 
-  ngOnInit() {
-    // this.checkStatus = true;
+
+    ) { }
+
+    ngOnInit() {
+    // this.show = true
+     this.enable = true;
     this.getDoctorsOption();
+    this.opdObject.id = this.activatedRoute.snapshot.params['id'];
+    console.log("this is id"+this.opdObject.id);
+
   }
 
-
+p
   getDoctorsOption() {
-
-    this.checkStatus = true;
     let i = 0;
     this.opdObject.sallary = 0;
     this.doctors = [];
     this.doctorService.getdoctors().subscribe(
       data => {
-        this.show = false; //this is for form hide property
+
+        if(data){
+        this.show = false;
+        this.checkStatus = false; //this is for form hide property
         console.log(data);
         data.forEach(e => {
-          this.show = false;
-          this.checkStatus = false; //this is for loader
+          console.log(e)
+          console.log("This is doctors id "+ e.mrNo);
           this.doctors.push({
             label: e.fullName,
-            value: e
+            value: {mrNo:e.mrNo,fullName:e.fullName,sallary:e.sallary}
           });
+          // console.log({id:this.opdObject.doctors});
         });
 
+      }
 
-      },
-      error => {
-        console.log("error agya yar");
-          this.checkStatus = true;
-          this.messageService.add({
-            severity: "error",
-            summary: "Error Found",
-            detail: "Something went wrong check your internet connection "
-          });
-        }
+    },
+    error => {
+      console.log("error agya yar");
+      this.show = true;
+      this.checkStatus = true;
+      this.messageService.add({
+        severity: "error",
+        summary: "Error Found",
+        detail: "Something went wrong check your internet connection "
+      });
+    }
 
     );
   }
   //Getting Doctors'Fees
   doctorDropdown() {
-
     // console.log(this.selectedDoctor);
     console.log(this.opdObject.doctors["fullName"]);
     this.opdObject.sallary = 0; //it will also work for the negative
     this.opdObject.total = 0;
     this.opdObject.discount = 0;
     this.opdObject.sallary = this.opdObject.doctors["sallary"];
+    console.log(this.opdObject.sallary)
     this.opdObject.total = this.opdObject.sallary + this.opdObject.discount;
   }
 
   //FUNCTION FOR BACK BUTTON
   backToMonitor() {
-    // this.comp.back();
-    this.router.navigate(["/monitor"]);
+
+    this.router.navigate(['/monitor/'+ this.opdObject.id])
   }
   //FUNCTION FOR SUBMIT OPD CONSULTANCY
-  submitOpd(formdata: any) {
-    this.opd_Service.saveOPD(formdata).subscribe(
+  submitOpd() {
+
+    this.opd_Service.saveOPD(this.opdObject).subscribe(
       data => {
-        console.log(formdata);
+        console.log(this.opdObject);
         this.messageService.add({
           severity: "success",
           summary: "Succesfully"
         });
+        this.enable = false;
       },
       error => {
+
         console.log(error);
         this.messageService.add({
           severity: "error",
@@ -107,7 +121,7 @@ export class OpdconsultancyComponent implements OnInit {
         });
       }
     );
-    console.log(formdata);
+    console.log(this.opdObject);
   }
 
   //function for totalprice
@@ -118,6 +132,7 @@ export class OpdconsultancyComponent implements OnInit {
     this.opdObject.cashRecieved = value;
     this.opdObject.total = this.opdObject.total;
   }
+
 
 
 }

@@ -12,9 +12,9 @@ export class DoctorService {
 //  '/api/doctor/';
 
   savedoctor(doctor): Observable<any> {
-    return this.http.post(environment.baseUrl, doctor);
+    return this.http.post(environment.baseUrl+'api/doctor/',doctor);
   }
   getdoctors(): Observable<any> {
-    return this.http.get(environment.baseUrl+'doctor/');
+    return this.http.get(environment.baseUrl+'api/doctor/');
   }
 }

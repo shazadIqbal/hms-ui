@@ -24,17 +24,17 @@ export class PatientMonitorComponent implements OnInit {
   public image;
   public er;
   ngOnInit() {
-    
+
 
 
     console.log("hello");
     let id=this.activateRoute.snapshot.params['id'];
-       
+
 
     this.patient.getPatientMonitor(id).subscribe((response)=>
     {
-      
-   
+
+
       if(response.id)
       {
       console.log(response)
@@ -43,7 +43,7 @@ export class PatientMonitorComponent implements OnInit {
       this.number=response.number;
       this.registration=response.registration || 'No';
       this.date=response.date;
-      this.opd=response.opd; 
+      this.opd=response.opd;
       this.lab=response.lab;
       this.image=response.image;
       this.er=response.er;
@@ -60,7 +60,7 @@ export class PatientMonitorComponent implements OnInit {
     },(error)=>{
       console.log(error)
     })
-    
+
   }
 
   backToMain()
