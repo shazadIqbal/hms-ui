@@ -44,9 +44,9 @@
             <th *ngFor="let col of columns" style="text-align:center;">
               {{ col.header }}
             </th>
-            <th style="text-align:center;">
+            <!-- <th style="text-align:center;">
               Action
-            </th>
+            </th> -->
           </tr>
 
         </ng-template>
@@ -55,12 +55,12 @@
             <td *ngFor="let col of columns">
               {{ rowData[col.field] }}
             </td>
-            <td>
+            <!-- <td>
               <button pButton type="button" (click)="deletePatientByID(rowData['id'])" class="ui-button-danger"
                 style="height: 50px">
                 <img src="https://img.icons8.com/color/48/000000/cancel.png" />
               </button>
-            </td>
+            </td> -->
           </tr>
         </ng-template>
 

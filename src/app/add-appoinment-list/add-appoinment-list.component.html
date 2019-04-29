@@ -7,9 +7,9 @@
   (click)="backToMain()"
 ></button>
 <p-card header="" [style]="{ width: '100%', color: '#3EB650' }">
-  <h2 style="color: #3EB650; text-align: center; font-weight: bold;">
-    APPOINTMENT LIST
-  </h2>
+
+  <h2 style="color: #3EB650; text-align: center; font-weight: bold;">APPOINTMENT LIST</h2>
+
   <hr />
   <div class="row" style="text-align: center;">
     <button
@@ -34,10 +34,9 @@
     <!-- <p-dropdown [options]="SelectStatus" required name="status" [style]="{'width':'300px'}"
             placeholder="Select Status" placeholder="Filter By Status" style="margin: 0 1% 1% 0;">
         </p-dropdown> -->
-    <div
-      class="ui-inputgroup col-md-7 col-lg-5 col-sm-12"
-      style="margin-bottom: 10px"
-    >
+
+    <div class="ui-inputgroup col-md-7 col-lg-5 col-sm-12" style="margin-bottom: 10px">
+
       <span class="ui-inputgroup-addon">Filter By Status</span>
       <p-dropdown
         [options]="SelectStatus"
@@ -46,15 +45,16 @@
         [style]="{ width: '300px' }"
         placeholder="Select Status"
         placeholder="Filter By Status"
+
         [(ngModel)]="_status.status"
+
         (onChange)="statusOnClick()"
       >
       </p-dropdown>
     </div>
-    <div
-      class="ui-inputgroup  col-md-5 col-lg-5 col-sm-12"
-      style="margin-bottom: 10px"
-    >
+
+    <div class="ui-inputgroup  col-md-5 col-lg-5 col-sm-12" style="margin-bottom: 10px">
+
       <span class="ui-inputgroup-addon">Filter By Date</span>
       <p-calendar
         name="filterByDate"
@@ -72,7 +72,9 @@
     [value]="_existingPatient"
     [paginator]="true"
     [rows]="10"
-    [totalRecords]="totalRecords"
+
+    [totalRecords]= "totalRecords"
+
   >
     <ng-template pTemplate="caption">
       <div style="text-align: right">
@@ -96,7 +98,9 @@
           Actions
         </th>
       </tr>
-      <div *ngIf="showLoading" style="margin-left: 235%;">
+
+      <div *ngIf="showLoading" style="margin-left:235%;">
+
         <p-progressSpinner></p-progressSpinner>
       </div>
     </ng-template>

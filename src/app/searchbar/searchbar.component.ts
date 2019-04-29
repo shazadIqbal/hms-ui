@@ -62,46 +62,47 @@ export class SearchbarComponent implements OnInit {
 
     // console.log(this.patient);
   }
-  deletePatientByID(rowData: any) {
-    this.loading = true;
-    console.log(rowData);
-    //  this.indexFind = this.patient.findIndex(i => i.id === rowData);
-    //   console.log(this.indexFind);
-    // this.patient.splice(this.indexFind,1);
-    this.patientService.deletePatientByMRNO(rowData).subscribe(
-      data => {
-        this.loading = false;
-        if (data) {
-          this.mesgService.add({
-            severity: 'success',
-            summary: 'Deleted',
-            detail: 'Patient deleted SuccesFully'
-          });
-          this.showDialog();
-          // this.patientService.getPatients().subscribe((data: any) => {});
-          console.log(data);
-        } else {
-          this.loading = true;
-          this.mesgService.add({
-            severity: 'error',
-            summary: 'Can\'t delete',
-            detail: 'You are not authorized for this action'
-          });
+  // deletePatientByID(rowData: any) {
+  //   this.loading = true;
+  //   console.log(rowData);
+  //   //  this.indexFind = this.patient.findIndex(i => i.id === rowData);
+  //   //   console.log(this.indexFind);
+  //   // this.patient.splice(this.indexFind,1);
+  //   this.patientService.deletePatientByMRNO(rowData).subscribe(
+  //     data => {
+  //       this.loading = false;
+  //       if (data) {
+  //         this.mesgService.add({
+  //           severity: 'success',
+  //           summary: 'Deleted',
+  //           detail: 'Patient deleted SuccesFully'
+  //         });
+  //         this.showDialog();
+  //         // this.patientService.getPatients().subscribe((data: any) => {});
+  //         console.log(data);
+  //       } else {
+  //         this.loading = true;
+  //         this.mesgService.add({
+  //           severity: 'error',
+  //           summary: 'Can\'t delete',
+  //           detail: 'You are not authorized for this action'
+  //         });
 // tslint:disable-next-line: triple-equals
-          if (this.loading == true) {
-            this.loading = false;
-          }
-        }
-      },
-      error => {
-        this.loading = false;
-        this.mesgService.add({
-          severity: 'error',
-          summary: 'Cant not delete',
-          detail: 'You are not authorized for this action'
-        });
-        console.log(error);
-      }
-    );
-  }
-}
+      //     if (this.loading == true) {
+      //       this.loading = false;
+      //     }
+      //   }
+      // },
+//       error => {
+//         this.loading = false;
+//         this.mesgService.add({
+//           severity: 'error',
+//           summary: 'Cant not delete',
+//           detail: 'You are not authorized for this action'
+//         });
+//         console.log(error);
+//       }
+//     );
+//   }
+ }
+

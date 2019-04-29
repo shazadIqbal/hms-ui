@@ -1,5 +1,5 @@
 import { AddErComponent } from './add-er/add-er.component';
-import { ErComponent } from "./er/er.component";
+import { ErComponent } from './er/er.component';
 import { PatientformComponent } from './patientform/patientform.component';
 import { PatientComponent } from './patient/patient.component';
 import { NgModule } from '@angular/core';
@@ -23,44 +23,39 @@ import { AddpanellistComponent } from './addpanellist/addpanellist.component';
 import { AddAppoinmentListComponent } from './add-appoinment-list/add-appoinment-list.component';
 import { ExistingPatientComponent } from './existing-patient/existing-patient.component';
 import { AddDirectoryComponent } from './add-directory/add-directory.component';
-import {DirectoryFormComponent} from './directory-form/directory-form.component';
+
+
 import { OpdEmergencyComponent } from './opd-emergency/opd-emergency.component';
-
-
-import {MonitorScreenComponent} from './monitor-screen/monitor-screen.component';
-
-
+import { DirectoryFormComponent } from './directory-form/directory-form.component';
+import { HmslandingpageComponent } from './hmslandingpage/hmslandingpage.component';
+import { AuthGuard } from './auth.guard';
+import { AddpackageComponent } from './addpackage/addpackage.component';
+import { PackageListComponent } from './package-list/package-list.component';
+import { MonitorScreenComponent } from './monitor-screen/monitor-screen.component';
 
 const routes: Routes = [
-
-
-
-
-  { path: '', component: MainScreenComponent },
-  { path: 'doctorlist', component: DoctorListComponent },
-  { path: 'contact', component: ContactPageComponent },
-  { path: 'adddoctor', component: AdddoctorComponent },
-  { path: 'panellist', component: PanelListComponent },
-  { path: 'addpanellist', component: AddpanellistComponent },
-  { path: 'mainscreen', component: MainScreenComponent },
-  { path: 'addlabtest', component: AddLabTestComponent },
-  { path: 'addlab', component: AddTestComponent },
-  { path: 'addlabcat', component: AddLabCatComponent },
-  { path: 'patient', component: PatientComponent },
-  { path: 'patientform', component: PatientformComponent },
-  {path:'monitor/:id',component:MonitorScreenComponent},
-  { path: 'adddirectory', component : AddDirectoryComponent},
-  {path: 'directoryform', component: DirectoryFormComponent},
-  {path: 'er', component: ErComponent},
-  {path: 'adder', component: AddErComponent},
-  {path: 'appoinmentList', component: AddAppoinmentListComponent},
- {path: 'existingPatient', component: ExistingPatientComponent},
- {path:'opdEmergency/:id',component:OpdEmergencyComponent},
- 
- 
-
-
-
+  { path: '', component: HmslandingpageComponent },
+  { path: 'doctorlist', canActivate: [AuthGuard], component: DoctorListComponent },
+  { path: 'contact', canActivate: [AuthGuard], component: ContactPageComponent },
+  { path: 'adddoctor', canActivate: [AuthGuard], component: AdddoctorComponent },
+  { path: 'panellist', canActivate: [AuthGuard], component: PanelListComponent },
+  { path: 'addpanellist', canActivate: [AuthGuard], component: AddpanellistComponent },
+  { path: 'mainscreen', canActivate: [AuthGuard], component: MainScreenComponent },
+  { path: 'addpackage', canActivate: [AuthGuard], component: AddpackageComponent },
+  { path: 'packagelist', canActivate: [AuthGuard], component: PackageListComponent },
+  { path: 'addlabtest', canActivate: [AuthGuard], component: AddLabTestComponent },
+  { path: 'addlab', canActivate: [AuthGuard], component: AddTestComponent },
+  { path: 'addlabcat', canActivate: [AuthGuard], component: AddLabCatComponent },
+  { path: 'patient', canActivate: [AuthGuard], component: PatientComponent },
+  { path: 'patientform', canActivate: [AuthGuard], component: PatientformComponent },
+  { path: 'monitor/:id', canActivate: [AuthGuard], component: MonitorScreenComponent },
+  { path: 'adddirectory', canActivate: [AuthGuard], component: AddDirectoryComponent },
+  { path: 'directoryform', canActivate: [AuthGuard], component: DirectoryFormComponent },
+  { path: 'er', canActivate: [AuthGuard], component: ErComponent },
+  { path: 'adder', canActivate: [AuthGuard], component: AddErComponent },
+  { path: 'appoinmentList', canActivate: [AuthGuard], component: AddAppoinmentListComponent },
+  { path: 'existingPatient', canActivate: [AuthGuard], component: ExistingPatientComponent },
+  {path:'opdEmergency/:id',component:OpdEmergencyComponent},
 
 ];
 
@@ -68,4 +63,4 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

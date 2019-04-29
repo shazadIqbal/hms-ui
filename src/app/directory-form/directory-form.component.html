@@ -1,20 +1,29 @@
 <div class="col-g-12">
   <div class="ui-lg-12 ui-md-12 ui-sm-12">
-    <button pButton type="button" class=" ui-button-success" (click)="back()" style="width:25%;margin-left:65%; "
-      label="Back"></button>
+    <button
+      pButton
+      type="button"
+      class=" ui-button-success"
+      (click)="back()"
+      style="width:25%;margin-left:65%; "
+      label="Back"
+    ></button>
   </div>
 </div>
 
 <div class="ui-g-12">
   <p-toast></p-toast>
 
-  <p-card header="ADD DIRECTORY" [style]="{
+  <p-card
+    header="ADD DIRECTORY"
+    [style]="{
       width: '80%',
       'font-size': '26px',
       'margin-left': '10%',
       'text-align': 'center',
       color: 'green'
-    }">
+    }"
+  >
     <div class="ui-g ui-fluid">
       <hr style="height:2px;width:100%;background-color:green;" />
       <form style="width:100%;" #myForm="ngForm" (ngSubmit)="submitDirectory(); myForm.reset()">
@@ -31,10 +40,18 @@
           <div class="ui-md-2 ui-lg-2"></div>
           <div class="ui-md-8 ui-lg-8 ui-sm-12">
             <div class="ui-inputgroup">
-              <span class="ui-inputgroup-addon" style="width:45%;font-size:15px;">Phone Number</span>
+              <span class="ui-inputgroup-addon" style="width:45%;font-size:15px;"
+                >Phone Number</span
+              >
 
-              <input type="text" (keypress)="numberOnly($event)" [(ngModel)]="directory.number" required
-                name="phone number" pInputText />
+              <input
+                type="text"
+                (keypress)="numberOnly($event)"
+                [(ngModel)]="directory.number"
+                required
+                name="phone number"
+                pInputText
+              />
             </div>
           </div>
         </div>
@@ -43,9 +60,17 @@
           <div class="ui-md-2 ui-lg-2"></div>
           <div class="ui-md-8 ui-lg-8 ui-sm-12">
             <div class="ui-inputgroup">
-              <span class="ui-inputgroup-addon" style="width:45%;font-size:15px;">Emergency Number</span>
-              <input type="text" (keypress)="numberOnly($event)" [(ngModel)]="directory.erNo" required name="ERnumber"
-                pInputText />
+              <span class="ui-inputgroup-addon" style="width:45%;font-size:15px;"
+                >Emergency Number</span
+              >
+              <input
+                type="text"
+                (keypress)="numberOnly($event)"
+                [(ngModel)]="directory.erNo"
+                required
+                name="ERnumber"
+                pInputText
+              />
             </div>
           </div>
         </div>
@@ -54,29 +79,37 @@
           <div class="ui-md-2 ui-lg-2"></div>
           <div class="ui-md-8 ui-lg-8 ui-sm-12">
             <div class="ui-inputgroup">
-              <span class="ui-inputgroup-addon" style="width:45%;font-size:16px;line-height:20px;">Address</span>
+              <span class="ui-inputgroup-addon" style="width:45%;font-size:16px;line-height:20px;"
+                >Address</span
+              >
 
-              <textarea [rows]="3" maxlength="110" [(ngModel)]="directory.address" [cols]="30" required name="address"
-                pInputTextarea></textarea>
+              <textarea
+                [rows]="3"
+                maxlength="110"
+                [(ngModel)]="directory.address"
+                [cols]="30"
+                required
+                name="address"
+                pInputTextarea
+              ></textarea>
             </div>
           </div>
         </div>
         <div class="ui-g" style="margin-top:-20px !important;">
           <div class="ui-md-2 ui-lg-2"></div>
           <div class="ui-md-8 ui-lg-8 ui-sm-12">
-            <button pButton type="submit" label="SUBMIT" [disabled]="myForm.form.invalid"
-              style="margin-top: 0px; background-color:green;width:100%;"></button>
+            <button
+              pButton
+              type="submit"
+              label="SUBMIT"
+              [disabled]="myForm.form.invalid"
+              style="margin-top: 0px; background-color:green;width:100%;"
+            ></button>
           </div>
         </div>
       </form>
       <div class="ui-g-12" *ngIf="loader">
-
-
-
-
         <p-progressSpinner></p-progressSpinner>
-
-
       </div>
     </div>
   </p-card>

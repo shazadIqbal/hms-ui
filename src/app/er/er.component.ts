@@ -103,7 +103,7 @@ export class ErComponent implements OnInit {
   }
 
   back() {
-    this.router.navigate([""]);
+    this.router.navigate(["/mainscreen"]);
   }
   gotoErService() {
     this.router.navigate(["/adder"]);
