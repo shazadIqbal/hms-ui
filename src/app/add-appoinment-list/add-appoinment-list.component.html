@@ -41,7 +41,7 @@
         [style]="{ width: '300px' }"
         placeholder="Select Status"
         placeholder="Filter By Status"
-        [(ngModel)]="_status.status"
+        [(ngModel)]="status.status"
         (onChange)="statusOnClick()"
       >
       </p-dropdown>
@@ -64,7 +64,7 @@
     [value]="_existingPatient"
     [paginator]="true"
     [rows]="10"
-    [totalRecords]="totalRecords"
+    [totalRecords]= [totalRecords]
   >
     <ng-template pTemplate="caption">
       <div style="text-align: right">

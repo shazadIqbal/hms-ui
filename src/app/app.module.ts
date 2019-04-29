@@ -59,11 +59,13 @@ import { MultiSelectModule } from 'primeng/multiselect';
 import { AddpanellistseviceService } from './addpanellist/addpanellistsevice.service';
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
 import { NavBarService } from './Services/NavBarService';
-
 import { ErComponent } from './er/er.component';
 import { AddErComponent } from './add-er/add-er.component';
 import { AddDirectoryComponent } from './add-directory/add-directory.component';
 import { DirectoryFormComponent } from './directory-form/directory-form.component';
+import { MonitorScreenComponent } from './monitor-screen/monitor-screen.component';
+import { PatientMonitorComponent } from './monitor-screen/patient-monitor/patient-monitor.component';
+import { PatientPanelComponent } from './monitor-screen/patient-panel/patient-panel.component';
 import { MrComponentComponent } from './main-screen/mr-component/mr-component.component';
 import { AddAppoinmentListComponent } from './add-appoinment-list/add-appoinment-list.component';
 import { ExistingPatientComponent } from './existing-patient/existing-patient.component';
@@ -86,11 +88,7 @@ import { PackageListComponent } from './package-list/package-list.component';
     MrComponentComponent,
     AddPanelComponent,
     SearchbarComponent,
-
-    // tslint:disable-next-line: max-line-length
     //  PatientSlipComponent, PatientInputComponent, PatientCardComponent, ButtonsComponent, MasterTableComponent, ChildTableComponent, PatientPaymentComponent, TableComponent, DoctorListComponent, AdddoctorComponent, AddLabTestComponent, AddTestComponent, AddLabCatComponent
-
-    // tslint:disable-next-line: max-line-length
     ModalComponent,
     PatientSlipComponent,
     PatientInputComponent,
@@ -111,6 +109,9 @@ import { PackageListComponent } from './package-list/package-list.component';
     PatientformComponent,
     AddDirectoryComponent,
     DirectoryFormComponent,
+    MonitorScreenComponent,
+    PatientMonitorComponent,
+    PatientPanelComponent,
     ExistingPatientComponent,
     AddAppoinmentListComponent,
     ErComponent,

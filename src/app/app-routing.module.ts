@@ -23,11 +23,13 @@ import { AddpanellistComponent } from './addpanellist/addpanellist.component';
 import { AddAppoinmentListComponent } from './add-appoinment-list/add-appoinment-list.component';
 import { ExistingPatientComponent } from './existing-patient/existing-patient.component';
 import { AddDirectoryComponent } from './add-directory/add-directory.component';
+
 import { DirectoryFormComponent } from './directory-form/directory-form.component';
 import { HmslandingpageComponent } from './hmslandingpage/hmslandingpage.component';
 import { AuthGuard } from './auth.guard';
 import { AddpackageComponent } from './addpackage/addpackage.component';
 import { PackageListComponent } from './package-list/package-list.component';
+import { MonitorScreenComponent } from './monitor-screen/monitor-screen.component';
 
 const routes: Routes = [
   { path: '', component: HmslandingpageComponent },
@@ -44,7 +46,7 @@ const routes: Routes = [
   { path: 'addlabcat', canActivate: [AuthGuard], component: AddLabCatComponent },
   { path: 'patient', canActivate: [AuthGuard], component: PatientComponent },
   { path: 'patientform', canActivate: [AuthGuard], component: PatientformComponent },
-
+  { path: 'monitor/:id', canActivate: [AuthGuard], component: MonitorScreenComponent },
   { path: 'adddirectory', canActivate: [AuthGuard], component: AddDirectoryComponent },
   { path: 'directoryform', canActivate: [AuthGuard], component: DirectoryFormComponent },
   { path: 'er', canActivate: [AuthGuard], component: ErComponent },

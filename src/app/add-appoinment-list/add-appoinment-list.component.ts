@@ -19,11 +19,11 @@ export class AddAppoinmentListComponent implements OnInit {
   SelectStatus: any;
   date1: Date;
   datefilter: Date;
-  _status: Status = new Status();
-  _date: _dateClass = new _dateClass();
+  status: Status = new Status();
+  date: _dateClass = new _dateClass();
   constructor(
     private router: Router,
-    private _appointmentService: AppointmentServiceService,
+    private appointmentService: AppointmentServiceService,
     private messageService: MessageService
   ) {
     this.SelectStatus = [
@@ -39,11 +39,11 @@ export class AddAppoinmentListComponent implements OnInit {
 
   showStatus() {
     this.showLoading = true;
-    this._appointmentService.getStatus(this._status.status).subscribe(Response => {
+    this.appointmentService.getStatus(this.status.status).subscribe(Response => {
       console.log('response is here', Response);
       this.showLoading = false;
-      for (let i in Response) {
-        this._existingPatient.push({
+      for (const i in Response) {
+          this._existingPatient.push({
           id: Response[i].id,
           selectDoctor: Response[i].selectDoctor,
           patientName: Response[i].patientName,
@@ -68,10 +68,10 @@ export class AddAppoinmentListComponent implements OnInit {
 
   showDate(d) {
     this.showLoading = true;
-    this._appointmentService.getDate(d).subscribe(Response => {
+    this.appointmentService.getDate(d).subscribe(Response => {
       console.log('response is here', Response);
       this.showLoading = false;
-      for (let i in Response) {
+      for (const i in Response) {
         this._existingPatient.push({
           id: Response[i].id,
           selectDoctor: Response[i].selectDoctor,
@@ -97,10 +97,10 @@ export class AddAppoinmentListComponent implements OnInit {
 
   showTable() {
     this.showLoading = true;
-    this._appointmentService.getAppointment().subscribe(Response => {
+    this.appointmentService.getAppointment().subscribe(Response => {
       console.log('response is here', Response);
       this.showLoading = false;
-      for (let i in Response) {
+      for (const i in Response) {
         this._existingPatient.push({
           id: Response[i].id,
           selectDoctor: Response[i].selectDoctor,
@@ -140,9 +140,9 @@ export class AddAppoinmentListComponent implements OnInit {
       detail: 'Successfully Deleted'
     });
     console.log(rowData);
-    this._appointmentService.deleteById(rowData).subscribe(
+    this.appointmentService.deleteById(rowData).subscribe(
       data => {
-        this._appointmentService.getAppointment().subscribe((data: any) => {});
+        this.appointmentService.getAppointment().subscribe((data: any) => {});
 
         this.showTable();
         console.log(data);
@@ -159,9 +159,9 @@ export class AddAppoinmentListComponent implements OnInit {
       detail: 'Appointment Done'
     });
     console.log(rowData);
-    this._appointmentService.doneById(rowData).subscribe(
+    this.appointmentService.doneById(rowData).subscribe(
       data => {
-        this._appointmentService.getAppointment().subscribe((data: any) => {});
+        this.appointmentService.getAppointment().subscribe((data: any) => {});
 
         this.showTable();
         console.log(data);
@@ -174,7 +174,7 @@ export class AddAppoinmentListComponent implements OnInit {
 
   saveStatus() {
     this._existingPatient = [];
-    this._appointmentService.saveStatus(this._status.status).subscribe(
+    this.appointmentService.saveStatus(this.status.status).subscribe(
       data => {
         console.log(data);
       },
@@ -201,7 +201,7 @@ export class AddAppoinmentListComponent implements OnInit {
   }
   dateOnClick() {
     console.log(this.datefilter);
-    let d: string =
+    const d: string =
       this.datefilter.getFullYear() +
       '-' +
       (this.datefilter.getMonth() + 1) +

@@ -60,7 +60,7 @@ export class MainScreenComponent implements OnInit {
 
         setTimeout(() => {
           this.router.navigate(['/patientform']);
-        }, 3000);
+        }, 2000);
       } else {
         //  console.log(mrNo+"hello");
         this.mesgService.add({
@@ -69,7 +69,10 @@ export class MainScreenComponent implements OnInit {
           detail: 'Patient Found'
         });
         console.log('patientExists');
-        this.router.navigate(['/patient']);
+        setTimeout(() => {
+          this.router.navigate(['/monitor/',mrNo]);
+        }, 2000);
+       
       }
     }),
 // tslint:disable-next-line: no-unused-expression
