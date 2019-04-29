@@ -10,11 +10,11 @@ export class OpdErService {
 
   
   constructor(private http:HttpClient) { }
-  public saveOpdEr(opdEr:any): Observable <Object> {
-    return this.http.post(environment.baseUrl+"opder",opdEr);
+  public saveOpdEr(opdEr:any): Observable <any> {
+    return this.http.post(environment.baseUrl+"api/opder/",opdEr);
   }
 
   public getOpdEr(): Observable<any> {   // getMethod
-    return this.http.get(environment.baseUrl + "opder");
+    return this.http.get(environment.baseUrl + "api/opder/");
   }
 }

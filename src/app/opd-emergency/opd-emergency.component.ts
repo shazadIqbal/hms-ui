@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AddErComponent } from '../add-er/add-er.component';
 import { AddEmergency } from '../add-er/Add-er';
-import { Router } from "@angular/router";
+import { Router, ActivatedRoute } from "@angular/router";
 import { ErserviceService } from '../Services/erservice.service';
 import { SelectItem, MessageService } from "primeng/api";
 import { _EmergencyClass } from './Emergency';
@@ -21,31 +21,57 @@ export class OpdEmergencyComponent implements OnInit {
   addEmergency: _EmergencyClass = new _EmergencyClass();
   name: string[];
   printFacilities = [];
+  showprint:boolean = true;
   getStatus : boolean = true;
   getIdWhenStatus_200 : any;
   showLoading= true;
-  show = true;
+  show = false;
+  printer= true;
+  showspinloading=true;
+  showspinLoadingMessage = "Loading";
+ // id: number;
+  
   // printStatus : boolean;
   // 
   
 
 
-  constructor(private router: Router, private erService: ErserviceService, private opdEr: OpdErService,    private messageService: MessageService
+  constructor(private activeRoute:ActivatedRoute,private router: Router, private erService: ErserviceService, private opdEr: OpdErService,    private messageService: MessageService
     ) { }
 
   ngOnInit() {
     this.getfacilitiesInDropdown();
+    // if(this.multiDropdown == []){
+    //   this.show = true;
+    //   this.showLoading = true;
+    // }
+  //this.showLoading=true
+    this.addEmergency.id=this.activeRoute.snapshot.params['id'];
     this.addEmergency.price = 0;
   
   }
    
-
+ 
+  
   back() {
-    this.router.navigate(['/monitor']);
+    this.router.navigate(['/monitor/'+ this.addEmergency.id]);
+  }
+
+  showLoadingSpinnerAndHideForm(msg){
+    this.showspinloading=true;
+    this.show=false
+    this.showspinLoadingMessage = msg;
+  }
+
+  hideLoadingSpinnerAndShowForm(){
+    this.show=true
+    this.showspinloading=false;
   }
 
   
+
   onChangeFacility(){
+    console.log("yeh id hai"+this.addEmergency.id)
     // for(var i in this.addEmergency.facilities)
     //   this.name = (this.addEmergency.facilities[i]["facilities"]);
     //   console.log(this.name);
@@ -72,10 +98,17 @@ export class OpdEmergencyComponent implements OnInit {
    
     this.multiDropdown = [];
    
+   // this.showLoading = true;
+   this.showLoadingSpinnerAndHideForm("Getting facilities");
     this.erService.getErFacility().subscribe(
       data => {
-        this.show = false;
-        // for (var keys in data){
+             
+        if(data.length){
+          this.hideLoadingSpinnerAndShowForm()
+        
+        }
+          
+              // for (var keys in data){
           //   this.name.push((data[keys].facilities));
           //   // this.name.push((data[keys].price));
           //   console.log("men names honn"+name);
@@ -83,33 +116,51 @@ export class OpdEmergencyComponent implements OnInit {
           // // console.log(data[0]);
           console.log("hello")
         data.forEach(e => {
-          this.show = false;
-          this.showLoading = false;
+         
+        
           this.multiDropdown.push({
-            label: e.facilities,
+            label: e.name,
             value: e
           });
         });
+      
        
       },
       error => {
-        this.showLoading = true;
+        this.show = false;
+        console.log(error)
         console.log("error agya yar");
+        this.messageService.add({
+          severity: "error",
+          summary: "Error Found",
+          detail: "Something went wrong check your internet connection "
+        });
+      
       }
     );
   }
 
-  saveOpdEmergency(formdata: any){
-    this.opdEr.saveOpdEr(formdata).subscribe(
+  saveOpdEmergency(){
+    console.log(this.addEmergency)
+    console.log(this.addEmergency.facilities);
+    this.addEmergency.facilities = this.printFacilities;
+    this.opdEr.saveOpdEr(this.addEmergency).subscribe(
+
       data => {
-        console.log(formdata);
+        // here is printer thing
+       // this.printId = "print-section";
+       //this.showprint = false;
+       this.printer = false;
+        console.log(data);
         this.messageService.add({
           severity: "success",
           summary: "Added Succesfully",
           detail: "Emergency Service Added"
+          
         });
       },
       error => {
+        this.printer = true;
         console.log(error);
         this.messageService.add({
           severity: "error",
@@ -121,25 +172,21 @@ export class OpdEmergencyComponent implements OnInit {
     )
   }
 
-  checkingResponse(){
-    this.opdEr.getOpdEr()
-    .subscribe(res => {
-      // If request fails, throw an Error that will be caught
-      if(res.status < 200 || res.status >= 300) {
-        // this.getIdWhenStatus_200 = res;
-        this.messageService.add({
-          severity: "error",
-          summary: "Error Found",
-          detail: "Something went wrong check your internet connection "
-        });
+  // checkingResponse(){
+  //   this.opdEr.getOpdEr()
+  //   .subscribe(res => {
+  //     // If request fails, throw an Error that will be caught
+  //     if(res.status < 200 || res.status >= 300) {
+  //       // this.getIdWhenStatus_200 = res;
+  //      this.printer = false;
       
-      } 
-      // If everything went fine, return the response
-      else{
-        this.getIdWhenStatus_200="print-section";
-      }
-    })
-  }
+  //     } 
+  //     // If everything went fine, return the response
+  //     else{
+  //      this.printer = true;
+  //     }
+  //   })
+  // }
    
 
 

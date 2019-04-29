@@ -1,5 +1,5 @@
-<div [attr.id]="getIdWhenStatus_200" [hidden]="true">
-	<!-- <div *ngIf="addEmergency.facilities !== undefined"> -->
+<div id="print-section" [hidden]=true >
+	<!-- <div *ngIf="addEmergency.name !== undefined"> -->
 
 	<h1 style="text-align: center; color: #3a64a8;">OPD EMERGENCY RECEIPT</h1>
 	<hr style="height: 2px">
@@ -23,6 +23,7 @@
 			label="Back"></button>
 	</div>
 </div>
+
 <div class="ui-g-12">
 	<p-toast></p-toast>
 	<p-card header="OPD EMERGENCY SERVICE" [style]="{
@@ -31,15 +32,18 @@
         'margin-left': '10%',
         'text-align': 'center',
         color: 'green'
-      }">
-		<div class="ui-g ui-fluid">
-			<hr style="height:2px;width:100%;background-color:green; margin-top: 0px" />
-			<form style="width:100%" #myForm="ngForm" (ngSubmit)="saveOpdEmergency(myForm.value)">
-				<div *ngIf="showLoading">
-					<p-progressSpinner></p-progressSpinner>
-					<h2>Status Failed</h2>
-				</div>
-				<div [hidden]="show">
+	  }">
+	  
+	  <div class="ui-g ui-fluid">
+		  <hr style="height:2px;width:100%;background-color:green; margin-top: 0px" />
+		  <form style="width:100%" #myForm="ngForm" (ngSubmit)="saveOpdEmergency();">
+				
+				<div *ngIf="showspinloading">
+						<p-progressSpinner></p-progressSpinner>
+						<h2>{{showspinLoadingMessage}}</h2>
+					</div>
+				
+						<div *ngIf="show">
 					<!-- Doctor Names Field -->
 					<div class="ui-g">
 						<div class="ui-md-2 ui-lg-2"></div>
@@ -52,71 +56,82 @@
 									(onChange)="onChangeFacility()" [ngStyle]="{width:'100%'}" [style]="{'height':'100%'}" required>
 								</p-multiSelect>
 							</div>
-							</div>
 						</div>
-						<!-- price of facility field -->
-						<div class="ui-g">
-							<div class="ui-md-2 ui-lg-2"></div>
-							<div class="ui-md-8 ui-lg-8 ui-sm-12">
-								<div class="ui-inputgroup">
-									<span class="ui-inputgroup-addon" style="width:37%;font-size:15px; font-weight: bold;">
-										Facility Price</span>
-									<input type="text" name="price" [(ngModel)]="addEmergency.price" [readOnly]="true" pInputText
-										placeholder="$" required>
+					</div>
+					<!-- price of facility field -->
+					<div class="ui-g">
+						<div class="ui-md-2 ui-lg-2"></div>
+						<div class="ui-md-8 ui-lg-8 ui-sm-12">
+							<div class="ui-inputgroup">
+								<span class="ui-inputgroup-addon" style="width:37%;font-size:15px; font-weight: bold;">
+									Facility Price</span>
+								<input type="text" name="price" [(ngModel)]="addEmergency.price" [readOnly]="true" pInputText
+									placeholder="$" required>
 
-								</div>
-							</div>
-						</div>
-
-						<!-- Cash Recieved Field -->
-						<div class="ui-g">
-							<div class="ui-md-2 ui-lg-2"></div>
-							<div class="ui-md-8 ui-lg-8 ui-sm-12">
-								<div class="ui-inputgroup">
-									<span class="ui-inputgroup-addon" style="width:37%;font-size:15px; font-weight: bold;">
-										Cash Recieve</span>
-									<input type="text" name="cashRecieve" [(ngModel)]="addEmergency.cashRecieve" pInputText
-										placeholder="$" required>
-
-								</div>
-							</div>
-						</div>
-						<!-- Discount Field -->
-						<div class="ui-g">
-							<div class="ui-md-2 ui-lg-2"></div>
-							<div class="ui-md-8 ui-lg-8 ui-sm-12">
-								<div class="ui-inputgroup">
-									<span class="ui-inputgroup-addon" style="width:37%;font-size:15px;font-weight: bold;">
-										Discount</span>
-									<input type="number" min="0" name="discount" [(ngModel)]="addEmergency.discount" pInputText
-										placeholder="0">
-
-								</div>
-							</div>
-						</div>
-						<!-- Total Field -->
-						<div class="ui-g">
-							<div class="ui-md-2 ui-lg-2"></div>
-							<div class="ui-md-8 ui-lg-8 ui-sm-12">
-								<div class="ui-inputgroup">
-									<span class="ui-inputgroup-addon" style="width:37%;font-size:15px;font-weight: bold;">
-										Total</span>
-									<input type="text" pInputText name="total" [(ngModel)]="addEmergency.total"
-										placeholder="Total Amount $$" required>
-
-								</div>
-							</div>
-						</div>
-						<!-- Save Button -->
-						<div class="ui-g">
-							<div class="ui-md-2 ui-lg-2"></div>
-							<div class="ui-md-8 ui-lg-8 ui-sm-12">
-								<button pButton type="submit" label="SAVE" class="ui-button-success" printSectionId="print-section"
-									ngxPrint [disabled]="myForm.invalid"></button>
 							</div>
 						</div>
 					</div>
-				
+
+					<!-- Cash Recieved Field -->
+					<div class="ui-g">
+						<div class="ui-md-2 ui-lg-2"></div>
+						<div class="ui-md-8 ui-lg-8 ui-sm-12">
+							<div class="ui-inputgroup">
+								<span class="ui-inputgroup-addon" style="width:37%;font-size:15px; font-weight: bold;">
+									Cash Recieve</span>
+								<input type="text" name="cashRecieve" [(ngModel)]="addEmergency.cashRecieve" pInputText placeholder="$"
+									required>
+
+							</div>
+						</div>
+					</div>
+					<!-- Discount Field -->
+					<div class="ui-g">
+						<div class="ui-md-2 ui-lg-2"></div>
+						<div class="ui-md-8 ui-lg-8 ui-sm-12">
+							<div class="ui-inputgroup">
+								<span class="ui-inputgroup-addon" style="width:37%;font-size:15px;font-weight: bold;">
+									Discount</span>
+								<input type="number" min="0" name="discount" [(ngModel)]="addEmergency.discount" pInputText
+									placeholder="0">
+
+							</div>
+						</div>
+					</div>
+					<!-- Total Field -->
+					<div class="ui-g">
+						<div class="ui-md-2 ui-lg-2"></div>
+						<div class="ui-md-8 ui-lg-8 ui-sm-12">
+							<div class="ui-inputgroup">
+								<span class="ui-inputgroup-addon" style="width:37%;font-size:15px;font-weight: bold;">
+									Total</span>
+								<input type="text" pInputText name="total" [(ngModel)]="addEmergency.total"
+									placeholder="Total Amount $$" [readOnly]="true" required>
+
+							</div>
+						</div>
+					</div>
+					<!-- Save Button -->
+					<div class="ui-g">
+						<div class="ui-md-2 ui-lg-2"></div>
+						<div class="ui-md-8 ui-lg-8 ui-sm-12">
+							<button pButton type="submit" label="SAVE" class="ui-button-success" 
+								 [disabled]="myForm.invalid" ></button>
+						</div>
+					</div>
+					<div class="ui-g">
+						<div class="ui-md-2 ui-lg-2"></div>
+						<div class="ui-md-8 ui-lg-8 ui-sm-12">
+							<button pButton type="button" label="PRINT" class="ui-button-success" printSectionId="print-section"
+								ngxPrint [disabled]="printer"></button>
+						</div>
+					</div>
+				</div>
+
+				<!-- <div [hidden]="true">
+							
+					</div> -->
+
 			</form>
 		</div>
 

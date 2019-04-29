@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-patient-panel',
@@ -8,11 +8,14 @@ import { Router } from '@angular/router';
 })
 export class PatientPanelComponent implements OnInit {
 
-  constructor(private router: Router) { }
+  constructor(private router: Router,private activatedRout: ActivatedRoute) { }
 
   ngOnInit() {
   }
   opdEr(){
-    this.router.navigate(['/opdEmergency']);
+  }
+  gotoEr(){
+    let id = this.activatedRout.snapshot.params['id'];
+    this.router.navigate(['/opdEmergency/'+ id]);
   }
 }

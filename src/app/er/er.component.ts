@@ -1,5 +1,5 @@
 import { Facility } from "./../addpanellist/facility";
-import { AddErComponent } from "./../add-er/add-er.component";
+// import { AddErComponent } from "./../add-er/add-er.component";
 import { ErserviceService } from "./../services/erservice.service";
 import { Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router";

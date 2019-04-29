@@ -34,7 +34,6 @@ export class PatientMonitorComponent implements OnInit {
     this.patient.getPatientMonitor(id).subscribe((response)=>
     {
       
-   
       if(response.id)
       {
       console.log(response)
