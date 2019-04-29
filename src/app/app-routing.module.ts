@@ -24,6 +24,8 @@ import { AddAppoinmentListComponent } from './add-appoinment-list/add-appoinment
 import { ExistingPatientComponent } from './existing-patient/existing-patient.component';
 import { AddDirectoryComponent } from './add-directory/add-directory.component';
 
+
+import { OpdEmergencyComponent } from './opd-emergency/opd-emergency.component';
 import { DirectoryFormComponent } from './directory-form/directory-form.component';
 import { HmslandingpageComponent } from './hmslandingpage/hmslandingpage.component';
 import { AuthGuard } from './auth.guard';
@@ -52,7 +54,9 @@ const routes: Routes = [
   { path: 'er', canActivate: [AuthGuard], component: ErComponent },
   { path: 'adder', canActivate: [AuthGuard], component: AddErComponent },
   { path: 'appoinmentList', canActivate: [AuthGuard], component: AddAppoinmentListComponent },
-  { path: 'existingPatient', canActivate: [AuthGuard], component: ExistingPatientComponent }
+  { path: 'existingPatient', canActivate: [AuthGuard], component: ExistingPatientComponent },
+  {path:'opdEmergency/:id',component:OpdEmergencyComponent},
+
 ];
 
 @NgModule({

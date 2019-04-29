@@ -47,7 +47,6 @@ import { PaginatorModule } from 'primeng/paginator';
 import { AddLabTestComponent } from './add-lab-test/add-lab-test.component';
 import { AddTestComponent } from './add-lab-test/add-test/add-test.component';
 import { AddLabCatComponent } from './add-lab-test/add-lab-cat/add-lab-cat.component';
-
 import { PatientComponent } from './patient/patient.component';
 import { PatientformComponent } from './patientform/patientform.component';
 import { InputTextareaModule } from 'primeng/inputtextarea';
@@ -58,7 +57,9 @@ import { AddpanellistComponent } from './addpanellist/addpanellist.component';
 import { MultiSelectModule } from 'primeng/multiselect';
 import { AddpanellistseviceService } from './addpanellist/addpanellistsevice.service';
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
+
 import { NavBarService } from './Services/NavBarService';
+
 import { ErComponent } from './er/er.component';
 import { AddErComponent } from './add-er/add-er.component';
 import { AddDirectoryComponent } from './add-directory/add-directory.component';
@@ -69,10 +70,14 @@ import { PatientPanelComponent } from './monitor-screen/patient-panel/patient-pa
 import { MrComponentComponent } from './main-screen/mr-component/mr-component.component';
 import { AddAppoinmentListComponent } from './add-appoinment-list/add-appoinment-list.component';
 import { ExistingPatientComponent } from './existing-patient/existing-patient.component';
+
+import { OpdEmergencyComponent } from './opd-emergency/opd-emergency.component';
+import { NgxPrintModule } from 'ngx-print';
 import { HmslandingpageComponent } from './hmslandingpage/hmslandingpage.component';
 import { AuthGuard } from './auth.guard';
 import { AddpackageComponent } from './addpackage/addpackage.component';
 import { PackageListComponent } from './package-list/package-list.component';
+
 
 @NgModule({
   declarations: [
@@ -88,6 +93,7 @@ import { PackageListComponent } from './package-list/package-list.component';
     MrComponentComponent,
     AddPanelComponent,
     SearchbarComponent,
+
     //  PatientSlipComponent, PatientInputComponent, PatientCardComponent, ButtonsComponent, MasterTableComponent, ChildTableComponent, PatientPaymentComponent, TableComponent, DoctorListComponent, AdddoctorComponent, AddLabTestComponent, AddTestComponent, AddLabCatComponent
     ModalComponent,
     PatientSlipComponent,
@@ -118,12 +124,16 @@ import { PackageListComponent } from './package-list/package-list.component';
     AddErComponent,
     HmslandingpageComponent,
     AddpackageComponent,
-    PackageListComponent
+    PackageListComponent,
+    OpdEmergencyComponent
+
   ],
   imports: [
     BrowserModule,
     FormsModule,
     ProgressSpinnerModule,
+
+    NgxPrintModule,
     AppRoutingModule,
     AccordionModule,
     ButtonModule,
@@ -145,7 +155,8 @@ import { PackageListComponent } from './package-list/package-list.component';
     MultiSelectModule,
     ProgressSpinnerModule
   ],
-  providers: [DoctorService, AddpanellistseviceService, MessageService, NavBarService, AuthGuard],
+
+  providers: [DoctorService, AddpanellistseviceService, MessageService, NavBarService, AuthGuard, AddErComponent],
   bootstrap: [AppComponent],
   exports: [FormsModule]
 })
