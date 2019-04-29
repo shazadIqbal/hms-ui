@@ -1,32 +1,26 @@
-
 /* You can add global styles to this file, and also import other style files */
-
 
 @keyframes ui-progress-spinner-color {
   100%,
   0% {
-      stroke: #d62d20;
+    stroke: #d62d20;
   }
   40% {
-      stroke: #0057e7;
+    stroke: #0057e7;
   }
   66% {
-      stroke: #008744;
+    stroke: #008744;
   }
   80%,
   90% {
-      stroke: #ffa700;
+    stroke: #ffa700;
   }
 }
 .loading-indicator {
-
   width: 40%;
-  margin-left:44%;
-  overflow:hidden;
+  margin-left: 44%;
+  overflow: hidden;
   background: none;
-
-
-
-
-
 }
+
+

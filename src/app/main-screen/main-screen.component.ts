@@ -4,6 +4,7 @@ import {Router} from '@angular/router';
 import {PatientserviceService} from '../patientservice.service';
 import {MessageService} from 'primeng/api';
 import { DoctorListComponent } from '../doctor-list/doctor-list.component';
+import { NavBarService } from '../Services/NavBarService';
 
 @Component({
   selector: 'app-main-screen',
@@ -15,11 +16,13 @@ export class MainScreenComponent implements OnInit {
   constructor(
     private router: Router,
     private patientService: PatientserviceService,
-    private mesgService: MessageService
+    private mesgService: MessageService,
+    public nav: NavBarService
   ) {
   }
 
     ngOnInit() {
+      this.nav.show();
   }
 
   numberOnly(event): boolean {
@@ -103,6 +106,10 @@ export class MainScreenComponent implements OnInit {
   }
   gotoErService() {
     this.router.navigate(["/er"]);
+  }
+
+  toPackageList(){
+    this.router.navigate(["/packagelist"]);
   }
 
 }

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {MenuItem} from 'primeng/api';
+import { NavBarService } from '../Services/NavBarService';
+
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -7,10 +9,10 @@ import {MenuItem} from 'primeng/api';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor() { }
+  constructor(public nav:NavBarService ) { }
 
   items1: MenuItem[];
- 
+
 ngOnInit(){
   this.items1 = [
     {label: 'Stats', icon: 'fa fa-fw fa-bar-chart'},

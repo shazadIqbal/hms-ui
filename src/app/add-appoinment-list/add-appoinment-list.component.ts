@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AppointmentServiceService } from '../Services/appointment-service.service';
-import {MessageService } from 'primeng/api';
-import {Status} from './SelectStatus';
-import {_dateClass} from './dateModel';
+import { MessageService } from 'primeng/api';
+import { Status } from './SelectStatus';
+import { _dateClass } from './dateModel';
 import { DatePipe } from '@angular/common';
 
 @Component({
@@ -12,194 +12,203 @@ import { DatePipe } from '@angular/common';
   styleUrls: ['./add-appoinment-list.component.css']
 })
 export class AddAppoinmentListComponent implements OnInit {
-  varr:any;
+  varr: any;
   cols: any[];
-  showLoading :any;
+  showLoading: any;
   _existingPatient: any;
-  SelectStatus:any;
-  date1:Date;
-  datefilter:Date;
-  _status : Status = new Status();
-  _date : _dateClass = new _dateClass();
-  constructor(private router : Router, private _appointmentService: AppointmentServiceService,private messageService: MessageService) {
+  SelectStatus: any;
+  date1: Date;
+  datefilter: Date;
+  status: Status = new Status();
+  date: _dateClass = new _dateClass();
+  constructor(
+    private router: Router,
+    private appointmentService: AppointmentServiceService,
+    private messageService: MessageService
+  ) {
     this.SelectStatus = [
-    
-      { label: 'Active', value: "active" },
-      { label: 'Inactive', value: "inactive" },
-      { label: 'Done', value: "done" }
+      { label: 'Active', value: 'active' },
+      { label: 'Inactive', value: 'inactive' },
+      { label: 'Done', value: 'done' }
     ];
-   }
-
-  ngOnInit() {
-   this.showTable();
   }
 
+  ngOnInit() {
+    this.showTable();
+  }
 
-showStatus(){
-  this.showLoading = true;
-  this._appointmentService.getStatus(this._status.status).subscribe((Response)=>{
-    console.log("response is here",Response);
-    this.showLoading = false;
-    for(let i in Response){
-        this._existingPatient.push({
-            'id':Response[i].id,
-            'selectDoctor':Response[i].selectDoctor,
-            'patientName' : Response[i].patientName,
-            'phoneNo':Response[i].phoneNo,
-            'appoinmentDate':new Date(Response[i].appoinmentDate).toDateString(),
-            'time':Response[i].time
-        });
-    }
-  })
-
-  this.cols = [
-    { field: 'id', header: 'MR Number' },
-    {field: 'selectDoctor', header: 'Doctor Name' },
-    {field: 'patientName', header: 'Patient Name' },
-    {field: 'phoneNo', header: 'patient Number' },
-    {field: 'appoinmentDate', header: 'Appointment Date' },
-    {field: 'time', header: 'Time' }
-  ];
-
-  this._existingPatient = [];
-
-}
-
-showDate(d){
-  this.showLoading = true;
-  this._appointmentService.getDate(d).subscribe((Response)=>{
-    console.log("response is here",Response);
-    this.showLoading = false;
-    for(let i in Response){
-        this._existingPatient.push({
-            'id':Response[i].id,
-            'selectDoctor':Response[i].selectDoctor,
-            'patientName' : Response[i].patientName,
-            'phoneNo':Response[i].phoneNo,
-            'appoinmentDate':new Date(Response[i].appoinmentDate).toDateString(),
-            'time':Response[i].time
-        });
-    }
-  })
-
-  this.cols = [
-    { field: 'id', header: 'MR Number' },
-    {field: 'selectDoctor', header: 'Doctor Name' },
-    {field: 'patientName', header: 'Patient Name' },
-    {field: 'phoneNo', header: 'patient Number' },
-    {field: 'appoinmentDate', header: 'Appointment Date' },
-    {field: 'time', header: 'Time' },
-  ];
-
-  this._existingPatient = [];
-  
-}
-
-  showTable(){
+  showStatus() {
     this.showLoading = true;
-    this._appointmentService.getAppointment().subscribe((Response)=>{
-      console.log("response is here",Response);
+    this.appointmentService.getStatus(this.status.status).subscribe(Response => {
+      console.log('response is here', Response);
       this.showLoading = false;
-      for(let i in Response){
+      for (const i in Response) {
           this._existingPatient.push({
-              'id':Response[i].id,
-              'selectDoctor':Response[i].selectDoctor,
-              'patientName' : Response[i].patientName,
-              'phoneNo':Response[i].phoneNo,  
-              'appoinmentDate':new Date(Response[i].appoinmentDate).toDateString(),
-              'time':Response[i].time
-          });
+          id: Response[i].id,
+          selectDoctor: Response[i].selectDoctor,
+          patientName: Response[i].patientName,
+          phoneNo: Response[i].phoneNo,
+          appoinmentDate: new Date(Response[i].appoinmentDate).toDateString(),
+          time: Response[i].time
+        });
       }
-    })
+    });
 
     this.cols = [
       { field: 'id', header: 'MR Number' },
-      {field: 'selectDoctor', header: 'Doctor Name' },
-      {field: 'patientName', header: 'Patient Name' },
-      {field: 'phoneNo', header: 'patient Number' },  
-      {field: 'appoinmentDate', header: 'Appointment Date' },
-      {field: 'time', header: 'Time' },
+      { field: 'selectDoctor', header: 'Doctor Name' },
+      { field: 'patientName', header: 'Patient Name' },
+      { field: 'phoneNo', header: 'patient Number' },
+      { field: 'appoinmentDate', header: 'Appointment Date' },
+      { field: 'time', header: 'Time' }
     ];
 
-    this._existingPatient=[];
- }  
-  backToMain(){
+    this._existingPatient = [];
+  }
+
+  showDate(d) {
+    this.showLoading = true;
+    this.appointmentService.getDate(d).subscribe(Response => {
+      console.log('response is here', Response);
+      this.showLoading = false;
+      for (const i in Response) {
+        this._existingPatient.push({
+          id: Response[i].id,
+          selectDoctor: Response[i].selectDoctor,
+          patientName: Response[i].patientName,
+          phoneNo: Response[i].phoneNo,
+          appoinmentDate: new Date(Response[i].appoinmentDate).toDateString(),
+          time: Response[i].time
+        });
+      }
+    });
+
+    this.cols = [
+      { field: 'id', header: 'MR Number' },
+      { field: 'selectDoctor', header: 'Doctor Name' },
+      { field: 'patientName', header: 'Patient Name' },
+      { field: 'phoneNo', header: 'patient Number' },
+      { field: 'appoinmentDate', header: 'Appointment Date' },
+      { field: 'time', header: 'Time' }
+    ];
+
+    this._existingPatient = [];
+  }
+
+  showTable() {
+    this.showLoading = true;
+    this.appointmentService.getAppointment().subscribe(Response => {
+      console.log('response is here', Response);
+      this.showLoading = false;
+      for (const i in Response) {
+        this._existingPatient.push({
+          id: Response[i].id,
+          selectDoctor: Response[i].selectDoctor,
+          patientName: Response[i].patientName,
+          phoneNo: Response[i].phoneNo,
+          appoinmentDate: new Date(Response[i].appoinmentDate).toDateString(),
+          time: Response[i].time
+        });
+      }
+    });
+
+    this.cols = [
+      { field: 'id', header: 'MR Number' },
+      { field: 'selectDoctor', header: 'Doctor Name' },
+      { field: 'patientName', header: 'Patient Name' },
+      { field: 'phoneNo', header: 'patient Number' },
+      { field: 'appoinmentDate', header: 'Appointment Date' },
+      { field: 'time', header: 'Time' }
+    ];
+
+    this._existingPatient = [];
+  }
+  backToMain() {
     this.router.navigate(['/mainscreen']);
   }
-  existingPatient(){
-    this.router.navigate(['/existingPatient'])
+  existingPatient() {
+    this.router.navigate(['/existingPatient']);
   }
-  newPatient(){
-    this.router.navigate(['/patientform'])
+  newPatient() {
+    this.router.navigate(['/patientform']);
   }
 
   deleteAppointmentByID(rowData: any) {
-    this.messageService.add({severity:'error', summary:'Status', detail:'Successfully Deleted'});
+    this.messageService.add({
+      severity: 'error',
+      summary: 'Status',
+      detail: 'Successfully Deleted'
+    });
     console.log(rowData);
-    this._appointmentService.deleteById(rowData).subscribe(
+    this.appointmentService.deleteById(rowData).subscribe(
       data => {
-        this._appointmentService.getAppointment().subscribe((data: any) => {});
-       
+        this.appointmentService.getAppointment().subscribe((data: any) => {});
+
         this.showTable();
         console.log(data);
       },
       error => {
         console.log(error);
-        
       }
     );
   }
-  doneAppointmentByID(rowData: any){
-    this.messageService.add({severity:'successfull', summary:'Status', detail:'Appointment Done'});
+  doneAppointmentByID(rowData: any) {
+    this.messageService.add({
+      severity: 'successfull',
+      summary: 'Status',
+      detail: 'Appointment Done'
+    });
     console.log(rowData);
-    this._appointmentService.doneById(rowData).subscribe(
-      data=> {
-        this._appointmentService.getAppointment().subscribe((data: any)=> {});
-     
+    this.appointmentService.doneById(rowData).subscribe(
+      data => {
+        this.appointmentService.getAppointment().subscribe((data: any) => {});
+
         this.showTable();
         console.log(data);
-
       },
-      error =>{
+      error => {
         console.log(error);
       }
-      
-      
-      );
+    );
   }
 
-  saveStatus(){
+  saveStatus() {
     this._existingPatient = [];
-    this._appointmentService.saveStatus(this._status.status).subscribe((data) =>{
-    console.log(data);
-  }, error=>{
-    console.log(error);
-    
-  })
-this.showStatus();
-}
-// saveDate(){
-  
-  
-  
-//   this._existingPatient = [];
-//   this._appointmentService.saveDate(this._date).subscribe((data) =>{
-//     console.log(data);
-// }, error=>{
-//  console.log(error);
-  
-// })
-// this.showDate();
-// }
+    this.appointmentService.saveStatus(this.status.status).subscribe(
+      data => {
+        console.log(data);
+      },
+      error => {
+        console.log(error);
+      }
+    );
+    this.showStatus();
+  }
+  // saveDate(){
 
-statusOnClick(){
-  this.showStatus();
-}
-dateOnClick(){
-  console.log(this.datefilter);
-  let d:string=this.datefilter.getFullYear()+"-"+(this.datefilter.getMonth()+1)+"-"+this.datefilter.getDay();
-  console.log(d)
-  
-  this.showDate(d);
-}
+  //   this._existingPatient = [];
+  //   this._appointmentService.saveDate(this._date).subscribe((data) =>{
+  //     console.log(data);
+  // }, error=>{
+  //  console.log(error);
+
+  // })
+  // this.showDate();
+  // }
+
+  statusOnClick() {
+    this.showStatus();
+  }
+  dateOnClick() {
+    console.log(this.datefilter);
+    const d: string =
+      this.datefilter.getFullYear() +
+      '-' +
+      (this.datefilter.getMonth() + 1) +
+      '-' +
+      this.datefilter.getDay();
+    console.log(d);
+
+    this.showDate(d);
+  }
 }
