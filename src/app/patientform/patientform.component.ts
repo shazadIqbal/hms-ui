@@ -17,20 +17,18 @@ export class PatientformComponent implements OnInit {
     private patientService: PatientserviceService,
     private router: Router
   ) {
-    this.gender = [
-      { label: 'Male', value: 'Male' },
-      { label: 'Female', value: 'Female' }
-    ];
+    this.gender = [{ label: 'Male', value: 'Male' }, { label: 'Female', value: 'Female' }];
   }
 
-  ngOnInit() {
 
-  }
+
+  ngOnInit() {}
+
 
   onSubmit() {
     this.patientService.postPatient(this.patient).subscribe(
       data => {
-        
+
         this.msgService.add({
           severity: 'success',
           summary: 'Service message',
@@ -56,6 +54,6 @@ export class PatientformComponent implements OnInit {
     return true;
   }
   goBack() {
-    this.router.navigate(['']);
+    this.router.navigate(['mainscreen']);
   }
 }

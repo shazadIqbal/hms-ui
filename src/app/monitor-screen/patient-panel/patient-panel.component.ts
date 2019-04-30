@@ -2,6 +2,7 @@ import { OpdconsultancyComponent } from "./../../opdconsultancy/opdconsultancy.c
 import { Router, ActivatedRoute } from "@angular/router";
 import { Component, OnInit } from '@angular/core';
 
+
 @Component({
   selector: 'app-patient-panel',
   templateUrl: './patient-panel.component.html',
@@ -9,12 +10,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PatientPanelComponent implements OnInit {
 
-  constructor(private _router:Router,private activateRoute : ActivatedRoute) { }
+
+  constructor(private router: Router, private activatedRout: ActivatedRoute) { }
 
   ngOnInit() {
   }
-  goToOPD(){
-    let id =this.activateRoute.snapshot.params['id'];
-    this._router.navigate(['/opdconsultancy/'+id])
+  opdEr() {
   }
+  gotoEr() {
+    let id = this.activatedRout.snapshot.params['id'];
+    this.router.navigate(['/opdEmergency/' + id]);
+
+  }
+  goToOPD() {
+    let id = this.activatedRout.snapshot.params['id'];
+    this.router.navigate(['/opdconsultancy/' + id])
+  }
+
 }

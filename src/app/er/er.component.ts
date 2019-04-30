@@ -1,5 +1,5 @@
 import { Facility } from "./../addpanellist/facility";
-import { AddErComponent } from "./../add-er/add-er.component";
+// import { AddErComponent } from "./../add-er/add-er.component";
 import { ErserviceService } from "./../services/erservice.service";
 import { Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
@@ -103,7 +103,7 @@ export class ErComponent implements OnInit {
   }
 
   back() {
-    this.router.navigate([""]);
+    this.router.navigate(["/mainscreen"]);
   }
   gotoErService() {
     this.router.navigate(["/adder"]);

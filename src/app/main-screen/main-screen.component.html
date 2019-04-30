@@ -1,8 +1,16 @@
-<div class="container">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Mainscreen</title>
+</head>
+<body>
+  <div class="container">
   <div class="ui-g ui-fluid">
     <div class="ui-g-12">
       <p-panel header="Patient Lookup" [style]="{ 'margin-bottom': '20px' }">
-
         <div class="ui-lg-12 ui-md-12 ui-sm-12 ">
           <input
           style="display:inline"
@@ -82,11 +90,19 @@
             (click)="addlabtest()"
             class="ui-button-success"
             >
-            <img src="https://img.icons8.com/color/48/000000/test-tube.png" />
-          </button>
-        </div>
-        <div class="ui-g-3 ui-sm-12">
-            <button pButton type="button" label="Package" class="ui-button-success">
+
+              <img src="https://img.icons8.com/color/48/000000/test-tube.png" />
+            </button>
+          </div>
+          <div class="ui-g-3 ui-sm-12">
+            <button
+              pButton
+              type="button"
+              label="Package"
+              class="ui-button-success"
+              (click)="toPackageList()"
+            >
+
               <img src="https://img.icons8.com/color/48/000000/cash-in-hand.png" />
             </button>
           </div>
@@ -98,12 +114,24 @@
             </button>
           </div>
           <div class="ui-g-3 ui-sm-12">
-            <button pButton type="button" label="Reports" class="ui-button-success">
-              <img src="https://img.icons8.com/color/48/000000/hospital-3.png " />
+            <button
+              pButton
+              type="button"
+              label="Emergency Service"
+              (click)="gotoErService()"
+              class="ui-button-success"
+            >
+              <img src="https://img.icons8.com/color/48/000000/ambulance.png" />
             </button>
           </div>
           <div class="ui-g-3 ui-sm-12">
-            <button pButton type="button" (click)="addDirectory()" label="Directory" class="ui-button-success">
+            <button
+              pButton
+              type="button"
+              (click)="addDirectory()"
+              label="Directory"
+              class="ui-button-success"
+            >
               <img src="https://img.icons8.com/color/48/000000/opened-folder.png" />
             </button>
           </div>
@@ -114,17 +142,16 @@
           </div>
         </div>
         <div class="ui-g">
-
           <div class="ui-lg-3 ui-sm-3 ui-md-3"></div>
           <div class="ui-g-6 ui-sm-12">
-            <button pButton type="button" label="Appointment" class="ui-button-success" (click)="addAppointment()" >
-
+            <button
+              pButton
+              type="button"
+              label="Appointment"
+              class="ui-button-success"
+              (click)="addAppointment()"
+            >
               <img src="https://img.icons8.com/color/48/000000/planner.png" />
-            </button>
-          </div>
-          <div class="ui-g-3 ui-sm-12">
-            <button pButton type="button" label="Emergency Service" (click)="gotoErService()" class="ui-button-success">
-              <img src="https://img.icons8.com/color/48/000000/ambulance.png">
             </button>
           </div>
         </div>
@@ -132,3 +159,6 @@
     </div>
   </div>
 </div>
+
+</body>
+</html>

@@ -13,7 +13,7 @@ export class AddErComponent implements OnInit {
   display = false;
   multidropdown: SelectItem[]; // facility dropdown
   addEmergency: AddEmergency = new AddEmergency(); // creating instance so we can store values in variables
-  price: any;
+  //pice: any;
   // tslint:disable-next-line: ban-types
   total: Number;
   facilityCount;
@@ -68,8 +68,7 @@ export class AddErComponent implements OnInit {
     this.addEmergency.extraCharges = 0;
     this.addEmergency.facilities.map(f => {
       this.addEmergency.price = this.addEmergency.price + parseInt(f["price"]);
-      this.addEmergency.total =
-        this.addEmergency.price + this.addEmergency.extraCharges;
+      this.addEmergency.total = this.addEmergency.price + this.addEmergency.extraCharges;
     });
   }
 
