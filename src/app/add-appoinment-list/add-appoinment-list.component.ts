@@ -19,7 +19,7 @@ export class AddAppoinmentListComponent implements OnInit {
   SelectStatus: any;
   date1: Date;
   datefilter: Date;
-  status: Status = new Status();
+  _status: Status = new Status();
   date: _dateClass = new _dateClass();
   constructor(
     private router: Router,
@@ -39,7 +39,7 @@ export class AddAppoinmentListComponent implements OnInit {
 
   showStatus() {
     this.showLoading = true;
-    this.appointmentService.getStatus(this.status.status).subscribe(Response => {
+    this.appointmentService.getStatus(this._status.status).subscribe(Response => {
       console.log('response is here', Response);
       this.showLoading = false;
       for (const i in Response) {
@@ -174,7 +174,7 @@ export class AddAppoinmentListComponent implements OnInit {
 
   saveStatus() {
     this._existingPatient = [];
-    this.appointmentService.saveStatus(this.status.status).subscribe(
+    this.appointmentService.saveStatus(this._status.status).subscribe(
       data => {
         console.log(data);
       },
