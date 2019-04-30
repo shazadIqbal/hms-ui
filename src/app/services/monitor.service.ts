@@ -8,14 +8,12 @@ import { Observable } from 'rxjs';
 })
 export class MonitorService {
 
-  
+
 
   constructor(private http:HttpClient) {
    }
 
    getPatientMonitor(id):Observable<any>{
-
-   
     return this.http.get(environment.baseUrl+"api/monitor/"+id);
 
    }

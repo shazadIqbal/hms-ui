@@ -1,20 +1,5 @@
-import { DropdownModule } from 'primeng/dropdown';
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { DropdownModule } from "primeng/dropdown";
 
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { NavBarComponent } from './nav-bar/nav-bar.component';
-import { HomePageComponent } from './home-page/home-page.component';
-import { AboutPageComponent } from './about-page/about-page.component';
-import { ContactPageComponent } from './contact-page/contact-page.component';
-import { LoginFormComponent } from './login-form/login-form.component';
-import { FooterComponent } from './footer/footer.component';
-import { HeaderComponent } from './header/header.component';
-import { MainScreenComponent } from './main-screen/main-screen.component';
-// import { MrComponentComponent } from './main-screen/mr-component/mr-component.component';
 import { AddPanelComponent } from './main-screen/add-panel/add-panel.component';
 import { SearchbarComponent } from './searchbar/searchbar.component';
 import { ModalComponent } from './modal/modal.component';
@@ -77,6 +62,20 @@ import { HmslandingpageComponent } from './hmslandingpage/hmslandingpage.compone
 import { AuthGuard } from './auth.guard';
 import { AddpackageComponent } from './addpackage/addpackage.component';
 import { PackageListComponent } from './package-list/package-list.component';
+import { OpdconsultancyComponent } from "./opdconsultancy/opdconsultancy.component";
+import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
+import { NavBarComponent } from './nav-bar/nav-bar.component';
+import { HomePageComponent } from './home-page/home-page.component';
+import { AboutPageComponent } from './about-page/about-page.component';
+import { ContactPageComponent } from './contact-page/contact-page.component';
+import { LoginFormComponent } from './login-form/login-form.component';
+import { FooterComponent } from './footer/footer.component';
+import { HeaderComponent } from './header/header.component';
+import { MainScreenComponent } from './main-screen/main-screen.component';
+import { NgModule } from '@angular/core';
 
 
 @NgModule({
@@ -122,17 +121,18 @@ import { PackageListComponent } from './package-list/package-list.component';
     AddAppoinmentListComponent,
     ErComponent,
     AddErComponent,
+
     HmslandingpageComponent,
     AddpackageComponent,
     PackageListComponent,
-    OpdEmergencyComponent
+    OpdEmergencyComponent,
+    OpdconsultancyComponent
 
   ],
   imports: [
     BrowserModule,
     FormsModule,
     ProgressSpinnerModule,
-
     NgxPrintModule,
     AppRoutingModule,
     AccordionModule,
@@ -142,7 +142,6 @@ import { PackageListComponent } from './package-list/package-list.component';
     CalendarModule,
     HttpClientModule,
     HttpClientXsrfModule.disable(),
-
     BrowserAnimationsModule,
     TabMenuModule,
     PanelModule,
@@ -153,10 +152,13 @@ import { PackageListComponent } from './package-list/package-list.component';
     DropdownModule,
     InputTextareaModule,
     MultiSelectModule,
-    ProgressSpinnerModule
+
+    ProgressSpinnerModule,
+    NgxPrintModule
   ],
 
   providers: [DoctorService, AddpanellistseviceService, MessageService, NavBarService, AuthGuard, AddErComponent],
+
   bootstrap: [AppComponent],
   exports: [FormsModule]
 })

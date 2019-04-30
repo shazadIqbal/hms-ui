@@ -31,9 +31,12 @@ import { HmslandingpageComponent } from './hmslandingpage/hmslandingpage.compone
 import { AuthGuard } from './auth.guard';
 import { AddpackageComponent } from './addpackage/addpackage.component';
 import { PackageListComponent } from './package-list/package-list.component';
+// import { MonitorScreenComponent } from './monitor-screen/,monitor-screen.component';
+import { OpdconsultancyComponent } from './opdconsultancy/opdconsultancy.component';
 import { MonitorScreenComponent } from './monitor-screen/monitor-screen.component';
 
 const routes: Routes = [
+
   { path: '', component: HmslandingpageComponent },
   { path: 'doctorlist', canActivate: [AuthGuard], component: DoctorListComponent },
   { path: 'contact', canActivate: [AuthGuard], component: ContactPageComponent },
@@ -56,6 +59,8 @@ const routes: Routes = [
   { path: 'appoinmentList', canActivate: [AuthGuard], component: AddAppoinmentListComponent },
   { path: 'existingPatient', canActivate: [AuthGuard], component: ExistingPatientComponent },
   {path:'opdEmergency/:id',component:OpdEmergencyComponent},
+  {path: 'opdconsultancy/:id', component: OpdconsultancyComponent}
+
 
 ];
 

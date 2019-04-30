@@ -9,12 +9,12 @@ export class DoctorService {
 
  constructor(private http: HttpClient) {}
 
-  private baseUrl = environment.baseUrl + '/api/doctor/';
+//  '/api/doctor/';
 
   savedoctor(doctor): Observable<any> {
-    return this.http.post(this.baseUrl, doctor);
+    return this.http.post(environment.baseUrl+'api/doctor/',doctor);
   }
   getdoctors(): Observable<any> {
-    return this.http.get(this.baseUrl);
+    return this.http.get(environment.baseUrl+'api/doctor/');
   }
 }
