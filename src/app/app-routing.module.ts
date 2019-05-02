@@ -34,6 +34,7 @@ import { PackageListComponent } from './package-list/package-list.component';
 // import { MonitorScreenComponent } from './monitor-screen/,monitor-screen.component';
 import { OpdconsultancyComponent } from './opdconsultancy/opdconsultancy.component';
 import { MonitorScreenComponent } from './monitor-screen/monitor-screen.component';
+import { PatientTransactionsComponent } from './patient-transactions/patient-transactions.component';
 
 const routes: Routes = [
 
@@ -59,7 +60,8 @@ const routes: Routes = [
   { path: 'appoinmentList', canActivate: [AuthGuard], component: AddAppoinmentListComponent },
   { path: 'existingPatient', canActivate: [AuthGuard], component: ExistingPatientComponent },
   {path:'opdEmergency/:id',component:OpdEmergencyComponent},
-  {path: 'opdconsultancy/:id', component: OpdconsultancyComponent}
+  {path: 'opdconsultancy/:id', component: OpdconsultancyComponent},
+  {path: 'patienttransactions/:id', component:PatientTransactionsComponent}
 
 
 ];
