@@ -8,6 +8,7 @@ import { Router, ActivatedRoute } from "@angular/router";
 import { MessageService, SelectItem } from "primeng/api";
 import { ErserviceService } from "../services/erservice.service";
 import { OpdConsultancy } from "./opdconsultancy";
+import { opdGynyModel } from '../opd-gyny/opd-gyny';
 
 @Component({
   selector: "app-opdconsultancy",
@@ -30,7 +31,7 @@ export class OpdconsultancyComponent implements OnInit {
     private messageService: MessageService,
     private doctorService: DoctorService,
     private opd_Service: OpdService,
-    private activatedRoute : ActivatedRoute
+    private activatedRoute : ActivatedRoute,
 
 
     ) { }
@@ -44,7 +45,7 @@ export class OpdconsultancyComponent implements OnInit {
 
   }
 
-p
+
   getDoctorsOption() {
     let i = 0;
     this.opdObject.sallary = 0;

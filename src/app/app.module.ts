@@ -76,6 +76,9 @@ import { FooterComponent } from './footer/footer.component';
 import { HeaderComponent } from './header/header.component';
 import { MainScreenComponent } from './main-screen/main-screen.component';
 import { NgModule } from '@angular/core';
+import { OpdGynyComponent } from './opd-gyny/opd-gyny.component';
+import {CheckboxModule} from 'primeng/checkbox';
+
 
 
 @NgModule({
@@ -126,7 +129,8 @@ import { NgModule } from '@angular/core';
     AddpackageComponent,
     PackageListComponent,
     OpdEmergencyComponent,
-    OpdconsultancyComponent
+    OpdconsultancyComponent,
+    OpdGynyComponent
 
   ],
   imports: [
@@ -152,9 +156,9 @@ import { NgModule } from '@angular/core';
     DropdownModule,
     InputTextareaModule,
     MultiSelectModule,
-
     ProgressSpinnerModule,
-    NgxPrintModule
+    NgxPrintModule,
+    CheckboxModule
   ],
 
   providers: [DoctorService, AddpanellistseviceService, MessageService, NavBarService, AuthGuard, AddErComponent],
