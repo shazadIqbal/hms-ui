@@ -1,5 +1,5 @@
 import { Status } from './../add-appoinment-list/SelectStatus';
-import { OpdService } from './../Services/opd.service';
+import { PatientObservationService } from './../Services/patient-observation.service';
 import { DoctorService } from './../adddoctor/doctor.service';
 import { AddErComponent } from './../add-er/add-er.component';
 import { MainScreenComponent } from './../main-screen/main-screen.component';
@@ -7,19 +7,20 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { MessageService, SelectItem } from 'primeng/api';
 import { ErserviceService } from '../services/erservice.service';
-import { OpdConsultancy } from './opdconsultancy';
+import { patientobservation } from './patientobservation';
+import { from } from 'rxjs';
 
 @Component({
-  selector: 'app-opdconsultancy',
-  templateUrl: './opdconsultancy.component.html',
-  styleUrls: ['./opdconsultancy.component.css']
+  selector: 'app-patient-observation',
+  templateUrl: './patient-observation.component.html',
+  styleUrls: ['./patient-observation.component.css']
 })
-export class OpdconsultancyComponent implements OnInit {
+export class PatientObservationComponent implements OnInit {
   doctors: SelectItem[];
   // selectedDoctor : any;
   calDiscount = 0;
   //object of opd consultancy
-  opdObject: OpdConsultancy = new OpdConsultancy();
+  patientObservationObject: patientobservation = new patientobservation();
   getStatus: boolean = true;
   checkStatus: boolean = false;
   show: boolean = false;
@@ -29,7 +30,7 @@ export class OpdconsultancyComponent implements OnInit {
     private router: Router,
     private messageService: MessageService,
     private doctorService: DoctorService,
-    private opd_Service: OpdService,
+    private patientObservationService: PatientObservationService,
     private activatedRoute: ActivatedRoute
   ) {}
 
@@ -37,13 +38,13 @@ export class OpdconsultancyComponent implements OnInit {
     // this.show = true
     this.enable = true;
     this.getDoctorsOption();
-    this.opdObject.id = this.activatedRoute.snapshot.params['id'];
-    console.log('this is id' + this.opdObject.id);
+    this.patientObservationObject.id = this.activatedRoute.snapshot.params['id'];
+    console.log('this is id' + this.patientObservationObject.id);
   }
 
   getDoctorsOption() {
     let i = 0;
-    this.opdObject.sallary = 0;
+    this.patientObservationObject.sallary = 0;
     this.doctors = [];
     this.doctorService.getdoctors().subscribe(
       data => {
@@ -58,7 +59,7 @@ export class OpdconsultancyComponent implements OnInit {
               label: e.fullName,
               value: { mrNo: e.mrNo, fullName: e.fullName, sallary: e.sallary }
             });
-            // console.log({id:this.opdObject.doctors});
+            // console.log({id:this.patientObservationObject.doctors});
           });
         }
       },
@@ -77,24 +78,26 @@ export class OpdconsultancyComponent implements OnInit {
   //Getting Doctors'Fees
   doctorDropdown() {
     // console.log(this.selectedDoctor);
-    console.log(this.opdObject.doctors['fullName']);
-    this.opdObject.sallary = 0; //it will also work for the negative
-    this.opdObject.total = 0;
-    this.opdObject.discount = 0;
-    this.opdObject.sallary = this.opdObject.doctors['sallary'];
-    console.log(this.opdObject.sallary);
-    this.opdObject.total = this.opdObject.sallary + this.opdObject.discount;
+    console.log(this.patientObservationObject.doctors['fullName']);
+    this.patientObservationObject.sallary = 0; //it will also work for the negative
+    this.patientObservationObject.total = 0;
+    this.patientObservationObject.discount = 0;
+    this.patientObservationObject.sallary = this.patientObservationObject.doctors['sallary'];
+    console.log(this.patientObservationObject.sallary);
+    this.patientObservationObject.total =
+      this.patientObservationObject.sallary + this.patientObservationObject.discount;
   }
 
   //FUNCTION FOR BACK BUTTON
   backToMonitor() {
-    this.router.navigate(['/monitor/' + this.opdObject.id]);
+    this.router.navigate(['/monitor/' + this.patientObservationObject.id]);
   }
   //FUNCTION FOR SUBMIT OPD CONSULTANCY
   submitOpd() {
-    this.opd_Service.saveOPD(this.opdObject).subscribe(
+    this.patientObservationService.savePatientObservation(this.patientObservationObject).subscribe(
       data => {
-        console.log(this.opdObject);
+        console.log(this.patientObservationObject);
+        console.log(data)
         this.messageService.add({
           severity: 'success',
           summary: 'Succesfully'
@@ -110,15 +113,15 @@ export class OpdconsultancyComponent implements OnInit {
         });
       }
     );
-    console.log(this.opdObject);
+    console.log(this.patientObservationObject);
   }
 
   //function for totalprice
   getTotal(value: any) {
-    this.opdObject.cashRecieved = 0;
+    this.patientObservationObject.cashRecieved = 0;
     console.log(value);
-    this.opdObject.discount = 0;
-    this.opdObject.cashRecieved = value;
-    this.opdObject.total = this.opdObject.total;
+    this.patientObservationObject.discount = 0;
+    this.patientObservationObject.cashRecieved = value;
+    this.patientObservationObject.total = this.patientObservationObject.total;
   }
 }

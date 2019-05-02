@@ -65,7 +65,7 @@ export class PatientMonitorComponent implements OnInit {
 
   backToMain()
   {
-    this.route.navigate(['']);
+    this.route.navigate(['mainscreen']);
   }
 
 

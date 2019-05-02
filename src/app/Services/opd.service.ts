@@ -11,6 +11,6 @@ export class OpdService {
   constructor(private http: HttpClient) { }
   // tslint:disable-next-line: ban-types
   public saveOPD(opd: any): Observable<Object> { // postMethod
-    return this.http.post(environment.baseUrl + 'api/opdconsultancy/',opd);
+    return this.http.post(environment.baseUrl + 'api/opdconsultancy/', opd);
   }
 }

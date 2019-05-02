@@ -34,9 +34,10 @@ import { PackageListComponent } from './package-list/package-list.component';
 // import { MonitorScreenComponent } from './monitor-screen/,monitor-screen.component';
 import { OpdconsultancyComponent } from './opdconsultancy/opdconsultancy.component';
 import { MonitorScreenComponent } from './monitor-screen/monitor-screen.component';
+import { PatientObservationComponent } from './patient-observation/patient-observation.component';
+import { from } from 'rxjs';
 
 const routes: Routes = [
-
   { path: '', component: HmslandingpageComponent },
   { path: 'doctorlist', canActivate: [AuthGuard], component: DoctorListComponent },
   { path: 'contact', canActivate: [AuthGuard], component: ContactPageComponent },
@@ -58,10 +59,9 @@ const routes: Routes = [
   { path: 'adder', canActivate: [AuthGuard], component: AddErComponent },
   { path: 'appoinmentList', canActivate: [AuthGuard], component: AddAppoinmentListComponent },
   { path: 'existingPatient', canActivate: [AuthGuard], component: ExistingPatientComponent },
-  {path:'opdEmergency/:id',component:OpdEmergencyComponent},
-  {path: 'opdconsultancy/:id', component: OpdconsultancyComponent}
-
-
+  { path: 'opdEmergency/:id', canActivate: [AuthGuard], component: OpdEmergencyComponent },
+  { path: 'opdconsultancy/:id', canActivate: [AuthGuard], component: OpdconsultancyComponent },
+  { path: 'patientobservation/:id', canActivate: [AuthGuard], component: PatientObservationComponent }
 ];
 
 @NgModule({

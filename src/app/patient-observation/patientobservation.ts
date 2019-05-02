@@ -1,6 +1,6 @@
 import { SelectItem } from 'primeng/api';
 
-export class OpdConsultancy {
+export class patientobservation {
   doctors: string[];
   sallary: number;
   discount: number;

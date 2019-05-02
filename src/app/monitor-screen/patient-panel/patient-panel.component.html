@@ -1,13 +1,26 @@
 <p-panel header="Patient Panel">
   <div class="ui-g">
-
     <div style="padding:2px;" class="ui-g-3 ui-sm-12">
-      <button pButton style="width:100%;" type="button" label="OPD" (click)="goToOPD()" class="ui-button-success">
+      <button
+        pButton
+        style="width:100%;"
+        type="button"
+        label="OPD"
+        (click)="goToOPD()"
+        class="ui-button-success"
+      >
         <img style="height:40px" src="https://img.icons8.com/ultraviolet/50/000000/light-on.png" />
       </button>
     </div>
     <div style="padding:2px;" class="ui-g-3 ui-sm-12">
-      <button pButton style="width:100%;" type="button" label="ER" class="ui-button-success" (click)="gotoEr()" >
+      <button
+        pButton
+        style="width:100%;"
+        type="button"
+        label="ER"
+        class="ui-button-success"
+        (click)="gotoEr()"
+      >
         <img style="height:40px" src="https://img.icons8.com/color/48/000000/hospital.png" />
       </button>
     </div>
@@ -27,8 +40,15 @@
       </button>
     </div>
 
-    <div  style="padding:2px;" class="ui-g-3 ui-sm-12">
-      <button pButton style="width:100%;" type="button" label="Obs" class="ui-button-success">
+    <div style="padding:2px;" class="ui-g-3 ui-sm-12">
+      <button
+        pButton
+        style="width:100%;"
+        type="button"
+        label="Obs"
+        class="ui-button-success"
+        (click)="gotoOBS()"
+      >
         <img style="height:40px" src="https://img.icons8.com/color/48/000000/automatic.png" />
       </button>
     </div>
@@ -43,9 +63,15 @@
       </button>
     </div>
     <div style="padding:2px;" class="ui-g-12 ui-md-offset-4 ui-md-4  ui-lg-offset-4 ui-lg-4">
-        <button pButton style="width:100%;" type="button" label="Patient Services" class="ui-button-success">
-            <img style="height:40px"  src="https://img.icons8.com/nolan/64/000000/services.png" />
-          </button>
+      <button
+        pButton
+        style="width:100%;"
+        type="button"
+        label="Patient Services"
+        class="ui-button-success"
+      >
+        <img style="height:40px" src="https://img.icons8.com/nolan/64/000000/services.png" />
+      </button>
     </div>
   </div>
 </p-panel>

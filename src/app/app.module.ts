@@ -76,6 +76,7 @@ import { FooterComponent } from './footer/footer.component';
 import { HeaderComponent } from './header/header.component';
 import { MainScreenComponent } from './main-screen/main-screen.component';
 import { NgModule } from '@angular/core';
+import { PatientObservationComponent } from './patient-observation/patient-observation.component';
 
 
 @NgModule({
@@ -126,7 +127,8 @@ import { NgModule } from '@angular/core';
     AddpackageComponent,
     PackageListComponent,
     OpdEmergencyComponent,
-    OpdconsultancyComponent
+    OpdconsultancyComponent,
+    PatientObservationComponent
 
   ],
   imports: [
