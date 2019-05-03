@@ -11,14 +11,14 @@ export class PatientserviceService {
   constructor(private http: HttpClient) {}
 
 
-  private baseUrl = environment.baseUrl+ "api/patient/";
+  private baseUrl = environment.baseUrl+"/api/patient/";
 
 
 
   getPatientsByMRNO(mrNo: number): Observable<any> {
     // const params = new HttpParams().set('id', mrNo.toString()); concatenation & params do the
     // same work
-    return this.http.get(this.baseUrl + mrNo);
+    return this.http.get(this.baseUrl+mrNo);
   }
   // tslint:disable-next-line: ban-types
   postPatient(patient: any): Observable<Object> {

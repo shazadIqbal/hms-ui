@@ -30,10 +30,10 @@ export class OpdEmergencyComponent implements OnInit {
   showspinloading=true;
   showspinLoadingMessage = "Loading";
  // id: number;
-  
+
   // printStatus : boolean;
-  // 
-  
+  //
+
 
 
   constructor(private activeRoute:ActivatedRoute,private router: Router, private erService: ErserviceService, private opdEr: OpdErService,    private messageService: MessageService
@@ -48,11 +48,11 @@ export class OpdEmergencyComponent implements OnInit {
   //this.showLoading=true
     this.addEmergency.id=this.activeRoute.snapshot.params['id'];
     this.addEmergency.price = 0;
-  
+
   }
-   
- 
-  
+
+
+
   back() {
     this.router.navigate(['/monitor/'+ this.addEmergency.id]);
   }
@@ -68,7 +68,7 @@ export class OpdEmergencyComponent implements OnInit {
     this.showspinloading=false;
   }
 
-  
+
 
   onChangeFacility(){
     console.log("yeh id hai"+this.addEmergency.id)
@@ -82,32 +82,32 @@ export class OpdEmergencyComponent implements OnInit {
      this.printFacilities.join(',')
     ///let printfacilities = this.addEmergency.facilities.join(',')
     console.log(this.printFacilities)
-  
+
     this.addEmergency.price = 0;
     this.addEmergency.total = 0;
     this.addEmergency.facilities.map(f => {
     this.addEmergency.price = this.addEmergency.price + parseInt(f["price"]);
     this.addEmergency.total = this.addEmergency.price;
     console.log(this.addEmergency.total);
-    
+
     });
 
   }
 
   getfacilitiesInDropdown() {
-   
+
     this.multiDropdown = [];
-   
+
    // this.showLoading = true;
    this.showLoadingSpinnerAndHideForm("Getting facilities");
     this.erService.getErFacility().subscribe(
       data => {
-             
+
         if(data.length){
           this.hideLoadingSpinnerAndShowForm()
-        
+
         }
-          
+
               // for (var keys in data){
           //   this.name.push((data[keys].facilities));
           //   // this.name.push((data[keys].price));
@@ -116,15 +116,15 @@ export class OpdEmergencyComponent implements OnInit {
           // // console.log(data[0]);
           console.log("hello")
         data.forEach(e => {
-         
-        
+
+
           this.multiDropdown.push({
             label: e.name,
             value: e
           });
         });
-      
-       
+
+
       },
       error => {
         this.show = false;
@@ -135,7 +135,7 @@ export class OpdEmergencyComponent implements OnInit {
           summary: "Error Found",
           detail: "Something went wrong check your internet connection "
         });
-      
+
       }
     );
   }
@@ -156,7 +156,7 @@ export class OpdEmergencyComponent implements OnInit {
           severity: "success",
           summary: "Added Succesfully",
           detail: "Emergency Service Added"
-          
+
         });
       },
       error => {
@@ -179,15 +179,15 @@ export class OpdEmergencyComponent implements OnInit {
   //     if(res.status < 200 || res.status >= 300) {
   //       // this.getIdWhenStatus_200 = res;
   //      this.printer = false;
-      
-  //     } 
+
+  //     }
   //     // If everything went fine, return the response
   //     else{
   //      this.printer = true;
   //     }
   //   })
   // }
-   
+
 
 
 

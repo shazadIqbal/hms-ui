@@ -1,0 +1,125 @@
+<!-- Back Button -->
+<div class="col-g-12">
+  <div class="ui-lg-5 ui-md-5 ui-sm-12">
+    <button
+      pButton
+      type="button"
+      class=" ui-button-success"
+      (click)="backToMainScreen()"
+      style="width:45%;margin-left:30% "
+      label="Back"
+    ></button>
+  </div>
+</div>
+
+<div class="ui-g-12">
+  <p-toast></p-toast>
+  <p-card
+  header="ADD NEW BEDS"
+  [style]="{
+    width: '80%',
+    'font-size': '26px',
+    'margin-left': '10%',
+    'text-align': 'center',
+    color: 'green'
+  }"
+  >
+
+  <div class="ui-g ui-fluid">
+    <hr style="height:2px;width:100%;background-color:green;" />
+    <form
+    style="width:100%;"
+    #myForm="ngForm"
+    (ngSubmit)="submitAdmission(); myForm.reset()"
+    >
+    <!-- Add Bed Type dropdwon -->
+    <div class="ui-g">
+      <div class="ui-md-2 ui-lg-2"></div>
+      <div class="ui-md-8 ui-lg-8 ui-sm-12">
+        <div class="ui-inputgroup">
+          <span
+          class="ui-inputgroup-addon"
+          style="width:37%;font-size:15px;font-weight:bold;"
+          >BED TYPE</span
+          >
+          <p-dropdown
+          placeholder="Select bed type"
+          [showClear]="true"
+          (onChange)="bedsDropdown()"
+          [options]="bedType"
+          name="bedType"
+          [filter]="true"
+          [style]="{ width: '100%', height: '100%', 'font-size': '20px' }"
+          [ngStyle]="{ width: '80%', 'font-size': '20px' }"
+          required
+          [(ngModel)]="_admission.bedType"
+          ></p-dropdown>
+        </div>
+      </div>
+    </div>
+    <!-- no of beds Field -->
+    <div class="ui-g">
+      <div class="ui-md-2 ui-lg-2"></div>
+      <div class="ui-md-8 ui-lg-8 ui-sm-12">
+        <div class="ui-inputgroup">
+          <span
+          class="ui-inputgroup-addon"
+          style="width:45%;font-size:15px;font-weight: bold;"
+          >Enter Quantity</span
+          >
+          <input
+                placeholder="    Please Enter no of beds"
+                type="number"
+                name="bedsQuantity"
+                pInputText
+                ngModel
+                required
+                style="text-align: center"
+                [min]="0"
+                [(ngModel)]="_admission.bedsQuantity"
+              />
+            </div>
+          </div>
+        </div>
+        <div class="ui-g">
+          <div class="ui-md-2 ui-lg-2"></div>
+          <div class="ui-md-8 ui-lg-8 ui-sm-12">
+            <div class="ui-inputgroup">
+              <span
+              class="ui-inputgroup-addon"
+              style="width:45%;font-size:15px;font-weight: bold;"
+              >Enter Price</span
+              >
+              <input
+                    placeholder="Select Bed Type Price"
+                    type="number"
+                    name="price"
+                    pInputText
+                    ngModel
+                    required
+                    style="text-align: center"
+                    [min]="0"
+                    [(ngModel)]="_admission.price"
+                  />
+                </div>
+              </div>
+            </div>
+        <div class="ui-g">
+          <div class="ui-md-2 ui-lg-2"></div>
+          <div class="ui-md-8 ui-lg-8 ui-sm-12">
+            <button
+              [disabled]="myForm.invalid"
+              pButton
+              type="submit"
+              label="SAVE"
+              style="margin-top: 0px; background-color:green;width:100%;"
+            ></button>
+          </div>
+        </div>
+
+            <!-- <p-progressSpinner class="loading-indicator"></p-progressSpinner> -->
+
+      </form>
+    </div>
+  </p-card>
+</div>
