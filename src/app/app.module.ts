@@ -76,6 +76,7 @@ import { FooterComponent } from './footer/footer.component';
 import { HeaderComponent } from './header/header.component';
 import { MainScreenComponent } from './main-screen/main-screen.component';
 import { NgModule } from '@angular/core';
+import { OpdLabtestComponent } from './opd-labtest/opd-labtest.component';
 import { PatientTransactionsComponent } from './patient-transactions/patient-transactions.component';
 
 
@@ -128,6 +129,7 @@ import { PatientTransactionsComponent } from './patient-transactions/patient-tra
     PackageListComponent,
     OpdEmergencyComponent,
     OpdconsultancyComponent,
+    OpdLabtestComponent,
     PatientTransactionsComponent
 
   ],

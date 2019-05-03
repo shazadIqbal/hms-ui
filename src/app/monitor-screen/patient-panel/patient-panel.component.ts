@@ -26,8 +26,15 @@ export class PatientPanelComponent implements OnInit {
     let id = this.activatedRout.snapshot.params['id'];
     this.router.navigate(['/opdconsultancy/' + id])
   }
-  goToPatientTransactions() {
+  goTolab(){
     let id = this.activatedRout.snapshot.params['id'];
-    this.router.navigate(['/patienttransactions/' + id])
+    this.router.navigate(['opdlabtest'+id])
   }
+  goToPatientTransactions(){
+    let id = this.activatedRout.snapshot.params['id'];
+    this.router.navigate(['patienttransactions'+id])
+    
+
+  }
+
 }
