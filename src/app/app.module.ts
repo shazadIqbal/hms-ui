@@ -76,7 +76,10 @@ import { FooterComponent } from './footer/footer.component';
 import { HeaderComponent } from './header/header.component';
 import { MainScreenComponent } from './main-screen/main-screen.component';
 import { NgModule } from '@angular/core';
+
 import { PatientTransactionHistoryComponent } from './patient-transaction-history/patient-transaction-history.component';
+
+import { PatientTransactionsComponent } from './patient-transactions/patient-transactions.component';
 
 
 @NgModule({
@@ -128,7 +131,11 @@ import { PatientTransactionHistoryComponent } from './patient-transaction-histor
     PackageListComponent,
     OpdEmergencyComponent,
     OpdconsultancyComponent,
-    PatientTransactionHistoryComponent
+
+    PatientTransactionHistoryComponent,
+
+    PatientTransactionsComponent
+
 
   ],
   imports: [
@@ -164,4 +171,4 @@ import { PatientTransactionHistoryComponent } from './patient-transaction-histor
   bootstrap: [AppComponent],
   exports: [FormsModule]
 })
-export class AppModule {}
+export class AppModule { }
