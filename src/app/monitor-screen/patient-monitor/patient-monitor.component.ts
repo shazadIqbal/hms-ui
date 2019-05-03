@@ -22,7 +22,7 @@ export class PatientMonitorComponent implements OnInit {
   public name;
   public number;
   public registration;
-  public date:Date;
+  public date:String;
   public opd;
   public package;
   public total;
@@ -53,7 +53,7 @@ export class PatientMonitorComponent implements OnInit {
       this.name=response.name;
       this.number=response.number;
       this.registration=response.registration || 'No';
-      this.date=response.date;
+      this.date= new Date(response.date).toDateString();
       this.opd=response.opd;
       this.lab=response.lab;
       this.image=response.image;

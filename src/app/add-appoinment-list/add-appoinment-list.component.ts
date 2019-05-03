@@ -116,7 +116,7 @@ export class AddAppoinmentListComponent implements OnInit {
       { field: 'id', header: 'MR Number' },
       { field: 'selectDoctor', header: 'Doctor Name' },
       { field: 'patientName', header: 'Patient Name' },
-      { field: 'phoneNo', header: 'patient Number' },
+      { field: 'phoneNo', header: 'Phone Number' },
       { field: 'appoinmentDate', header: 'Appointment Date' },
       { field: 'time', header: 'Time' }
     ];
