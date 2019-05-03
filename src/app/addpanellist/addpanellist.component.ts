@@ -107,6 +107,7 @@ OnFacilitysubmit(value) {
 // tslint:disable-next-line: triple-equals
     if (stat[0] != 'Already Exsist') {
       this.messageService.add({severity: 'success', summary: 'Status', detail: 'Successfull'});
+      this.getFcilityInIt();
     } else {
       this.messageService.add({severity: 'error', summary: 'Status', detail: 'Already Exsist'});
     }
@@ -114,7 +115,7 @@ OnFacilitysubmit(value) {
 
   }, error => {
     console.log(error);
-    this.messageService.add({severity: 'success', summary: 'Status', detail: 'Successfull'});
+    this.messageService.add({severity: 'error', summary: 'Failed', detail: 'Failed'});
   });
   this.getFcilityInIt();
 }

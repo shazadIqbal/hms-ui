@@ -7,4 +7,5 @@ export class OpdConsultancy{
   cashRecieved : number;
   total : number;
   id : number;
+  fees:number;
 }

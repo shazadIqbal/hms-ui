@@ -61,7 +61,7 @@ p
           console.log("This is doctors id "+ e.mrNo);
           this.doctors.push({
             label: e.fullName,
-            value: {mrNo:e.mrNo,fullName:e.fullName,sallary:e.sallary}
+            value: {mrNo:e.mrNo,fullName:e.fullName,fees:e.fees}
           });
           // console.log({id:this.opdObject.doctors});
         });
@@ -89,9 +89,9 @@ p
     this.opdObject.sallary = 0; //it will also work for the negative
     this.opdObject.total = 0;
     this.opdObject.discount = 0;
-    this.opdObject.sallary = this.opdObject.doctors["sallary"];
-    console.log(this.opdObject.sallary)
-    this.opdObject.total = this.opdObject.sallary + this.opdObject.discount;
+    this.opdObject.fees = this.opdObject.doctors["fees"];
+    //console.log(this.opdObject.sallary)
+    this.opdObject.total = this.opdObject.fees + this.opdObject.discount;
   }
 
   //FUNCTION FOR BACK BUTTON
