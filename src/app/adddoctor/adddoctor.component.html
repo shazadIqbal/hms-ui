@@ -11,7 +11,7 @@
         height: '30% !important'
       }">
         <hr />
-        <form (ngSubmit)="onclick()" #form="ngForm">
+        <form  #form="ngForm" (ngSubmit)="save();form.reset();">
           <div class="ui-g ui-fluid">
             <div class="ui-g-12 ui-sm-12 ui-md-4">
               <div class="ui-inputgroup">
@@ -24,7 +24,7 @@
                 Please Enter a fullName
               </div>
             </div>
-           
+
 
             <div class="ui-g-12 ui-sm-12 ui-md-4">
               <div class="ui-inputgroup">
@@ -54,7 +54,7 @@
               </div>
             </div>
 
-            
+
 
             <div class="ui-g-12 ui-sm-12 ui-md-4">
               <div class="ui-inputgroup">
@@ -69,7 +69,7 @@
               </div>
             </div>
 
-            
+
 
             <div class="ui-g-12 ui-sm-12 ui-md-4">
               <div class="ui-inputgroup">
@@ -113,7 +113,7 @@
               </div>
             </div>
 
-            
+
 
             <div class="ui-g-12 ui-sm-12 ui-md-4">
               <div class="ui-inputgroup">
@@ -145,7 +145,7 @@
               </div>
             </div>
 
-           
+
 
             <div class="ui-g-12 ui-sm-12 ui-md-4">
               <div class="ui-inputgroup">
@@ -213,7 +213,7 @@
                 Please Enter religion
               </div>
             </div>
-            
+
             <div class="ui-g-12 ui-sm-12 ui-md-4">
               <div class="ui-inputgroup">
                 <span style="width:20%;" class="ui-inputgroup-addon">Salary</span>
@@ -224,7 +224,7 @@
                 class="alert alert-danger">
                 Please Enter sallary
               </div>
-              
+
             </div>
             <div class="ui-g-12 ui-sm-12 ui-md-4">
               <div class="ui-inputgroup">
@@ -235,32 +235,19 @@
             </div>
 
             <div class="ui-g-12 ">
-              <div class=" ui-g-12 ui-md-2">
-                <button pButton type="submit" label="Save" class=" ui-button-success  one"
-                  style="width:100%; margin-bottom:0% "></button>
-              </div>
-              <div class=" ui-g-12 ui-md-2">
-                <button pButton type="button" label="Refresh" class=" ui-button-success  one"></button>
-              </div>
-              <div class="ui-g-12 ui-md-2">
-                <button pButton type="button" label="Print" class=" ui-button-success  one"></button>
-              </div>
+                <div class="ui-g ui-fluid">
+                    <!-- Submit button -->
+                    <div class="ui-g-12 ui-md-12">
+                      <button type="submit"  class="btn btn-success btn-block">
+                        Submit
+                      </button>
 
-              <div class="ui-g-12 ui-md-2">
-                <button pButton type="button" label="print view" class=" ui-button-success  one"></button>
-              </div>
-              <div class="ui-g-12 ui-md-2">
-                <button pButton type="button" label="close" class=" ui-button-success  one"></button>
-              </div>
-              <div class="ui-g-12 ui-md-1">
-                <button pButton type="button" label="&lt;" class=" ui-button-success  one"></button>
-              </div>
-              <div class="ui-g-12 ui-md-1">
-                <button pButton type="button" label=">" class=" ui-button-success one "></button>
-              </div>
+                    </div>
+                  </div>
             </div>
           </div>
         </form>
+        <p-toast></p-toast>
       </p-card>
     </div>
   </div>
