@@ -79,6 +79,10 @@ import { NgModule } from '@angular/core';
 
 import { PatientTransactionHistoryComponent } from './patient-transaction-history/patient-transaction-history.component';
 
+
+import { OpdLabtestComponent } from './opd-labtest/opd-labtest.component';
+
+
 import { PatientTransactionsComponent } from './patient-transactions/patient-transactions.component';
 
 
@@ -134,6 +138,7 @@ import { PatientTransactionsComponent } from './patient-transactions/patient-tra
 
     PatientTransactionHistoryComponent,
 
+    OpdLabtestComponent,
     PatientTransactionsComponent
 
 
