@@ -48,7 +48,7 @@ export class OpdGynyComponent implements OnInit {
 
   getDoctorsOption() {
     let i = 0;
-    this.opdGynyObject.sallary = 0;
+    this.opdGynyObject.fees = 0;
     this.doctors = [];
     this.doctorService.getdoctors().subscribe(
       data => {
@@ -59,10 +59,12 @@ export class OpdGynyComponent implements OnInit {
         console.log(data);
         data.forEach(e => {
           console.log(e)
+
+          console.log("This is fees of every one"+ e.fees);
           console.log("This is doctors id "+ e.mrNo);
           this.doctors.push({
             label: e.fullName,
-            value: {mrNo:e.mrNo,fullName:e.fullName,sallary:e.sallary}
+            value: {mrNo:e.mrNo,fullName:e.fullName,fees:e.fees,registration:e.registration}
           });
           // console.log({id:this.opdGynyObject.doctors});
         });
@@ -82,18 +84,24 @@ export class OpdGynyComponent implements OnInit {
     }
     );
   }
+ 
 
   doctorDropdown() {
     // console.log(this.selectedDoctor);
     console.log(this.opdGynyObject.doctors["fullName"]);
-    this.opdGynyObject.sallary = 0; //it will also work for the negative
+    this.opdGynyObject.fees = 0; //it will also work for the negative
     this.opdGynyObject.total = 0;
     this.opdGynyObject.discount = 0;
-    this.opdGynyObject.sallary = this.opdGynyObject.doctors["sallary"];
-    console.log(this.opdGynyObject.sallary)
-    this.opdGynyObject.total = this.opdGynyObject.sallary + this.opdGynyObject.discount;
+    this.opdGynyObject.fees = this.opdGynyObject.doctors["fees"];
+    console.log(this.opdGynyObject.fees)
+    this.opdGynyObject.total = this.opdGynyObject.fees;
   }
 
+  onChangeDiscount(){
+    console.log("hello discount")
+   let discount = this.opdGynyObject.discount/100;
+   this.opdGynyObject.total = this.opdGynyObject.fees - (discount * this.opdGynyObject.fees)
+  }
   //FUNCTION FOR BACK BUTTON
   backToMonitor() {
 
@@ -107,7 +115,8 @@ export class OpdGynyComponent implements OnInit {
         console.log(this.opdGynyObject);
         this.messageService.add({
           severity: "success",
-          summary: "Succesfully"
+          summary: "Succesfully",
+          detail: "Added successfully"
         });
         this.enable = false;
       },

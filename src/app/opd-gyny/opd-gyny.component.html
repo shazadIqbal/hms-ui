@@ -91,7 +91,7 @@
                   pInputText
                   ngModel
                   required
-                  [(ngModel)]="opdGynyObject.sallary"
+                  [(ngModel)]="opdGynyObject.fees"
                   [readOnly]="true"
                 />
               </div>
@@ -112,8 +112,8 @@
                   pInputText
                   ngModel
                   min="0"
+                  (change)="onChangeDiscount()"
                   placeholder="0  %"
-                  [readOnly]="true"
                   [(ngModel)]="opdGynyObject.discount"
                 />
               </div>
@@ -169,7 +169,17 @@
           <!-- <h4>Registered or not?</h4> <p>{{checked}}</p>
           <p-checkbox [(ngModel)]="checked" binary="true" name="registration"></p-checkbox>
           -->
-          
+          <div class="ui-g">
+              <div class="ui-md-2 ui-lg-2"></div>
+              <div class="ui-md-8 ui-lg-8 ui-sm-12">
+                <div class="ui-inputgroup">
+                  <label style="margin-top: 1%; font-size: 25px;"> Registration:  </label>
+                  &nbsp;
+                  <p-checkbox [(ngModel)]="opdGynyObject.registration" binary="true" name="registration"></p-checkbox>
+              </div>
+              </div>
+            </div>
+  
           <div class="ui-g" style="margin-top:-20px !important;">
             <div class="ui-md-2 ui-lg-2"></div>
             <div class="ui-md-8 ui-lg-8 ui-sm-12">
@@ -238,7 +248,7 @@
               <div class="text-center ui-g-8">
                 <h3 style="text-align: left;text-decoration-line: underline">
                   Fees :
-                  {{ opdGynyObject.sallary }}
+                  {{ opdGynyObject.fees }}
                 </h3>
               </div>
             </span>

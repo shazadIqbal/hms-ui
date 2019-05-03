@@ -7,8 +7,8 @@ import{ environment } from '../../environments/environment'
   providedIn: 'root'
 })
 export class AddpanellistseviceService {
-  private url = environment.baseUrl+'/api/panel/';
-  private facilityurl =  environment.baseUrl+'/api/panel/panelfacility/';
+  private url = environment.baseUrl+'api/panel/';
+  private facilityurl =  environment.baseUrl+'api/panel/panelfacility/';
   
   constructor(private http: HttpClient) {}
   public savePanel(panel: Object): Observable<Object>{

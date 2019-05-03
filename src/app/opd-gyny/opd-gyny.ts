@@ -5,4 +5,6 @@ export class opdGynyModel {
     cashRecieved : number;
     total : number;
     id : number;
+    registration: boolean;
+    fees: number;
 }

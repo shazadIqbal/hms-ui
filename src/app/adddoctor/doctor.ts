@@ -15,6 +15,7 @@ export class Doctor{
     position:string;
     religion:string;
     sallary:number;
+    fees:number;
     // dateOfbirth:string;
     gender:SelectItem[];
     // timeIn:string;
