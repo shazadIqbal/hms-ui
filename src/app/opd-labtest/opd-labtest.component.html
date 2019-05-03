@@ -1,0 +1,170 @@
+<div id="print-section" [hidden]=true >
+    <!-- <div *ngIf="addEmergency.name !== undefined"> -->
+  
+    <h1 style="text-align: center; color: #3a64a8;">OPD EMERGENCY RECEIPT</h1>
+    <hr style="height: 2px">
+    <div class="container">
+      <p style="margin-top: 5%;  border-bottom: 1px solid black; padding: 10px; font-size: 20px; "><b
+          style="font-size: 20px;"> Emergency Service: </b>{{printLabTest}}</p>
+      <p style=" margin-top: 5%;  border-bottom: 1px solid black;padding: 10px; font-size: 20px;"><b
+          style="font-size: 20px;"> Facility Price: </b>{{addLabTests.price}}</p>
+      <p style=" margin-top: 5%;  border-bottom: 1px solid black;padding: 10px; font-size: 20px;"><b
+          style="font-size: 20px;"> Discount: </b>{{addLabTests.discount}}</p>
+      <p style=" margin-top: 5%;  border-bottom: 1px solid black;padding: 10px; font-size: 20px;"><b
+          style="font-size: 20px;"> Total: </b>{{addLabTests.total}}</p>
+  
+    </div>
+  
+  
+  </div>
+  
+
+
+
+<div class="col-ui-g-12">
+  <div class="ui-lg-5 ui-sm-12 ui-md-5">
+      <button pButton type="button" class=" ui-button-success" (click)="back()" style="width:45%;margin-left:30% "
+			label="Back"></button>
+  </div> 
+</div>
+<div class="ui-g-12">
+    <p-toast></p-toast>
+    <p-card header="OPD LAB TEST" [style]="{
+      width: '80%',
+      'font-size': '26px',
+      'margin-left': '10%',
+      'text-align': 'center',
+      color: 'green'
+  }">
+  <div class="ui-g ui-fluid">
+    <hr style="height:2px;width:100%;background-color:green; margin-top: 0px" />
+    <form style="width:100%" #myForm="ngForm" (ngSubmit)=saveOpdLabTest(); >
+      	<div *ngIf="showspinloading">
+						<p-progressSpinner></p-progressSpinner>
+						<h2>{{showspinLoadingMessage}}</h2>
+          </div>
+          <div *ngIf="show">
+              <div class="ui-g">
+                  <div class="ui-md-2 ui-lg-2"></div>    
+                  <div class="ui-md-8 ui-lg-8 ui-sm-12">
+                      <div class="ui-inputgroup">
+
+                          <span class="ui-inputgroup-addon" style="width:37%;font-size:15px;font-weight: bold;">
+                              Select LabTest</span>
+            
+                            <p-multiSelect name="multiDropdown" [options]="multiDropdown" [(ngModel)]="addLabTests.labTests"
+                              (onChange)="onChangeLabTest()" [ngStyle]="{width:'100%'}" [style]="{'height':'100%'}" required>
+                            </p-multiSelect>
+            
+
+                        </div>      
+                    </div>
+                </div>
+
+                <div class="ui-g">
+                    <div class="ui-md-2 ui-lg-2"></div>
+                    <div class="ui-md-8 ui-lg-8 ui-sm-12">
+                        <div class="ui-inputgroup">
+                          <span class="ui-inputgroup-addon" style="width:37%;font-size:15px; font-weight: bold;">
+                            LabTest Price</span>
+                          <input type="text" name="price" [(ngModel)]="addLabTests.price" [readOnly]="true" pInputText
+                            placeholder="$" required>
+          
+                        </div>
+                      </div>
+
+
+                </div>
+
+                <div class="ui-g">
+                    <div class="ui-md-2 ui-lg-2"></div>
+                    <div class="ui-md-8 ui-lg-8 ui-sm-12">
+                      <div class="ui-inputgroup">
+                        <span class="ui-inputgroup-addon" style="width:37%;font-size:15px; font-weight: bold;">
+                          Cash Recieve</span>
+                        <input type="text" name="cashRecieve" [(ngModel)]="addLabTests.cashRecieve" pInputText placeholder="$"
+                          required>
+        
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="ui-g">
+                      <div class="ui-md-2 ui-lg-2"></div>
+                      <div class="ui-md-8 ui-lg-8 ui-sm-12">
+                        <div class="ui-inputgroup">
+                          <span class="ui-inputgroup-addon" style="width:37%;font-size:15px;font-weight: bold;">
+                            Discount</span>
+                          <input type="number" min="0" name="discount" (change)="onChangeDiscount()" [(ngModel)]="addLabTests.discount" pInputText
+                            placeholder="0">
+          
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="ui-g">
+                        <div class="ui-md-2 ui-lg-2"></div>
+                        <div class="ui-md-8 ui-lg-8 ui-sm-12">
+                          <div class="ui-inputgroup">
+                            <span class="ui-inputgroup-addon" style="width:37%;font-size:15px;font-weight: bold;">
+                              Total</span>
+                            <input type="text" pInputText name="total" [(ngModel)]="addLabTests.total"
+                              placeholder="Total Amount $$" [readOnly]="true" required>
+            
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="ui-g">
+                          <div class="ui-md-2 ui-lg-2"></div>
+                          <div class="ui-md-8 ui-lg-8 ui-sm-12">
+                            <button pButton type="submit" label="SAVE" class="ui-button-success" 
+                               [disabled]="myForm.invalid" ></button>
+                          </div>
+                        </div>
+
+                        <div class="ui-g">
+                            <div class="ui-md-2 ui-lg-2"></div>
+                            <div class="ui-md-8 ui-lg-8 ui-sm-12">
+                              <button pButton type="button" label="PRINT" class="ui-button-success" printSectionId="print-section"
+                                ngxPrint [disabled]="printer"></button>
+                            </div>
+                          </div>
+
+
+                  
+
+
+
+
+
+
+
+            </div>
+
+
+          
+
+
+
+
+
+
+
+      </form>
+
+    </div>
+
+
+
+
+
+
+  </p-card>
+
+
+
+
+
+
+</div>
