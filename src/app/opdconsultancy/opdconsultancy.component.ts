@@ -47,21 +47,19 @@ export class OpdconsultancyComponent implements OnInit {
     this.doctors = [];
     this.doctorService.getdoctors().subscribe(
       data => {
-        if (data) {
-          this.show = false;
-          this.checkStatus = false; //this is for form hide property
-          console.log(data);
-          data.forEach(e => {
-            console.log(e);
-            console.log('This is doctors id ' + e.mrNo);
-            this.doctors.push({
-              label: e.fullName,
-              value: { mrNo: e.mrNo, fullName: e.fullName, sallary: e.sallary }
-            });
-            // console.log({id:this.opdObject.doctors});
+        if(data){
+        this.show = false;
+        this.checkStatus = false; //this is for form hide property
+        console.log(data);
+        data.forEach(e => {
+          console.log(e)
+          console.log("This is doctors id "+ e.mrNo);
+          this.doctors.push({
+            label: e.fullName,
+            value: {mrNo: e.mrNo, fullName: e.fullName, fees: e.fees, sallary: e.sallary}
           });
-        }
-      },
+        });
+      }},
       error => {
         console.log('error agya yar');
         this.show = true;
@@ -71,9 +69,8 @@ export class OpdconsultancyComponent implements OnInit {
           summary: 'Error Found',
           detail: 'Something went wrong check your internet connection '
         });
-      }
-    );
-  }
+      })
+    }
   //Getting Doctors'Fees
   doctorDropdown() {
     // console.log(this.selectedDoctor);
@@ -84,6 +81,9 @@ export class OpdconsultancyComponent implements OnInit {
     this.opdObject.sallary = this.opdObject.doctors['sallary'];
     console.log(this.opdObject.sallary);
     this.opdObject.total = this.opdObject.sallary + this.opdObject.discount;
+    this.opdObject.fees = this.opdObject.doctors["fees"];
+    //console.log(this.opdObject.sallary)
+    this.opdObject.total = this.opdObject.fees + this.opdObject.discount;
   }
 
   //FUNCTION FOR BACK BUTTON

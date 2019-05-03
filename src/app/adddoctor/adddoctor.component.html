@@ -83,11 +83,22 @@
               </div>
             </div>
 
-            <div class="ui-g-12 ui-sm-12 ui-md-12">
+            <div class="ui-g-6 ui-sm-12 ui-md-6">
               <div class="ui-inputgroup">
-                <span style="width:8%;" class="ui-inputgroup-addon">Address</span>
+                <span style="width:15%;" class="ui-inputgroup-addon">Address</span>
                 <input type="text" pInputText required placeholder="Address" name="Address" #abg="ngModel"
                   [(ngModel)]="doctor.address" ngModel />
+              </div>
+              <div style="padding:0px;margin-bottom:4px" [hidden]="abg.valid || abg.pristine"
+                class="alert alert-danger">
+                Please Enter youR address
+              </div>
+            </div>
+            <div class="ui-g-6 ui-sm-12 ui-md-6">
+              <div class="ui-inputgroup">
+                <span  class="ui-inputgroup-addon">Fees</span>
+                <input type="text" pInputText required placeholder="Fees" name="Fees" #abg="ngModel"
+                  [(ngModel)]="doctor.fees" ngModel />
               </div>
               <div style="padding:0px;margin-bottom:4px" [hidden]="abg.valid || abg.pristine"
                 class="alert alert-danger">

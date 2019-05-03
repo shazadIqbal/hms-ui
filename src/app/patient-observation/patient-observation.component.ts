@@ -24,6 +24,7 @@ export class PatientObservationComponent implements OnInit {
   getStatus: boolean = true;
   checkStatus: boolean = false;
   show: boolean = false;
+  checked: boolean = false;
   enable: boolean;
 
   constructor(
@@ -97,7 +98,7 @@ export class PatientObservationComponent implements OnInit {
     this.patientObservationService.savePatientObservation(this.patientObservationObject).subscribe(
       data => {
         console.log(this.patientObservationObject);
-        console.log(data)
+        console.log(data);
         this.messageService.add({
           severity: 'success',
           summary: 'Succesfully'

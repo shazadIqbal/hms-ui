@@ -99,14 +99,15 @@ export class AddErComponent implements OnInit {
 
   // show values in the dropdown
   getFacilityDropdown() {
+    console.log("hey");
     this.multidropdown = [];
     this.erService.getErFacility().subscribe(
       data => {
         console.log(data);
-        data.forEach(e => {
+        data.map(p => {
           this.multidropdown.push({
-            label: e.name,
-            value: e
+            label: p.name,
+            value: p
           });
         });
       },

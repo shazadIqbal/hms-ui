@@ -1,69 +1,81 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Login</title>
-  </head>
-  <body>
-    <div class="bg"></div>
-    <div
-      class="ui-g-12"
-      style="width: 80%;
+<p-toast></p-toast>
+<div class="wrap">
+  
+
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-10 col-sm-offset-1 col-md-6 col-md-offset-3 col-lg-offset-3 col-lg-6" id="loginForm">
+        <div class="card card-signin my-5">
+          <div class="card-body">
+            <h2 style="text-align: center;font-weight:bold;color:rgb(132, 190, 132);">SIGN IN</h2>
+            <hr style=" border: 1px solid rgb(118, 192, 116);"/>
+            <form class="form-signin">
+              <div class="input-group">
+                  <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                <input type="text" name="Username" #u1 style="text-align: center !important; height: 44px;font-size:22px !important;" id="inputEmail" class="form-control" placeholder="Username">
+               
+              </div>
+
+              <div class="input-group">
+                  <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                <input type="password" #p2 name="password" style="text-align: center !important; height: 44px;font-size:22px !important;" id="inputPassword" class="form-control" placeholder="Password">
+             
+              </div>
+
+              
+              <button id="login" (click)="check(u1.value, p2.value)" class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Sign in</button>
+              <hr class="my-4">
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<!-- <div class="bg">
+  <div class="ui-g-12" style="width: 80%;
       font-size: 26px;
       margin-left: 10%;
       text-align: center;
-      color: green;"
-    >
-      <p-card header="Login">
-        <div class="ui-g ui-fluid">
-          <hr style="height:2px;width:100%;background-color:green;" />
-          <form style="width:100%;">
-            <div class="ui-g">
-              <div class="ui-md-3 ui-lg-3"></div>
-              <div class="ui-md-6 ui-lg-6 ui-sm-12">
-                <div class="ui-inputgroup">
-                  <span
-                    class="ui-inputgroup-addon"
-                    style="width:30%;font-size:15px; font-weight: bold;"
-                    >Username</span
-                  >
-                  <input type="text" #u1 required name="Username" pInputText />
-                </div>
+      color: green;">
+    <p-card header="Login">
+      <div class="ui-g ui-fluid">
+        <hr style="height:2px;width:100%;background-color:green;" />
+        <form style="width:100%;">
+          <div class="ui-g">
+            <div class="ui-md-3 ui-lg-3"></div>
+            <div class="ui-md-6 ui-lg-6 ui-sm-12">
+              <div class="ui-inputgroup">
+                <span class="ui-inputgroup-addon" style="width:30%;font-size:15px; font-weight: bold;">Username</span>
+                <input type="text" #u1 required name="Username" pInputText />
               </div>
             </div>
+          </div>
 
-            <div class="ui-g">
-              <div class="ui-md-3 ui-lg-3"></div>
-              <div class="ui-md-6 ui-lg-6 ui-sm-12">
-                <div class="ui-inputgroup">
-                  <span
-                    class="ui-inputgroup-addon"
-                    style="width:30%;font-size:15px; font-weight: bold;"
-                    >Password</span
-                  >
-                  <input type="password" #p2 name="password" pInputText />
-                </div>
+          <div class="ui-g">
+            <div class="ui-md-3 ui-lg-3"></div>
+            <div class="ui-md-6 ui-lg-6 ui-sm-12">
+              <div class="ui-inputgroup">
+                <span class="ui-inputgroup-addon" style="width:30%;font-size:15px; font-weight: bold;">Password</span>
+                <input type="password" #p2 name="password" pInputText />
               </div>
             </div>
+          </div>
 
-            <div class="ui-g">
-              <div class="ui-md-3 ui-lg-3"></div>
-              <div class="ui-md-6 ui-lg-6 ui-sm-12">
-                <button
-                  pButton
-                  type="submit"
-                  label="Log In"
-                  style="margin-top: 0px; background-color:green;width:100%; font-weight: bold;"
-                  (click)="check(u1.value, p2.value)"
-                ></button>
-              </div>
+          <div class="ui-g">
+            <div class="ui-md-3 ui-lg-3"></div>
+            <div class="ui-md-6 ui-lg-6 ui-sm-12">
+              <button pButton type="submit" label="Log In"
+                style="margin-top: 0px; background-color:green;width:100%; font-weight: bold;"
+                (click)="check(u1.value, p2.value)"></button>
             </div>
-            <span>{{msg}}</span>
-          </form>
-        </div>
-      </p-card>
-    </div>
-  </body>
-</html>
+          </div>
+          <span>{{msg}}</span>
+        </form>
+      </div>
+    </p-card>
+  </div>
+</div> -->

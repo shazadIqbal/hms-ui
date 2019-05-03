@@ -16,6 +16,7 @@ import { PanelModule } from 'primeng/panel';
 import { InputTextModule } from 'primeng/inputtext';
 import { DialogModule } from 'primeng/dialog';
 import { ToastModule } from 'primeng/toast';
+import { CheckboxModule, Checkbox } from 'primeng/checkbox';
 
 import { PatientSlipComponent } from './patient-slip/patient-slip.component';
 import { PatientInputComponent } from './patient-slip/patient-input/patient-input.component';
@@ -154,7 +155,7 @@ import { PatientObservationComponent } from './patient-observation/patient-obser
     DropdownModule,
     InputTextareaModule,
     MultiSelectModule,
-
+    CheckboxModule,
     ProgressSpinnerModule,
     NgxPrintModule
   ],
