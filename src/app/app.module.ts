@@ -80,6 +80,14 @@ import { AdmissionComponent } from './admission/admission.component';
 import { PatientAdmitComponent } from './patient-admit/patient-admit.component';
 import { AdmissionService } from './Services/admission.service';
 
+import { PatientTransactionHistoryComponent } from './patient-transaction-history/patient-transaction-history.component';
+
+
+import { OpdLabtestComponent } from './opd-labtest/opd-labtest.component';
+
+
+import { PatientTransactionsComponent } from './patient-transactions/patient-transactions.component';
+
 
 @NgModule({
   declarations: [
@@ -130,8 +138,13 @@ import { AdmissionService } from './Services/admission.service';
     PackageListComponent,
     OpdEmergencyComponent,
     OpdconsultancyComponent,
+
+    PatientTransactionHistoryComponent,
     AdmissionComponent,
-    PatientAdmitComponent
+    PatientAdmitComponent,
+    OpdLabtestComponent,
+    PatientTransactionsComponent
+
 
   ],
   imports: [
@@ -167,4 +180,4 @@ import { AdmissionService } from './Services/admission.service';
   bootstrap: [AppComponent],
   exports: [FormsModule]
 })
-export class AppModule {}
+export class AppModule { }
