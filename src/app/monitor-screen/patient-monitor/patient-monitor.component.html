@@ -1,74 +1,102 @@
-<button pButton type="button" class="ui-button-success" style="margin-left:1%; margin-bottom: 1%; height:30px; width: 70px" (click)='backToMain()'><p><img src="https://img.icons8.com/material-sharp/24/000000/back.png">Back</p></button>
+<p-toast></p-toast>
+<button pButton type="button" class="ui-button-success"
+  style="margin-left:1%; margin-bottom: 1%; height:30px; width: 70px" (click)='backToMain()'>
+  <p><img src="https://img.icons8.com/material-sharp/24/000000/back.png">Back</p>
+</button>
 <p-panel header="Patient Data">
   <div class="ui-g">
     <div class="ui-lg-3 ui-md-3 ui-sm-12">
       <div id="img">
         <img style="height:220px;margin-left:15%;width:70%;padding:5px;border:1px solid black"
-        [src]="image || 'https://cdn5.vectorstock.com/i/1000x1000/23/54/user-icon-man-human-profile-avatar-vector-10552354.jpg'"
+          [src]="image || 'https://cdn5.vectorstock.com/i/1000x1000/23/54/user-icon-man-human-profile-avatar-vector-10552354.jpg'"
           alt="icon">
       </div>
-      <!-- http://cdn.onlinewebfonts.com/svg/img_276187.png -->
     </div>
     <div class="ui-lg-9 ui-md-9 ui-sm-12">
       <p-card [ngStyle]="{'width':'100%'}">
-        <div class="ui-g">
 
+        <div [hidden]="!isLoading">
+          <div  class="ui-g">
+            <div class="ui-lg-12 ui-md-12 ui-sm-12">
+              <p-progressSpinner [ngStyle]="{marginLeft:'40%'}"></p-progressSpinner>
 
-          <div class="ui-lg-4 ui-md-4 ui-sm-12">
-
-
-            <div class="ui-lg-12 ui-md-12 ui-sm-12">
-              <label style="color:rgb(127, 128, 126)">Patient ID: <span
-                  style="color:rgb(17, 17, 17)">{{id}}</span></label>
             </div>
-            <div class="ui-lg-12 ui-md-12 ui-sm-12">
-              <label style="color:rgb(127, 128, 126)">Patient Name: <span style="color:rgb(17, 17, 17)">{{name}}</span></label>
-            </div>
-            <div class="ui-lg-12 ui-md-12 ui-sm-12">
-              <label style="color:rgb(127, 128, 126)">Phone Number:  <span style="color:rgb(17, 17, 17)">{{number}}</span> </label>
-            </div>
-            <div class="ui-lg-12 ui-md-12 ui-sm-12">
-              <label style="color:rgb(127, 128, 126)">Registration:  <span style="color:rgb(17, 17, 17)">{{registration}}</span></label>
-            </div>
-            <div class="ui-lg-12 ui-md-12 ui-sm-12">
-              <label style="color:rgb(127, 128, 126)">Date:  <span style="color:rgb(17, 17, 17)">{{date | date :'short'}}</span></label>
-            </div>
-
           </div>
+        </div>
+        <div [hidden]="isLoading">
+          <div class="ui-g">
 
-          <div class="ui-lg-4 ui-md-4 ui-sm-12">
-            <p-card>
-              <div class="ui-md-12 ui-lg-12  ui-sm-12">
-                <label style="color:rgb(127, 128, 126)">Patient Package:  <span style="color:rgb(17, 17, 17)">{{package}}</span></label>
-              </div>
-              <div class="ui-md-12 ui-lg-12 ui-sm-12">
-                <label style="color:rgb(127, 128, 126)">OPD:  <span style="color:rgb(17, 17, 17)">{{opd}}</span></label>
-              </div>
-              <div class="ui-md-12 ui-lg-12 ui-sm-12">
-                <label style="color:rgb(127, 128, 126)">Lab:  <span style="color:rgb(17, 17, 17)">{{lab}}</span></label>
-              </div>
-            </p-card>
-          </div>
 
-         
 
             <div class="ui-lg-4 ui-md-4 ui-sm-12">
-                <p-card [ngStyle]="{'width':'100%'}">
-              <div class="ui-md-12 ui-lg-12 ui-sm-12">
-                <label style="color:rgb(127, 128, 126)"> Dues:  <span style="color:rgb(17, 17, 17)">{{dues}}</span> </label>
+
+
+              <div class="ui-lg-12 ui-md-12 ui-sm-12">
+                <label style="color:rgb(127, 128, 126)">Patient ID: <span
+                    style="color:rgb(17, 17, 17)">{{id}}</span></label>
               </div>
-              <div class="ui-md-12 ui-lg-12 ui-sm-12">
-                <label style="color:rgb(127, 128, 126)">ER:  <span style="color:rgb(17, 17, 17)">{{er}}</span></label>
+              <div class="ui-lg-12 ui-md-12 ui-sm-12">
+                <label style="color:rgb(127, 128, 126)">Patient Name: <span
+                    style="color:rgb(17, 17, 17)">{{name}}</span></label>
+              </div>
+              <div class="ui-lg-12 ui-md-12 ui-sm-12">
+                <label style="color:rgb(127, 128, 126)">Phone Number: <span
+                    style="color:rgb(17, 17, 17)">{{number}}</span> </label>
+              </div>
+              <div class="ui-lg-12 ui-md-12 ui-sm-12">
+                <label style="color:rgb(127, 128, 126)">Registration: <span
+                    style="color:rgb(17, 17, 17)">{{registration}}</span></label>
+              </div>
+              <div class="ui-lg-12 ui-md-12 ui-sm-12">
+                <label style="color:rgb(127, 128, 126)">Date: <span
+                    style="color:rgb(17, 17, 17)">{{date | date :'short'}}</span></label>
               </div>
 
-              <div class="ui-md-12 ui-lg-12 ui-sm-12">
-                <label style="color:rgb(127, 128, 126)"> Total   <span style="color:rgb(17, 17, 17)">{{total}}</span></label>
-              </div>
-              
-            </p-card>
-            
             </div>
-         
+
+            <div class="ui-lg-4 ui-md-4 ui-sm-12">
+              <p-card>
+                <div class="ui-md-12 ui-lg-12  ui-sm-12">
+                  <label style="color:rgb(127, 128, 126)">Patient Package: <span
+                      style="color:rgb(17, 17, 17)">{{package}}</span></label>
+                </div>
+                <div class="ui-md-12 ui-lg-12 ui-sm-12">
+                  <label style="color:rgb(127, 128, 126)">OPD: <span
+                      style="color:rgb(17, 17, 17)">{{opd}}</span></label>
+                </div>
+                <div class="ui-md-12 ui-lg-12 ui-sm-12">
+                  <label style="color:rgb(127, 128, 126)">Lab: <span
+                      style="color:rgb(17, 17, 17)">{{lab}}</span></label>
+                </div>
+              </p-card>
+            </div>
+
+
+
+            <div class="ui-lg-4 ui-md-4 ui-sm-12">
+              <p-card [ngStyle]="{'width':'100%'}">
+                <div class="ui-md-12 ui-lg-12 ui-sm-12">
+                  <label style="color:rgb(127, 128, 126)"> Dues: <span style="color:rgb(17, 17, 17)">{{dues}}</span>
+                  </label>
+                </div>
+                <div class="ui-md-12 ui-lg-12 ui-sm-12">
+                  <label style="color:rgb(127, 128, 126)">ER: <span style="color:rgb(17, 17, 17)">{{er}}</span></label>
+                </div>
+
+                <div class="ui-md-12 ui-lg-12 ui-sm-12">
+                  <label style="color:rgb(127, 128, 126)"> Total <span
+                      style="color:rgb(17, 17, 17)">{{total}}</span></label>
+                </div>
+
+              </p-card>
+              <div class="ui-md-12 ui-lg-12 ui-sm-12">
+
+                <button class="ui-button-danger" pButton type="button" label="DISCHARGE" (click)="dischargePatient()"
+                  style="margin-top:20px;"></button>
+              </div>
+            </div>
+          </div>
+
 
 
 

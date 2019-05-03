@@ -34,8 +34,13 @@ import { PackageListComponent } from './package-list/package-list.component';
 // import { MonitorScreenComponent } from './monitor-screen/,monitor-screen.component';
 import { OpdconsultancyComponent } from './opdconsultancy/opdconsultancy.component';
 import { MonitorScreenComponent } from './monitor-screen/monitor-screen.component';
+
+import { PatientTransactionHistoryComponent } from './patient-transaction-history/patient-transaction-history.component';
+
+
 import { OpdLabtestComponent } from './opd-labtest/opd-labtest.component';
 import { PatientTransactionsComponent } from './patient-transactions/patient-transactions.component';
+
 
 const routes: Routes = [
 
@@ -62,8 +67,12 @@ const routes: Routes = [
   { path: 'existingPatient', canActivate: [AuthGuard], component: ExistingPatientComponent },
   {path:'opdEmergency/:id',component:OpdEmergencyComponent},
   {path: 'opdconsultancy/:id', component: OpdconsultancyComponent},
+  {path: 'history/:id', component: PatientTransactionHistoryComponent},
+
+
   {path:'opdlabtest/:id',component:OpdLabtestComponent},
   {path: 'patienttransactions/:id', component:PatientTransactionsComponent}
+
 
 
 ];
