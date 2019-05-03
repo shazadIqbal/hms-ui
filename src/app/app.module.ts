@@ -80,6 +80,14 @@ import { OpdGynyComponent } from './opd-gyny/opd-gyny.component';
 import {CheckboxModule} from 'primeng/checkbox';
 
 
+import { PatientTransactionHistoryComponent } from './patient-transaction-history/patient-transaction-history.component';
+
+
+import { OpdLabtestComponent } from './opd-labtest/opd-labtest.component';
+
+
+import { PatientTransactionsComponent } from './patient-transactions/patient-transactions.component';
+
 
 @NgModule({
   declarations: [
@@ -130,7 +138,14 @@ import {CheckboxModule} from 'primeng/checkbox';
     PackageListComponent,
     OpdEmergencyComponent,
     OpdconsultancyComponent,
+
+
+    PatientTransactionHistoryComponent,
+
+    OpdLabtestComponent,
+    PatientTransactionsComponent,
     OpdGynyComponent
+
 
   ],
   imports: [
@@ -166,4 +181,4 @@ import {CheckboxModule} from 'primeng/checkbox';
   bootstrap: [AppComponent],
   exports: [FormsModule]
 })
-export class AppModule {}
+export class AppModule { }

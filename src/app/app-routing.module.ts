@@ -2,7 +2,7 @@ import { AddErComponent } from './add-er/add-er.component';
 import { ErComponent } from './er/er.component';
 import { PatientformComponent } from './patientform/patientform.component';
 import { PatientComponent } from './patient/patient.component';
-import { NgModule } from '@angular/core';
+import { NgModule, Component } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { LoginFormComponent } from './login-form/login-form.component';
 import { AboutPageComponent } from './about-page/about-page.component';
@@ -36,6 +36,13 @@ import { OpdconsultancyComponent } from './opdconsultancy/opdconsultancy.compone
 import { MonitorScreenComponent } from './monitor-screen/monitor-screen.component';
 import { OpdGynyComponent } from './opd-gyny/opd-gyny.component';
 
+import { PatientTransactionHistoryComponent } from './patient-transaction-history/patient-transaction-history.component';
+
+
+import { OpdLabtestComponent } from './opd-labtest/opd-labtest.component';
+import { PatientTransactionsComponent } from './patient-transactions/patient-transactions.component';
+
+
 const routes: Routes = [
 
   { path: '', component: HmslandingpageComponent },
@@ -61,7 +68,12 @@ const routes: Routes = [
   { path: 'existingPatient', canActivate: [AuthGuard], component: ExistingPatientComponent },
   {path:'opdEmergency/:id',component:OpdEmergencyComponent},
   {path: 'opdconsultancy/:id', component: OpdconsultancyComponent},
-  {path: 'opdGyny/:id', component:OpdGynyComponent}
+  {path: 'history/:id', component: PatientTransactionHistoryComponent},
+  {path: 'opdGyny/:id', component:OpdGynyComponent},
+  {path:'opdlabtest/:id',component:OpdLabtestComponent},
+  {path: 'patienttransactions/:id', component:PatientTransactionsComponent}
+
+
 
 
 ];

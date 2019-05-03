@@ -52,7 +52,7 @@
         </ng-template>
         <ng-template pTemplate="body" let-rowData let-columns="columns" style="word-wrap: break-word;">
           <tr [pSelectableRow]="rowData">
-            <td *ngFor="let col of columns">
+            <td  *ngFor="let col of columns">
               {{ rowData[col.field] }}
             </td>
             <!-- <td>

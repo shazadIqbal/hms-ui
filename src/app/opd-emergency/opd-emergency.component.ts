@@ -46,7 +46,7 @@ export class OpdEmergencyComponent implements OnInit {
     //   this.showLoading = true;
     // }
   //this.showLoading=true
-    this.addEmergency.id=this.activeRoute.snapshot.params['id'];
+    this.addEmergency.id= this.activeRoute.snapshot.params['id'];
     this.addEmergency.price = 0;
   
   }
