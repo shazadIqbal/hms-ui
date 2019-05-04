@@ -1,0 +1,309 @@
+<div class="col-g-12">
+    <div class="ui-lg-5 ui-md-5 ui-sm-12">
+      <button
+        pButton
+        type="button"
+        class=" ui-button-success"
+        (click)="backToMonitor()"
+        style="width:45%;margin-left:30% "
+        label="Back"
+      ></button>
+    </div>
+  </div>
+  
+  <div class="ui-g-12">
+    <p-toast></p-toast>
+    <p-card
+    header="OPD GYNY"
+    [style]="{
+      width: '80%',
+      'font-size': '26px',
+      'margin-left': '10%',
+      'text-align': 'center',
+      color: 'green'
+    }"
+    >
+    <div class="ui-g ui-fluid">
+      <hr style="height:2px;width:100%;background-color:green;" />
+      <form
+      style="width:100%;"
+      #myForm="ngForm"
+      (ngSubmit)="submitOpd(myForm.value)"
+      >
+      <div *ngIf="checkStatus" >
+          <p-progressSpinner></p-progressSpinner>
+          <!-- here message from the server -->
+          <h2>Server Failed</h2>
+          <p>Please Reload The Page</p>
+          <div class="ui-g" style="margin-top:-20px !important;">
+            <div class="ui-md-3 ui-lg-3 ui-sm-0"></div>
+            <div class="ui-md-1 ui-lg-1 ui-sm-0"></div>
+            <br>
+            <div class="ui-md-4 ui-lg-4 ui-sm-12">
+              <button
+                pButton
+                type="button"
+                label="Click to reload"
+                style="margin-top: 0px; background-color:green;width:100%;"
+                onclick="location.reload()"
+              ></button>
+            </div>
+          </div>
+          <hr style="height:2px;width:100%;background-color:green;" />
+      </div>
+  <div [hidden]="show">
+      <!-- Add Doctor dropdwon -->
+      <div class="ui-g">
+        <div class="ui-md-2 ui-lg-2"></div>
+            <div class="ui-md-8 ui-lg-8 ui-sm-12">
+              <div class="ui-inputgroup">
+                <span
+                class="ui-inputgroup-addon"
+                style="width:37%;font-size:15px;font-weight:bold;"
+                >Select Doctor</span
+                >
+                <p-dropdown
+                (onChange)="doctorDropdown()"
+                [options]="doctors"
+                name="doctors"
+                [(ngModel)]="opdGynyObject.doctors"
+                [filter]="true"
+                [style]="{ width: '100%', height: '100%','font-size':'20px'}"
+                [ngStyle]="{ 'width': '80%','font-size':'20px'}"
+                required
+                ></p-dropdown>
+              </div>
+            </div>
+          </div>
+          <!-- Fees Field -->
+          <div class="ui-g">
+            <div class="ui-md-2 ui-lg-2"></div>
+            <div class="ui-md-8 ui-lg-8 ui-sm-12">
+              <div class="ui-inputgroup">
+                <span
+                  class="ui-inputgroup-addon"
+                  style="width:45%;font-size:15px;font-weight: bold;"
+                  >Fees</span
+                >
+                <input
+                  type="text"
+                  name="fees"
+                  pInputText
+                  ngModel
+                  required
+                  [(ngModel)]="opdGynyObject.fees"
+                  [readOnly]="true"
+                />
+              </div>
+            </div>
+          </div>
+          <div class="ui-g">
+            <div class="ui-md-2 ui-lg-2"></div>
+            <div class="ui-md-8 ui-lg-8 ui-sm-12">
+              <div class="ui-inputgroup">
+                <span
+                  class="ui-inputgroup-addon"
+                  style="width:45%;font-size:15px;font-weight: bold;"
+                  >Discount $$</span
+                >
+                <input
+                  type="number"
+                  name="discount"
+                  pInputText
+                  ngModel
+                  min="0"
+                  (change)="onChangeDiscount()"
+                  placeholder="0  %"
+                  [(ngModel)]="opdGynyObject.discount"
+                />
+              </div>
+            </div>
+          </div>
+          <!-- Cash Recvied -->
+          <div class="ui-g">
+            <div class="ui-md-2 ui-lg-2"></div>
+            <div class="ui-md-8 ui-lg-8 ui-sm-12">
+              <div class="ui-inputgroup">
+                <span
+                  class="ui-inputgroup-addon"
+                  style="width:45%;font-size:15px;font-weight: bold;"
+                  >Cash Recieved</span
+                >
+                <input
+                  type="text"
+                  name="cashrecieved"
+                  pInputText
+                  ngModel
+  
+                  required
+                  placeholder="$$"
+                  [(ngModel)]="opdGynyObject.cashRecieved"
+                  (input)="getTotal(opdGynyObject.cashRecieved)"
+                />
+              </div>
+            </div>
+          </div>
+          <div class="ui-g">
+            <div class="ui-md-2 ui-lg-2"></div>
+            <div class="ui-md-8 ui-lg-8 ui-sm-12">
+              <div class="ui-inputgroup">
+                <span
+                  class="ui-inputgroup-addon"
+                  style="width:45%;font-size:15px;font-weight: bold;"
+                  >Total Amount</span
+                >
+                <input
+                  required
+                  type="number"
+                  pInputText
+                  name="total"
+                  ngModel
+                  [readOnly]="true"
+                  placeholder="Total Amount $"
+                  [(ngModel)]="opdGynyObject.total"
+                />
+              </div>
+            </div>
+          </div>
+          <!-- Registration checkbox here -->
+          <!-- <h4>Registered or not?</h4> <p>{{checked}}</p>
+          <p-checkbox [(ngModel)]="checked" binary="true" name="registration"></p-checkbox>
+          -->
+          <div class="ui-g">
+              <div class="ui-md-2 ui-lg-2"></div>
+              <div class="ui-md-8 ui-lg-8 ui-sm-12">
+                <div class="ui-inputgroup">
+                  <label style="margin-top: 1%; font-size: 25px;"> Registration:  </label>
+                  &nbsp;
+                  <p-checkbox [(ngModel)]="opdGynyObject.registration" binary="true" name="registration"></p-checkbox>
+              </div>
+              </div>
+            </div>
+  
+          <div class="ui-g" style="margin-top:-20px !important;">
+            <div class="ui-md-2 ui-lg-2"></div>
+            <div class="ui-md-8 ui-lg-8 ui-sm-12">
+              <button
+                [disabled]="myForm.invalid"
+                pButton
+                type="submit"
+                label="SAVE"
+                style="margin-top: 0px; background-color:green;width:100%;"
+  
+              ></button>
+            </div>
+          </div>
+          <!-- PRINT BUTTON -->
+          <div class="ui-g" style="margin-top:-20px !important;">
+            <div class="ui-md-2 ui-lg-2"></div>
+            <div class="ui-md-8 ui-lg-8 ui-sm-12">
+              <button
+                [disabled]="enable"
+                printSectionId="content"
+                ngxPrint
+                pButton
+                type="button"
+                label="PRINT"
+                style="margin-top: 0px; background-color:green;width:100%;"
+  
+              ></button>
+            </div>
+          </div>
+          </div>
+        </form>
+      </div>
+    </p-card>
+    <p-toast></p-toast>
+  </div>
+  <!-- Print Section -->
+  <div *ngIf="opdGynyObject.doctors !== undefined"  id="content" [hidden]="true">
+    <div class="container">
+      <div class="row">
+        <div
+          class="well col-xs-10 col-sm-10 col-md-6 col-xs-offset-1 col-sm-offset-1 col-md-offset-3"
+        >
+          <div class="row">
+            <span>
+              <div class="text-center ui-g-8">
+                <h1 style="text-align: center;text-decoration-line: underline">
+                  OPD CONSULTANCY RECEIPT
+                </h1>
+              </div>
+            </span>
+            <hr />
+          </div>
+          <br />
+          <div class="row">
+            <span>
+              <div class="text-center ui-g-8">
+                <h3 style="text-align: left;text-decoration-line: underline">
+                  Doctor Name   :
+                  {{ opdGynyObject.doctors["fullName"] }}
+                </h3>
+              </div>
+            </span>
+          </div>
+          <div class="row">
+            <span>
+              <div class="text-center ui-g-8">
+                <h3 style="text-align: left;text-decoration-line: underline">
+                  Fees :
+                  {{ opdGynyObject.fees }}
+                </h3>
+              </div>
+            </span>
+          </div>
+          <br />
+          <div class="row">
+            <span>
+              <div class="text-center ui-g-8">
+                <h3 style="text-align: left;text-decoration-line: underline">
+                  Discount :
+                  {{ opdGynyObject.discount }}
+                </h3>
+              </div>
+            </span>
+          </div>
+          <br />
+          <div class="row">
+            <span>
+              <div class="text-center ui-g-8">
+                <h3 style="text-align: left;text-decoration-line: underline">
+                  CASH RECEVIED :
+                  {{ opdGynyObject.cashRecieved }}
+                </h3>
+              </div>
+            </span>
+          </div>
+          <br />
+          <div class="row">
+            <span>
+              <div class="text-center ui-g-8">
+                <h3 style="text-align: left;text-decoration-line: underline">
+                  TOTAL AMOUNT :
+                  {{ opdGynyObject.total }}
+                </h3>
+              </div>
+            </span>
+          </div>
+          <br />
+          <div class="row">
+            <span>
+              <div class="text-center ui-g-8">
+                <h3 style="text-align: left;text-decoration-line: underline">
+                  RETURN :
+                  {{ opdGynyObject.cashRecieved - opdGynyObject.total }}
+                </h3>
+              </div>
+            </span>
+          </div>
+          <br />
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  
+  
+  
+  

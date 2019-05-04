@@ -76,10 +76,11 @@ import { FooterComponent } from './footer/footer.component';
 import { HeaderComponent } from './header/header.component';
 import { MainScreenComponent } from './main-screen/main-screen.component';
 import { NgModule } from '@angular/core';
+import { OpdGynyComponent } from './opd-gyny/opd-gyny.component';
+import {CheckboxModule} from 'primeng/checkbox';
 import { AdmissionComponent } from './admission/admission.component';
 import { PatientAdmitComponent } from './patient-admit/patient-admit.component';
 import { AdmissionService } from './Services/admission.service';
-
 import { PatientTransactionHistoryComponent } from './patient-transaction-history/patient-transaction-history.component';
 
 
@@ -139,11 +140,13 @@ import { PatientTransactionsComponent } from './patient-transactions/patient-tra
     OpdEmergencyComponent,
     OpdconsultancyComponent,
 
+
     PatientTransactionHistoryComponent,
     AdmissionComponent,
     PatientAdmitComponent,
     OpdLabtestComponent,
-    PatientTransactionsComponent
+    PatientTransactionsComponent,
+    OpdGynyComponent
 
 
   ],
@@ -170,9 +173,9 @@ import { PatientTransactionsComponent } from './patient-transactions/patient-tra
     DropdownModule,
     InputTextareaModule,
     MultiSelectModule,
-
     ProgressSpinnerModule,
-    NgxPrintModule
+    NgxPrintModule,
+    CheckboxModule
   ],
 
   providers: [DoctorService, AddpanellistseviceService, MessageService, NavBarService, AuthGuard, AddErComponent,AdmissionService],

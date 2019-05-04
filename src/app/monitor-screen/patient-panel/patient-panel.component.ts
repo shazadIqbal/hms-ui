@@ -26,7 +26,12 @@ export class PatientPanelComponent implements OnInit {
     let id = this.activatedRout.snapshot.params['id'];
     this.router.navigate(['/opdconsultancy/' + id])
   }
- 
+
+gotoGyny(){
+  let id = this.activatedRout.snapshot.params['id'];
+  this.router.navigate(['/opdGyny/' + id]); 
+}
+
   gotoHistory()
   {
     let id = this.activatedRout.snapshot.params['id'];
@@ -43,6 +48,7 @@ export class PatientPanelComponent implements OnInit {
     let id = this.activatedRout.snapshot.params['id'];
     this.router.navigate(['patienttransactions/'+id])
     
+
 
   }
 
