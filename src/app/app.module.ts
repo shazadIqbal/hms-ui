@@ -78,8 +78,9 @@ import { MainScreenComponent } from './main-screen/main-screen.component';
 import { NgModule } from '@angular/core';
 import { OpdGynyComponent } from './opd-gyny/opd-gyny.component';
 import {CheckboxModule} from 'primeng/checkbox';
-
-
+import { AdmissionComponent } from './admission/admission.component';
+import { PatientAdmitComponent } from './patient-admit/patient-admit.component';
+import { AdmissionService } from './Services/admission.service';
 import { PatientTransactionHistoryComponent } from './patient-transaction-history/patient-transaction-history.component';
 
 
@@ -141,7 +142,8 @@ import { PatientTransactionsComponent } from './patient-transactions/patient-tra
 
 
     PatientTransactionHistoryComponent,
-
+    AdmissionComponent,
+    PatientAdmitComponent,
     OpdLabtestComponent,
     PatientTransactionsComponent,
     OpdGynyComponent
@@ -176,7 +178,7 @@ import { PatientTransactionsComponent } from './patient-transactions/patient-tra
     CheckboxModule
   ],
 
-  providers: [DoctorService, AddpanellistseviceService, MessageService, NavBarService, AuthGuard, AddErComponent],
+  providers: [DoctorService, AddpanellistseviceService, MessageService, NavBarService, AuthGuard, AddErComponent,AdmissionService],
 
   bootstrap: [AppComponent],
   exports: [FormsModule]
