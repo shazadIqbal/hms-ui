@@ -76,6 +76,9 @@ import { FooterComponent } from './footer/footer.component';
 import { HeaderComponent } from './header/header.component';
 import { MainScreenComponent } from './main-screen/main-screen.component';
 import { NgModule } from '@angular/core';
+import { AdmissionComponent } from './admission/admission.component';
+import { PatientAdmitComponent } from './patient-admit/patient-admit.component';
+import { AdmissionService } from './Services/admission.service';
 
 import { PatientTransactionHistoryComponent } from './patient-transaction-history/patient-transaction-history.component';
 
@@ -137,7 +140,8 @@ import { PatientTransactionsComponent } from './patient-transactions/patient-tra
     OpdconsultancyComponent,
 
     PatientTransactionHistoryComponent,
-
+    AdmissionComponent,
+    PatientAdmitComponent,
     OpdLabtestComponent,
     PatientTransactionsComponent
 
@@ -171,7 +175,7 @@ import { PatientTransactionsComponent } from './patient-transactions/patient-tra
     NgxPrintModule
   ],
 
-  providers: [DoctorService, AddpanellistseviceService, MessageService, NavBarService, AuthGuard, AddErComponent],
+  providers: [DoctorService, AddpanellistseviceService, MessageService, NavBarService, AuthGuard, AddErComponent,AdmissionService],
 
   bootstrap: [AppComponent],
   exports: [FormsModule]

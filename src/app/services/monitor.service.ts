@@ -14,7 +14,7 @@ export class MonitorService {
    }
 
    getPatientMonitor(id):Observable<any>{
-    return this.http.get(environment.baseUrl+"api/monitor/"+id);
+    return this.http.get(environment.baseUrl+"/api/monitor/"+id);
 
    }
 

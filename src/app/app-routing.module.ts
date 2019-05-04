@@ -1,3 +1,4 @@
+import { AdmissionComponent } from "./admission/admission.component";
 import { AddErComponent } from './add-er/add-er.component';
 import { ErComponent } from './er/er.component';
 import { PatientformComponent } from './patientform/patientform.component';
@@ -34,6 +35,7 @@ import { PackageListComponent } from './package-list/package-list.component';
 // import { MonitorScreenComponent } from './monitor-screen/,monitor-screen.component';
 import { OpdconsultancyComponent } from './opdconsultancy/opdconsultancy.component';
 import { MonitorScreenComponent } from './monitor-screen/monitor-screen.component';
+import { PatientAdmitComponent } from './patient-admit/patient-admit.component';
 
 import { PatientTransactionHistoryComponent } from './patient-transaction-history/patient-transaction-history.component';
 
@@ -65,13 +67,17 @@ const routes: Routes = [
   { path: 'adder', canActivate: [AuthGuard], component: AddErComponent },
   { path: 'appoinmentList', canActivate: [AuthGuard], component: AddAppoinmentListComponent },
   { path: 'existingPatient', canActivate: [AuthGuard], component: ExistingPatientComponent },
+
   {path:'opdEmergency/:id',component:OpdEmergencyComponent},
   {path: 'opdconsultancy/:id', component: OpdconsultancyComponent},
   {path: 'history/:id', component: PatientTransactionHistoryComponent},
 
 
   {path:'opdlabtest/:id',component:OpdLabtestComponent},
-  {path: 'patienttransactions/:id', component:PatientTransactionsComponent}
+  {path: 'patienttransactions/:id', component:PatientTransactionsComponent},
+  {path: 'admission', canActivate: [AuthGuard], component: AdmissionComponent}, //Create New Bed Component
+  {path:'patientadmit/:id', canActivate: [AuthGuard],component:PatientAdmitComponent}
+
 
 
 
