@@ -11,7 +11,7 @@ export class PatientserviceService {
   constructor(private http: HttpClient) {}
 
 
-  private baseUrl = environment.baseUrl+"/api/patient/";
+  private baseUrl = environment.baseUrl+"api/patient/";
 
 
 

@@ -83,15 +83,15 @@ export class OpdconsultancyComponent implements OnInit {
 
     );
   }
-  //Getting Doctors'Fees
+
   doctorDropdown() {
-    // console.log(this.selectedDoctor);
+    
     console.log(this.opdObject.doctors["fullName"]);
     this.opdObject.sallary = 0; //it will also work for the negative
     this.opdObject.total = 0;
     this.opdObject.discount = 0;
     this.opdObject.fees = this.opdObject.doctors["fees"];
-    //console.log(this.opdObject.sallary)
+    
     this.opdObject.total = this.opdObject.fees + this.opdObject.discount;
   }
 
