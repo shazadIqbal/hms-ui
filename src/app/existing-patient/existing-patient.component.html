@@ -32,7 +32,7 @@
             <div class="ui-g-12 ui-md-12 ui-lg-5">
               <div class="ui-inputgroup">
                 <span class="ui-inputgroup-addon" style="width:50%;"
-                  >MR.NO</span
+                  >MR.NO<i style="color: red">*</i></span
                 >
                 <input
                   type="text"
@@ -60,7 +60,7 @@
                 <span
                   class="ui-inputgroup-addon"
                   style="width:50%;  font-size: 11px; line-height: 15px;"
-                  >SELECT DOCTOR</span
+                  >SELECT DOCTOR<i style="color: red">*</i></span
                 >
                 <p-dropdown
                   [options]="_selectDoctor"
@@ -78,7 +78,7 @@
               <div class="ui-inputgroup">
                 <span class="ui-inputgroup-addon">DOB</span>
                 <p-calendar></p-calendar>
-              </div> 
+              </div>
 
             </div> -->
 
@@ -87,7 +87,7 @@
                 <span
                   class="ui-inputgroup-addon"
                   style="width:50%;  font-size: 11px;"
-                  >APPOINTMENT DATE</span
+                  >APPOINTMENT DATE<i style="color: red">*</i></span
                 >
                 <p-calendar
                   [style]="{ width: '300px' }"
@@ -102,7 +102,7 @@
             <div class="ui-md-2"></div>
             <div class="ui-g-12 ui-md-12 ui-lg-5">
               <div class="ui-inputgroup">
-                <span class="ui-inputgroup-addon" style="width:50%;">TIME</span>
+                <span class="ui-inputgroup-addon" style="width:50%;">TIME<i style="color: red">*</i></span>
                 <p-calendar
                   [style]="{ width: '300px' }"
                   name="time"
