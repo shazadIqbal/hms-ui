@@ -1,3 +1,4 @@
+import { NgForm } from '@angular/forms';
 import { MessageService } from 'primeng/api';
 import { PatientserviceService } from 'src/app/patientservice.service';
 import { Component, OnInit } from '@angular/core';
@@ -5,6 +6,8 @@ import { Patient } from './patient';
 import { Router, ActivatedRoute } from '@angular/router';
 
 
+// import { Router } from '@angular/router';
+import { ViewChild, ElementRef } from '@angular/core'; //viewChild decorator is used to access refrence varibale outside the template  we can access id of any component using view child
 @Component({
   selector: 'app-patientform',
   templateUrl: './patientform.component.html',
@@ -17,6 +20,7 @@ export class PatientformComponent implements OnInit {
   isGynyObs: boolean = false;
   patientid: number;
  
+  @ViewChild('userForm') formRef: ElementRef; //view refrecne is called after ngAfterInit();
 
   constructor(
     private msgService: MessageService,
@@ -26,6 +30,7 @@ export class PatientformComponent implements OnInit {
   ) {
     this.gender = [{ label: 'Male', value: 'Male' }, { label: 'Female', value: 'Female' }];
   }
+
 
 
 
@@ -59,11 +64,45 @@ export class PatientformComponent implements OnInit {
     })
   }
 
-  onSubmit() {
+  // onSubmit() {
+    // if(this.patientid != undefined){
+    //   this.patientService.UpdatePatient(this.patientid,this.patient).subscribe(
+    //     data =>{
+    //       this.msgService.add({
+    //         severity: 'info',
+    //         summary: 'Service message',
+    //         detail: 'Patient updated successfully!'
+    //       });
+    //     },
+    //     error => {
+    //       console.log(error);
+    //       this.msgService.add({
+    //         severity: 'error',
+    //         summary: 'Error Found',
+    //         detail: 'Something went wrong check your internet connection '
+    //       });
+    //     }
+
+    //   );
+    //   console.log("in update patient",this.patient);
+    // }
+
+    // else{
+    //   console.log("Request payload",this.patient)
+
+
+  showConfirm() {
+    this.msgService.clear();
+    this.msgService.add({ key: 'c', sticky: true, severity: 'warn', summary: 'Are you sure?', detail: 'Confirm to proceed' });
+  }
+
+  onConfirm() {
+    this.msgService.clear('c');
     if(this.patientid != undefined){
       this.patientService.UpdatePatient(this.patientid,this.patient).subscribe(
         data =>{
           this.msgService.add({
+            key:'p',
             severity: 'info',
             summary: 'Service message',
             detail: 'Patient updated successfully!'
@@ -72,6 +111,7 @@ export class PatientformComponent implements OnInit {
         error => {
           console.log(error);
           this.msgService.add({
+            key:'p',
             severity: 'error',
             summary: 'Error Found',
             detail: 'Something went wrong check your internet connection '
@@ -84,17 +124,22 @@ export class PatientformComponent implements OnInit {
 
     else{
       console.log("Request payload",this.patient)
+
+
     this.patientService.postPatient(this.patient).subscribe(
       data => {
         this.msgService.add({
+          key: 'p',
           severity: 'success',
-          summary: 'Service message',
-          detail: 'Patient added successfully!'
+          summary: 'Patient Added',
+          detail: 'Added'
         });
+
       },
       error => {
         console.log(error);
         this.msgService.add({
+          key: 'p',
           severity: 'error',
           summary: 'Error Found',
           detail: 'Something went wrong check your internet connection '
@@ -103,6 +148,31 @@ export class PatientformComponent implements OnInit {
     );
   }
 }
+
+  onReject() {
+    this.msgService.clear('c');
+  }
+
+  // onSubmit() {
+  //   // this.patientService.postPatient(this.patient).subscribe(
+  //   //   data => {
+
+  //   //     this.msgService.add({
+  //   //       severity: 'success',
+  //   //       summary: 'Service message',
+  //   //       detail: 'Added'
+  //   //     });
+  //   //   },
+  //   //   error => {
+  //   //     console.log(error);
+  //   //     this.msgService.add({
+  //   //       severity: 'error',
+  //   //       summary: 'Error Found',
+  //   //       detail: 'Something went wrong check your internet connection '
+  //   //     });
+  //   //   }
+  //   // );
+  // }
 
   numberOnly(event): boolean {
     const charCode = event.which ? event.which : event.keyCode;

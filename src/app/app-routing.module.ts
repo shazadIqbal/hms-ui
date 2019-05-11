@@ -9,7 +9,7 @@ import { LoginFormComponent } from './login-form/login-form.component';
 import { AboutPageComponent } from './about-page/about-page.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { ContactPageComponent } from './contact-page/contact-page.component';
-//import  { MainScreenComponent } from './main-screen/main-screen.component';
+// import  { MainScreenComponent } from './main-screen/main-screen.component';
 import { MainScreenComponent } from './main-screen/main-screen.component';
 import { DoctorListComponent } from './doctor-list/doctor-list.component';
 import { AdddoctorComponent } from './adddoctor/adddoctor.component';
@@ -73,18 +73,21 @@ const routes: Routes = [
   { path: 'appoinmentList', canActivate: [AuthGuard], component: AddAppoinmentListComponent },
   { path: 'existingPatient', canActivate: [AuthGuard], component: ExistingPatientComponent },
 
-  {path:'opdEmergency/:id',component:OpdEmergencyComponent},
+  {path: 'opdEmergency/:id', component: OpdEmergencyComponent},
   {path: 'opdconsultancy/:id', component: OpdconsultancyComponent},
   {path: 'history/:id', component: PatientTransactionHistoryComponent},
-  {path: 'opdGyny/:id', component:OpdGynyComponent},
-  {path:'opdlabtest/:id',component:OpdLabtestComponent},
-  {path: 'patienttransactions/:id', component:PatientTransactionsComponent},
+  {path: 'opdGyny/:id', component: OpdGynyComponent},
+  {path: 'opdlabtest/:id', component: OpdLabtestComponent},
+  {path: 'patienttransactions/:id', component: PatientTransactionsComponent},
   {path: 'admission', canActivate: [AuthGuard], component: AdmissionComponent}, //Create New Bed Component
   {path:'patientadmit/:id', canActivate: [AuthGuard],component:PatientAdmitComponent},
   {path:'gynObsList/:id', component:GynyObsListComponent},
   {path:'gynObsList', component:GynyObsListComponent},
-  {path:'patientFormWithId/:id',component:PatientformComponent}
+  {path:'patientFormWithId/:id',component:PatientformComponent},
   
+  {path: 'patientadmit/:id', canActivate: [AuthGuard], component: PatientAdmitComponent},
+  { path: 'adddoctor/:id', canActivate: [AuthGuard], component: AdddoctorComponent }
+
 
 
 
