@@ -16,8 +16,8 @@ export class Doctor{
     religion:string;
     sallary:number;
     fees:number;
-    // dateOfbirth:string;
+    dateOfbirth:string;
     gender:SelectItem[];
-    // timeIn:string;
-    // timeOut:string;
+    timeIn:string;
+    timeOut:string;
 }
