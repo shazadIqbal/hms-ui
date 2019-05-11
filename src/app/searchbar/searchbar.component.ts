@@ -2,6 +2,8 @@ import { Patient } from './../patientform/patient';
 import { Component, OnInit } from '@angular/core';
 import { PatientserviceService } from '../patientservice.service';
 import { LazyLoadEvent, MessageService } from 'primeng/api';
+import { Router, ActivatedRoute } from '@angular/router';
+
 
 @Component({
   selector: 'app-searchbar',
@@ -15,14 +17,19 @@ export class SearchbarComponent implements OnInit {
   loading = false;
   datasource: any[];
   indexFind: any;
+  patientObject: Patient = new Patient();
   // tslint:disable-next-line: ban-types
   totalRecords: Number;
+  
   constructor(
+    private router: Router,
     private patientService: PatientserviceService,
-    private mesgService: MessageService
+    private mesgService: MessageService,
+    private activeRoute:ActivatedRoute
   ) {}
   ngOnInit() {
     this.datasource = this.patient = [];
+    this.patientObject.id= this.activeRoute.snapshot.params['id'];
   }
 
   showDialog() {
@@ -104,5 +111,10 @@ export class SearchbarComponent implements OnInit {
 //       }
 //     );
 //   }
+
+routeToPatientForm(rowData: any){
+  console.log("yeh id hai ",rowData);
+  this.router.navigate(['/patientFormWithId/' + rowData])
+}
  }
 

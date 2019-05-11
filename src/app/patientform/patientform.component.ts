@@ -2,7 +2,8 @@ import { MessageService } from 'primeng/api';
 import { PatientserviceService } from 'src/app/patientservice.service';
 import { Component, OnInit } from '@angular/core';
 import { Patient } from './patient';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
+
 
 @Component({
   selector: 'app-patientform',
@@ -12,27 +13,83 @@ import { Router } from '@angular/router';
 export class PatientformComponent implements OnInit {
   gender: any = [];
   patient: Patient = new Patient();
+  value : Date;
+  isGynyObs: boolean = false;
+  patientid: number;
+ 
+
   constructor(
     private msgService: MessageService,
     private patientService: PatientserviceService,
-    private router: Router
+    private router: Router,
+    private activeRoute:ActivatedRoute
   ) {
     this.gender = [{ label: 'Male', value: 'Male' }, { label: 'Female', value: 'Female' }];
   }
 
 
 
-  ngOnInit() {}
 
+  ngOnInit() {
+    
+    console.log(this.isGynyObs);
+    this.patientid = this.activeRoute.snapshot.params['id'];
+    if(this.patientid){
+    this.gettingPatientById();
+    }
+   
+  }
+
+  isGynObsFn(){
+    console.log(this.isGynyObs)
+    this.patient.gynAndObsRegistration = this.isGynyObs;
+    console.log("mein gynu obs hon",this.patient.gynAndObsRegistration)
+  }
+
+  gettingPatientById(){
+    this.patientService.getPatientsByMRNO(this.patientid).subscribe(data=>{
+      if(this.patientid){
+        this.patient.name = data.name;
+        this.patient.cnic= data.cnic;
+        this.patient.age = data.age;
+        this.patient.address = data.address;
+        this.patient.gender = data.gender;
+        this.patient.phoneNo = data.phoneNo;
+      }
+    })
+  }
 
   onSubmit() {
+    if(this.patientid != undefined){
+      this.patientService.UpdatePatient(this.patientid,this.patient).subscribe(
+        data =>{
+          this.msgService.add({
+            severity: 'info',
+            summary: 'Service message',
+            detail: 'Patient updated successfully!'
+          });
+        },
+        error => {
+          console.log(error);
+          this.msgService.add({
+            severity: 'error',
+            summary: 'Error Found',
+            detail: 'Something went wrong check your internet connection '
+          });
+        }
+
+      );
+      console.log("in update patient",this.patient);
+    }
+
+    else{
+      console.log("Request payload",this.patient)
     this.patientService.postPatient(this.patient).subscribe(
       data => {
-
         this.msgService.add({
           severity: 'success',
           summary: 'Service message',
-          detail: 'Added'
+          detail: 'Patient added successfully!'
         });
       },
       error => {
@@ -45,6 +102,7 @@ export class PatientformComponent implements OnInit {
       }
     );
   }
+}
 
   numberOnly(event): boolean {
     const charCode = event.which ? event.which : event.keyCode;
@@ -56,4 +114,9 @@ export class PatientformComponent implements OnInit {
   goBack() {
     this.router.navigate(['mainscreen']);
   }
+
+   
 }
+
+
+
