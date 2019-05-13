@@ -88,7 +88,11 @@ import { OpdLabtestComponent } from './opd-labtest/opd-labtest.component';
 
 
 import { PatientTransactionsComponent } from './patient-transactions/patient-transactions.component';
+
 import { GynyObsListComponent } from './gyny-obs-list/gyny-obs-list.component';
+
+  import { MonitorquickviewComponent } from './monitorquickview/monitorquickview.component';
+
 
 
 @NgModule({
@@ -148,7 +152,10 @@ import { GynyObsListComponent } from './gyny-obs-list/gyny-obs-list.component';
     OpdLabtestComponent,
     PatientTransactionsComponent,
     OpdGynyComponent,
+ obsAndGynyRegistration-branch
     GynyObsListComponent
+
+    MonitorquickviewComponent
 
 
   ],
