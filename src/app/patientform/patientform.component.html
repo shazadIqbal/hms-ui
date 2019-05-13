@@ -4,7 +4,12 @@
       <!-- back button and heading div -->
       <div class="ui-g ui-fluid">
         <div class="ui-g-4 ui-md-2 ui-lg-2">
-          <button type="button" class="btn btn-success btn-block" (click)="goBack()">
+          <button
+            type="button"
+            class="btn btn-success btn-block"
+            (click)="goBack()"
+          >
+
             Back
           </button>
         </div>
@@ -13,6 +18,14 @@
             ADD A NEW PATIENT
           </h3>
         </div>
+        <!-- checkbox for registration of gyny and obs -->
+        <div class="ui-g-12" style="float: left;">
+            <label style="color:rgb(67, 139, 78); font-size: 18px; "
+              >Gyny/Obs
+            </label>
+            &nbsp;
+            <p-checkbox [(ngModel)]="isGynyObs" (onChange)="isGynObsFn()" binary="true" name="GynyObs"></p-checkbox>
+          </div>
       </div>
       <hr />
       <!-- ADD PATIENT FORM -->
@@ -23,6 +36,7 @@
             <div class="ui-inputgroup">
               <span style="width:30%;" class="ui-inputgroup-addon"><b>Full Name&ensp;<i style="color: red">*</i></b><i></i></span>
               <!-- Full name -->
+
               <input type="text" [(ngModel)]="patient.name" #nameref="ngModel" required pInputText
                 placeholder="&ensp;Full Name" style="width:100%;" name="fullName" />
               <span class="ui-inputgroup-addon"></span>
@@ -37,6 +51,7 @@
           <!-- cnic_n0 -->
           <div class="ui-g-12 ui-md-5">
             <div class="ui-inputgroup">
+
               <span style="width:30%;" class="ui-inputgroup-addon"><b>CNIC&ensp;</b><i></i></span>
               <input type="text" (keypress)="numberOnly($event)" #position="ngModel" pInputText
                 placeholder="&ensp;Cnic (Optional)" name="position" [(ngModel)]="patient.cnic" ngModel />
@@ -55,7 +70,8 @@
           <!-- Age No -->
           <div class="ui-g-12 ui-md-6">
             <div class="ui-inputgroup">
-              <span style="width:30%" class="ui-inputgroup-addon"><b>Age&ensp;<i style="color: red">*</i></b><i></i></span>
+                  <span style="width:30%" class="ui-inputgroup-addon"><b>Age&ensp;<i style="color: red">*</i></b><i></i></span>
+
               <input type="text" (keypress)="numberOnly($event)" #agRef="ngModel" pInputText required
                 placeholder="&ensp;Age" name="age" ngModel [(ngModel)]="patient.age" />
               <span class="ui-inputgroup-addon"></span>
@@ -70,12 +86,16 @@
           <!-- Gender Dropdown -->
           <div class="ui-g-12 ui-md-5">
             <div class="ui-inputgroup">
-              <span style="width: 30%" class="ui-inputgroup-addon"><b>GENDER&ensp;<i style="color: red">*</i></b><i></i></span>
+
+                  <span style="width: 30%" class="ui-inputgroup-addon"><b>GENDER&ensp;<i style="color: red">*</i></b><i></i></span>
+
+              <span style="width: 30%" class="ui-inputgroup-addon"><b>GENDER&ensp;</b><i></i></span>
+
               <p-dropdown [options]="gender" name="gender" placeholder="Select Gender" [(ngModel)]="patient.gender"
                 required #genderRef="ngModel" [autoWidth]="false" [ngStyle]="{ width: '100%' }">
               </p-dropdown>
 
-              <span class="ui-inputgroup-addon"></span>
+              <!-- <span class="ui-inputgroup-addon"></span> -->
               <!-- <label style="margin-top:5px">{{ patient.gender }}</label> -->
             </div>
             <div style="padding:0px;margin-bottom:0px" [hidden]="genderRef.valid || genderRef.pristine"
@@ -93,6 +113,7 @@
               <input type="text" (keypress)="numberOnly($event)" #TelRef="ngModel" pInputText required
                 placeholder="&ensp;PhoneNo" name="MobileNo" ngModel [(ngModel)]="patient.phoneNo" />
               <span class="ui-inputgroup-addon"></span>
+
             </div>
             <div style="padding:0px;margin-bottom:0px" [hidden]="TelRef.valid || TelRef.pristine"
               class="alert alert-danger">
@@ -104,6 +125,7 @@
           <!-- adionality -->
           <div class="ui-g-12 ui-md-5">
             <div class="ui-inputgroup">
+
               <span style="width:30%" class="ui-inputgroup-addon"><b>ADDRESS&ensp;</b><i></i></span>
               <input type="text" #adRef="ngModel" pInputText placeholder="&ensp;Address (Optional)" name="Address"
                 ngModel autocomplete="off" [(ngModel)]="patient.address" />
@@ -116,9 +138,44 @@
           </div>
         </div>
         <!-- Row 4 -->
+        <div *ngIf="isGynyObs" class="ui-g ui-fluid">
+            <div class="ui-g-12 ui-md-6">
+              <div class="ui-inputgroup">
+                <span style="width:30%;" class="ui-inputgroup-addon"
+                  ><b>Father/Husband Name&ensp;</b><i></i
+                ></span>
+                <!-- Full name -->
+                <input
+                  type="text"
+                  [(ngModel)]="patient.husbandOfAndFatherOf"
+                  #nameref="ngModel"
+                  required
+                  pInputText
+                  placeholder="&ensp;Husband Name/Father Name"
+                  style="width:100%;"
+                  name="husbandOrFatherName"
+                />
+                <!-- <span class="ui-inputgroup-addon"></span> -->
+              </div>
+            </div>
+  
+            <div class="ui-md-1"></div>
+            <!-- cnic_n0 -->
+            <div class="ui-g-12 ui-md-5">
+              <div class="ui-inputgroup">
+                <span style="width:30%;" class="ui-inputgroup-addon"
+                  ><b style="font-size: 11px;">REGISTRATION DATE&ensp;</b><i></i
+                ></span>
+                <p-calendar [(ngModel)]="patient.registrationDate" name="calender" required></p-calendar>
+              </div>
+            </div>
+          </div>
+
+        <!-- Row5  -->
         <div class="ui-g ui-fluid">
           <!-- Submit button -->
           <div class="ui-g-12 ui-md-12">
+
             <button type="button" (click)="showConfirm()" [disabled]="userForm.invalid"
               class="btn btn-success btn-block">
               Submit
@@ -143,6 +200,7 @@
               </ng-template>
             </p-toast>
             <p-toast key="p" [showTransitionOptions]="'3ms'"></p-toast>
+
           </div>
         </div>
       </form>

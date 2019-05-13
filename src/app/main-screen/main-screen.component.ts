@@ -115,4 +115,8 @@ export class MainScreenComponent implements OnInit {
     this.router.navigate(["/admission"]);
   }
 
+  gotoGynyObsList(){
+    this.router.navigate(["/gynObsList"])
+  }
+
 }
