@@ -51,7 +51,7 @@ export class PatientMonitorComponent implements OnInit {
 
 
 
-      if(response.id)
+      if(response.id==id)
       {
         this.isLoading=false;
       console.log(response)

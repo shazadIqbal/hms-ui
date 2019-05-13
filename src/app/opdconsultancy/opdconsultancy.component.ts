@@ -1,4 +1,5 @@
 
+
 import { AddpanellistseviceService } from '../addpanellist/addpanellistsevice.service';
 
 import { Status } from './../add-appoinment-list/SelectStatus';
@@ -15,9 +16,9 @@ import { opdGynyModel } from '../opd-gyny/opd-gyny';
 
 
 @Component({
-  selector: 'app-opdconsultancy',
-  templateUrl: './opdconsultancy.component.html',
-  styleUrls: ['./opdconsultancy.component.css']
+  selector: "app-opdconsultancy",
+  templateUrl: "./opdconsultancy.component.html",
+  styleUrls: ["./opdconsultancy.component.css"]
 })
 export class OpdconsultancyComponent implements OnInit {
   doctors: SelectItem[];
@@ -51,7 +52,7 @@ export class OpdconsultancyComponent implements OnInit {
      this.enable = true;
     this.getDoctorsOption();
     this.opdObject.id = this.activatedRoute.snapshot.params['id'];
-    console.log('this is id'+this.opdObject.id);
+    console.log("this is id"+this.opdObject.id);
 
   }
 
@@ -69,7 +70,7 @@ p
         console.log(data);
         data.forEach(e => {
           console.log(e)
-          console.log('This is doctors id '+ e.mrNo);
+          console.log("This is doctors id "+ e.mrNo);
           this.doctors.push({
             label: e.fullName,
             value: {mrNo:e.mrNo,fullName:e.fullName,fees:e.fees}
@@ -81,34 +82,28 @@ p
 
     },
     error => {
-      console.log('error agya yar');
+      console.log("error agya yar");
       this.show = true;
       this.checkStatus = true;
       this.messageService.add({
-        severity: 'error',
-        summary: 'Error Found',
-        detail: 'Something went wrong check your internet connection '
+        severity: "error",
+        summary: "Error Found",
+        detail: "Something went wrong check your internet connection "
       });
     }
 
     );
   }
-  //Getting Doctors'Fees
+
   doctorDropdown() {
-    // console.log(this.selectedDoctor);
-    console.log(this.opdObject.doctors['fullName']);
+    
+    console.log(this.opdObject.doctors["fullName"]);
     this.opdObject.sallary = 0; //it will also work for the negative
     this.opdObject.total = 0;
-
-    // if(this.opdObject.panels.values() == "free")
-//console.log("yeh hai panels",this.opdObject["opdObject"].panels);    
-
-    this.opdObject.discount = this.opdObject.doctors["fees"];
-    this.opdObject.fees = (this.opdObject.doctors["fees"] * 2);
-
-   
-    //console.log(this.opdObject.sallary)
-    // this.opdObject.total = this.opdObject.fees - this.opdObject.discount;
+    this.opdObject.discount = 0;
+    this.opdObject.fees = this.opdObject.doctors["fees"];
+    
+    this.opdObject.total = this.opdObject.fees + this.opdObject.discount;
   }
 
   //FUNCTION FOR BACK BUTTON
@@ -123,8 +118,8 @@ p
       data => {
         console.log(this.opdObject);
         this.messageService.add({
-          severity: 'success',
-          summary: 'Succesfully'
+          severity: "success",
+          summary: "Succesfully"
         });
         this.enable = false;
       },
@@ -132,9 +127,9 @@ p
 
         console.log(error);
         this.messageService.add({
-          severity: 'error',
-          summary: 'Error Found',
-          detail: 'Something went wrong check your internet connection '
+          severity: "error",
+          summary: "Error Found",
+          detail: "Something went wrong check your internet connection "
         });
       }
     );

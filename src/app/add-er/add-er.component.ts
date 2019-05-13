@@ -3,6 +3,7 @@ import { ErserviceService } from "./../services/erservice.service";
 import { Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
 import { AddEmergency } from "./Add-er";
+import {Location} from '@angular/common'
 
 @Component({
   selector: "app-add-er",
@@ -22,7 +23,8 @@ export class AddErComponent implements OnInit {
   constructor(
     private router: Router,
     private erService: ErserviceService,
-    private messageService: MessageService
+    private messageService: MessageService,
+    private location:Location
   ) {}
 
   ngOnInit() {
@@ -32,7 +34,7 @@ export class AddErComponent implements OnInit {
   }
 
   back() {
-    this.router.navigate(["/er"]);
+    this.location.back();
   }
 
   showDialog() {
