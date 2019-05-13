@@ -88,6 +88,7 @@ import { OpdLabtestComponent } from './opd-labtest/opd-labtest.component';
 
 
 import { PatientTransactionsComponent } from './patient-transactions/patient-transactions.component';
+import { MonitorquickviewComponent } from './monitorquickview/monitorquickview.component';
 
 
 @NgModule({
@@ -146,7 +147,8 @@ import { PatientTransactionsComponent } from './patient-transactions/patient-tra
     PatientAdmitComponent,
     OpdLabtestComponent,
     PatientTransactionsComponent,
-    OpdGynyComponent
+    OpdGynyComponent,
+    MonitorquickviewComponent
 
 
   ],
