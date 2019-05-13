@@ -88,7 +88,11 @@ import { OpdLabtestComponent } from './opd-labtest/opd-labtest.component';
 
 
 import { PatientTransactionsComponent } from './patient-transactions/patient-transactions.component';
-import { MonitorquickviewComponent } from './monitorquickview/monitorquickview.component';
+
+import { GynyObsListComponent } from './gyny-obs-list/gyny-obs-list.component';
+
+  import { MonitorquickviewComponent } from './monitorquickview/monitorquickview.component';
+
 
 
 @NgModule({
@@ -148,6 +152,9 @@ import { MonitorquickviewComponent } from './monitorquickview/monitorquickview.c
     OpdLabtestComponent,
     PatientTransactionsComponent,
     OpdGynyComponent,
+ obsAndGynyRegistration-branch
+    GynyObsListComponent
+
     MonitorquickviewComponent
 
 
