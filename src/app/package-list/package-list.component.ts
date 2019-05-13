@@ -24,8 +24,6 @@ export class PackageListComponent implements OnInit {
       { field: 'id', header: 'ID' },
       { field: 'pName', header: 'Package Name' },
       { field: 'pFacility', header: 'Package Facility' },
-      { field: 'pStartDate', header: 'Start Date' },
-      { field: 'pEndDate', header: 'End Date' },
       { field: 'pSponsor', header: 'Sponsor' }
     ];
 
@@ -39,8 +37,6 @@ export class PackageListComponent implements OnInit {
             id: value.id,
             pName: value.pName,
             pFacility: value.pFacility,
-            pStartDate: value.pStartDate.substr(0, 10),
-            pEndDate: value.pEndDate.substr(0, 10),
             pSponsor: value.pSponsor
           });
         });

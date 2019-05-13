@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { LabtestServiceService } from '../labtest-service.service';
 import { MessageService } from 'primeng/api';
 import { Router } from '@angular/router';
+import { Location } from '@angular/common';
 
 
 @Component({
@@ -16,7 +17,7 @@ export class AddLabCatComponent implements OnInit {
 
 
 
-  constructor(private labServ: LabtestServiceService, private messageService: MessageService,private route:Router) { }
+  constructor(private labServ: LabtestServiceService, private messageService: MessageService,private route:Router, private _location: Location) { }
 
 
   ngOnInit() {
@@ -39,9 +40,9 @@ export class AddLabCatComponent implements OnInit {
       this.messageService.add({ severity: 'error', summary: 'Service Message', detail:Object.keys(d)[0]});
       }
 
-      
 
-    }, error => { 
+
+    }, error => {
       console.log(error);
       this.messageService.add({ severity: 'warning', summary: 'Service Message', detail: error }); })
 
@@ -49,7 +50,7 @@ export class AddLabCatComponent implements OnInit {
   back()
   {
 
-    this.route.navigate(['/addlabtest']);
+    this._location.back();
 
   }
 

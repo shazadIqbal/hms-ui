@@ -24,12 +24,12 @@
         }"
       >
         <hr />
-        <form #form="ngForm" (ngSubmit)="save(); form.reset()">
+        <form #form="ngForm">
           <div class="ui-g ui-fluid">
             <div class="ui-g-12 ui-sm-12 ui-md-4">
               <div class="ui-inputgroup">
                 <span class="ui-inputgroup-addon"
-                  ><i class="fa fa-user"></i
+                  ><i class="fa fa-user"><i style='color: red'>*</i></i
                 ></span>
                 <input
                   style="width:100%;"
@@ -55,7 +55,7 @@
             <div class="ui-g-12 ui-sm-12 ui-md-4">
               <div class="ui-inputgroup">
                 <span style="width:30%;" class="ui-inputgroup-addon"
-                  >Gender</span
+                  >Gender<i style='color: red'>*</i></span
                 >
                 <p-dropdown
                   [autoWidth]="false"
@@ -84,7 +84,7 @@
             <div class="ui-g-12 ui-sm-12 ui-md-4">
               <div class="ui-inputgroup">
                 <span style="width:20%;" class="ui-inputgroup-addon"
-                  >Mobile</span
+                  >Mobile<i style='color: red'>*</i></span
                 >
                 <input
                   type="text"
@@ -110,7 +110,7 @@
 
             <div class="ui-g-12 ui-sm-12 ui-md-4">
               <div class="ui-inputgroup">
-                <span style="width:20%;" class="ui-inputgroup-addon">EMR</span>
+                <span style="width:20%;" class="ui-inputgroup-addon">EMR<i style='color: red'>*</i></span>
                 <input
                   style="width:100%;"
                   type="text"
@@ -142,7 +142,6 @@
                 <input
                   style="width:100%;"
                   type="text"
-                  required
                   [(ngModel)]="doctor.nationality"
                   pInputText
                   placeholder="Nationality"
@@ -168,7 +167,6 @@
                 <input
                   type="text"
                   pInputText
-                  required
                   placeholder="Address"
                   name="Address"
                   #abg="ngModel"
@@ -186,7 +184,7 @@
             </div>
             <div class="ui-g-6 ui-sm-12 ui-md-6">
               <div class="ui-inputgroup">
-                <span class="ui-inputgroup-addon">Fees</span>
+                <span class="ui-inputgroup-addon">Fees<i style='color: red'>*</i></span>
                 <input
                   type="text"
                   pInputText
@@ -246,7 +244,6 @@
                 <input
                   type="text"
                   pInputText
-                  required
                   placeholder="daysservice/week"
                   name="daysservice"
                   #abh="ngModel"
@@ -267,7 +264,6 @@
                 <span style="width:20%;" class="ui-inputgroup-addon">CNIC</span>
                 <input
                   type="text"
-                  required
                   pInputText
                   #abi="ngModel"
                   (keypress)="numberOnly($event)"
@@ -293,7 +289,6 @@
                 >
                 <input
                   type="text"
-                  required
                   pInputText
                   placeholder="EMAIL"
                   name="email"
@@ -317,7 +312,6 @@
                 >
                 <input
                   type="text"
-                  required
                   pInputText
                   placeholder="Speciality"
                   #abk="ngModel"
@@ -341,7 +335,6 @@
                 >
                 <input
                   type="text"
-                  required
                   pInputText
                   placeholder="Qualification"
                   #abl="ngModel"
@@ -366,7 +359,6 @@
                 <input
                   ngModel
                   type="text"
-                  required
                   pInputText
                   placeholder="Hours/day"
                   #abm="ngModel"
@@ -390,7 +382,6 @@
                 <input
                   ngModel
                   type="text"
-                  required
                   pInputText
                   placeholder="Position"
                   name="position"
@@ -414,7 +405,6 @@
                 <input
                   ngModel
                   type="text"
-                  required
                   pInputText
                   placeholder="Religion"
                   [(ngModel)]="doctor.religion"
@@ -439,7 +429,6 @@
                 <input
                   ngModel
                   type="text"
-                  required
                   pInputText
                   (keypress)="numberOnly($event)"
                   placeholder="Salary"
@@ -477,7 +466,7 @@
               <div class="ui-g ui-fluid">
                 <!-- Submit button -->
                 <div class="ui-g-12 ui-md-12">
-                  <button type="submit" class="btn btn-success btn-block">
+                  <button type="button" (click)="save();form.reset();" [disabled]="form.invalid" class="btn btn-success btn-block">
                     Submit
                   </button>
                 </div>
