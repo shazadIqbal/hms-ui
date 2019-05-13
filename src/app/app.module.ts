@@ -90,6 +90,11 @@ import { OpdLabtestComponent } from './opd-labtest/opd-labtest.component';
 import { PatientTransactionsComponent } from './patient-transactions/patient-transactions.component';
 import { FacilitiesComponent } from './Component/facilities/facilities.component';
 
+import { GynyObsListComponent } from './gyny-obs-list/gyny-obs-list.component';
+
+  import { MonitorquickviewComponent } from './monitorquickview/monitorquickview.component';
+
+
 
 @NgModule({
   declarations: [
@@ -148,7 +153,12 @@ import { FacilitiesComponent } from './Component/facilities/facilities.component
     OpdLabtestComponent,
     PatientTransactionsComponent,
     OpdGynyComponent,
+
     FacilitiesComponent
+ obsAndGynyRegistration-branch
+    GynyObsListComponent
+
+    MonitorquickviewComponent
 
 
   ],
