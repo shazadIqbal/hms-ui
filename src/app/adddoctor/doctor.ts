@@ -18,6 +18,10 @@ export class Doctor{
     fees:number;
     dateOfbirth:string;
     gender:SelectItem[];
+
     timeIn:string;
     timeOut:string;
+    accountNo: string;
+    share: number;
 }
+

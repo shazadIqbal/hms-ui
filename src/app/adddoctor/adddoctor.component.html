@@ -159,7 +159,7 @@
               </div>
             </div>
 
-            <div class="ui-g-6 ui-sm-12 ui-md-6">
+            <div class="ui-g-6 ui-sm-12 ui-md-4">
               <div class="ui-inputgroup">
                 <span style="width:15%;" class="ui-inputgroup-addon"
                   >Address</span
@@ -182,7 +182,7 @@
                 Please Enter youR address
               </div>
             </div>
-            <div class="ui-g-6 ui-sm-12 ui-md-6">
+            <div class="ui-g-6 ui-sm-12 ui-md-4">
               <div class="ui-inputgroup">
                 <span class="ui-inputgroup-addon">Fees<i style='color: red'>*</i></span>
                 <input
@@ -204,6 +204,22 @@
                 Please Enter youR address
               </div>
             </div>
+
+
+            <div class="ui-g-12 ui-sm-12 ui-md-4">
+              <div class="ui-inputgroup">
+                <span style="width:20%;" class="ui-inputgroup-addon">Share</span>
+                <input ngModel type="text" required pInputText (keypress)="numberOnly($event)" placeholder="Share" #abp="ngModel" name="share"
+                  [(ngModel)]="doctor.share" />
+              </div>
+              <div style="padding:0px;margin-bottom:4px" [hidden]="abp.valid || abp.pristine"
+                class="alert alert-danger">
+                Please Enter Share
+              </div>
+              
+            </div>
+
+
 
             <div class="ui-g-12 ui-sm-12 ui-md-4">
               <div class="ui-inputgroup">

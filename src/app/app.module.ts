@@ -154,9 +154,9 @@ import { GynyObsListComponent } from './gyny-obs-list/gyny-obs-list.component';
     PatientTransactionsComponent,
     OpdGynyComponent,
 
-    FacilitiesComponent
- obsAndGynyRegistration-branch
-    GynyObsListComponent
+    FacilitiesComponent,
+ //obsAndGynyRegistration-branch,
+    GynyObsListComponent,
 
     MonitorquickviewComponent
 

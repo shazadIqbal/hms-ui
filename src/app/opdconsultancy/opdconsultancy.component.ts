@@ -73,7 +73,7 @@ p
           console.log("This is doctors id "+ e.mrNo);
           this.doctors.push({
             label: e.fullName,
-            value: {mrNo:e.mrNo,fullName:e.fullName,fees:e.fees}
+            value: {mrNo:e.mrNo,fullName:e.fullName,fees:e.fees, accountNo: e.accountNo, share: e.share}
           });
           // console.log({id:this.opdObject.doctors});
         });
