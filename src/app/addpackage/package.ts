@@ -1,7 +1,8 @@
+import { SelectItem } from 'primeng/api';
+
 export class Package{
   pName : string;
-  pFacility: string;
-  pStartDate: String;
-  pEndDate: String;
+  pFacility: SelectItem[];
+  pPrice: Number;
   pSponsor: string;
 }

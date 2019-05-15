@@ -7,6 +7,7 @@ import {PatientTransactionHistoryService} from '../../services/patient-transacti
 import { identifierName } from '@angular/compiler';
 import {ToastModule} from 'primeng/toast';
 import {MessageService} from 'primeng/api';
+import {Location} from '@angular/common';
 
 
 @Component({
@@ -15,14 +16,16 @@ import {MessageService} from 'primeng/api';
   styleUrls: ['./patient-monitor.component.css']
 })
 export class PatientMonitorComponent implements OnInit {
+  
 
-  constructor(private patient:MonitorService,private messageService: MessageService,private historyService:PatientTransactionHistoryService,private route:Router,private activateRoute:ActivatedRoute) { }
+  registration : Boolean = false;
+
+  constructor(private patient:MonitorService,private messageService: MessageService,private historyService:PatientTransactionHistoryService,private route:Router,private activateRoute:ActivatedRoute,private _location: Location) { }
 
   public id;
   public name;
   public number;
-  public registration;
-  public date:Date;
+  public date:String;
   public opd;
   public package;
   public total;
@@ -31,6 +34,9 @@ export class PatientMonitorComponent implements OnInit {
   public image;
   public er;
   public isLoading;
+  public gynAndObsRegistration;
+  public husbandOfAndFatherOf;
+  public registrationDate;
   ngOnInit() {
 
 
@@ -45,15 +51,15 @@ export class PatientMonitorComponent implements OnInit {
 
 
 
-      if(response.id)
+      if(response.id==id)
       {
         this.isLoading=false;
       console.log(response)
       this.id=response.id;
       this.name=response.name;
       this.number=response.number;
-      this.registration=response.registration || 'No';
-      this.date=response.date;
+      this.gynAndObsRegistration=response.gynAndObsRegistration || 'Not registered';
+      this.date= new Date(response.date).toDateString();
       this.opd=response.opd;
       this.lab=response.lab;
       this.image=response.image;
@@ -61,6 +67,9 @@ export class PatientMonitorComponent implements OnInit {
       this.dues=response.dues;
       this.package=response.package || 'No';
       this.total=response.total;
+      this.registrationDate=new Date(response.registrationDate).toDateString();
+      this.husbandOfAndFatherOf=response.husbandOfAndFatherOf || 'None';
+      this.registration = response.gynAndObsRegistration;
       }
       else
       {
@@ -77,7 +86,7 @@ export class PatientMonitorComponent implements OnInit {
 
   backToMain()
   {
-    this.route.navigate(['/mainscreen']);
+    this._location.back();
   }
 
   dischargePatient()

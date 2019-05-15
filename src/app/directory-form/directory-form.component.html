@@ -31,7 +31,7 @@
           <div class="ui-md-2 ui-lg-2"></div>
           <div class="ui-md-8 ui-lg-8 ui-sm-12">
             <div class="ui-inputgroup">
-              <span class="ui-inputgroup-addon" style="width:45%;font-size:15px;">Full Name</span>
+              <span class="ui-inputgroup-addon" style="width:45%;font-size:15px;">Full Name<i style="color: red">*</i></span>
               <input type="text" [(ngModel)]="directory.name" required name="name" pInputText />
             </div>
           </div>
@@ -41,7 +41,7 @@
           <div class="ui-md-8 ui-lg-8 ui-sm-12">
             <div class="ui-inputgroup">
               <span class="ui-inputgroup-addon" style="width:45%;font-size:15px;"
-                >Phone Number</span
+                >Phone Number<i style="color: red">*</i></span
               >
 
               <input
@@ -61,7 +61,7 @@
           <div class="ui-md-8 ui-lg-8 ui-sm-12">
             <div class="ui-inputgroup">
               <span class="ui-inputgroup-addon" style="width:45%;font-size:15px;"
-                >Emergency Number</span
+                >Emergency Number<i style="color: red">*</i></span
               >
               <input
                 type="text"
@@ -88,7 +88,6 @@
                 maxlength="110"
                 [(ngModel)]="directory.address"
                 [cols]="30"
-                required
                 name="address"
                 pInputTextarea
               ></textarea>

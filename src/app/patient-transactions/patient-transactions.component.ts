@@ -44,23 +44,24 @@ export class PatientTransactionsComponent implements OnInit {
       this.datasource = [];
       this.datasource = data;
       this.totalRecords = this.datasource.length;
-      this.transaction = data;
-      //data.map(p => {
-      //  console.log(p)
-       // this.transaction = p;
-        // this.transaction.push({
-        //   id: p.id,
-        //   transactionDate: p.transactionDate,
-        //   receivedAmount: p.receivedAmount,
-        //   totalAmount: p.totalAmount,
-        //   transactionType: p.transactionType,
-        //   description: p.description,
-        //   currency: p.currency,
-        //   operationType: p.operationType,
-        //   dues: p.dues
-        // });
-     // });
-     // this.loading = false;
+     // data["transactionDate"] = new Date( data["transactionDate"]).toDateString()
+     // this.transaction = data;
+     let trans = data.map(p => {
+       console.log(p)
+      
+        this.transaction.push({
+          id: p.id,
+          transactionDate: new Date(p.transactionDate).toDateString(),
+          receivedAmount: p.receivedAmount,
+          totalAmount: p.totalAmount,
+          transactionType: p.transactionType,
+          description: p.description,
+          currency: p.currency,
+          operationType: p.operationType,
+          dues: p.dues
+        });
+     });
+     //this.loading = false;
     });
     
   }

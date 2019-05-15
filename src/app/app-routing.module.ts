@@ -1,3 +1,4 @@
+import { AdmissionComponent } from "./admission/admission.component";
 import { AddErComponent } from './add-er/add-er.component';
 import { ErComponent } from './er/er.component';
 import { PatientformComponent } from './patientform/patientform.component';
@@ -8,7 +9,7 @@ import { LoginFormComponent } from './login-form/login-form.component';
 import { AboutPageComponent } from './about-page/about-page.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { ContactPageComponent } from './contact-page/contact-page.component';
-//import  { MainScreenComponent } from './main-screen/main-screen.component';
+// import  { MainScreenComponent } from './main-screen/main-screen.component';
 import { MainScreenComponent } from './main-screen/main-screen.component';
 import { DoctorListComponent } from './doctor-list/doctor-list.component';
 import { AdddoctorComponent } from './adddoctor/adddoctor.component';
@@ -35,11 +36,17 @@ import { PackageListComponent } from './package-list/package-list.component';
 import { OpdconsultancyComponent } from './opdconsultancy/opdconsultancy.component';
 import { MonitorScreenComponent } from './monitor-screen/monitor-screen.component';
 
+import { OpdGynyComponent } from './opd-gyny/opd-gyny.component';
+
+  import { PatientAdmitComponent } from './patient-admit/patient-admit.component';
+
+
 import { PatientTransactionHistoryComponent } from './patient-transaction-history/patient-transaction-history.component';
 
 
 import { OpdLabtestComponent } from './opd-labtest/opd-labtest.component';
 import { PatientTransactionsComponent } from './patient-transactions/patient-transactions.component';
+import { GynyObsListComponent } from './gyny-obs-list/gyny-obs-list.component';
 
 
 const routes: Routes = [
@@ -65,13 +72,24 @@ const routes: Routes = [
   { path: 'adder', canActivate: [AuthGuard], component: AddErComponent },
   { path: 'appoinmentList', canActivate: [AuthGuard], component: AddAppoinmentListComponent },
   { path: 'existingPatient', canActivate: [AuthGuard], component: ExistingPatientComponent },
-  {path:'opdEmergency/:id',component:OpdEmergencyComponent},
+
+  {path: 'opdEmergency/:id', component: OpdEmergencyComponent},
   {path: 'opdconsultancy/:id', component: OpdconsultancyComponent},
   {path: 'history/:id', component: PatientTransactionHistoryComponent},
+  {path: 'opdGyny/:id', component: OpdGynyComponent},
+  {path: 'opdlabtest/:id', component: OpdLabtestComponent},
+  {path: 'patienttransactions/:id', component: PatientTransactionsComponent},
+  {path: 'admission', canActivate: [AuthGuard], component: AdmissionComponent}, //Create New Bed Component
+  {path:'patientadmit/:id', canActivate: [AuthGuard],component:PatientAdmitComponent},
+  {path:'gynObsList/:id', component:GynyObsListComponent},
+  {path:'gynObsList', component:GynyObsListComponent},
+  {path:'patientFormWithId/:id',component:PatientformComponent},
+  
+  {path: 'patientadmit/:id', canActivate: [AuthGuard], component: PatientAdmitComponent},
+  { path: 'adddoctor/:id', canActivate: [AuthGuard], component: AdddoctorComponent }
 
 
-  {path:'opdlabtest/:id',component:OpdLabtestComponent},
-  {path: 'patienttransactions/:id', component:PatientTransactionsComponent}
+
 
 
 

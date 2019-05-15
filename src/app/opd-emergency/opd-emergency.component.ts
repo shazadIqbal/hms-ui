@@ -6,6 +6,7 @@ import { ErserviceService } from '../Services/erservice.service';
 import { SelectItem, MessageService } from "primeng/api";
 import { _EmergencyClass } from './Emergency';
 import { Key } from 'protractor';
+import { PatientserviceService } from '../patientservice.service';
 import { OpdErService } from '../Services/opd-er.service';
 
 
@@ -18,116 +19,183 @@ import { OpdErService } from '../Services/opd-er.service';
 export class OpdEmergencyComponent implements OnInit {
 
   multiDropdown: SelectItem[];
+  hidder = false;
   addEmergency: _EmergencyClass = new _EmergencyClass();
   name: string[];
   printFacilities = [];
-  showprint:boolean = true;
-  getStatus : boolean = true;
-  getIdWhenStatus_200 : any;
-  showLoading= true;
+  showprint: boolean = true;
+  getStatus: boolean = true;
+  getIdWhenStatus_200: any;
+  showLoading = true;
+  discountCheck = true;
   show = false;
-  printer= true;
-  showspinloading=true;
+  cols: any;
+  printer = true;
+  showspinloading = true;
   showspinLoadingMessage = "Loading";
- // id: number;
-  
+  facilitiesArray = [];
+  patientName: String;
+  patientMrNo: Number;
+  date;
+  // id: number;
+
   // printStatus : boolean;
-  // 
-  
+  //
 
 
-  constructor(private activeRoute:ActivatedRoute,private router: Router, private erService: ErserviceService, private opdEr: OpdErService,    private messageService: MessageService
-    ) { }
 
+  constructor(private patientService: PatientserviceService, private activeRoute: ActivatedRoute, private router: Router, private erService: ErserviceService, private opdEr: OpdErService, private messageService: MessageService
+  ) { }
+
+  print() {
+    this.facilitiesArray = []
+    this.addEmergency.discount = 0;
+    this.addEmergency.cashRecieve = 0;
+    this.addEmergency.total=0;
+    this.addEmergency.price=0;
+    this.addEmergency.facilities=[];
+    this.multiDropdown=[];
+  }
   ngOnInit() {
+    this.date = new Date();
+
+    console.log(this.date)
     this.getfacilitiesInDropdown();
     // if(this.multiDropdown == []){
     //   this.show = true;
     //   this.showLoading = true;
     // }
-  //this.showLoading=true
-    this.addEmergency.id= this.activeRoute.snapshot.params['id'];
+    //this.showLoading=true
+    this.cols = [
+      { field: 'name', header: 'Facility' },
+      { field: 'price', header: 'Price' }
+    ];
+    let id = this.activeRoute.snapshot.params['id'];
+    this.addEmergency.id = id;
     this.addEmergency.price = 0;
-  
-  }
-   
- 
-  
-  back() {
-    this.router.navigate(['/monitor/'+ this.addEmergency.id]);
+
+    this.patientService.getPatientsByMRNO(id).subscribe((a) => {
+      console.log(a)
+      this.patientName = a.name;
+      this.patientMrNo = a.id;
+    })
+
   }
 
-  showLoadingSpinnerAndHideForm(msg){
-    this.showspinloading=true;
-    this.show=false
+
+
+  back() {
+    this.router.navigate(['/monitor/' + this.addEmergency.id]);
+  }
+
+  showLoadingSpinnerAndHideForm(msg) {
+    this.showspinloading = true;
+    this.show = false
     this.showspinLoadingMessage = msg;
   }
 
-  hideLoadingSpinnerAndShowForm(){
-    this.show=true
-    this.showspinloading=false;
+  hideLoadingSpinnerAndShowForm() {
+    this.show = true
+    this.showspinloading = false;
   }
 
-  
 
-  onChangeFacility(){
-    console.log("yeh id hai"+this.addEmergency.id)
+
+  onChangeFacility() {
+    console.log("yeh id hai" + this.addEmergency.id)
     // for(var i in this.addEmergency.facilities)
     //   this.name = (this.addEmergency.facilities[i]["facilities"]);
+
     //   console.log(this.name);
     this.printFacilities = []
-    this.addEmergency.facilities.map((f)=>{
-       this.printFacilities.push(f["name"])
-     })
-     this.printFacilities.join(',')
+    this.facilitiesArray = [];
+
+    this.addEmergency.facilities.map((f) => {
+      this.printFacilities.push(f["name"])
+      let obj = {
+        name: f["name"],
+        price: f["price"]
+      }
+      this.facilitiesArray.push(obj);
+
+    })
+
+
+
+
+
+
+    this.printFacilities.join(',')
     ///let printfacilities = this.addEmergency.facilities.join(',')
-    console.log(this.printFacilities)
-  
+
+
     this.addEmergency.price = 0;
     this.addEmergency.total = 0;
     this.addEmergency.facilities.map(f => {
-    this.addEmergency.price = this.addEmergency.price + parseInt(f["price"]);
-    this.addEmergency.total = this.addEmergency.price;
-    console.log(this.addEmergency.total);
-    
+      this.addEmergency.price = this.addEmergency.price + parseInt(f["price"]);
+      this.addEmergency.total = this.addEmergency.price;
+
+
     });
 
   }
 
+  discounter(value) {
+
+    let dis = value;
+
+    this.addEmergency.total = this.addEmergency.price;
+
+
+
+
+    dis > this.addEmergency.total ? this.discountCheck = false : this.discountCheck = true;
+    dis ? 0 : dis;
+
+    this.addEmergency.discount = dis;
+
+    this.addEmergency.total = this.addEmergency.total - this.addEmergency.discount;
+
+  }
+
   getfacilitiesInDropdown() {
-   
+
     this.multiDropdown = [];
-   
-   // this.showLoading = true;
-   this.showLoadingSpinnerAndHideForm("Getting facilities");
+
+    // this.showLoading = true;
+    this.showLoadingSpinnerAndHideForm("Getting facilities");
     this.erService.getErFacility().subscribe(
       data => {
-             
-        if(data.length){
+
+        if (data.length) {
+          this.hidder = false;
           this.hideLoadingSpinnerAndShowForm()
-        
+
+
+
         }
-          
-              // for (var keys in data){
-          //   this.name.push((data[keys].facilities));
-          //   // this.name.push((data[keys].price));
-          //   console.log("men names honn"+name);
-          // }
-          // // console.log(data[0]);
-          console.log("hello")
+        else {
+          this.showspinloading = false;
+          this.hidder = true;
+        }
+
+
+
         data.forEach(e => {
-         
-        
+
+
           this.multiDropdown.push({
-            label: e.name,
+            label: e.name + ' / ' + e.price + 'Rs',
             value: e
           });
         });
-      
-       
+
+
       },
       error => {
-        this.show = false;
+
+        this.showspinloading = false;
+
         console.log(error)
         console.log("error agya yar");
         this.messageService.add({
@@ -135,12 +203,20 @@ export class OpdEmergencyComponent implements OnInit {
           summary: "Error Found",
           detail: "Something went wrong check your internet connection "
         });
-      
+
       }
     );
   }
 
-  saveOpdEmergency(){
+  numberOnly(event): boolean {
+    const charCode = event.which ? event.which : event.keyCode;
+    if (charCode > 31 && (charCode < 48 || charCode > 57 || charCode < 44)) {
+      return false;
+    }
+    return true;
+  }
+
+  saveOpdEmergency() {
     console.log(this.addEmergency)
     console.log(this.addEmergency.facilities);
     this.addEmergency.facilities = this.printFacilities;
@@ -148,15 +224,15 @@ export class OpdEmergencyComponent implements OnInit {
 
       data => {
         // here is printer thing
-       // this.printId = "print-section";
-       //this.showprint = false;
-       this.printer = false;
+        // this.printId = "print-section";
+        //this.showprint = false;
+        this.printer = false;
         console.log(data);
         this.messageService.add({
           severity: "success",
           summary: "Added Succesfully",
           detail: "Emergency Service Added"
-          
+
         });
       },
       error => {
@@ -172,23 +248,10 @@ export class OpdEmergencyComponent implements OnInit {
     )
   }
 
-  // checkingResponse(){
-  //   this.opdEr.getOpdEr()
-  //   .subscribe(res => {
-  //     // If request fails, throw an Error that will be caught
-  //     if(res.status < 200 || res.status >= 300) {
-  //       // this.getIdWhenStatus_200 = res;
-  //      this.printer = false;
-      
-  //     } 
-  //     // If everything went fine, return the response
-  //     else{
-  //      this.printer = true;
-  //     }
-  //   })
-  // }
-   
-
+  routeToEr() {
+    this.router.navigate(['adder'])
+  }
+  
 
 
 }

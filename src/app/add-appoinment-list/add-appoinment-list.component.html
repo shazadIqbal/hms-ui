@@ -72,8 +72,7 @@
     [value]="_existingPatient"
     [paginator]="true"
     [rows]="10"
-
-    [totalRecords]= "totalRecords"
+    [totalRecords]= "totalrecords"
 
   >
     <ng-template pTemplate="caption">
@@ -113,6 +112,9 @@
         <td>
           <div class="ui-g-12" style="margin-left: 10%;">
             <div class="ui-g-12 ui-md-5 ui-sm-12 ui-g-fluid">
+<!-- Done button -->
+
+              <div *ngIf="show">
               <button
                 pButton
                 type="button"
@@ -122,9 +124,10 @@
               >
                 <img src="https://img.icons8.com/color/48/000000/ok.png" />
               </button>
+            </div>
               <p-toast position="top-center"></p-toast>
             </div>
-            <div class="ui-g-12 ui-md-3 ui-sm-12 ui-g-fluid">
+            <div   *ngIf="showInactive" class="ui-g-12 ui-md-3 ui-sm-12 ui-g-fluid">
               <button
                 pButton
                 type="button"

@@ -43,14 +43,25 @@
                 <label style="color:rgb(127, 128, 126)">Phone Number: <span
                     style="color:rgb(17, 17, 17)">{{number}}</span> </label>
               </div>
-              <div class="ui-lg-12 ui-md-12 ui-sm-12">
-                <label style="color:rgb(127, 128, 126)">Registration: <span
-                    style="color:rgb(17, 17, 17)">{{registration}}</span></label>
-              </div>
+              
               <div class="ui-lg-12 ui-md-12 ui-sm-12">
                 <label style="color:rgb(127, 128, 126)">Date: <span
                     style="color:rgb(17, 17, 17)">{{date | date :'short'}}</span></label>
               </div>
+              <div *ngIf="registration">
+              <div class="ui-lg-12 ui-md-12 ui-sm-12">
+                  <label style="color:rgb(127, 128, 126)">Registration: <span
+                      style="color:rgb(17, 17, 17)">{{gynAndObsRegistration}}</span></label>
+                </div>
+              <div class="ui-lg-12 ui-md-12 ui-sm-12">
+                  <label style="color:rgb(127, 128, 126)">Registration Date: <span
+                      style="color:rgb(17, 17, 17)">{{registrationDate}}</span></label>
+                </div>
+                <div class="ui-lg-12 ui-md-12 ui-sm-12">
+                    <label style="color:rgb(127, 128, 126)">Husband/Father Name: <span
+                        style="color:rgb(17, 17, 17)">{{husbandOfAndFatherOf}}</span></label>
+                  </div>
+                </div>
 
             </div>
 
@@ -68,6 +79,7 @@
                   <label style="color:rgb(127, 128, 126)">Lab: <span
                       style="color:rgb(17, 17, 17)">{{lab}}</span></label>
                 </div>
+                
               </p-card>
             </div>
 
