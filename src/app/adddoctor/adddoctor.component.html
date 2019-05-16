@@ -24,13 +24,13 @@
         }"
       >
         <hr />
-        <form #form="ngForm">
+        <form #myForm="ngForm">
           <div class="ui-g ui-fluid">
             <div class="ui-g-12 ui-sm-12 ui-md-4">
               <div class="ui-inputgroup">
-                <span class="ui-inputgroup-addon"
-                  ><i class="fa fa-user"><i style='color: red'>*</i></i
-                ></span>
+                <span class="ui-inputgroup-addon" style="width: 30%"
+                  >FullName<i style="color: red">*</i>
+                </span>
                 <input
                   style="width:100%;"
                   type="text"
@@ -55,7 +55,7 @@
             <div class="ui-g-12 ui-sm-12 ui-md-4">
               <div class="ui-inputgroup">
                 <span style="width:30%;" class="ui-inputgroup-addon"
-                  >Gender<i style='color: red'>*</i></span
+                  >Gender<i style="color: red">*</i></span
                 >
                 <p-dropdown
                   [autoWidth]="false"
@@ -74,17 +74,22 @@
                 <span style="width:20%" class="ui-inputgroup-addon">DOB</span>
                 <p-calendar
                   [ngStyle]="{ width: '100%' }"
-                  required
                   [(ngModel)]="doctor.dateOfbirth"
+                  [monthNavigator]="true"
+                  [yearNavigator]="true"
+                  yearRange="1947:2090"
                   name="DateOfBirth"
-                ></p-calendar>
+                  showButtonBar="true"
+                  dateFormat="dd/mm/yy"
+                >
+                </p-calendar>
               </div>
             </div>
 
             <div class="ui-g-12 ui-sm-12 ui-md-4">
               <div class="ui-inputgroup">
                 <span style="width:20%;" class="ui-inputgroup-addon"
-                  >Mobile<i style='color: red'>*</i></span
+                  >Mobile<i style="color: red">*</i></span
                 >
                 <input
                   type="text"
@@ -110,7 +115,9 @@
 
             <div class="ui-g-12 ui-sm-12 ui-md-4">
               <div class="ui-inputgroup">
-                <span style="width:20%;" class="ui-inputgroup-addon">EMR<i style='color: red'>*</i></span>
+                <span style="width:20%;" class="ui-inputgroup-addon"
+                  >EMR<i style="color: red">*</i></span
+                >
                 <input
                   style="width:100%;"
                   type="text"
@@ -145,14 +152,14 @@
                   [(ngModel)]="doctor.nationality"
                   pInputText
                   placeholder="Nationality"
-                  #abf="ngModel"
+                  #abn="ngModel"
                   name="nationality"
                   ngModel
                 />
               </div>
               <div
                 style="padding:0px;margin-bottom:4px"
-                [hidden]="abf.valid || abf.pristine"
+                [hidden]="abn.valid || abn.pristine"
                 class="alert alert-danger"
               >
                 Please Enter your nationality
@@ -161,12 +168,13 @@
 
             <div class="ui-g-6 ui-sm-12 ui-md-4">
               <div class="ui-inputgroup">
-                <span style="width:15%;" class="ui-inputgroup-addon"
-                  >Address</span
+                <span style="width:30%;" class="ui-inputgroup-addon"
+                  >Address<i style="color: red">*</i></span
                 >
                 <input
                   type="text"
                   pInputText
+                  required
                   placeholder="Address"
                   name="Address"
                   #abg="ngModel"
@@ -179,47 +187,62 @@
                 [hidden]="abg.valid || abg.pristine"
                 class="alert alert-danger"
               >
-                Please Enter youR address
+                Please Enter your address
               </div>
             </div>
             <div class="ui-g-6 ui-sm-12 ui-md-4">
               <div class="ui-inputgroup">
-                <span class="ui-inputgroup-addon">Fees<i style='color: red'>*</i></span>
+                <span class="ui-inputgroup-addon"
+                  >Fees<i style="color: red">*</i></span
+                >
                 <input
                   type="text"
                   pInputText
                   required
                   placeholder="Fees"
                   name="Fees"
-                  #abg="ngModel"
+                  #abf="ngModel"
                   [(ngModel)]="doctor.fees"
                   ngModel
                 />
               </div>
               <div
                 style="padding:0px;margin-bottom:4px"
-                [hidden]="abg.valid || abg.pristine"
+                [hidden]="abf.valid || abf.pristine"
                 class="alert alert-danger"
               >
-                Please Enter youR address
+                Please Enter your Fees
               </div>
             </div>
-
 
             <div class="ui-g-12 ui-sm-12 ui-md-4">
               <div class="ui-inputgroup">
-                <span style="width:20%;" class="ui-inputgroup-addon">Share</span>
-                <input ngModel type="text" required pInputText (keypress)="numberOnly($event)" placeholder="Share" #abp="ngModel" name="share"
-                  [(ngModel)]="doctor.share" />
+                <span style="width:20%;" class="ui-inputgroup-addon"
+                  >Share<i style="color: red">*</i></span
+                >
+                <input
+                  ngModel
+                  type="text"
+                  [min]="0"
+                  [max]="100"
+                  pInputText
+                  required
+                  (keypress)="numberOnly($event)"
+                  placeholder="Share %"
+                  #abSahre="ngModel"
+                  name="share"
+                  [(ngModel)]="doctor.share"
+                  (ngModelChange)="discounter($event)"
+                />
               </div>
-              <div style="padding:0px;margin-bottom:4px" [hidden]="abp.valid || abp.pristine"
-                class="alert alert-danger">
-                Please Enter Share
+              <div
+                style="padding:0px;margin-bottom:4px"
+                [hidden]="shareCheck"
+                class="alert alert-danger"
+              >
+                Please Enter a correct share
               </div>
-              
             </div>
-
-
 
             <div class="ui-g-12 ui-sm-12 ui-md-4">
               <div class="ui-inputgroup">
@@ -228,8 +251,10 @@
                 >
                 <p-calendar
                   [ngStyle]="{ width: '100%', textAlign: 'center' }"
+                  dataType="string"
                   [timeOnly]="true"
-                  required
+                  showTime="true"
+                  hourFormat="24"
                   [(ngModel)]="doctor.timeIn"
                   name="TimeIn"
                 >
@@ -245,8 +270,10 @@
                 <p-calendar
                   [ngStyle]="{ width: '100%', textAlign: 'center' }"
                   [timeOnly]="true"
-                  required
                   [(ngModel)]="doctor.timeOut"
+                  showTime="true"
+                  hourFormat="24"
+                  dataType="string"
                   name="TimeOut"
                 ></p-calendar>
               </div>
@@ -482,9 +509,16 @@
               <div class="ui-g ui-fluid">
                 <!-- Submit button -->
                 <div class="ui-g-12 ui-md-12">
-                  <button type="button" (click)="save();form.reset();" [disabled]="form.invalid" class="btn btn-success btn-block">
-                    Submit
-                  </button>
+
+                    <button
+                      type="button"
+                      (click)="save(); myForm.resetForm()"
+                      [disabled]="myForm.invalid || !shareCheck"
+                      class="btn btn-success btn-block"
+                    >
+                      Submit
+                    </button>
+
                 </div>
               </div>
             </div>

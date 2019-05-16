@@ -16,11 +16,11 @@ export class Doctor{
     religion:string;
     sallary:number;
     fees:number;
-    dateOfbirth:string;
+    dateOfbirth:Date;
     gender:SelectItem[];
 
-    timeIn:string;
-    timeOut:string;
+    timeIn:String;
+    timeOut:String;
     accountNo: string;
     share: number;
 }
