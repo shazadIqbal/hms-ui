@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { Doctor } from './doctor';
 import { DoctorService } from './doctor.service';
 
@@ -7,21 +7,27 @@ import { SelectItem, MessageService } from 'primeng/api';
 import { Router, ActivatedRoute } from '@angular/router';
 import { from } from 'rxjs';
 
+// import {CalendarModule} from 'primeng/calendar';
+
 @Component({
   selector: 'app-adddoctor',
   templateUrl: './adddoctor.component.html',
   styleUrls: ['./adddoctor.component.css']
 })
 export class AdddoctorComponent implements OnInit {
+  @ViewChild('myfrom') formRef: ElementRef; //view refrecne is called after ngAfterInit();
+
   doctor: Doctor = new Doctor();
   date8: any;
   gender: SelectItem[];
   date1: any;
   id: any;
+  shareCheck : boolean = true;
   oldPhoneNo: any; //this varible will help us to update the record of doctor in directory
   //because we are autogenerating id in directory so we have to find our updated doctor with the phone number
 
   selectedcity1: any;
+
 
   constructor(
     private drservice: DoctorService,
@@ -57,10 +63,12 @@ export class AdddoctorComponent implements OnInit {
         this.doctor.cnic = doc.cnic;
         this.doctor.daysservice = doc.daysservice;
         this.doctor.speciality = doc.speciality;
-        this.doctor.dateOfbirth = doc.dateOfbirth;
+        this.doctor.dateOfbirth = new Date(doc.dateOfbirth);
         this.doctor.daysservice = doc.daysservice;
         this.doctor.timeIn = doc.timeIn;
         this.doctor.timeOut = doc.timeOut;
+        this.doctor.emrNo = doc.emrNo;
+        this.doctor.share = doc.share;
         this.oldPhoneNo = this.doctor.mobile;
         console.log(this.oldPhoneNo);
       });
@@ -87,6 +95,7 @@ export class AdddoctorComponent implements OnInit {
             summary: 'Doctor Updated Successfully',
             detail: 'Added'
           });
+
           console.log(response);
         }, error => {
           this.mesgService.add({
@@ -100,20 +109,21 @@ export class AdddoctorComponent implements OnInit {
       );
     }
     else {
+      console.log(this.doctor);
       this.drservice.savedoctor(this.doctor).subscribe(
         data => {
-          console.log(data);
           this.mesgService.add({
             key: 's',
             severity: 'success',
             summary: 'Doctor Added Successfully',
             detail: 'Added'
           });
+
         },
         error => {
           this.mesgService.add({
             key: 's',
-            severity: 'Error',
+            severity: 'error',
             summary: 'Failed',
             detail: 'Unable to Add A New Doctor'
           });
@@ -128,5 +138,12 @@ export class AdddoctorComponent implements OnInit {
 
   routePage() {
     this.router.navigate(['doctorlist']);
+  }
+  discounter(value){
+
+    let tempShare = value;
+    tempShare >= 0 && tempShare <=100  ? this.shareCheck = true : this.shareCheck = false;
+    this.doctor.share = tempShare;
+    console.log(this.doctor.share);
   }
 }
