@@ -63,7 +63,7 @@ export class SearchbarComponent implements OnInit {
       { field: 'address', header: 'ADDRESS' },
       { field: 'phoneNo', header: 'Phone No' },
       { field: 'gender', header: 'Gender' },
-      { field: 'cnic', header: 'CnicNo' },
+     // { field: 'cnic', header: 'CnicNo' },
       { field: 'status', header: 'Status' }
     ];
 
