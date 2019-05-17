@@ -16,180 +16,209 @@
 <div class="ui-g-12">
   <p-toast></p-toast>
   <p-card
-  header="SEARCH BEDS"
-  [style]="{
-    width: '80%',
-    'font-size': '26px',
-    'margin-left': '10%',
-    'text-align': 'center',
-    color: 'green'
-  }"
+    header="SEARCH BEDS"
+    [style]="{
+      width: '80%',
+      'font-size': '26px',
+      'margin-left': '10%',
+      'text-align': 'center',
+      color: 'green'
+    }"
   >
-
-  <div class="ui-g ui-fluid">
-    <hr style="height:2px;width:100%;background-color:green;" />
-    <form
-    style="width:100%;"
-    #myForm="ngForm"
-    (ngSubmit)="submitOpdPatientAdmit();"
-    >
-
-    <div *ngIf="checkStatus" >
-      <p-progressSpinner></p-progressSpinner>
-      <!-- here message from the server -->
-      <h2>Getting Beds...</h2>
-      <p>Please Reload The Page</p>
-      <div class="ui-g" style="margin-top:-20px !important;">
-        <div class="ui-md-3 ui-lg-3 ui-sm-0"></div>
-        <div class="ui-md-1 ui-lg-1 ui-sm-0"></div>
-        <br>
-        <div class="ui-md-4 ui-lg-4 ui-sm-12">
-          <button
-            pButton
-            type="button"
-            label="Click to reload"
-            style="margin-top: 0px; background-color:green;width:100%;"
-            onclick="location.reload()"
-          ></button>
-        </div>
-      </div>
+    <div class="ui-g ui-fluid">
       <hr style="height:2px;width:100%;background-color:green;" />
-  </div>
-
-
-  <div [hidden]="show">
-
-    <!-- Add Bed Type dropdwon -->
-    <div class="ui-g">
-      <div class="ui-md-2 ui-lg-2"></div>
-      <div class="ui-md-8 ui-lg-8 ui-sm-12">
-        <div class="ui-inputgroup">
-          <span
-          class="ui-inputgroup-addon"
-          style="width:37%;font-size:15px;font-weight:bold;"
-          >BED TYPE</span
-          >
-          <p-dropdown
-          emptyFilterMessage="No bedType AVAILABLE"
-          placeholder="Select bed type"
-          [showClear]="true"
-          (onChange)="bedsDropdown()"
-          [options]="bedType"
-          name="bedType"
-          [filter]="true"
-          [style]="{ width: '100%', height: '100%', 'font-size': '20px' }"
-          [ngStyle]="{ width: '80%', 'font-size': '20px' }"
-          required
-          [(ngModel)]="_opdPatientAdmit.bedType"
-
-          ></p-dropdown>
+      <form
+        style="width:100%;"
+        #myForm="ngForm"
+        (ngSubmit)="submitOpdPatientAdmit()"
+      >
+        <div *ngIf="checkStatus">
+          <p-progressSpinner></p-progressSpinner>
+          <!-- here message from the server -->
+          <h2>Getting Beds...</h2>
+          <p>Please Reload The Page</p>
+          <div class="ui-g" style="margin-top:-20px !important;">
+            <div class="ui-md-3 ui-lg-3 ui-sm-0"></div>
+            <div class="ui-md-1 ui-lg-1 ui-sm-0"></div>
+            <br />
+            <div class="ui-md-4 ui-lg-4 ui-sm-12">
+              <button
+                pButton
+                type="button"
+                label="Click to reload"
+                style="margin-top: 0px; background-color:green;width:100%;"
+                onclick="location.reload()"
+              ></button>
+            </div>
+          </div>
+          <hr style="height:2px;width:100%;background-color:green;" />
         </div>
-      </div>
-    </div>
 
-    <div class="ui-g">
-      <div class="ui-md-2 ui-lg-2"></div>
-      <div class="ui-md-8 ui-lg-8 ui-sm-12">
-        <div class="ui-inputgroup">
-          <span
-          class="ui-inputgroup-addon"
-          style="width:37%;font-size:15px;font-weight:bold;"
-          >SELECTED BEDS</span
-          >
-          <p-dropdown
-          emptyFilterMessage="No beds AVAILABLE"
-          placeholder="Select bed number"
-          (onChange)="showPrice()"
-          [options]="selectedBed"
-          name="selectedBedNumber"
-          [filter]="true"
-          [style]="{ width: '100%', height: '100%', 'font-size': '20px' }"
-          [ngStyle]="{ width: '80%', 'font-size': '20px' }"
-          [(ngModel)]="_opdPatientAdmit.selectedBed"
-          required
-          ></p-dropdown>
-        </div>
-      </div>
-    </div>
+        <div [hidden]="show">
+          <!-- Add Bed Type dropdwon -->
+          <div class="ui-g">
+            <div class="ui-md-2 ui-lg-2"></div>
+            <div class="ui-md-8 ui-lg-8 ui-sm-12">
+              <div class="ui-inputgroup">
+                <span
+                  class="ui-inputgroup-addon"
+                  style="width:37%;font-size:15px;font-weight:bold;"
+                  >BED TYPE</span
+                >
+                <p-dropdown
+                  emptyFilterMessage="No bedType AVAILABLE"
+                  placeholder="Select bed type"
+                  [showClear]="true"
+                  (onChange)="bedsDropdown()"
+                  [options]="bedType"
+                  name="bedType"
+                  [filter]="true"
+                  [style]="{
+                    width: '100%',
+                    height: '100%',
+                    'font-size': '20px'
+                  }"
+                  [ngStyle]="{ width: '80%', 'font-size': '20px' }"
+                  required
+                  [(ngModel)]="_opdPatientAdmit.bedType"
+                ></p-dropdown>
+              </div>
+            </div>
 
-    <!-- Pirce field -->
-    <div class="ui-g">
-      <div class="ui-md-2 ui-lg-2"></div>
-      <div class="ui-md-8 ui-lg-8 ui-sm-12">
-        <div class="ui-inputgroup">
-          <span
-            class="ui-inputgroup-addon"
-            style="width:45%;font-size:15px;font-weight: bold;"
-            >PRICE</span
-          >
-          <input
-            type="text"
-            name="price"
-            pInputText
-            ngModel
-            required
-            [(ngModel)]="_opdPatientAdmit.price"
-            [readOnly]="true"
-            style="text-align:center"
-          />
-        </div>
-      </div>
-    </div>
+            <div class="ui-md-2 ui-lg-2 ui-sm-12">
+              <div class="ui-inputgroup">
+                <p-dialog
+                  header="Add New Beds"
 
-  <!-- Pirce field -->
-  <div class="ui-g">
-    <div class="ui-md-2 ui-lg-2"></div>
-    <div class="ui-md-8 ui-lg-8 ui-sm-12">
-      <div class="ui-inputgroup">
-        <span
-          class="ui-inputgroup-addon"
-          style="width:45%;font-size:15px;font-weight: bold;"
-          >CASH RECIEVED</span
-        >
-        <input
-          type="text"
-          name="cashrecieved"
-          pInputText
-          ngModel
-          required
-          [(ngModel)]="_opdPatientAdmit.cashRecieved"
-          [readOnly]="false"
-          style="text-align:center"
-        />
-      </div>
-    </div>
-  </div>
+                  [responsive]="true"
+                  [style]="{ width: '60%', minWidth: '200px' }"
+                  [minY]="60"
+                  [maximizable]="true"
+                  [baseZIndex]="10000"
+                  [(visible)]="display"
+                >
+                <!-- Select for addding beds -->
+                  <app-admission></app-admission>
+                </p-dialog>
+                <button
+                type="button"
+                class="ui-button-success"
+                pButton
+                (click)="showDialog()"
+                icon="pi pi-info-circle"
+                label="ADD"
+                style="width: 100%;margin-top:0px;text-align: center"
+              ></button>
+              </div>
+            </div>
+          </div>
 
+          <div class="ui-g">
+            <div class="ui-md-2 ui-lg-2"></div>
+            <div class="ui-md-8 ui-lg-8 ui-sm-12">
+              <div class="ui-inputgroup">
+                <span
+                  class="ui-inputgroup-addon"
+                  style="width:37%;font-size:15px;font-weight:bold;"
+                  >SELECTED BEDS</span
+                >
+                <p-dropdown
+                  emptyFilterMessage="No beds AVAILABLE"
+                  placeholder="Select bed number"
+                  (onChange)="showPrice()"
+                  [options]="selectedBed"
+                  name="selectedBedNumber"
+                  [filter]="true"
+                  [style]="{
+                    width: '100%',
+                    height: '100%',
+                    'font-size': '20px'
+                  }"
+                  [ngStyle]="{ width: '80%', 'font-size': '20px' }"
+                  [(ngModel)]="_opdPatientAdmit.selectedBed"
+                  required
+                ></p-dropdown>
+              </div>
+            </div>
+          </div>
 
-        <div class="ui-g">
-          <div class="ui-md-2 ui-lg-2"></div>
-          <div class="ui-md-8 ui-lg-8 ui-sm-12">
-            <button
-              [disabled]="myForm.invalid"
-              pButton
-              type="submit"
-              label="SAVE"
-              style="margin-top: 0px; background-color:green;width:100%;"
-            ></button>
+          <!-- Pirce field -->
+          <div class="ui-g">
+            <div class="ui-md-2 ui-lg-2"></div>
+            <div class="ui-md-8 ui-lg-8 ui-sm-12">
+              <div class="ui-inputgroup">
+                <span
+                  class="ui-inputgroup-addon"
+                  style="width:45%;font-size:15px;font-weight: bold;"
+                  >PRICE</span
+                >
+                <input
+                  type="text"
+                  name="price"
+                  pInputText
+                  ngModel
+                  required
+                  [(ngModel)]="_opdPatientAdmit.price"
+                  [readOnly]="true"
+                  style="text-align:center"
+                />
+              </div>
+            </div>
+          </div>
+
+          <!-- Pirce field -->
+          <div class="ui-g">
+            <div class="ui-md-2 ui-lg-2"></div>
+            <div class="ui-md-8 ui-lg-8 ui-sm-12">
+              <div class="ui-inputgroup">
+                <span
+                  class="ui-inputgroup-addon"
+                  style="width:45%;font-size:15px;font-weight: bold;"
+                  >CASH RECIEVED</span
+                >
+                <input
+                  type="text"
+                  name="cashrecieved"
+                  pInputText
+                  ngModel
+                  required
+                  [(ngModel)]="_opdPatientAdmit.cashRecieved"
+                  [readOnly]="false"
+                  style="text-align:center"
+                />
+              </div>
+            </div>
+          </div>
+
+          <div class="ui-g">
+            <div class="ui-md-2 ui-lg-2"></div>
+            <div class="ui-md-8 ui-lg-8 ui-sm-12">
+              <button
+                [disabled]="myForm.invalid"
+                pButton
+                type="submit"
+                label="SAVE"
+                style="margin-top: 0px; background-color:green;width:100%;"
+              ></button>
+            </div>
+          </div>
+
+          <!-- print button -->
+          <div class="ui-g" style="margin-top:-20px !important;">
+            <div class="ui-md-2 ui-lg-2"></div>
+            <div class="ui-md-8 ui-lg-8 ui-sm-12">
+              <button
+                [disabled]="enable"
+                printSectionId="content"
+                ngxPrint
+                pButton
+                type="button"
+                label="PRINT"
+                style="margin-top: 0px; background-color:green;width:100%;"
+              ></button>
+            </div>
           </div>
         </div>
-
-        <!-- print button -->
-        <div class="ui-g" style="margin-top:-20px !important;">
-          <div class="ui-md-2 ui-lg-2"></div>
-          <div class="ui-md-8 ui-lg-8 ui-sm-12">
-            <button
-              [disabled]="enable"
-              printSectionId="content"
-              ngxPrint
-              pButton
-              type="button"
-              label="PRINT"
-              style="margin-top: 0px; background-color:green;width:100%;"
-            ></button>
-          </div>
-        </div>
-      </div>
       </form>
     </div>
   </p-card>
@@ -197,7 +226,11 @@
 
 <!-- print Section -->
 <!-- Print Section -->
-<div *ngIf="_opdPatientAdmit.selectedBed !== undefined"  id="content" [hidden]="true">
+<div
+  *ngIf="_opdPatientAdmit.selectedBed !== undefined"
+  id="content"
+  [hidden]="true"
+>
   <div class="container">
     <div class="row">
       <div
@@ -207,7 +240,7 @@
           <span>
             <div class="text-center ui-g-8">
               <h1 style="text-align: center;text-decoration-line: underline">
-                OPD  ADMIT BED RECEIPT
+                OPD ADMIT BED RECEIPT
               </h1>
             </div>
           </span>
@@ -218,8 +251,8 @@
           <span>
             <div class="text-center ui-g-8">
               <h3 style="text-align: left;text-decoration-line: underline">
-                Doctor Name   :
-                {{ _opdPatientAdmit.bedType}}
+                Doctor Name :
+                {{ _opdPatientAdmit.bedType }}
               </h3>
             </div>
           </span>
@@ -274,6 +307,3 @@
     </div>
   </div>
 </div>
-
-
-
