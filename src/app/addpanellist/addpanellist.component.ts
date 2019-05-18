@@ -25,7 +25,8 @@ export class AddpanellistComponent implements OnInit {
     this.paneldrop = [
 
       { label: 'free', value: 'free' },
-      { label: '50% Off', value: '50% Off' }
+      { label: '50% Off', value: '50% Off' },
+      {label:'No panel',value:'No panel'}
 
 
     ];
