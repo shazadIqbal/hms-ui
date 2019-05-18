@@ -12,11 +12,19 @@ import { MessageService } from 'primeng/api';
 })
 export class AddpackageComponent implements OnInit {
   package: Package;
+  facilitydrop: any;
+  packages: Package = new Package();
+
   constructor(
     private router: Router,
     private messageService: MessageService,
     private packageServ: PackageServiceService
-  ) {}
+  ) {
+    this.facilitydrop= [
+      {label: 'With Medication', value: 'with medication'},
+      {label: 'Without Medication', value: 'without medication'}
+    ]
+  }
 
   cols: any = [];
   loader: any = false;
@@ -41,7 +49,7 @@ export class AddpackageComponent implements OnInit {
           detail: Object.keys(response)[0]
         });
       },
-      (error) => {
+      error => {
         this.loader = false;
         this.messageService.add({
           severity: 'error',

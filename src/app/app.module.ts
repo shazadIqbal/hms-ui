@@ -8,7 +8,7 @@ import { AccordionModule } from 'primeng/accordion';
 import { ButtonModule } from 'primeng/button';
 import { CardModule } from 'primeng/card';
 import { TableModule } from 'primeng/table';
-import { CalendarModule } from 'primeng/calendar';
+// import { CalendarModule } from 'primeng/calendar';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TabMenuModule } from 'primeng/tabmenu';
 import { MenuItem, MessageService } from 'primeng/api';
@@ -42,6 +42,8 @@ import { AddpanellistComponent } from './addpanellist/addpanellist.component';
 import { MultiSelectModule } from 'primeng/multiselect';
 import { AddpanellistseviceService } from './addpanellist/addpanellistsevice.service';
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
+
+import { CalendarModule } from 'primeng/calendar';
 
 import { NavBarService } from './Services/NavBarService';
 
@@ -77,7 +79,7 @@ import { HeaderComponent } from './header/header.component';
 import { MainScreenComponent } from './main-screen/main-screen.component';
 import { NgModule } from '@angular/core';
 import { OpdGynyComponent } from './opd-gyny/opd-gyny.component';
-import {CheckboxModule} from 'primeng/checkbox';
+import { CheckboxModule } from 'primeng/checkbox';
 import { AdmissionComponent } from './admission/admission.component';
 import { PatientAdmitComponent } from './patient-admit/patient-admit.component';
 import { AdmissionService } from './Services/admission.service';
@@ -88,7 +90,12 @@ import { OpdLabtestComponent } from './opd-labtest/opd-labtest.component';
 
 
 import { PatientTransactionsComponent } from './patient-transactions/patient-transactions.component';
+import { FacilitiesComponent } from './Component/facilities/facilities.component';
+
+import { GynyObsListComponent } from './gyny-obs-list/gyny-obs-list.component';
+
 import { MonitorquickviewComponent } from './monitorquickview/monitorquickview.component';
+
 
 
 @NgModule({
@@ -148,6 +155,11 @@ import { MonitorquickviewComponent } from './monitorquickview/monitorquickview.c
     OpdLabtestComponent,
     PatientTransactionsComponent,
     OpdGynyComponent,
+
+    FacilitiesComponent,
+    //obsAndGynyRegistration-branch,
+    GynyObsListComponent,
+
     MonitorquickviewComponent
 
 
@@ -180,7 +192,7 @@ import { MonitorquickviewComponent } from './monitorquickview/monitorquickview.c
     CheckboxModule
   ],
 
-  providers: [DoctorService, AddpanellistseviceService, MessageService, NavBarService, AuthGuard, AddErComponent,AdmissionService],
+  providers: [DoctorService, AddpanellistseviceService, MessageService, NavBarService, AuthGuard, AddErComponent, AdmissionService],
 
   bootstrap: [AppComponent],
   exports: [FormsModule]

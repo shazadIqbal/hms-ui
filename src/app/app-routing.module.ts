@@ -46,6 +46,7 @@ import { PatientTransactionHistoryComponent } from './patient-transaction-histor
 
 import { OpdLabtestComponent } from './opd-labtest/opd-labtest.component';
 import { PatientTransactionsComponent } from './patient-transactions/patient-transactions.component';
+import { GynyObsListComponent } from './gyny-obs-list/gyny-obs-list.component';
 
 
 const routes: Routes = [
@@ -79,6 +80,11 @@ const routes: Routes = [
   {path: 'opdlabtest/:id', component: OpdLabtestComponent},
   {path: 'patienttransactions/:id', component: PatientTransactionsComponent},
   {path: 'admission', canActivate: [AuthGuard], component: AdmissionComponent}, //Create New Bed Component
+  {path:'patientadmit/:id', canActivate: [AuthGuard],component:PatientAdmitComponent},
+  {path:'gynObsList/:id', component:GynyObsListComponent},
+  {path:'gynObsList', component:GynyObsListComponent},
+  {path:'patientFormWithId/:id',component:PatientformComponent},
+  
   {path: 'patientadmit/:id', canActivate: [AuthGuard], component: PatientAdmitComponent},
   { path: 'adddoctor/:id', canActivate: [AuthGuard], component: AdddoctorComponent }
 

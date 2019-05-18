@@ -16,6 +16,7 @@ export class PatientAdmitComponent implements OnInit {
   public _opdPatientAdmit = new OpdPatientAdmit(); //model for populating values in the fileds of html
   public _opdPatientToSend = new OpdAdmitSend(); //selected model to send
   bedType: SelectItem[];
+  display = false;
 
   constructor(
     private router: Router,
@@ -124,7 +125,7 @@ export class PatientAdmitComponent implements OnInit {
           this.messageService.add({
             severity: "success",
             summary: "OPD ADMIT SUCCESSFULL",
-            detail: "wait wait"
+            detail: "True"
           });
         }
         this.enable = false;
@@ -137,5 +138,8 @@ export class PatientAdmitComponent implements OnInit {
         });
       }
     );
+  }
+  showDialog() {
+    this.display = true;
   }
 }

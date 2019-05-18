@@ -11,7 +11,7 @@ export class PatientserviceService {
   constructor(private http: HttpClient) {}
 
 
-  private baseUrl = environment.baseUrl+"/api/patient/";
+  private baseUrl = environment.baseUrl+"api/patient/";
 
 
 
@@ -22,7 +22,6 @@ export class PatientserviceService {
   }
   // tslint:disable-next-line: ban-types
   postPatient(patient: any): Observable<Object> {
-    // tslint:disable-next-line:prefer-const
     let headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     return this.http.post(this.baseUrl, patient, { headers });
   }
@@ -33,5 +32,13 @@ export class PatientserviceService {
 
     return this.http.delete(this.baseUrl + mrNo);
 
+  }
+  UpdatePatient(id: number,patient: any): Observable<Object> {
+   
+    return this.http.put(this.baseUrl+"/update/"+id, patient);
+  }
+
+  getAllGynyObsPatients(){
+    return this.http.get(this.baseUrl + "allgynyobs");
   }
 }
