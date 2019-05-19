@@ -28,7 +28,20 @@
 			label="Back"></button>
   </div> 
 </div>
-<div class="ui-g-12">
+
+<!-- hidden method -->
+
+<div style="margin-top:40px;" [hidden]="!hidder">
+	<p-card>
+
+		<p style="margin:20px;display:block;text-align: center;">No Labtest Added,Please add a labtest</p>
+		<button style="width:40%;margin-left:30%" pButton type="button" label="Add new Labtest" (click)="routeToAddLab()"
+			class="ui-button-success"></button>
+
+	</p-card>
+</div>
+
+<div [hidden]="!show" class="ui-g-12">
     <p-toast></p-toast>
     <p-card header="OPD LAB TEST" [style]="{
       width: '80%',

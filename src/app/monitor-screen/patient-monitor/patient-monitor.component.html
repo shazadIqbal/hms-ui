@@ -1,16 +1,17 @@
 <p-toast></p-toast>
 <button pButton type="button" class="ui-button-success"
   style="margin-left:1%; margin-bottom: 1%; height:30px; width: 70px" (click)='backToMain()'>
-  <p><img src="https://img.icons8.com/material-sharp/24/000000/back.png">Back</p>
+  <p><img src="../../../assets/back.png">Back</p>
 </button>
 <p-panel header="Patient Data">
   <div class="ui-g">
     <div class="ui-lg-3 ui-md-3 ui-sm-12">
       <div id="img">
         <img style="height:220px;margin-left:15%;width:70%;padding:5px;border:1px solid black"
-          [src]="image || 'https://cdn5.vectorstock.com/i/1000x1000/23/54/user-icon-man-human-profile-avatar-vector-10552354.jpg'"
+          [src]="image || '../../assets/patient.jpg'"
           alt="icon">
       </div>
+      <!-- https://cdn5.vectorstock.com/i/1000x1000/23/54/user-icon-man-human-profile-avatar-vector-10552354.jpg -->
     </div>
     <div class="ui-lg-9 ui-md-9 ui-sm-12">
       <p-card [ngStyle]="{'width':'100%'}">

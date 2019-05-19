@@ -14,6 +14,7 @@ export class OpdLabtestComponent implements OnInit {
 
   addLabTests:opdlabtest=new opdlabtest();
   showLoading= true;
+  hidder = false;
   show = false;
   showspinloading=true;
   showspinLoadingMessage = "Loading";
@@ -94,8 +95,13 @@ export class OpdLabtestComponent implements OnInit {
       data => {
              
         if(data.length){
+          this.hidder = false;
           this.hideLoadingSpinnerAndShowForm()
         
+        }
+        else {
+          this.showspinloading = false;
+          this.hidder = true;
         }
           
               // for (var keys in data){
@@ -119,6 +125,8 @@ export class OpdLabtestComponent implements OnInit {
       error => {
         this.show = false;
         console.log(error)
+        this.showspinloading = false;
+
         console.log("error agya yar");
         this.messageservice.add({
           severity: "error",
@@ -160,6 +168,12 @@ export class OpdLabtestComponent implements OnInit {
       }
 
     )
+  }
+
+
+  routeToAddLab()
+  {
+    this.router.navigate(['addlab']);
   }
 
 
