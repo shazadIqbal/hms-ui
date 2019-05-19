@@ -16,7 +16,7 @@ import {Location} from '@angular/common';
   styleUrls: ['./patient-monitor.component.css']
 })
 export class PatientMonitorComponent implements OnInit {
-  
+
 
   registration : Boolean = false;
 
@@ -86,7 +86,7 @@ export class PatientMonitorComponent implements OnInit {
 
   backToMain()
   {
-    this._location.back();
+    this.route.navigate(['mainscreen']);
   }
 
   dischargePatient()
