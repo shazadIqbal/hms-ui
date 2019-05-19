@@ -7,7 +7,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 
 
 // import { Router } from '@angular/router';
-import { ViewChild, ElementRef } from '@angular/core'; //viewChild decorator is used to access refrence varibale outside the template  we can access id of any component using view child
+// import { ViewChild, ElementRef } from '@angular/core'; //viewChild decorator is used to access refrence varibale outside the template  we can access id of any component using view child
 @Component({
   selector: 'app-patientform',
   templateUrl: './patientform.component.html',
@@ -19,8 +19,8 @@ export class PatientformComponent implements OnInit {
   value : Date;
   isGynyObs: boolean = false;
   patientid: number;
- 
-  @ViewChild('userForm') formRef: ElementRef; //view refrecne is called after ngAfterInit();
+
+  // @ViewChild('userForm') formRef: ElementRef; //view refrecne is called after ngAfterInit();
 
   constructor(
     private msgService: MessageService,
@@ -36,13 +36,13 @@ export class PatientformComponent implements OnInit {
 
 
   ngOnInit() {
-    
+
     console.log(this.isGynyObs);
     this.patientid = this.activeRoute.snapshot.params['id'];
     if(this.patientid){
     this.gettingPatientById();
     }
-   
+
   }
 
   isGynObsFn(){
@@ -53,13 +53,26 @@ export class PatientformComponent implements OnInit {
 
   gettingPatientById(){
     this.patientService.getPatientsByMRNO(this.patientid).subscribe(data=>{
-      if(this.patientid){
+      if(this.patientid && data.gynAndObsRegistration == true){
+        this.isGynyObs = true;
         this.patient.name = data.name;
         this.patient.cnic= data.cnic;
         this.patient.age = data.age;
         this.patient.address = data.address;
         this.patient.gender = data.gender;
         this.patient.phoneNo = data.phoneNo;
+        this.patient.husbandOfAndFatherOf = data.husbandOfAndFatherOf;
+        this.patient.registrationDate =new Date(data.registrationDate);
+        console.log("if main hun")
+      }
+      else if(this.patientid){
+        this.patient.name = data.name;
+        this.patient.cnic= data.cnic;
+        this.patient.age = data.age;
+        this.patient.address = data.address;
+        this.patient.gender = data.gender;
+        this.patient.phoneNo = data.phoneNo;
+        console.log("else if main hun")
       }
     })
   }
@@ -185,7 +198,7 @@ export class PatientformComponent implements OnInit {
     this.router.navigate(['mainscreen']);
   }
 
-   
+
 }
 
 
