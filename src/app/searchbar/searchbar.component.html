@@ -1,30 +1,86 @@
- <p-dialog header="Detail" [(visible)]="display" [modal]="true" [responsive]="true"
-    [style]="{ width: '800px', minWidth: '200px', position: 'absolute' }" [minX]="70" [style]="{ float: 'top' }"
-    [positionTop]="null" [maximizable]="true" [baseZIndex]="10000" [closeOnEscape]="true" [closable]="true">
-    <p-toast [style]="{ marginTop: '40px' }" position="top-right" life="3000">
-    </p-toast>
+<p-dialog
+  header="Detail"
+  [(visible)]="display"
+  [modal]="true"
+  [responsive]="true"
+  [style]="{ width: '920px', minWidth: '200px', position: 'absolute' }"
+  [minX]="70"
+  [style]="{ float: 'top', 'overflow-wrap': 'break-word' }"
+  style="overflow-wrap: break-word"
+  [positionTop]="null"
+  [maximizable]="true"
+  [baseZIndex]="10000"
+  [closeOnEscape]="true"
+  [closable]="true"
+>
+  <p-toast [style]="{ marginTop: '40px' }" position="top-right" life="3000">
+  </p-toast>
 
-    <p-card header="" [style]="{ width: '100%', color: '#3EB650', 'text-align': 'center' }"> 
-      <p-table #dt [columns]="cols" [value]="patient" [paginator]="true" [scrollable]="true" [rows]="10"
-        [totalRecords]="totalRecords" scrollHeight="200px">
-        <ng-template pTemplate="caption">
-          <div style="text-align: right">
-            <i class="fa fa-search" style="margin:4px 4px 0 0"></i>
-            <input type="text" pInputText size="50" placeholder="Global Filter"
-              (input)="dt.filterGlobal($event.target.value, 'contains')" style="width:auto" />
-          </div>
-                  </ng-template>
+  <p-card
+    header=""
+    [style]="{ width: '100%', color: '#3EB650', 'text-align': 'center' }"
+  >
+    <p-table
+      #dt
+      [columns]="cols"
+      [value]="patient"
+      [paginator]="true"
+      [scrollable]="true"
+      [rows]="10"
+      [totalRecords]="totalRecords"
+      scrollHeight="200px"
+      [resizableColumns]="true"
+    >
+      <ng-template pTemplate="caption">
+        <div style="text-align: right">
+          <i class="fa fa-search" style="margin:4px 4px 0 0"></i>
+          <input
+            type="text"
+            pInputText
+            size="50"
+            placeholder="Global Filter"
+            (input)="dt.filterGlobal($event.target.value, 'contains')"
+            style="width:auto"
+          />
+        </div>
+      </ng-template>
 
-        <ng-template pTemplate="header" let-columns>
-          <tr>
-
-            <th *ngFor="let col of columns" style="text-align:center;">
-              {{ col.header }}
-            </th>
-            <th style="text-align: center;">
-              Actions
-            </th>
-          </tr>
+      <ng-template pTemplate="header" let-columns>
+        <tr>
+          <th
+            *ngFor="let col of columns"
+            style="text-align:center;"
+            pResizableColumn
+          >
+            {{ col.header }}
+          </th>
+          <th style="text-align: center;"  pResizableColumn>
+            Actions
+          </th>
+        </tr>
+      </ng-template>
+      <ng-template
+        pTemplate="body"
+        let-rowData
+        let-columns="columns"
+        style="word-wrap: break-word;"
+      >
+        <tr [pSelectableRow]="rowData">
+          <td *ngFor="let col of columns" class="ui-resizable-column">
+            {{ rowData[col.field] }}
+          </td>
+          <td>
+            <button
+              pButton
+              type="button"
+              label="Edit"
+              class="ui-button-warning"
+              (click)="routeToPatientForm(rowData['id'])"
+            ></button>
+          </td>
+        </tr>
+      </ng-template>
+    </p-table>
 
         </ng-template>
         <ng-template pTemplate="body" let-rowData let-columns="columns" style="word-wrap: break-word;">
@@ -39,11 +95,35 @@
           </tr>
         </ng-template>
 
-      </p-table>
 
-    </p-card>
-    <div *ngIf="loading" class="loading-indicator">
-      <p-progressSpinner></p-progressSpinner>
-    </div>
-  </p-dialog>
-<button type="button" style="width:40px; background-color: green;" (click)="showDialog()" pButton   icon="pi pi-search"></button>
+    <!-- Use the below code in order to resizeable table columns  -->
+
+
+    <!-- <p-table [columns]="cols" [value]="patient" [resizableColumns]="true">
+        <ng-template pTemplate="header" let-columns>
+            <tr>
+                <th *ngFor="let col of columns" pResizableColumn>
+                    {{col.header}}
+                </th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-rowData let-columns="columns">
+            <tr>
+                <td *ngFor="let col of columns" class="ui-resizable-column">
+                    {{rowData[col.field]}}
+                </td>
+            </tr>
+        </ng-template>
+    </p-table> -->
+  </p-card>
+  <div *ngIf="loading" class="loading-indicator">
+    <p-progressSpinner></p-progressSpinner>
+  </div>
+</p-dialog>
+<button
+  type="button"
+  style="width:40px; background-color: green;"
+  (click)="showDialog()"
+  pButton
+  icon="pi pi-search"
+></button>

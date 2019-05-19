@@ -20,13 +20,18 @@ export class AddpanellistComponent implements OnInit {
   multidropdown = [];
   display = false;
   facilityObj: Facility = new Facility();
-  constructor(
-    private panelService: AddpanellistseviceService,
-    private messageService: MessageService,
-    private router: Router
-  ) {
-    this.paneldrop = [{ label: 'free', value: 'free' }, { label: '50% Off', value: '50% Off' }];
-    this.cars = [
+
+  constructor(private panelService: AddpanellistseviceService, private messageService: MessageService, private router: Router) {
+    this.paneldrop = [
+
+      { label: 'free', value: 'free' },
+      { label: '50% Off', value: '50% Off' },
+      {label:'No panel',value:'No panel'}
+
+
+    ];
+
+      this.cars = [
       { label: 'choose facilities', value: null },
       { label: 'Audi', value: 'Audi' },
       { label: 'BMW', value: 'BMW' },
