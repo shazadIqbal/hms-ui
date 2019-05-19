@@ -1,15 +1,22 @@
-
-<button pButton type="button" class="ui-button-success" style="margin-left:1%; margin-bottom: 1%; height:30px; width: 70px" (click)='backtomain()'><p><img src="https://img.icons8.com/material-sharp/24/000000/back.png">Back</p></button>
+<div class="ui-g">
+<div class="ui-g-4 ui-lg-4 ui-sm-12">
+<button
+  pButton
+  type="button"
+  class="ui-button-success"
+  style="margin-left:10%; height:40px; width: 80%"
+  (click)="backtomain()"
+  label= "Back"
+>
+</button>
+</div>
 
 <div style="z-index:3; position: absolute;top:70%;" class="ui-g-12" *ngIf="delete">
-
-
-    <p-progressSpinner [style]="{'margin-left':'45%'}"></p-progressSpinner>
-
+  <p-progressSpinner [style]="{ 'margin-left': '45%' }"></p-progressSpinner>
 </div>
-<div class="ui-g">
+
   <p-toast></p-toast>
-  <div class="ui-g-6 ui-lg-6 ui-sm-12">
+  <div class="ui-g-4 ui-lg-4 ui-sm-12">
     <button
       pButton
       type="button"
@@ -19,7 +26,7 @@
       class=" ui-button-success"
     ></button>
   </div>
-  <div class="ui-g-6 ui-lg-6 ui-sm-12">
+  <div class="ui-g-4 ui-lg-4 ui-sm-12">
     <button
       pButton
       type="button"
@@ -87,5 +94,4 @@
   <div class="ui-g-12" *ngIf="empty">
     <p style="text-align:center;">No Lab test to show!</p>
   </div>
-
 </div>
