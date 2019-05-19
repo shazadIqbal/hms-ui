@@ -32,6 +32,7 @@ export class OpdconsultancyComponent implements OnInit {
   checkStatus: boolean = false;
   show : boolean = false;
   enable : boolean;
+  editablediscountfield :boolean=false;
 
   constructor(
     private router: Router,
@@ -100,10 +101,22 @@ p
     console.log(this.opdObject.doctors["fullName"]);
     this.opdObject.sallary = 0; //it will also work for the negative
     this.opdObject.total = 0;
-    this.opdObject.discount = 0;
-    this.opdObject.fees = this.opdObject.doctors["fees"];
-    
-    this.opdObject.total = this.opdObject.fees + this.opdObject.discount;
+
+    // if(this.opdObject.panels.values() == "free")
+//console.log("yeh hai panels",this.opdObject["opdObject"].panels); 
+if(this.selectedPanel == "free"){
+  this.opdObject.discount = (this.opdObject.doctors["fees"]*2);
+  this.opdObject.fees=(this.opdObject.doctors["fees"]*2);
+}
+else{
+
+    this.opdObject.discount = this.opdObject.doctors["fees"];
+    this.opdObject.fees = (this.opdObject.doctors["fees"] * 2);
+    this.opdObject.total=this.opdObject.fees-this.opdObject.discount;
+}
+   
+    //console.log(this.opdObject.sallary)
+    // this.opdObject.total = this.opdObject.fees - this.opdObject.discount;
   }
 
   //FUNCTION FOR BACK BUTTON
@@ -188,6 +201,12 @@ p
     console.log("hello",this.selectedPanel);
     if(this.selectedPanel == "free"){
       this.opdObject.discount = (this.opdObject.doctors["fees"]*2);
+      this.opdObject.total=this.opdObject.fees-this.opdObject.discount;
+    }
+    if(this.selectedPanel=="No panel")
+    {
+      this.editablediscountfield=true;
+
     }
   }
 
