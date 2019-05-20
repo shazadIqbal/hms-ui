@@ -75,15 +75,29 @@
               </div>
             </div>
           </div>
-          <!-- discount field -->
-          <div class="ui-g">
-            <div class="ui-md-2 ui-lg-2"></div>
-            <div class="ui-md-8 ui-lg-8 ui-sm-12">
-              <div class="ui-inputgroup">
-                <span class="ui-inputgroup-addon" style="width:45%;font-size:15px;font-weight: bold;">Discount $$</span>
-                <input type="number" name="discount" [readOnly]="true" pInputText ngModel min="0" placeholder="0  %"
-                  [(ngModel)]="opdObject.discount" />
-              </div>
+        </div>
+        <!-- discount field -->
+        <div class="ui-g">
+          <div class="ui-md-2 ui-lg-2"></div>
+          <div class="ui-md-8 ui-lg-8 ui-sm-12">
+            <div class="ui-inputgroup">
+              <span
+                class="ui-inputgroup-addon"
+                style="width:45%;font-size:15px;font-weight: bold;"
+                >Discount $$</span
+              >
+              <input
+                type="number"
+                name="discount"
+                pInputText
+                ngModel
+                min="0"
+                placeholder="Rs"
+                [readOnly]="editablediscountfield"
+                [(ngModel)]="opdObject.discount"
+                (change)="onchangediscount()"
+              />
+
             </div>
           </div>
           <!-- Cash Recvied -->

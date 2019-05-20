@@ -25,6 +25,7 @@ export class OpdconsultancyComponent implements OnInit {
   doctors: SelectItem[];
   panels:SelectItem[];
   selectedPanel;
+  
   // selectedDoctor : any;
   calDiscount = 0;
   //object of opd consultancy
@@ -69,7 +70,10 @@ export class OpdconsultancyComponent implements OnInit {
 
   }
 
-p
+
+
+  
+
   getDoctorsOption() {
     let i = 0;
     this.opdObject.sallary = 0;
@@ -118,13 +122,22 @@ p
 //console.log("yeh hai panels",this.opdObject["opdObject"].panels); 
 if(this.selectedPanel == "free"){
   this.opdObject.discount = (this.opdObject.doctors["fees"]*2);
+  this.opdObject.discount=this.opdObject.discount;
   this.opdObject.fees=(this.opdObject.doctors["fees"]*2);
+  this.opdObject.total=this.opdObject.fees-this.opdObject.discount;
+  this.editablediscountfield=false
+  
+  
+
+  
 }
 else{
 
     this.opdObject.discount = this.opdObject.doctors["fees"];
     this.opdObject.fees = (this.opdObject.doctors["fees"] * 2);
     this.opdObject.total=this.opdObject.fees-this.opdObject.discount;
+    this.editablediscountfield=true;
+   
 }
    
     //console.log(this.opdObject.sallary)
@@ -170,6 +183,7 @@ else{
     this.opdObject.cashRecieved = value;
     this.opdObject.total = this.opdObject.fees-this.opdObject.discount;
   }
+
   getpanelsoption() {
     
     
@@ -183,6 +197,7 @@ else{
         this.show = false;
         this.checkStatus = false; //this is for form hide property
         console.log(data);
+        this.panels.push({label:'No panel',value:'No panel'})
         data.forEach(e => {
           console.log(e)
          
@@ -192,6 +207,7 @@ else{
           });
           // console.log({id:this.opdObject.doctors});
         });
+        this.selectedPanel="No panel";
 
       }
 
@@ -215,12 +231,23 @@ else{
     if(this.selectedPanel == "free"){
       this.opdObject.discount = (this.opdObject.doctors["fees"]*2);
       this.opdObject.total=this.opdObject.fees-this.opdObject.discount;
-    }
-    if(this.selectedPanel=="No panel")
-    {
-      this.editablediscountfield=true;
+      this.editablediscountfield=false;
+      
 
+      
+    }else{
+      this.opdObject.discount = this.opdObject.doctors["fees"];
+      this.opdObject.fees = (this.opdObject.doctors["fees"] * 2);
+      this.opdObject.total=this.opdObject.fees-this.opdObject.discount;
+      this.editablediscountfield=true;
+     
     }
+  
+  }
+  onchangediscount()
+  {
+    this.opdObject.discount=this.opdObject.discount;
+    this.opdObject.total=this.opdObject.fees-this.opdObject.discount;
   }
 
 }
