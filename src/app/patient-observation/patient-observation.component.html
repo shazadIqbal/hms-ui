@@ -96,7 +96,7 @@
                       pInputText
                       ngModel
                       required
-                      [(ngModel)]="patientObservationObject.sallary"
+                      [(ngModel)]="patientObservationObject.fees"
                       [readOnly]="true"
                     />
                   </div>
@@ -118,7 +118,7 @@
                       ngModel
                       min="0"
                       placeholder="0  %"
-                      [readOnly]="true"
+                      [readOnly]="false"
                       [(ngModel)]="patientObservationObject.discount"
                     />
                   </div>
@@ -246,7 +246,7 @@
                 <div class="text-center ui-g-8">
                   <h3 style="text-align: left;text-decoration-line: underline">
                     Fees :
-                    {{ patientObservationObject.sallary }}
+                    {{ patientObservationObject.fees }}
                   </h3>
                 </div>
               </span>

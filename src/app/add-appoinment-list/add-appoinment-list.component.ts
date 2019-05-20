@@ -19,8 +19,10 @@ export class AddAppoinmentListComponent implements OnInit {
   SelectStatus: any;
   date1: Date;
   datefilter: Date;
+  showInactive:boolean = true;
   _status: Status = new Status();
   date: _dateClass = new _dateClass();
+  show : boolean  = true;
   constructor(
     private router: Router,
     private appointmentService: AppointmentServiceService,
@@ -39,7 +41,16 @@ export class AddAppoinmentListComponent implements OnInit {
 
   showStatus() {
     this.showLoading = true;
+    this.show = true;
+    this.showInactive = true;
     this.appointmentService.getStatus(this._status.status).subscribe(Response => {
+       if(this._status.status==="done" ){
+         this.show = false;
+       }else if(this._status.status == "inactive"){
+        this.show = false;
+        this.showInactive = false;
+       }
+
       console.log('response is here', Response);
       this.showLoading = false;
       for (const i in Response) {
@@ -87,7 +98,7 @@ export class AddAppoinmentListComponent implements OnInit {
       { field: 'id', header: 'MR Number' },
       { field: 'selectDoctor', header: 'Doctor Name' },
       { field: 'patientName', header: 'Patient Name' },
-      { field: 'phoneNo', header: 'patient Number' },
+      { field: 'phoneNo', header: 'Phone No.' },
       { field: 'appoinmentDate', header: 'Appointment Date' },
       { field: 'time', header: 'Time' }
     ];
@@ -116,7 +127,7 @@ export class AddAppoinmentListComponent implements OnInit {
       { field: 'id', header: 'MR Number' },
       { field: 'selectDoctor', header: 'Doctor Name' },
       { field: 'patientName', header: 'Patient Name' },
-      { field: 'phoneNo', header: 'patient Number' },
+      { field: 'phoneNo', header: 'Phone Number' },
       { field: 'appoinmentDate', header: 'Appointment Date' },
       { field: 'time', header: 'Time' }
     ];
@@ -206,7 +217,7 @@ export class AddAppoinmentListComponent implements OnInit {
       '-' +
       (this.datefilter.getMonth() + 1) +
       '-' +
-      this.datefilter.getDay();
+      this.datefilter.getDate();
     console.log(d);
 
     this.showDate(d);

@@ -45,7 +45,7 @@ export class PatientObservationComponent implements OnInit {
 
   getDoctorsOption() {
     let i = 0;
-    this.patientObservationObject.sallary = 0;
+    this.patientObservationObject.fees = 0;
     this.doctors = [];
     this.doctorService.getdoctors().subscribe(
       data => {
@@ -58,7 +58,7 @@ export class PatientObservationComponent implements OnInit {
             console.log('This is doctors id ' + e.mrNo);
             this.doctors.push({
               label: e.fullName,
-              value: { mrNo: e.mrNo, fullName: e.fullName, sallary: e.sallary }
+              value: { mrNo: e.mrNo, fullName: e.fullName, fees: e.fees }
             });
             // console.log({id:this.patientObservationObject.doctors});
           });
@@ -76,17 +76,17 @@ export class PatientObservationComponent implements OnInit {
       }
     );
   }
-  //Getting Doctors'Fees
+  //Getting Doctors'fees
   doctorDropdown() {
     // console.log(this.selectedDoctor);
     console.log(this.patientObservationObject.doctors['fullName']);
-    this.patientObservationObject.sallary = 0; //it will also work for the negative
+    this.patientObservationObject.fees = 0; //it will also work for the negative
     this.patientObservationObject.total = 0;
     this.patientObservationObject.discount = 0;
-    this.patientObservationObject.sallary = this.patientObservationObject.doctors['sallary'];
-    console.log(this.patientObservationObject.sallary);
+    this.patientObservationObject.fees = this.patientObservationObject.doctors['fees'];
+    console.log(this.patientObservationObject.fees);
     this.patientObservationObject.total =
-      this.patientObservationObject.sallary + this.patientObservationObject.discount;
+      this.patientObservationObject.fees + this.patientObservationObject.discount;
   }
 
   //FUNCTION FOR BACK BUTTON

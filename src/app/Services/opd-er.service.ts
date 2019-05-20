@@ -17,4 +17,6 @@ export class OpdErService {
   public getOpdEr(): Observable<any> {   // getMethod
     return this.http.get(environment.baseUrl + "api/opder/");
   }
+
+
 }

@@ -61,7 +61,8 @@ export class MainScreenComponent implements OnInit {
         setTimeout(() => {
           this.router.navigate(['/patientform']);
         }, 2000);
-      } else {
+      }
+      else {
         this.mesgService.add({
           severity: 'success',
           summary: 'SUCCESS',
@@ -71,7 +72,7 @@ export class MainScreenComponent implements OnInit {
         setTimeout(() => {
           this.router.navigate(['/monitor/',mrNo]);
         }, 2000);
-       
+
       }
     }),
 // tslint:disable-next-line: no-unused-expression
@@ -109,6 +110,13 @@ export class MainScreenComponent implements OnInit {
 
   toPackageList(){
     this.router.navigate(["/packagelist"]);
+  }
+  gotoAdmission(){
+    this.router.navigate(["/admission"]);
+  }
+
+  gotoGynyObsList(){
+    this.router.navigate(["/gynObsList"])
   }
 
 }

@@ -8,7 +8,7 @@ import { AccordionModule } from 'primeng/accordion';
 import { ButtonModule } from 'primeng/button';
 import { CardModule } from 'primeng/card';
 import { TableModule } from 'primeng/table';
-import { CalendarModule } from 'primeng/calendar';
+// import { CalendarModule } from 'primeng/calendar';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TabMenuModule } from 'primeng/tabmenu';
 import { MenuItem, MessageService } from 'primeng/api';
@@ -16,7 +16,7 @@ import { PanelModule } from 'primeng/panel';
 import { InputTextModule } from 'primeng/inputtext';
 import { DialogModule } from 'primeng/dialog';
 import { ToastModule } from 'primeng/toast';
-import { CheckboxModule, Checkbox } from 'primeng/checkbox';
+// import { CheckboxModule, Checkbox } from 'primeng/checkbox';
 
 import { PatientSlipComponent } from './patient-slip/patient-slip.component';
 import { PatientInputComponent } from './patient-slip/patient-input/patient-input.component';
@@ -43,6 +43,8 @@ import { AddpanellistComponent } from './addpanellist/addpanellist.component';
 import { MultiSelectModule } from 'primeng/multiselect';
 import { AddpanellistseviceService } from './addpanellist/addpanellistsevice.service';
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
+
+import { CalendarModule } from 'primeng/calendar';
 
 import { NavBarService } from './Services/NavBarService';
 
@@ -77,7 +79,28 @@ import { FooterComponent } from './footer/footer.component';
 import { HeaderComponent } from './header/header.component';
 import { MainScreenComponent } from './main-screen/main-screen.component';
 import { NgModule } from '@angular/core';
+
+import { OpdGynyComponent } from './opd-gyny/opd-gyny.component';
+import { CheckboxModule } from 'primeng/checkbox';
+import { AdmissionComponent } from './admission/admission.component';
+import { PatientAdmitComponent } from './patient-admit/patient-admit.component';
+import { AdmissionService } from './Services/admission.service';
+// import { AdmissionService } from './Services/admission.service';
+import { PatientTransactionHistoryComponent } from './patient-transaction-history/patient-transaction-history.component';
 import { PatientObservationComponent } from './patient-observation/patient-observation.component';
+
+
+import { OpdLabtestComponent } from './opd-labtest/opd-labtest.component';
+
+
+import { PatientTransactionsComponent } from './patient-transactions/patient-transactions.component';
+import { FacilitiesComponent } from './Component/facilities/facilities.component';
+
+import { GynyObsListComponent } from './gyny-obs-list/gyny-obs-list.component';
+
+import { MonitorquickviewComponent } from './monitorquickview/monitorquickview.component';
+
+
 
 
 @NgModule({
@@ -129,7 +152,21 @@ import { PatientObservationComponent } from './patient-observation/patient-obser
     PackageListComponent,
     OpdEmergencyComponent,
     OpdconsultancyComponent,
-    PatientObservationComponent
+
+
+    PatientTransactionHistoryComponent,
+    AdmissionComponent,
+    PatientAdmitComponent,
+    OpdLabtestComponent,
+    PatientTransactionsComponent,
+    OpdGynyComponent,
+    PatientObservationComponent,
+    FacilitiesComponent,
+    //obsAndGynyRegistration-branch,
+    GynyObsListComponent,
+
+    MonitorquickviewComponent
+
 
   ],
   imports: [
@@ -155,14 +192,14 @@ import { PatientObservationComponent } from './patient-observation/patient-obser
     DropdownModule,
     InputTextareaModule,
     MultiSelectModule,
-    CheckboxModule,
     ProgressSpinnerModule,
-    NgxPrintModule
+    NgxPrintModule,
+    CheckboxModule
   ],
 
-  providers: [DoctorService, AddpanellistseviceService, MessageService, NavBarService, AuthGuard, AddErComponent],
+  providers: [DoctorService, AddpanellistseviceService, MessageService, NavBarService, AuthGuard, AddErComponent, AdmissionService],
 
   bootstrap: [AppComponent],
   exports: [FormsModule]
 })
-export class AppModule {}
+export class AppModule { }
