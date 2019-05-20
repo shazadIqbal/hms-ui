@@ -140,9 +140,10 @@
                 pInputText
                 ngModel
                 min="0"
-                placeholder="0  %"
+                placeholder="Rs"
                 [readOnly]="editablediscountfield"
                 [(ngModel)]="opdObject.discount"
+                (change)="onchangediscount()"
               />
             </div>
           </div>
