@@ -1,5 +1,11 @@
 
 <p-toast></p-toast>
+<div class="col-g-12">
+	<div class="ui-lg-5 ui-md-5 ui-sm-12">
+		<button pButton type="button" class=" ui-button-success" (click)="back()" style="width:45%;margin-left:30% "
+			label="Back"></button>
+	</div>
+</div>
 <app-monitorquickview> </app-monitorquickview>
 <div id="print-section" [hidden]=true >
 	<!-- <div *ngIf="addEmergency.name !== undefined"> -->
@@ -19,7 +25,7 @@
 		<p style="font-size: 20px;"><b
 			style="font-size: 20px;"> Facilities: </b></p>
 
-	
+
 		<table style="padding:10px;margin:10px">
 			<tr style="padding:10px;;margin:10px">
 				<th >
@@ -34,7 +40,7 @@
 						<hr style="height: 2px">
 				</td>
 			</tr>
-			
+
 			<tr style="padding:10px;;margin:10px" *ngFor="let facility of facilitiesArray">
 				<td>{{facility.name}}</td>
 				<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{facility.price}}</td>
@@ -45,7 +51,7 @@
 					</td>
 				</tr>
 		</table>
-		
+
 
 		<p style="font-size: 20px;"><b
 				style="font-size: 20px;"> Discount: </b>{{addEmergency.discount}}</p>
@@ -57,12 +63,7 @@
 
 </div>
 
-<div class="col-g-12">
-	<div class="ui-lg-5 ui-md-5 ui-sm-12">
-		<button pButton type="button" class=" ui-button-success" (click)="back()" style="width:45%;margin-left:30% "
-			label="Back"></button>
-	</div>
-</div>
+
 
 <div style="margin-top:40px;" [hidden]="!hidder">
 	<p-card>
@@ -74,11 +75,11 @@
 	</p-card>
 </div>
 <div [hidden]="!show" class="ui-g-12">
-	
+
 	<p-card header="OPD EMERGENCY SERVICE" [style]="{
         width: '100%',
         'font-size': '26px',
-        
+
         'text-align': 'center',
         color: 'green'
 	  }">
@@ -94,7 +95,7 @@
 						</div>
 				<form style="width:100%" #myForm="ngForm" >
 
-				
+
 
 					<div *ngIf="show">
 						<!-- Doctor Names Field -->
@@ -153,7 +154,7 @@
 										Discount</span>
 									<input type="number"  (keypress)="numberOnly($event)" (ngModelChange)="discounter($event)" min="0" name="discount" [(ngModel)]="addEmergency.discount"
 										pInputText placeholder="0">
-										
+
 
 								</div>
 								<div
