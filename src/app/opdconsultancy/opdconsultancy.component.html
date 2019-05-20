@@ -1,4 +1,4 @@
-<div class="col-g-12">
+<div class="ui-g-12">
   <div class="ui-lg-5 ui-md-5 ui-sm-12">
     <button pButton type="button" class=" ui-button-success" (click)="backToMonitor()"
       style="width:45%;margin-left:30% " label="Back"></button>
@@ -64,82 +64,72 @@
               </div>
             </div>
           </div>
-          <!-- Fees Field -->
-          <div class="ui-g">
-            <div class="ui-md-2 ui-lg-2"></div>
-            <div class="ui-md-8 ui-lg-8 ui-sm-12">
-              <div class="ui-inputgroup">
-                <span class="ui-inputgroup-addon" style="width:45%;font-size:15px;font-weight: bold;">Fees</span>
-                <input type="text" name="fees" pInputText ngModel required [(ngModel)]="opdObject.fees"
-                  [readOnly]="true" />
-              </div>
+        </div>
+
+        <!-- Fees Field -->
+        <div class="ui-g">
+          <div class="ui-md-2 ui-lg-2"></div>
+          <div class="ui-md-8 ui-lg-8 ui-sm-12">
+            <div class="ui-inputgroup">
+              <span class="ui-inputgroup-addon" style="width:45%;font-size:15px;font-weight: bold;">Fees</span>
+              <input type="text" name="fees" pInputText ngModel required [(ngModel)]="opdObject.fees"
+                [readOnly]="true" />
             </div>
           </div>
         </div>
+
         <!-- discount field -->
         <div class="ui-g">
           <div class="ui-md-2 ui-lg-2"></div>
           <div class="ui-md-8 ui-lg-8 ui-sm-12">
             <div class="ui-inputgroup">
-              <span
-                class="ui-inputgroup-addon"
-                style="width:45%;font-size:15px;font-weight: bold;"
-                >Discount $$</span
-              >
-              <input
-                type="number"
-                name="discount"
-                pInputText
-                ngModel
-                min="0"
-                placeholder="Rs"
-                [readOnly]="editablediscountfield"
-                [(ngModel)]="opdObject.discount"
-                (change)="onchangediscount()"
-              />
+              <span class="ui-inputgroup-addon" style="width:45%;font-size:15px;font-weight: bold;">Discount $$</span>
+              <input type="number" name="discount" pInputText ngModel min="0" placeholder="Rs"
+                [readOnly]="editablediscountfield" [(ngModel)]="opdObject.discount" (change)="onchangediscount()" />
 
-            </div>
-          </div>
-          <!-- Cash Recvied -->
-          <div class="ui-g">
-            <div class="ui-md-2 ui-lg-2"></div>
-            <div class="ui-md-8 ui-lg-8 ui-sm-12">
-              <div class="ui-inputgroup">
-                <span class="ui-inputgroup-addon" style="width:45%;font-size:15px;font-weight: bold;">Cash Recieved<i
-                    style="color: red">*</i></span>
-                <input type="text" name="cashrecieved" pInputText ngModel required placeholder="$$"
-                  [(ngModel)]="opdObject.cashRecieved" />
-              </div>
-            </div>
-          </div>
-          <div class="ui-g">
-            <div class="ui-md-2 ui-lg-2"></div>
-            <div class="ui-md-8 ui-lg-8 ui-sm-12">
-              <div class="ui-inputgroup">
-                <span class="ui-inputgroup-addon" style="width:45%;font-size:15px;font-weight: bold;">Total
-                  Amount</span>
-                <input required type="number" pInputText name="total" ngModel [readOnly]="true"
-                  placeholder="Total Amount $" [(ngModel)]="opdObject.total" />
-              </div>
-            </div>
-          </div>
-
-          <div class="ui-g" style="margin-top:-20px !important;">
-            <div class="ui-md-2 ui-lg-2"></div>
-            <div class="ui-md-8 ui-lg-8 ui-sm-12">
-              <button [disabled]="myForm.invalid" pButton type="submit" label="SAVE"
-                style="margin-top: 0px; background-color:green;width:100%;"></button>
-            </div>
-          </div>
-          <!-- PRINT BUTTON -->
-          <div class="ui-g" style="margin-top:-20px !important;">
-            <div class="ui-md-2 ui-lg-2"></div>
-            <div class="ui-md-8 ui-lg-8 ui-sm-12">
-              <button [disabled]="enable" printSectionId="content" ngxPrint pButton type="button" label="PRINT"
-                style="margin-top: 0px; background-color:green;width:100%;"></button>
             </div>
           </div>
         </div>
+        <!-- Cash Recvied -->
+        <div class="ui-g">
+          <div class="ui-md-2 ui-lg-2"></div>
+          <div class="ui-md-8 ui-lg-8 ui-sm-12">
+            <div class="ui-inputgroup">
+              <span class="ui-inputgroup-addon" style="width:45%;font-size:15px;font-weight: bold;">Cash Recieved<i
+                  style="color: red">*</i></span>
+              <input type="text" name="cashrecieved" pInputText ngModel required placeholder="$$"
+                [(ngModel)]="opdObject.cashRecieved" />
+            </div>
+          </div>
+        </div>
+        <div class="ui-g">
+          <div class="ui-md-2 ui-lg-2"></div>
+          <div class="ui-md-8 ui-lg-8 ui-sm-12">
+            <div class="ui-inputgroup">
+              <span class="ui-inputgroup-addon" style="width:45%;font-size:15px;font-weight: bold;">Total
+                Amount</span>
+              <input required type="number" pInputText name="total" ngModel [readOnly]="true"
+                placeholder="Total Amount $" [(ngModel)]="opdObject.total" />
+            </div>
+          </div>
+        </div>
+
+        <div class="ui-g" style="margin-top:-20px !important;">
+          <div class="ui-md-2 ui-lg-2"></div>
+          <div class="ui-md-8 ui-lg-8 ui-sm-12">
+            <button [disabled]="myForm.invalid" pButton type="submit" label="SAVE"
+              style="margin-top: 0px; background-color:green;width:100%;"></button>
+          </div>
+        </div>
+        <!-- PRINT BUTTON -->
+        <div class="ui-g" style="margin-top:-20px !important;">
+          <div class="ui-md-2 ui-lg-2"></div>
+          <div class="ui-md-8 ui-lg-8 ui-sm-12">
+            <button [disabled]="enable" printSectionId="content" ngxPrint pButton type="button" label="PRINT"
+              style="margin-top: 0px; background-color:green;width:100%;"></button>
+          </div>
+        </div>
+
       </form>
     </div>
   </p-card>
@@ -214,5 +204,3 @@
 
 
 </div>
-
-
