@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
 import {ActivatedRoute} from '@angular/router';
 import { PatientTransactionsService } from '../Services/patient-transactions.service';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-patient-transactions',
@@ -14,8 +15,12 @@ export class PatientTransactionsComponent implements OnInit {
   datasource: any = [];
   cols: any[];
 
-  constructor(private transactionsService:PatientTransactionsService,private route:Router,private activateRoute:ActivatedRoute) { 
-
+  constructor(
+    private transactionsService: PatientTransactionsService,
+    private route: Router,
+    private location: Location,
+    private activateRoute: ActivatedRoute
+  ) {
     this.cols = [
       { field: 'id', header: 'ID' },
       { field: 'transactionDate', header: 'Transaction Date' },
@@ -30,25 +35,28 @@ export class PatientTransactionsComponent implements OnInit {
   }
 
   ngOnInit() {
-    
     this.showTable();
+  }
+
+  backToMonitor() {
+    this.location.back();
   }
 
   showTable() {
     this.transaction = [];
     //this.loading = true;
     this.totalRecords = 0;
-    let id=this.activateRoute.snapshot.params['id'];
-    this.transactionsService.getPatientTransactions(id).subscribe(data=>{
-      console.log("response is here",data);
+    let id = this.activateRoute.snapshot.params['id'];
+    this.transactionsService.getPatientTransactions(id).subscribe(data => {
+      console.log('response is here', data);
       this.datasource = [];
       this.datasource = data;
       this.totalRecords = this.datasource.length;
-     // data["transactionDate"] = new Date( data["transactionDate"]).toDateString()
-     // this.transaction = data;
-     let trans = data.map(p => {
-       console.log(p)
-      
+      // data["transactionDate"] = new Date( data["transactionDate"]).toDateString()
+      // this.transaction = data;
+      let trans = data.map(p => {
+        console.log(p);
+
         this.transaction.push({
           id: p.id,
           transactionDate: new Date(p.transactionDate).toDateString(),
@@ -60,11 +68,8 @@ export class PatientTransactionsComponent implements OnInit {
           operationType: p.operationType,
           dues: p.dues
         });
-     });
-     //this.loading = false;
+      });
+      //this.loading = false;
     });
-    
   }
-
-
 }
