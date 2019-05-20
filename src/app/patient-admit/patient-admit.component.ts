@@ -5,6 +5,7 @@ import { SelectItem, MessageService } from "primeng/api";
 import { OpdPatientAdmit } from "./patient-admit";
 import { AdmissionService } from "../Services/admission.service";
 import { OpdAdmitSend } from "./patient-admit";
+import { PatientserviceService } from '../patientservice.service';
 
 @Component({
   selector: "app-patient-admit",
@@ -17,18 +18,29 @@ export class PatientAdmitComponent implements OnInit {
   public _opdPatientToSend = new OpdAdmitSend(); //selected model to send
   bedType: SelectItem[];
   display = false;
+  patientName: String;
+  patientMrNo: Number;
+  date;
 
   constructor(
     private router: Router,
     private messageService: MessageService,
     private activatedRoute: ActivatedRoute,
-    private admissionSer: AdmissionService
-  ) {}
+    private admissionSer: AdmissionService,
+    private patientService: PatientserviceService
+  ) { }
   checkStatus: boolean = false;
   show: boolean = false;
   enable: boolean;
 
   ngOnInit() {
+
+    let id = this.activatedRoute.snapshot.params["id"];
+    this.patientService.getPatientsByMRNO(id).subscribe((a) => {
+      console.log(a)
+      this.patientName = a.name;
+      this.patientMrNo = a.id;
+    })
     this.enable = true;
     this.bedsDropdown();
     // this.noOfBedsAvailable();
@@ -117,7 +129,7 @@ export class PatientAdmitComponent implements OnInit {
     this._opdPatientToSend.bedID = this._opdPatientAdmit.bedID;
     this._opdPatientToSend.patientID = this._opdPatientAdmit.patientID;
     this._opdPatientToSend.cashRecieved = this._opdPatientAdmit.cashRecieved;
-
+    this.date = new Date();
     this.admissionSer.savedOpdAdmit(this._opdPatientToSend).subscribe(
       data => {
         if (data) {

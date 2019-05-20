@@ -4,6 +4,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { DoctorService } from '../adddoctor/doctor.service';
 import { OpdGynyService } from '../Services/opd-gyny.service';
 import { opdGynyModel } from './opd-gyny';
+import { PatientserviceService } from '../patientservice.service';
 
 @Component({
   selector: 'app-opd-gyny',
@@ -21,6 +22,9 @@ export class OpdGynyComponent implements OnInit {
   checkStatus: boolean = false;
   show : boolean = false;
   enable : boolean;
+  patientName: String;
+  patientMrNo: Number;
+  date;
   checked: boolean = false;
   private opdGynyObject : opdGynyModel = new opdGynyModel();
 
@@ -31,6 +35,7 @@ export class OpdGynyComponent implements OnInit {
     private doctorService: DoctorService,
     private opd_gynyService: OpdGynyService,
     private activatedRoute : ActivatedRoute,
+    private patientService: PatientserviceService
     
   ) { 
     
@@ -41,7 +46,13 @@ export class OpdGynyComponent implements OnInit {
 
     this.enable = true;
     this.getDoctorsOption();
-    this.opdGynyObject.id = this.activatedRoute.snapshot.params['id'];
+    let id=this.activatedRoute.snapshot.params['id'];
+    this.opdGynyObject.id = id;
+    this.patientService.getPatientsByMRNO(id).subscribe((a) => {
+      console.log(a)
+      this.patientName = a.name;
+      this.patientMrNo = a.id;
+    })
     console.log("this is the id in going to model", this.opdGynyObject.id);
   }
 
@@ -110,6 +121,7 @@ export class OpdGynyComponent implements OnInit {
   //FUNCTION FOR SUBMIT OPD CONSULTANCY
   submitOpd() {
 
+    this.date=new Date();
     this.opd_gynyService.saveOpdGyny(this.opdGynyObject).subscribe(
       data => {
         console.log(this.opdGynyObject);
@@ -132,6 +144,7 @@ export class OpdGynyComponent implements OnInit {
     );
     console.log(this.opdGynyObject);
   }
+  
 
   //function for totalprice
   getTotal(value: any) {
