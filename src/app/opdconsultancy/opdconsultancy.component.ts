@@ -13,6 +13,7 @@ import { MessageService, SelectItem } from 'primeng/api';
 import { ErserviceService } from '../services/erservice.service';
 import { OpdConsultancy } from './opdconsultancy';
 import { opdGynyModel } from '../opd-gyny/opd-gyny';
+import { PatientserviceService } from '../patientservice.service';
 
 
 @Component({
@@ -32,9 +33,13 @@ export class OpdconsultancyComponent implements OnInit {
   checkStatus: boolean = false;
   show : boolean = false;
   enable : boolean;
+  patientName: String;
+  patientMrNo: Number;
+  date;
   editablediscountfield :boolean=false;
 
   constructor(
+    private patientService: PatientserviceService,
     private router: Router,
     private messageService: MessageService,
     private doctorService: DoctorService,
@@ -52,7 +57,14 @@ export class OpdconsultancyComponent implements OnInit {
 
      this.enable = true;
     this.getDoctorsOption();
-    this.opdObject.id = this.activatedRoute.snapshot.params['id'];
+    let id=this.activatedRoute.snapshot.params['id'];
+    this.patientService.getPatientsByMRNO(id).subscribe((a) => {
+      console.log(a)
+      this.patientName = a.name;
+      this.patientMrNo = a.id;
+    })
+
+    this.opdObject.id =id;
     console.log("this is id"+this.opdObject.id);
 
   }
@@ -127,6 +139,7 @@ else{
   //FUNCTION FOR SUBMIT OPD CONSULTANCY
   submitOpd() {
 
+    this.date=new Date();
     this.opd_Service.saveOPD(this.opdObject).subscribe(
       data => {
         console.log(this.opdObject);

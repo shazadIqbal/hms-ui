@@ -54,10 +54,10 @@ export class OpdEmergencyComponent implements OnInit {
     this.addEmergency.total=0;
     this.addEmergency.price=0;
     this.addEmergency.facilities=[];
-    this.multiDropdown=[];
+   
   }
   ngOnInit() {
-    this.date = new Date();
+    
 
     console.log(this.date)
     this.getfacilitiesInDropdown();
@@ -119,6 +119,7 @@ export class OpdEmergencyComponent implements OnInit {
       this.facilitiesArray.push(obj);
 
     })
+    this.date = new Date();
 
 
 

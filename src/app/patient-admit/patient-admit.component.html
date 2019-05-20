@@ -225,8 +225,75 @@
 </div>
 
 <!-- print Section -->
+
+
+
+
+
+
+<div   *ngIf="_opdPatientAdmit.selectedBed !== undefined"
+  id="content"
+  [hidden]="true" >
+  <!-- <div *ngIf="addEmergency.name !== undefined"> -->
+
+  <h1 style="text-align: center; color:green;font-weight:bold;"> OPD ADMIT BED RECEIPT</h1>
+  <hr style="border: 2px solid black;">
+  <div class="ui-g">
+
+    <p style="font-size: 20px;"> <b style="font-size: 20px;">Patient MR No: </b> {{patientMrNo}}</p>
+    <p style="font-size: 20px;"><b style="font-size: 20px;">Patient Name: </b> {{patientName}}</p>
+    
+    <p style="font-size: 20px;"><b style="font-size: 20px;">BED Type: </b> {{ _opdPatientAdmit.bedType }}</p>
+    <p style="font-size: 20px;"><b style="font-size: 20px;"> Date: </b> {{date |  date :'short'}}</p>
+
+
+
+
+    <div>
+      
+
+      <hr style="width:100%;border:1px solid black;" />
+      <div style="margin-bottom:5px;">
+        <span><b> Bed Price: </b> <span style="float: right;"> {{_opdPatientAdmit.price}}</span></span>
+       
+      </div>
+      <div style="margin-bottom:5px;">
+      <span><b> Cash Received: </b> <span style="float: right;"> {{_opdPatientAdmit.cashRecieved}}</span></span>
+    </div>
+  
+
+      <hr style="border:1px solid black;width:100%;" />
+  
+
+
+    </div>
+
+
+
+
+
+  </div>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <!-- Print Section -->
-<div
+<!-- <div
   *ngIf="_opdPatientAdmit.selectedBed !== undefined"
   id="content"
   [hidden]="true"
@@ -281,16 +348,7 @@
           </span>
         </div>
         <br />
-        <!-- <div class="row">
-          <span>
-            <div class="text-center ui-g-8">
-              <h3 style="text-align: left;text-decoration-line: underline">
-                TOTAL AMOUNT :
-                {{ _opdPatientAdmit.total }}
-              </h3>
-            </div>
-          </span>
-        </div> -->
+       
         <br />
         <div class="row">
           <span>
@@ -306,4 +364,4 @@
       </div>
     </div>
   </div>
-</div>
+</div> -->
