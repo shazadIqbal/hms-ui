@@ -1,67 +1,3 @@
-<app-monitorquickview> </app-monitorquickview>
-<!-- <div id="print-section" [hidden]=true>
- 
-
-  <h1 style="text-align: center; color: #3a64a8;">OPD LAB TEST RECEIPT</h1>
-  <hr style="height: 2px">
-  <div class="container">
-    <p style="margin-top: 5%;  border-bottom: 1px solid black; padding: 10px; font-size: 20px; "><b
-        style="font-size: 20px;"> Lab Test: </b>{{printLabTest}}</p>
-    <p style=" margin-top: 5%;  border-bottom: 1px solid black;padding: 10px; font-size: 20px;"><b
-        style="font-size: 20px;"> Price: </b>{{addLabTests.price}}</p>
-    <p style=" margin-top: 5%;  border-bottom: 1px solid black;padding: 10px; font-size: 20px;"><b
-        style="font-size: 20px;"> Discount: </b>{{addLabTests.discount}}</p>
-    <p style=" margin-top: 5%;  border-bottom: 1px solid black;padding: 10px; font-size: 20px;"><b
-        style="font-size: 20px;"> Total: </b>{{addLabTests.total}}</p>
-
-  </div>
-
-
-</div> -->
-
-<div id="print-section" [hidden]=true>
-	<!-- <div *ngIf="addEmergency.name !== undefined"> -->
-
-	<h1 style="text-align: center; color:green;font-weight:bold;">OPD LABTEST RECEIPT</h1>
-	<hr style="border: 2px solid black;">
-	<div class="ui-g">
-
-		<p style="font-size: 20px;"> <b style="font-size: 20px;"> MR No: </b> {{patientMrNo}}</p>
-		<p style="font-size: 20px;"><b style="font-size: 20px;"> Name: </b> {{patientName}}</p>
-		<p style="font-size: 20px;"><b style="font-size: 20px;"> Date: </b> {{date |  date :'short'}}</p>
-
-
-		<p style="font-size: 20px;"><b style="font-size: 20px;"> Labtests: </b></p>
-
-
-		<div>
-			<span style="font-weight:bold;">Labtest</span><span style="font-weight:bold;float: right;">Price</span>
-			<hr style="border: 1px solid black;width:100%;" />
-			<div *ngFor="let lab of labtestArray">
-				<span>{{lab.name}}</span>
-				<span style="float: right;">{{lab.price}}</span>
-				<hr style="width:100%;" />
-				<span><b> Discount: </b> <span style="float: right;"> {{addLabTests.discount}}</span></span>
-				<hr style="border:1px solid black;width:100%;" />
-
-				<span><b> Total: </b> <span style="float:right;">{{addLabTests.total}}</span></span>
-				<hr style="border:1px solid black;width:100%;" />
-
-			</div>
-		</div>
-		
-
-
-
-
-	</div>
-
-
-</div>
-
-
-
-
 <div class="col-ui-g-12">
   <div class="ui-lg-5 ui-sm-12 ui-md-5">
     <button pButton type="button" class=" ui-button-success" (click)="back()" style="width:45%;margin-left:30% "
@@ -69,19 +5,51 @@
   </div>
 </div>
 
-<!-- hidden method -->
+<app-monitorquickview> </app-monitorquickview>
+<div id="print-section" [hidden]=true>
+  <!-- <div *ngIf="addEmergency.name !== undefined"> -->
 
-<div style="margin-top:40px;" [hidden]="!hidder">
-  <p-card>
+  <h1 style="text-align: center; color:green;font-weight:bold;">OPD LABTEST RECEIPT</h1>
+  <hr style="border: 2px solid black;">
+  <div class="ui-g">
 
-    <p style="margin:20px;display:block;text-align: center;">No Labtest Added,Please add a labtest</p>
-    <button style="width:40%;margin-left:30%" pButton type="button" label="Add new Labtest" (click)="routeToAddLab()"
-      class="ui-button-success"></button>
+    <p style="font-size: 20px;"> <b style="font-size: 20px;"> MR No: </b> {{patientMrNo}}</p>
+    <p style="font-size: 20px;"><b style="font-size: 20px;"> Name: </b> {{patientName}}</p>
+    <p style="font-size: 20px;"><b style="font-size: 20px;"> Date: </b> {{date |  date :'short'}}</p>
 
-  </p-card>
+
+    <p style="font-size: 20px;"><b style="font-size: 20px;"> Labtests: </b></p>
+
+
+    <div>
+      <span style="font-weight:bold;">Labtest</span><span style="font-weight:bold;float: right;">Price</span>
+      <hr style="border: 1px solid black;width:100%;" />
+      <div *ngFor="let lab of labtestArray">
+        <span>{{lab.name}}</span>
+        <span style="float: right;">{{lab.price}}</span>
+        <hr style="width:100%;" />
+        <span><b> Discount: </b> <span style="float: right;"> {{addLabTests.discount}}</span></span>
+        <hr style="border:1px solid black;width:100%;" />
+
+        <span><b> Total: </b> <span style="float:right;">{{addLabTests.total}}</span></span>
+        <hr style="border:1px solid black;width:100%;" />
+
+      </div>
+    </div>
+
+
+
+
+
+  </div>
+
+
 </div>
 
-<div [hidden]="!show" class="ui-g-12">
+
+
+
+<div class="ui-g-12">
   <p-toast></p-toast>
   <p-card header="OPD LAB TEST" [style]="{
       width: '80%',

@@ -1,10 +1,13 @@
-<app-monitorquickview> </app-monitorquickview>
 <div class="col-g-12">
   <div class="ui-lg-5 ui-md-5 ui-sm-12">
     <button pButton type="button" class=" ui-button-success" (click)="backToMonitor()"
       style="width:45%;margin-left:30% " label="Back"></button>
   </div>
+
 </div>
+
+<app-monitorquickview> </app-monitorquickview>
+
 
 <div class="ui-g-12">
   <p-toast></p-toast>
@@ -78,7 +81,7 @@
                 <span class="ui-inputgroup-addon" style="width:45%;font-size:15px;font-weight: bold;">Cash Recieved<i
                     style="color: red">*</i></span>
                 <input type="text" name="cashrecieved" pInputText ngModel required placeholder="$$"
-                  [(ngModel)]="opdGynyObject.cashRecieved"  (input)="getTotal(opdGynyObject.cashRecieved)" />
+                  [(ngModel)]="opdGynyObject.cashRecieved" (input)="getTotal(opdGynyObject.cashRecieved)" />
               </div>
             </div>
           </div>
@@ -119,7 +122,7 @@
           <div class="ui-g" style="margin-top:-20px !important;">
             <div class="ui-md-2 ui-lg-2"></div>
             <div class="ui-md-8 ui-lg-8 ui-sm-12">
-              <button [disabled]="enable" printSectionId="content"  ngxPrint pButton type="button" label="PRINT"
+              <button [disabled]="enable" printSectionId="content" ngxPrint pButton type="button" label="PRINT"
                 style="margin-top: 0px; background-color:green;width:100%;"></button>
             </div>
           </div>
@@ -133,7 +136,7 @@
 
 
 <!-- printing section -->
-<div  *ngIf="opdGynyObject.doctors !== undefined" id="content" [hidden]="true" >
+<div *ngIf="opdGynyObject.doctors !== undefined" id="content" [hidden]="true">
   <!-- <div *ngIf="addEmergency.name !== undefined"> -->
 
   <h1 style="text-align: center; color:green;font-weight:bold;">OPD GYNY RECEIPT</h1>
@@ -142,7 +145,7 @@
 
     <p style="font-size: 20px;"> <b style="font-size: 20px;">Patient MR No: </b> {{patientMrNo}}</p>
     <p style="font-size: 20px;"><b style="font-size: 20px;">Patient Name: </b> {{patientName}}</p>
-    
+
     <p style="font-size: 20px;"><b style="font-size: 20px;">Doctor Name: </b> {{opdGynyObject.doctors["fullName"]}}</p>
     <p style="font-size: 20px;"><b style="font-size: 20px;"> Date: </b> {{date |  date :'short'}}</p>
 
@@ -150,21 +153,23 @@
 
 
     <div>
-      
+
 
       <hr style="width:100%;border:1px solid black;" />
       <div style="margin-bottom:5px;">
-      <span><b> Cash Received: </b> <span style="float: right;"> {{opdGynyObject.cashRecieved}}</span></span>
-    </div>
-    <div style="margin-bottom:5px;">
-      <span><b> Discount: </b> <span style="float: right;"> {{opdGynyObject.discount}}</span></span>
-     
-    </div>
-    <div style="margin-bottom:5px;">
-      <span><b> Total: </b> <span style="float:right;">{{opdGynyObject.total}}</span></span>
-    </div>
+        <span><b> Cash Received: </b> <span style="float: right;"> {{opdGynyObject.cashRecieved}}</span></span>
+      </div>
+      <div style="margin-bottom:5px;">
+        <span><b> Discount: </b> <span style="float: right;"> {{opdGynyObject.discount}}</span></span>
+
+      </div>
       <hr style="border:1px solid black;width:100%;" />
-  
+
+      <div style="margin-bottom:5px;">
+        <span><b> Total: </b> <span style="float:right;">{{opdGynyObject.total}}</span></span>
+      </div>
+      <hr style="border:1px solid black;width:100%;" />
+
 
 
     </div>
