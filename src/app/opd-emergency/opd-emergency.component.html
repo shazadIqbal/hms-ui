@@ -1,4 +1,3 @@
-
 <p-toast></p-toast>
 <div class="col-g-12">
 	<div class="ui-lg-5 ui-md-5 ui-sm-12">
@@ -7,56 +6,40 @@
 	</div>
 </div>
 <app-monitorquickview> </app-monitorquickview>
-<div id="print-section" [hidden]=true >
+<div id="print-section" [hidden]=true>
 	<!-- <div *ngIf="addEmergency.name !== undefined"> -->
 
-	<h1 style="text-align: center; color: #3a64a8;">OPD EMERGENCY RECEIPT</h1>
-	<hr style="height: 2px">
-	<div class="container">
+	<h1 style="text-align: center; color:green;font-weight:bold;">OPD EMERGENCY RECEIPT</h1>
+	<hr style="border: 2px solid black;">
+	<div class="ui-g">
 
-			<p style="font-size: 20px;"> <b
-				style="font-size: 20px;"> MR No: </b> {{patientMrNo}}</p>
-			<p style="font-size: 20px;"><b
-				style="font-size: 20px;"> Name: </b> {{patientName}}</p>
-				<p style="font-size: 20px;"><b
-					style="font-size: 20px;"> Date: </b> {{date |  date :'short'}}</p>
+		<p style="font-size: 20px;"> <b style="font-size: 20px;"> MR No: </b> {{patientMrNo}}</p>
+		<p style="font-size: 20px;"><b style="font-size: 20px;"> Name: </b> {{patientName}}</p>
+		<p style="font-size: 20px;"><b style="font-size: 20px;"> Date: </b> {{date |  date :'short'}}</p>
 
 
-		<p style="font-size: 20px;"><b
-			style="font-size: 20px;"> Facilities: </b></p>
+		<p style="font-size: 20px;"><b style="font-size: 20px;"> Facilities: </b></p>
 
 
-		<table style="padding:10px;margin:10px">
-			<tr style="padding:10px;;margin:10px">
-				<th >
-					Name
-				</th>
-				<th>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	Price
-				</th>
-			</tr>
-			<tr>
-				<td colspan="10">
-						<hr style="height: 2px">
-				</td>
-			</tr>
+		<div>
+			<span style="font-weight:bold;">Facility</span><span style="font-weight:bold;float: right;">Price</span>
+			<hr style="border: 1px solid black;width:100%;" />
+			<div *ngFor="let facility of facilitiesArray">
+				<span>{{facility.name}}</span>
+				<span style="float: right;">{{facility.price}}</span>
+				<hr style="width:100%;" />
+				<span><b> Discount: </b> <span style="float: right;"> {{addEmergency.discount}}</span></span>
+				
+				<hr style="border:1px solid black;width:100%;" />
+				<span><b> Total: </b> <span style="float:right;">{{addEmergency.total}}</span></span>
+				<hr style="border:1px solid black;width:100%;" />
 
-			<tr style="padding:10px;;margin:10px" *ngFor="let facility of facilitiesArray">
-				<td>{{facility.name}}</td>
-				<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{facility.price}}</td>
-			</tr>
-			<tr>
-					<td colspan="10">
-							<hr style="height: 2px">
-					</td>
-				</tr>
-		</table>
+			</div>
+		</div>
 
 
-		<p style="font-size: 20px;"><b
-				style="font-size: 20px;"> Discount: </b>{{addEmergency.discount}}</p>
-		<p style=" font-size: 20px;"><b
-				style="font-size: 20px;"> Total: </b>{{addEmergency.total}}</p>
+
+
 
 	</div>
 
@@ -89,12 +72,11 @@
 
 
 			<div class="ui-lg-8 ui-md-8 ui-sm-12">
-					<div *ngIf="showspinloading">
-							<p-progressSpinner></p-progressSpinner>
-							<h2>{{showspinLoadingMessage}}</h2>
-						</div>
-				<form style="width:100%" #myForm="ngForm" >
-
+				<div *ngIf="showspinloading">
+					<p-progressSpinner></p-progressSpinner>
+					<h2>{{showspinLoadingMessage}}</h2>
+				</div>
+				<form style="width:100%" #myForm="ngForm">
 
 
 					<div *ngIf="show">
@@ -110,7 +92,7 @@
 
 									<p-multiSelect name="multiDropdown" [options]="multiDropdown"
 										[(ngModel)]="addEmergency.facilities" (onChange)="onChangeFacility()"
-										[ngStyle]="{width:'100%'}" [style]="{height:'37px'}"  required>
+										[ngStyle]="{width:'100%'}" [style]="{height:'37px'}" required>
 									</p-multiSelect>
 								</div>
 							</div>
@@ -124,7 +106,7 @@
 										style="width:37%;font-size:15px; font-weight: bold;">
 										Facility Price</span>
 									<input type="text" name="price" [(ngModel)]="addEmergency.price" [readOnly]="true"
-										pInputText placeholder="$"  required>
+										pInputText placeholder="$" required>
 
 								</div>
 							</div>
@@ -138,8 +120,8 @@
 									<span class="ui-inputgroup-addon"
 										style="width:37%;font-size:15px; font-weight: bold;">
 										Cash Recieve</span>
-									<input type="text"  (keypress)="numberOnly($event)" name="cashRecieve" [(ngModel)]="addEmergency.cashRecieve"
-										pInputText placeholder="$" required>
+									<input type="text" (keypress)="numberOnly($event)" name="cashRecieve"
+										[(ngModel)]="addEmergency.cashRecieve" pInputText placeholder="$" required>
 
 								</div>
 							</div>
@@ -152,18 +134,18 @@
 									<span class="ui-inputgroup-addon"
 										style="width:37%;font-size:15px;font-weight: bold;">
 										Discount</span>
-									<input type="number"  (keypress)="numberOnly($event)" (ngModelChange)="discounter($event)" min="0" name="discount" [(ngModel)]="addEmergency.discount"
-										pInputText placeholder="0">
+
+									<input type="number" (keypress)="numberOnly($event)"
+										(ngModelChange)="discounter($event)" min="0" name="discount"
+										[(ngModel)]="addEmergency.discount" pInputText placeholder="0">
+
 
 
 								</div>
-								<div
-										style="padding:0px !important;margin-bottom:0px !important;font-size: 16px; text-align:center;"
-										class="alert alert-danger"
-										[hidden]="discountCheck"
-										>
-										discount is more than total price!
-									  </div>
+								<div style="padding:0px !important;margin-bottom:0px !important;font-size: 16px; text-align:center;"
+									class="alert alert-danger" [hidden]="discountCheck">
+									discount is more than total price!
+								</div>
 							</div>
 						</div>
 						<!-- Total Field -->
@@ -184,15 +166,17 @@
 						<div class="ui-g">
 							<div class="ui-md-2 ui-lg-2"></div>
 							<div class="ui-md-8 ui-lg-8 ui-sm-12">
-								<button pButton type="button" (click)="saveOpdEmergency()" label="SAVE" class="ui-button-success"
-									[disabled]="myForm.invalid || !discountCheck"></button>
+								<button pButton type="button" (click)="saveOpdEmergency()" label="SAVE"
+									class="ui-button-success" [disabled]="myForm.invalid || !discountCheck"></button>
 							</div>
 						</div>
 						<div class="ui-g">
 							<div class="ui-md-2 ui-lg-2"></div>
 							<div class="ui-md-8 ui-lg-8 ui-sm-12">
-								<button pButton type="button" label="PRINT" class="ui-button-success"
-									printSectionId="print-section" (click)="print()" ngxPrint [disabled]="printer"></button>
+								<button pButton type="button"
+									[printStyle]="{h1 : {'color': 'red'}, h2 : {'border': 'solid 1px'}}" label="PRINT"
+									class="ui-button-success" printSectionId="print-section" (click)="print()" ngxPrint
+									[disabled]="printer"></button>
 							</div>
 						</div>
 					</div>

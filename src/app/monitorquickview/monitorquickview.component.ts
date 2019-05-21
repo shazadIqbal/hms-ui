@@ -3,6 +3,7 @@ import { MonitorService } from '../services/monitor.service';
 import { MessageService } from 'primeng/api';
 import { PatientTransactionHistoryService } from '../services/patient-transaction-history.service';
 import { Router, ActivatedRoute } from '@angular/router';
+import { NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-monitorquickview',
@@ -31,11 +32,15 @@ export class MonitorquickviewComponent implements OnInit {
       if(response.id)
       {
         this.isLoading=false;
-      console.log(response)
+      console.log("yeh raha responcee",response)
       this.id=response.id;
       this.name=response.name;
       this.number=response.number;
-      this.registration=response.gynAndObsRegistration || 'No';
+
+      if(response.registrationDate!=null)
+      this.registration="yes";
+      else
+      this.registration="No";
 
       }
 

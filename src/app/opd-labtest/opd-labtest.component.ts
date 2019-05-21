@@ -4,6 +4,7 @@ import { opdlabtest } from './opd-labtest-model';
 import { SelectItem,MessageService } from 'primeng/api';
 import { LabtestServiceService } from '../add-lab-test/labtest-service.service';
 import { OpdLabTestService } from '../Services/opd-lab-test.service';
+import { PatientserviceService } from '../patientservice.service';
 
 @Component({
   selector: 'app-opd-labtest',
@@ -14,6 +15,7 @@ export class OpdLabtestComponent implements OnInit {
 
   addLabTests:opdlabtest=new opdlabtest();
   showLoading= true;
+  hidder = false;
   show = false;
   showspinloading=true;
   showspinLoadingMessage = "Loading";
@@ -21,7 +23,12 @@ export class OpdLabtestComponent implements OnInit {
   printLabTest = [];
   name: string[];
   printer= true;
-  constructor(private router: Router,private activeRoute:ActivatedRoute,private labtest:LabtestServiceService,private messageservice:MessageService,private labtestservice:OpdLabTestService) { }
+  labtestArray=[];
+  patientName: String;
+  patientMrNo: Number;
+  
+  date;
+  constructor(private router: Router,private patientService: PatientserviceService,private activeRoute:ActivatedRoute,private labtest:LabtestServiceService,private messageservice:MessageService,private labtestservice:OpdLabTestService) { }
 
   ngOnInit() {
     this.getfacilitiesInDropdown();
@@ -30,8 +37,15 @@ export class OpdLabtestComponent implements OnInit {
     //   this.showLoading = true;
     // }
   //this.showLoading=true
-    this.addLabTests.id= parseInt(this.activeRoute.snapshot.params['id']);
+  let id =this.activeRoute.snapshot.params['id'];
+    this.addLabTests.id= parseInt(id);
+    
     this.addLabTests.price = 0;
+    this.patientService.getPatientsByMRNO(id).subscribe((a) => {
+      console.log(a)
+      this.patientName = a.name;
+      this.patientMrNo = a.id;
+    })
   
 
 
@@ -57,9 +71,20 @@ export class OpdLabtestComponent implements OnInit {
     //   this.name = (this.addEmergency.facilities[i]["facilities"]);
     //   console.log(this.name);
     this.printLabTest = []
+    this.labtestArray=[]
+   
     this.addLabTests.labTests.map((f)=>{
        this.printLabTest.push(f["name"])
+
+       let obj = {
+        name: f["name"],
+        price: f["price"]
+      }
+      this.labtestArray.push(obj);
+      
+
      })
+     this.date = new Date();
      this.printLabTest.join(',')
     ///let printfacilities = this.addEmergency.facilities.join(',')
     console.log(this.printLabTest)
@@ -94,8 +119,13 @@ export class OpdLabtestComponent implements OnInit {
       data => {
              
         if(data.length){
+          this.hidder = false;
           this.hideLoadingSpinnerAndShowForm()
         
+        }
+        else {
+          this.showspinloading = false;
+          this.hidder = true;
         }
           
               // for (var keys in data){
@@ -119,6 +149,8 @@ export class OpdLabtestComponent implements OnInit {
       error => {
         this.show = false;
         console.log(error)
+        this.showspinloading = false;
+
         console.log("error agya yar");
         this.messageservice.add({
           severity: "error",
@@ -160,6 +192,12 @@ export class OpdLabtestComponent implements OnInit {
       }
 
     )
+  }
+
+
+  routeToAddLab()
+  {
+    this.router.navigate(['addlab']);
   }
 
 

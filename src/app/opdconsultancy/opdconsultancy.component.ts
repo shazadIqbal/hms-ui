@@ -1,16 +1,21 @@
-import { AddpanellistseviceService } from "../addpanellist/addpanellistsevice.service";
-import { Status } from "./../add-appoinment-list/SelectStatus";
-import { OpdService } from "./../Services/opd.service";
-import { DoctorService } from "./../adddoctor/doctor.service";
-import { AddErComponent } from "./../add-er/add-er.component";
-import { MainScreenComponent } from "./../main-screen/main-screen.component";
-import { Component, OnInit } from "@angular/core";
-import { Router, ActivatedRoute } from "@angular/router";
-import { MessageService, SelectItem } from "primeng/api";
-import { ErserviceService } from "../services/erservice.service";
-import { OpdConsultancy } from "./opdconsultancy";
 
-import { opdGynyModel } from "../opd-gyny/opd-gyny";
+
+import { AddpanellistseviceService } from '../addpanellist/addpanellistsevice.service';
+
+import { Status } from './../add-appoinment-list/SelectStatus';
+import { OpdService } from './../Services/opd.service';
+import { DoctorService } from './../adddoctor/doctor.service';
+import { AddErComponent } from './../add-er/add-er.component';
+import { MainScreenComponent } from './../main-screen/main-screen.component';
+import { Component, OnInit } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
+import { MessageService, SelectItem } from 'primeng/api';
+import { ErserviceService } from '../services/erservice.service';
+import { OpdConsultancy } from './opdconsultancy';
+import { opdGynyModel } from '../opd-gyny/opd-gyny';
+import { PatientserviceService } from '../patientservice.service';
+
+
 
 @Component({
   selector: "app-opdconsultancy",
@@ -21,6 +26,7 @@ export class OpdconsultancyComponent implements OnInit {
   doctors: SelectItem[];
   panels: SelectItem[];
   selectedPanel;
+  
   // selectedDoctor : any;
   calDiscount = 0;
   //object of opd consultancy
@@ -28,10 +34,15 @@ export class OpdconsultancyComponent implements OnInit {
   getStatus: boolean = true;
   checkStatus: boolean = false;
 
-  show: boolean = false;
-  enable: boolean;
-  editablediscountfield: boolean = false;
+  show : boolean = false;
+  enable : boolean;
+  patientName: String;
+  patientMrNo: Number;
+  date;
+  editablediscountfield :boolean=false;
+
   constructor(
+    private patientService: PatientserviceService,
     private router: Router,
     private messageService: MessageService,
     private doctorService: DoctorService,
@@ -46,9 +57,19 @@ export class OpdconsultancyComponent implements OnInit {
     this.getpanelsoption();
     this.enable = true;
     this.getDoctorsOption();
-    this.opdObject.id = this.activatedRoute.snapshot.params["id"];
-    console.log("this is id" + this.opdObject.id);
+
+    let id=this.activatedRoute.snapshot.params['id'];
+    this.patientService.getPatientsByMRNO(id).subscribe((a) => {
+      console.log(a)
+      this.patientName = a.name;
+      this.patientMrNo = a.id;
+    })
+
+    this.opdObject.id =id;
+    console.log("this is id"+this.opdObject.id);
+
   }
+
 
   getDoctorsOption() {
     let i = 0;
@@ -95,15 +116,28 @@ export class OpdconsultancyComponent implements OnInit {
     this.opdObject.total = 0;
 
     // if(this.opdObject.panels.values() == "free")
-    //console.log("yeh hai panels",this.opdObject["opdObject"].panels);
-    if (this.selectedPanel == "free") {
-      this.opdObject.discount = this.opdObject.doctors["fees"] * 2;
-      this.opdObject.fees = this.opdObject.doctors["fees"] * 2;
-    } else {
-      this.opdObject.discount = this.opdObject.doctors["fees"];
-      this.opdObject.fees = this.opdObject.doctors["fees"] * 2;
-      this.opdObject.total = this.opdObject.fees - this.opdObject.discount;
-    }
+
+//console.log("yeh hai panels",this.opdObject["opdObject"].panels); 
+if(this.selectedPanel == "free"){
+  this.opdObject.discount = (this.opdObject.doctors["fees"]*2);
+  this.opdObject.discount=this.opdObject.discount;
+  this.opdObject.fees=(this.opdObject.doctors["fees"]*2);
+  this.opdObject.total=this.opdObject.fees-this.opdObject.discount;
+  this.editablediscountfield=false
+  
+  
+
+  
+}
+else{
+
+    this.opdObject.discount = this.opdObject.doctors["fees"];
+    this.opdObject.fees = (this.opdObject.doctors["fees"] * 2);
+    this.opdObject.total=this.opdObject.fees-this.opdObject.discount;
+    this.editablediscountfield=true;
+   
+}
+   
 
     //console.log(this.opdObject.sallary)
     // this.opdObject.total = this.opdObject.fees - this.opdObject.discount;
@@ -115,6 +149,10 @@ export class OpdconsultancyComponent implements OnInit {
   }
   //FUNCTION FOR SUBMIT OPD CONSULTANCY
   submitOpd() {
+
+
+    this.date=new Date();
+
     this.opd_Service.saveOPD(this.opdObject).subscribe(
       data => {
         console.log(this.opdObject);
@@ -151,18 +189,18 @@ export class OpdconsultancyComponent implements OnInit {
       data => {
         console.log(data);
 
+
         if (data) {
           this.show = false;
           this.checkStatus = false; //this is for form hide property
-          console.log(data);
-          data.forEach(e => {
-            console.log(e);
+        this.panels.push({label:'No panel',value:'No panel'})
+        data.forEach(e => {
+          console.log(e)
+         
+          this.panels.push({
+            label: e.panelType,
+            value: e.panelType
 
-            this.panels.push({
-              label: e.panelType,
-              value: e.panelType
-            });
-            // console.log({id:this.opdObject.doctors});
           });
         }
       },
@@ -175,18 +213,36 @@ export class OpdconsultancyComponent implements OnInit {
           summary: "Error Found",
           detail: "Something went wrong check your internet connection "
         });
+
+        this.selectedPanel="No panel";
+
       }
     );
   }
   panelsDropdown() {
     // console.log(this.selectedDoctor);
-    console.log("hello", this.selectedPanel);
-    if (this.selectedPanel == "free") {
-      this.opdObject.discount = this.opdObject.doctors["fees"] * 2;
-      this.opdObject.total = this.opdObject.fees - this.opdObject.discount;
+
+    console.log("hello",this.selectedPanel);
+    if(this.selectedPanel == "free"){
+      this.opdObject.discount = (this.opdObject.doctors["fees"]*2);
+      this.opdObject.total=this.opdObject.fees-this.opdObject.discount;
+      this.editablediscountfield=false;
+      
+
+      
+    }else{
+      this.opdObject.discount = this.opdObject.doctors["fees"];
+      this.opdObject.fees = (this.opdObject.doctors["fees"] * 2);
+      this.opdObject.total=this.opdObject.fees-this.opdObject.discount;
+      this.editablediscountfield=true;
+     
+
     }
-    if (this.selectedPanel == "No panel") {
-      this.editablediscountfield = true;
-    }
+  
+  }
+  onchangediscount()
+  {
+    this.opdObject.discount=this.opdObject.discount;
+    this.opdObject.total=this.opdObject.fees-this.opdObject.discount;
   }
 }
