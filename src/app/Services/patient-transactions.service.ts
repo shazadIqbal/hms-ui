@@ -14,4 +14,9 @@ export class PatientTransactionsService {
   getPatientTransactions(id): Observable<any> {
     return this.http.get(environment.baseUrl+'api/patienttransactions/'+id);
   }
+
+  deletePatientTransaction(id):Observable<any>
+  {
+    return this.http.delete(environment.baseUrl+'api/patienttransactions/'+id);
+  }
 }

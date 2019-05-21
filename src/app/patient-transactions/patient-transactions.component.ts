@@ -72,4 +72,17 @@ export class PatientTransactionsComponent implements OnInit {
       //this.loading = false;
     });
   }
+
+
+
+
+  editPatientTransaction(id)
+  {
+    console.log(id)
+  }
+
+  deletePatientTransaction(id)
+  {
+    console.log(id)
+  }
 }
