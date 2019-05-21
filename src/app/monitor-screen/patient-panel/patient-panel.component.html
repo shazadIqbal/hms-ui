@@ -1,7 +1,7 @@
 <p-panel header="Patient Panel">
   <div class="ui-g">
-
     <div style="padding:2px;" class="ui-g-3 ui-sm-12">
+
       <button pButton style="width:100%;" type="button" label="OPD" (click)="goToOPD()" class="ui-button-success">
         <img style="height:40px" src="../../../assets/opd.png" />
       </button>
@@ -9,6 +9,7 @@
     <div style="padding:2px;" class="ui-g-3 ui-sm-12">
       <button pButton style="width:100%;" type="button" label="ER" class="ui-button-success" (click)="gotoEr()">
         <img style="height:40px" src="../../../assets/panel.png" />
+
       </button>
     </div>
     <div style="padding:2px;" class="ui-g-3 ui-sm-12">
@@ -32,8 +33,10 @@
     </div>
 
     <div style="padding:2px;" class="ui-g-3 ui-sm-12">
-      <button pButton style="width:100%;" type="button" label="Obs" class="ui-button-success">
+
+      <button pButton style="width:100%;" type="button" label="Obs" (click)="gotoOBS()" class="ui-button-success">
         <img style="height:40px" src="../../../assets/obs.png" />
+
       </button>
     </div>
     <div style="padding:2px;" class="ui-g-3 ui-sm-12">
@@ -48,10 +51,12 @@
       </button>
     </div>
     <div style="padding:2px;" class="ui-g-12 ui-md-offset-4 ui-md-4  ui-lg-offset-4 ui-lg-4">
+
       <button pButton style="width:100%;" type="button" label="Patient Services" class="ui-button-success"
         (click)="goToPatientTransactions()">
         <img style="height:40px" src="../../../assets/services.png" />
       </button>
+
 
     </div>
   </div>
