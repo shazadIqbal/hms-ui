@@ -1,3 +1,4 @@
+import { Location } from "@angular/common";
 import { Status } from './../add-appoinment-list/SelectStatus';
 import { PatientObservationService } from './../Services/patient-observation.service';
 import { DoctorService } from './../adddoctor/doctor.service';
@@ -32,7 +33,8 @@ export class PatientObservationComponent implements OnInit {
     private messageService: MessageService,
     private doctorService: DoctorService,
     private patientObservationService: PatientObservationService,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private _location : Location
   ) {}
 
   ngOnInit() {
@@ -91,7 +93,7 @@ export class PatientObservationComponent implements OnInit {
 
   //FUNCTION FOR BACK BUTTON
   backToMonitor() {
-    this.router.navigate(['/monitor/' + this.patientObservationObject.id]);
+    this._location.back();
   }
   //FUNCTION FOR SUBMIT OPD CONSULTANCY
   submitOpd() {
@@ -124,5 +126,9 @@ export class PatientObservationComponent implements OnInit {
     this.patientObservationObject.discount = 0;
     this.patientObservationObject.cashRecieved = value;
     this.patientObservationObject.total = this.patientObservationObject.total;
+  }
+  discount(){
+    this.patientObservationObject.total = this.patientObservationObject.total - this.patientObservationObject.discount;
+    this.patientObservationObject.total;
   }
 }

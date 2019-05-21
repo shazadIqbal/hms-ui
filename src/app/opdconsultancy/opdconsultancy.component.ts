@@ -26,7 +26,7 @@ export class OpdconsultancyComponent implements OnInit {
   doctors: SelectItem[];
   panels: SelectItem[];
   selectedPanel;
-  
+
   // selectedDoctor : any;
   calDiscount = 0;
   //object of opd consultancy
@@ -117,17 +117,17 @@ export class OpdconsultancyComponent implements OnInit {
 
     // if(this.opdObject.panels.values() == "free")
 
-//console.log("yeh hai panels",this.opdObject["opdObject"].panels); 
+//console.log("yeh hai panels",this.opdObject["opdObject"].panels);
 if(this.selectedPanel == "free"){
   this.opdObject.discount = (this.opdObject.doctors["fees"]*2);
   this.opdObject.discount=this.opdObject.discount;
   this.opdObject.fees=(this.opdObject.doctors["fees"]*2);
   this.opdObject.total=this.opdObject.fees-this.opdObject.discount;
   this.editablediscountfield=false
-  
-  
 
-  
+
+
+
 }
 else{
 
@@ -135,9 +135,9 @@ else{
     this.opdObject.fees = (this.opdObject.doctors["fees"] * 2);
     this.opdObject.total=this.opdObject.fees-this.opdObject.discount;
     this.editablediscountfield=true;
-   
+
 }
-   
+
 
     //console.log(this.opdObject.sallary)
     // this.opdObject.total = this.opdObject.fees - this.opdObject.discount;
@@ -196,14 +196,13 @@ else{
         this.panels.push({label:'No panel',value:'No panel'})
         data.forEach(e => {
           console.log(e)
-         
           this.panels.push({
             label: e.panelType,
             value: e.panelType
 
           });
-        }
-      },
+        });
+      }
       error => {
         console.log("error agya yar");
         this.show = true;
@@ -217,6 +216,7 @@ else{
         this.selectedPanel="No panel";
 
       }
+      }
     );
   }
   panelsDropdown() {
@@ -227,18 +227,18 @@ else{
       this.opdObject.discount = (this.opdObject.doctors["fees"]*2);
       this.opdObject.total=this.opdObject.fees-this.opdObject.discount;
       this.editablediscountfield=false;
-      
 
-      
+
+
     }else{
       this.opdObject.discount = this.opdObject.doctors["fees"];
       this.opdObject.fees = (this.opdObject.doctors["fees"] * 2);
       this.opdObject.total=this.opdObject.fees-this.opdObject.discount;
       this.editablediscountfield=true;
-     
+
 
     }
-  
+
   }
   onchangediscount()
   {
