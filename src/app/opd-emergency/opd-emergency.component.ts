@@ -129,7 +129,6 @@ export class OpdEmergencyComponent implements OnInit {
     this.printFacilities.join(',')
     ///let printfacilities = this.addEmergency.facilities.join(',')
 
-
     this.addEmergency.price = 0;
     this.addEmergency.total = 0;
     this.addEmergency.facilities.map(f => {
@@ -244,15 +243,13 @@ export class OpdEmergencyComponent implements OnInit {
           summary: "Error Found",
           detail: "Something went wrong check your internet connection "
         });
-      }
-
-    )
-  }
+      })
+    }
 
   routeToEr() {
     this.router.navigate(['adder'])
   }
-  
+
 
 
 }

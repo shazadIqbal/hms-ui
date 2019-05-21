@@ -36,11 +36,14 @@ export class MonitorquickviewComponent implements OnInit {
       this.id=response.id;
       this.name=response.name;
       this.number=response.number;
+
       if(response.registrationDate!=null)
       this.registration="yes";
       else
       this.registration="No";
+
       }
+
       else
       {
         this.route.navigate(['/mainscreen']);

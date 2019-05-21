@@ -16,6 +16,7 @@ import { PanelModule } from 'primeng/panel';
 import { InputTextModule } from 'primeng/inputtext';
 import { DialogModule } from 'primeng/dialog';
 import { ToastModule } from 'primeng/toast';
+// import { CheckboxModule, Checkbox } from 'primeng/checkbox';
 
 import { PatientSlipComponent } from './patient-slip/patient-slip.component';
 import { PatientInputComponent } from './patient-slip/patient-input/patient-input.component';
@@ -78,12 +79,15 @@ import { FooterComponent } from './footer/footer.component';
 import { HeaderComponent } from './header/header.component';
 import { MainScreenComponent } from './main-screen/main-screen.component';
 import { NgModule } from '@angular/core';
+
 import { OpdGynyComponent } from './opd-gyny/opd-gyny.component';
 import { CheckboxModule } from 'primeng/checkbox';
 import { AdmissionComponent } from './admission/admission.component';
 import { PatientAdmitComponent } from './patient-admit/patient-admit.component';
 import { AdmissionService } from './Services/admission.service';
+// import { AdmissionService } from './Services/admission.service';
 import { PatientTransactionHistoryComponent } from './patient-transaction-history/patient-transaction-history.component';
+import { PatientObservationComponent } from './patient-observation/patient-observation.component';
 
 
 import { OpdLabtestComponent } from './opd-labtest/opd-labtest.component';
@@ -95,6 +99,7 @@ import { FacilitiesComponent } from './Component/facilities/facilities.component
 import { GynyObsListComponent } from './gyny-obs-list/gyny-obs-list.component';
 
 import { MonitorquickviewComponent } from './monitorquickview/monitorquickview.component';
+
 
 
 
@@ -155,7 +160,7 @@ import { MonitorquickviewComponent } from './monitorquickview/monitorquickview.c
     OpdLabtestComponent,
     PatientTransactionsComponent,
     OpdGynyComponent,
-
+    PatientObservationComponent,
     FacilitiesComponent,
     //obsAndGynyRegistration-branch,
     GynyObsListComponent,
