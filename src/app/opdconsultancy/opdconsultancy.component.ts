@@ -34,12 +34,12 @@ export class OpdconsultancyComponent implements OnInit {
   getStatus: boolean = true;
   checkStatus: boolean = false;
 
-  show : boolean = false;
-  enable : boolean;
+  show: boolean = false;
+  enable: boolean;
   patientName: String;
   patientMrNo: Number;
   date;
-  editablediscountfield :boolean=false;
+  editablediscountfield: boolean = false;
 
   constructor(
     private patientService: PatientserviceService,
@@ -58,15 +58,15 @@ export class OpdconsultancyComponent implements OnInit {
     this.enable = true;
     this.getDoctorsOption();
 
-    let id=this.activatedRoute.snapshot.params['id'];
+    let id = this.activatedRoute.snapshot.params['id'];
     this.patientService.getPatientsByMRNO(id).subscribe((a) => {
       console.log(a)
       this.patientName = a.name;
       this.patientMrNo = a.id;
     })
 
-    this.opdObject.id =id;
-    console.log("this is id"+this.opdObject.id);
+    this.opdObject.id = id;
+    console.log("this is id" + this.opdObject.id);
 
   }
 
@@ -117,26 +117,26 @@ export class OpdconsultancyComponent implements OnInit {
 
     // if(this.opdObject.panels.values() == "free")
 
-//console.log("yeh hai panels",this.opdObject["opdObject"].panels);
-if(this.selectedPanel == "free"){
-  this.opdObject.discount = (this.opdObject.doctors["fees"]*2);
-  this.opdObject.discount=this.opdObject.discount;
-  this.opdObject.fees=(this.opdObject.doctors["fees"]*2);
-  this.opdObject.total=this.opdObject.fees-this.opdObject.discount;
-  this.editablediscountfield=false
+    //console.log("yeh hai panels",this.opdObject["opdObject"].panels);
+    if (this.selectedPanel == "free") {
+      this.opdObject.discount = (this.opdObject.doctors["fees"] * 2);
+      this.opdObject.discount = this.opdObject.discount;
+      this.opdObject.fees = (this.opdObject.doctors["fees"] * 2);
+      this.opdObject.total = this.opdObject.fees - this.opdObject.discount;
+      this.editablediscountfield = false
 
 
 
 
-}
-else{
+    }
+    else {
 
-    this.opdObject.discount = this.opdObject.doctors["fees"];
-    this.opdObject.fees = (this.opdObject.doctors["fees"] * 2);
-    this.opdObject.total=this.opdObject.fees-this.opdObject.discount;
-    this.editablediscountfield=true;
+      this.opdObject.discount = this.opdObject.doctors["fees"];
+      this.opdObject.fees = (this.opdObject.doctors["fees"] * 2);
+      this.opdObject.total = this.opdObject.fees - this.opdObject.discount;
+      this.editablediscountfield = true;
 
-}
+    }
 
 
     //console.log(this.opdObject.sallary)
@@ -151,7 +151,7 @@ else{
   submitOpd() {
 
 
-    this.date=new Date();
+    this.date = new Date();
 
     this.opd_Service.saveOPD(this.opdObject).subscribe(
       data => {
@@ -193,56 +193,57 @@ else{
         if (data) {
           this.show = false;
           this.checkStatus = false; //this is for form hide property
-        this.panels.push({label:'No panel',value:'No panel'})
-        data.forEach(e => {
-          console.log(e)
-          this.panels.push({
-            label: e.panelType,
-            value: e.panelType
+          this.panels.push({ label: 'No panel', value: 'No panel' })
+          data.forEach(e => {
+            console.log(e)
+            this.panels.push({
+              label: e.panelType,
+              value: e.panelType
 
+            });
           });
-        });
-      }
-      error => {
-        console.log("error agya yar");
-        this.show = true;
-        this.checkStatus = true;
-        this.messageService.add({
-          severity: "error",
-          summary: "Error Found",
-          detail: "Something went wrong check your internet connection "
-        });
+          
+        }
+        error => {
+          console.log("error agya yar");
+          this.show = true;
+          this.checkStatus = true;
+          this.messageService.add({
+            severity: "error",
+            summary: "Error Found",
+            detail: "Something went wrong check your internet connection "
+          });
 
-        this.selectedPanel="No panel";
+          
+        }
+        this.selectedPanel = "No panel";
 
-      }
       }
     );
   }
   panelsDropdown() {
     // console.log(this.selectedDoctor);
 
-    console.log("hello",this.selectedPanel);
-    if(this.selectedPanel == "free"){
-      this.opdObject.discount = (this.opdObject.doctors["fees"]*2);
-      this.opdObject.total=this.opdObject.fees-this.opdObject.discount;
-      this.editablediscountfield=false;
+    console.log("hello", this.selectedPanel);
+    if (this.selectedPanel == "free") {
+      this.opdObject.discount = (this.opdObject.doctors["fees"] * 2);
+      this.opdObject.total = this.opdObject.fees - this.opdObject.discount;
+      this.editablediscountfield = false;
 
 
 
-    }else{
+    } else {
       this.opdObject.discount = this.opdObject.doctors["fees"];
       this.opdObject.fees = (this.opdObject.doctors["fees"] * 2);
-      this.opdObject.total=this.opdObject.fees-this.opdObject.discount;
-      this.editablediscountfield=true;
+      this.opdObject.total = this.opdObject.fees - this.opdObject.discount;
+      this.editablediscountfield = true;
 
 
     }
 
   }
-  onchangediscount()
-  {
-    this.opdObject.discount=this.opdObject.discount;
-    this.opdObject.total=this.opdObject.fees-this.opdObject.discount;
+  onchangediscount() {
+    this.opdObject.discount = this.opdObject.discount;
+    this.opdObject.total = this.opdObject.fees - this.opdObject.discount;
   }
 }

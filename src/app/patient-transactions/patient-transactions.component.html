@@ -49,11 +49,11 @@
             </td>
             <td>
                 <button pButton [ngStyle]="{width:'80px'}" type="button" label="Edit" class="ui-button-warning"
-                    (click)="editPatientTransaction(rowData['id'])"></button>
+                    (click)="editPatientTransaction(rowData['transactionRefId'])"></button>
             </td>
             <td>
                 <button pButton [ngStyle]="{width:'80px'}" type="button" label="Delete" class="ui-button-error"
-                    (click)="deletePatientTransaction(rowData['id'])"></button>
+                    (click)="deletePatientTransaction(rowData['transactionRefId'])"></button>
             </td>
 
         </tr>

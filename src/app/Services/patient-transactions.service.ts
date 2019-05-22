@@ -19,4 +19,5 @@ export class PatientTransactionsService {
   {
     return this.http.delete(environment.baseUrl+'api/patienttransactions/'+id);
   }
+  
 }

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {Router} from '@angular/router';
-import {ActivatedRoute} from '@angular/router';
+import { Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { PatientTransactionsService } from '../Services/patient-transactions.service';
 import { Location } from '@angular/common';
 
@@ -54,10 +54,13 @@ export class PatientTransactionsComponent implements OnInit {
       this.totalRecords = this.datasource.length;
       // data["transactionDate"] = new Date( data["transactionDate"]).toDateString()
       // this.transaction = data;
-      let trans = data.map(p => {
+      let i = 1;
+      data.map(p => {
         console.log(p);
 
+
         this.transaction.push({
+          transactionRefId: p.transactionRefId,
           id: p.id,
           transactionDate: new Date(p.transactionDate).toDateString(),
           receivedAmount: p.receivedAmount,
@@ -68,6 +71,7 @@ export class PatientTransactionsComponent implements OnInit {
           operationType: p.operationType,
           dues: p.dues
         });
+        i++;
       });
       //this.loading = false;
     });
@@ -76,13 +80,16 @@ export class PatientTransactionsComponent implements OnInit {
 
 
 
-  editPatientTransaction(id)
-  {
+  editPatientTransaction(id) {
     console.log(id)
   }
 
-  deletePatientTransaction(id)
-  {
-    console.log(id)
+  deletePatientTransaction(transactionRefId) {
+ 
+    this.transactionsService.deletePatientTransaction(transactionRefId).subscribe((response)=>
+    {
+      console.log(response)
+      this.showTable();
+    })
   }
 }
