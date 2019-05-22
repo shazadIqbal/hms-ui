@@ -26,7 +26,7 @@ export class OpdconsultancyComponent implements OnInit {
   doctors: SelectItem[];
   panels: SelectItem[];
   selectedPanel;
-
+  discountCheck = true;
   // selectedDoctor : any;
   calDiscount = 0;
   //object of opd consultancy
@@ -240,9 +240,21 @@ else{
     }
 
   }
-  onchangediscount()
-  {
-    this.opdObject.discount=this.opdObject.discount;
-    this.opdObject.total=this.opdObject.fees-this.opdObject.discount;
+  discounter(value) {
+
+    let dis = value;
+
+    this.opdObject.total = this.opdObject.fees;
+
+
+
+
+    dis > this.opdObject.total ? this.discountCheck = false : this.discountCheck = true;
+    dis ? 0 : dis;
+
+    this.opdObject.discount = dis;
+
+    this.opdObject.total = this.opdObject.total - this.opdObject.discount;
+
   }
 }
