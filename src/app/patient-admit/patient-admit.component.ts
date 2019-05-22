@@ -106,16 +106,18 @@ export class PatientAdmitComponent implements OnInit {
 
   // getting price of the selected bed type
   showPrice() {
+
     if (this._opdPatientAdmit.selectedBed["price"] == null) {
       console.log("error");
     }
-    // this._opdPatientAdmit.cashRecieved = 0;
+    this._opdPatientAdmit.cashRecieved = 0;
     this._opdPatientAdmit.price = 0;
     this._opdPatientToSend.price = 0;
     this._opdPatientAdmit.price = this._opdPatientAdmit.selectedBed["price"];
     this._opdPatientAdmit.bedID = this._opdPatientAdmit.selectedBed["id"];
     this._opdPatientToSend.price = this._opdPatientAdmit.price;
     this._opdPatientToSend.bedType = this._opdPatientAdmit.bedType;
+
 
 
 
@@ -144,14 +146,15 @@ export class PatientAdmitComponent implements OnInit {
       },
       error => {
         this.messageService.add({
-          severity: "erro",
+          severity: "error",
           summary: "OPD ADMIT UNSUCCESSFULL",
-          detail: "wait wait"
+          detail: "Something went wrong"
         });
       }
     );
   }
   showDialog() {
-    this.display = true;
+    // this.display = true;
+    this.router.navigate(["/admission/"]);
   }
 }

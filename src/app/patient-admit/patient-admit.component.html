@@ -88,9 +88,8 @@
 
             <div class="ui-md-2 ui-lg-2 ui-sm-12">
               <div class="ui-inputgroup">
-                <p-dialog
+                <!-- <p-dialog
                   header="Add New Beds"
-
                   [responsive]="true"
                   [style]="{ width: '60%', minWidth: '200px' }"
                   [minY]="60"
@@ -98,9 +97,9 @@
                   [baseZIndex]="10000"
                   [(visible)]="display"
                 >
-                <!-- Select for addding beds -->
-                  <app-admission></app-admission>
-                </p-dialog>
+                 Select for addding beds -->
+                  <!-- <app-admission></app-admission> -->
+                <!-- </p-dialog>  -->
                 <button
                 type="button"
                 class="ui-button-success"
@@ -124,6 +123,7 @@
                   >SELECTED BEDS</span
                 >
                 <p-dropdown
+
                   emptyFilterMessage="No beds AVAILABLE"
                   placeholder="Select bed number"
                   (onChange)="showPrice()"

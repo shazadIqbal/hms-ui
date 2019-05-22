@@ -1,7 +1,6 @@
-import { OpdconsultancyComponent } from "./../../opdconsultancy/opdconsultancy.component";
-import { Router, ActivatedRoute } from "@angular/router";
+import { OpdconsultancyComponent } from './../../opdconsultancy/opdconsultancy.component';
+import { Router, ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
-
 
 @Component({
   selector: 'app-patient-panel',
@@ -9,52 +8,44 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./patient-panel.component.css']
 })
 export class PatientPanelComponent implements OnInit {
+  constructor(private router: Router, private activatedRout: ActivatedRoute) {}
 
-
-  constructor(private router: Router, private activatedRout: ActivatedRoute) { }
-
-  ngOnInit() {
-  }
-  opdEr() {
-  }
+  ngOnInit() {}
+  opdEr() {}
   gotoEr() {
     let id = this.activatedRout.snapshot.params['id'];
     this.router.navigate(['/opdEmergency/' + id]);
-
   }
   goToOPD() {
     let id = this.activatedRout.snapshot.params['id'];
-    this.router.navigate(['/opdconsultancy/' + id])
+    this.router.navigate(['/opdconsultancy/' + id]);
   }
 
-gotoGyny(){
-  let id = this.activatedRout.snapshot.params['id'];
-  this.router.navigate(['/opdGyny/' + id]); 
-}
-
-  gotoHistory()
-  {
+  gotoOBS() {
     let id = this.activatedRout.snapshot.params['id'];
-    this.router.navigate(['/history/' + id])
+    this.router.navigate(['/patientobservation/' + id]);
   }
-
-
-
-  goTolab(){
+  gotoGyny() {
     let id = this.activatedRout.snapshot.params['id'];
-    this.router.navigate(['opdlabtest/'+id])
+    this.router.navigate(['/opdGyny/' + id]);
   }
-  goToPatientTransactions(){
+
+  gotoHistory() {
     let id = this.activatedRout.snapshot.params['id'];
-    this.router.navigate(['patienttransactions/'+id])
-    
-
-
+    this.router.navigate(['/history/' + id]);
   }
 
-  gotoAdmit(){
+  goTolab() {
     let id = this.activatedRout.snapshot.params['id'];
-    this.router.navigate(['/patientadmit/' + id])
+    this.router.navigate(['opdlabtest/' + id]);
+  }
+  goToPatientTransactions() {
+    let id = this.activatedRout.snapshot.params['id'];
+    this.router.navigate(['patienttransactions/' + id]);
   }
 
+  gotoAdmit() {
+    let id = this.activatedRout.snapshot.params['id'];
+    this.router.navigate(['/patientadmit/' + id]);
+  }
 }
