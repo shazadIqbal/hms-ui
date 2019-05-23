@@ -27,6 +27,7 @@ export class OpdLabtestComponent implements OnInit {
   patientName: String;
   patientMrNo: Number;
   
+  
   date;
   constructor(private router: Router,private patientService: PatientserviceService,private activeRoute:ActivatedRoute,private labtest:LabtestServiceService,private messageservice:MessageService,private labtestservice:OpdLabTestService) { }
 
@@ -95,7 +96,7 @@ export class OpdLabtestComponent implements OnInit {
     
     this.addLabTests.labTests.map(f => {
     this.addLabTests.price = this.addLabTests.price + parseInt(f["price"]);
-    this.addLabTests.total = this.addLabTests.price;
+    
     // this.addLabTests.cashRecieve-(this.addLabTests.discount*this.addLabTests.cashRecieve);
     console.log(this.addLabTests.total);
     
@@ -105,8 +106,8 @@ export class OpdLabtestComponent implements OnInit {
 
   onChangeDiscount(){
   console.log("hello discount")
- let discount = this.addLabTests.discount/100;
- this.addLabTests.total = this.addLabTests.price - (discount * this.addLabTests.price)
+ let discount = this.addLabTests.discount;
+ this.addLabTests.total = this.addLabTests.price - discount;
 }
 
   getfacilitiesInDropdown() {

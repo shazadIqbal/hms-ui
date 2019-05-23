@@ -6,6 +6,7 @@
 </div>
 
 <app-monitorquickview> </app-monitorquickview>
+
 <div id="print-section" [hidden]=true>
   <!-- <div *ngIf="addEmergency.name !== undefined"> -->
 
@@ -42,13 +43,22 @@
 
 
   </div>
+</div>
 
+<div style="margin-top:40px;" [hidden]="!hidder">
+	<p-card>
 
+		<p style="margin:20px;display:block;text-align: center;">No labtest Added,Please add a labtest</p>
+		<button style="width:40%;margin-left:30%" pButton type="button" label="Add new Labtest" (click)="routeToAddLab()"
+			class="ui-button-success"></button>
+
+	</p-card>
 </div>
 
 
 
 
+<div [hidden]="!show" class="ui-g-12">
 <div class="ui-g-12">
   <p-toast></p-toast>
   <p-card header="OPD LAB TEST" [style]="{
@@ -80,6 +90,7 @@
 
 
               </div>
+              
             </div>
           </div>
 
@@ -188,4 +199,5 @@
 
 
 
+</div>
 </div>
