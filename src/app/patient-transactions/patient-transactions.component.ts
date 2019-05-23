@@ -15,6 +15,7 @@ export class PatientTransactionsComponent implements OnInit {
   datasource: any = [];
   cols: any[];
 
+
   constructor(
     private transactionsService: PatientTransactionsService,
     private route: Router,

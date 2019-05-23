@@ -13,7 +13,7 @@
 
     <ng-template pTemplate="caption">
         <div class="ui-g-12">
-            <h1 style="font-weight:bold;color: green;">PATIENT TRANSACTION HISTORY</h1>
+            <h1 style="font-weight:bold;color: green;">PATIENT TRANSACTION</h1>
             <hr style="background-color:rgb(17, 17, 17);height:3px;" />
         </div>
         <div style="text-align: right">
@@ -29,10 +29,7 @@
                 {{col.header}}
             </th>
             <th style="text-align: center;" pResizableColumn>
-                UPDATE
-            </th>
-            <th style="text-align: center;" pResizableColumn>
-                REMOVE
+                Actions
             </th>
 
         </tr>
@@ -48,11 +45,12 @@
                 {{rowData[col.field]}}
             </td>
             <td>
-                <button pButton [ngStyle]="{width:'80px'}" type="button" label="Edit" class="ui-button-warning"
-                    (click)="editPatientTransaction(rowData['transactionRefId'])"></button>
-            </td>
-            <td>
-                <button pButton [ngStyle]="{width:'80px'}" type="button" label="Delete" class="ui-button-error"
+               
+
+                    <app-transaction-edit [dues]="rowData['dues']" [receivedAmount]="rowData['receivedAmount']" [transactionId]="rowData['id']"></app-transaction-edit>
+              
+
+                <button pButton [ngStyle]="{width:'80px',margin:'8px'}" type="button" label="Delete" class="ui-button-error"
                     (click)="deletePatientTransaction(rowData['transactionRefId'])"></button>
             </td>
 
