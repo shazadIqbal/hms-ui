@@ -48,7 +48,7 @@
   >
     <ng-template pTemplate="caption">
       <div class="ui-g-12">
-        <h1 style="font-weight:bold;">LAB TESTS</h1>
+        <h1 style="font-weight:bold;color: green;">LAB TESTS</h1>
         <hr style="background-color:rgb(17, 17, 17);height:3px;" />
       </div>
       <div style="text-align: right">
@@ -73,7 +73,7 @@
     </ng-template>
     <ng-template pTemplate="body" let-rowData let-columns="columns">
       <tr>
-        <td style="text-align:center" *ngFor="let col of columns">
+        <td style="text-align:center;overflow:auto" let col of columns>
           {{ rowData[col.field] }}
         </td>
         <td>

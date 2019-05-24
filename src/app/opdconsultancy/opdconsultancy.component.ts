@@ -26,7 +26,7 @@ export class OpdconsultancyComponent implements OnInit {
   doctors: SelectItem[];
   panels: SelectItem[];
   selectedPanel;
-
+  discountCheck = true;
   // selectedDoctor : any;
   calDiscount = 0;
   //object of opd consultancy
@@ -192,7 +192,7 @@ export class OpdconsultancyComponent implements OnInit {
 
   getpanelsoption() {
     this.panels = [];
-   
+
     this.panelservice.getPanel().subscribe(
       data => {
         console.log(data);
@@ -235,31 +235,51 @@ export class OpdconsultancyComponent implements OnInit {
 
     console.log("hello", this.selectedPanel);
 
-    if(!this.isEmpty(this.opdObject.doctors))
-    {
-    if ( this.selectedPanel == "free") {
-      this.opdObject.discount = (this.opdObject.doctors["fees"] * 2);
-      this.opdObject.total = this.opdObject.fees - this.opdObject.discount;
-      this.editablediscountfield = false;
+    if (!this.isEmpty(this.opdObject.doctors)) {
+      if (this.selectedPanel == "free") {
+        this.opdObject.discount = (this.opdObject.doctors["fees"] * 2);
+        this.opdObject.total = this.opdObject.fees - this.opdObject.discount;
+        this.editablediscountfield = false;
 
 
 
-    } else {
-      this.opdObject.discount = this.opdObject.doctors["fees"];
-      this.opdObject.fees = (this.opdObject.doctors["fees"] * 2);
-      this.opdObject.total = this.opdObject.fees - this.opdObject.discount;
-      this.editablediscountfield = true;
+      } else {
+        this.opdObject.discount = this.opdObject.doctors["fees"];
+        this.opdObject.fees = (this.opdObject.doctors["fees"] * 2);
+        this.opdObject.total = this.opdObject.fees - this.opdObject.discount;
+        this.editablediscountfield = true;
 
 
+      }
     }
-  }
 
   }
+
   onchangediscount() {
     this.opdObject.discount = this.opdObject.discount;
     this.opdObject.total = this.opdObject.fees - this.opdObject.discount;
   }
 
+
+  discounter(value) {
+
+    let dis = value;
+
+    this.opdObject.total = this.opdObject.fees;
+
+
+
+
+    dis > this.opdObject.total ? this.discountCheck = false : this.discountCheck = true;
+    dis ? 0 : dis;
+
+    this.opdObject.discount = dis;
+
+    this.opdObject.total = this.opdObject.total - this.opdObject.discount;
+
+
+  }
+  
   isEmpty(obj) {
     for (var key in obj) {
       if (obj.hasOwnProperty(key))

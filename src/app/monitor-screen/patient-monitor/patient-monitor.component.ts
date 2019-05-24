@@ -21,7 +21,7 @@ export class PatientMonitorComponent implements OnInit {
 
   registration: Boolean = false;
 
-  constructor(private patient: MonitorService, private messageService: MessageService, private historyService: PatientTransactionHistoryService, private route: Router, private activateRoute: ActivatedRoute, private _location: Location) { }
+  constructor(private patient: MonitorService, private messageService: MessageService, private historyService: PatientTransactionHistoryService, private route: Router, private activateRoute: ActivatedRoute, private _location: Location,private router : Router) { }
 
   public id;
   public name;
@@ -84,7 +84,7 @@ export class PatientMonitorComponent implements OnInit {
 
   backToMain()
   {
-     this._location.back();
+     this.router.navigate(['/mainscreen/']);
 
   }
 
