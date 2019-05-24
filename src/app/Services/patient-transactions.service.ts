@@ -19,5 +19,10 @@ export class PatientTransactionsService {
   {
     return this.http.delete(environment.baseUrl+'api/patienttransactions/'+id);
   }
+
+  updatePatientTransactionById(id,transactionObj):Observable<any>
+  {
+    return this.http.put(environment.baseUrl+'api/patienttransactions/'+id,transactionObj);
+  }
   
 }

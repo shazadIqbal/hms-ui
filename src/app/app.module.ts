@@ -200,7 +200,8 @@ import { TransactionEditComponent } from './transaction-edit/transaction-edit.co
     CheckboxModule
   ],
 
-  providers: [DoctorService, AddpanellistseviceService, MessageService, NavBarService, AuthGuard, AddErComponent, AdmissionService],
+  providers: [DoctorService, AddpanellistseviceService, MessageService, NavBarService, AuthGuard,PatientTransactionsComponent
+    , AddErComponent, AdmissionService],
 
   bootstrap: [AppComponent],
   exports: [FormsModule]

@@ -3,6 +3,8 @@ import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
 import { PatientTransactionsService } from '../Services/patient-transactions.service';
 import { Location } from '@angular/common';
+import { MessageService } from 'primeng/api';
+
 
 @Component({
   selector: 'app-patient-transactions',
@@ -16,7 +18,10 @@ export class PatientTransactionsComponent implements OnInit {
   cols: any[];
 
 
+
   constructor(
+    private messageService: MessageService
+    ,
     private transactionsService: PatientTransactionsService,
     private route: Router,
     private location: Location,
@@ -86,11 +91,14 @@ export class PatientTransactionsComponent implements OnInit {
   }
 
   deletePatientTransaction(transactionRefId) {
- 
-    this.transactionsService.deletePatientTransaction(transactionRefId).subscribe((response)=>
-    {
+
+    this.transactionsService.deletePatientTransaction(transactionRefId).subscribe((response) => {
+
+      this.messageService.add({ severity: 'success', summary: 'Service Message', detail: response.message });
       console.log(response)
       this.showTable();
-    })
+    }, (error) => {
+        this.messageService.add({ severity: 'error', summary: 'Service Message', detail: error });
+      })
   }
 }

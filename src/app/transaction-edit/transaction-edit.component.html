@@ -1,3 +1,4 @@
+<p-toast></p-toast>
 <p-dialog [style]="{width:'600px'}" [modal]="true" [responsive]="true" [baseZIndex]="10000" [closeOnEscape]="true"
   [closable]="true" [(visible)]="display">
 
@@ -44,7 +45,7 @@
           </div>
 
           <div class="ui-lg-12 ui-g-12 ui-md-12 ui-sm-12 ">
-            <button pButton type="button" label="Update" [disabled]="myForm.invalid || btnDisabler" class="ui-button-raised ui-button-success" style="width:100%;">
+            <button (click)="updateRecord()" pButton type="button" label="Update" [disabled]="myForm.invalid || btnDisabler" class="ui-button-raised ui-button-success" style="width:100%;">
 
             </button>
           </div>

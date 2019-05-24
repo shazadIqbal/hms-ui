@@ -1,3 +1,4 @@
+<p-toast></p-toast>
 <div class="col-g-12">
     <div class="ui-lg-5 ui-md-5 ui-sm-12">
         <button pButton type="button" class=" ui-button-success" (click)="backToMonitor()"
@@ -47,7 +48,7 @@
             <td>
                
 
-                    <app-transaction-edit [dues]="rowData['dues']" [receivedAmount]="rowData['receivedAmount']" [transactionId]="rowData['id']"></app-transaction-edit>
+                    <app-transaction-edit [dues]="rowData['dues']" [receivedAmount]="rowData['receivedAmount']" [transactionId]="rowData['id']" [data]="datasource"></app-transaction-edit>
               
 
                 <button pButton [ngStyle]="{width:'80px',margin:'8px'}" type="button" label="Delete" class="ui-button-error"

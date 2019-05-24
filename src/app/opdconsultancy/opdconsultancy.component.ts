@@ -54,9 +54,13 @@ export class OpdconsultancyComponent implements OnInit {
   ngOnInit() {
     // this.show = true
 
+    // this.opdObject.doctors.fees=0;
+
     this.getpanelsoption();
     this.enable = true;
     this.getDoctorsOption();
+
+    console.log(this.opdObject, "opdddddddddddddddddddd")
 
     let id = this.activatedRoute.snapshot.params['id'];
     this.patientService.getPatientsByMRNO(id).subscribe((a) => {
@@ -112,9 +116,12 @@ export class OpdconsultancyComponent implements OnInit {
 
   doctorDropdown() {
     console.log(this.opdObject.doctors["fullName"]);
+    console.log(this.doctors["fullName"])
     this.opdObject.sallary = 0; //it will also work for the negative
     this.opdObject.total = 0;
 
+
+    console.log(this.opdObject.doctors["fees"])
     // if(this.opdObject.panels.values() == "free")
 
     //console.log("yeh hai panels",this.opdObject["opdObject"].panels);
@@ -185,6 +192,7 @@ export class OpdconsultancyComponent implements OnInit {
 
   getpanelsoption() {
     this.panels = [];
+   
     this.panelservice.getPanel().subscribe(
       data => {
         console.log(data);
@@ -202,7 +210,7 @@ export class OpdconsultancyComponent implements OnInit {
 
             });
           });
-          
+
         }
         error => {
           console.log("error agya yar");
@@ -214,9 +222,10 @@ export class OpdconsultancyComponent implements OnInit {
             detail: "Something went wrong check your internet connection "
           });
 
-          
+
         }
         this.selectedPanel = "No panel";
+
 
       }
     );
@@ -225,7 +234,10 @@ export class OpdconsultancyComponent implements OnInit {
     // console.log(this.selectedDoctor);
 
     console.log("hello", this.selectedPanel);
-    if (this.selectedPanel == "free") {
+
+    if(!this.isEmpty(this.opdObject.doctors))
+    {
+    if ( this.selectedPanel == "free") {
       this.opdObject.discount = (this.opdObject.doctors["fees"] * 2);
       this.opdObject.total = this.opdObject.fees - this.opdObject.discount;
       this.editablediscountfield = false;
@@ -240,10 +252,20 @@ export class OpdconsultancyComponent implements OnInit {
 
 
     }
+  }
 
   }
   onchangediscount() {
     this.opdObject.discount = this.opdObject.discount;
     this.opdObject.total = this.opdObject.fees - this.opdObject.discount;
   }
+
+  isEmpty(obj) {
+    for (var key in obj) {
+      if (obj.hasOwnProperty(key))
+        return false;
+    }
+    return true;
+  }
 }
+
