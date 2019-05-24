@@ -27,6 +27,7 @@ export class PatientObservationComponent implements OnInit {
   show: boolean = false;
   checked: boolean = false;
   enable: boolean;
+  disbaleSubmitButton : boolean = true;
 
   constructor(
     private router: Router,
@@ -118,17 +119,30 @@ export class PatientObservationComponent implements OnInit {
     );
     console.log(this.patientObservationObject);
   }
+  onGreaterDiscount(){
+    if(this.patientObservationObject.discount > this.patientObservationObject.fees){
+      this.disbaleSubmitButton = false;
+    }
+    else{
+      this.disbaleSubmitButton = true;
+    }
+  }
 
   //function for totalprice
   getTotal(value: any) {
     this.patientObservationObject.cashRecieved = 0;
     console.log(value);
-    this.patientObservationObject.discount = 0;
     this.patientObservationObject.cashRecieved = value;
-    this.patientObservationObject.total = this.patientObservationObject.total;
+    this.patientObservationObject.total = this.patientObservationObject.fees - this.patientObservationObject.discount;
   }
+
   discount(){
-    this.patientObservationObject.total = this.patientObservationObject.total - this.patientObservationObject.discount;
-    this.patientObservationObject.total;
+    this.onGreaterDiscount();
+    console.log("hello discount")
+   let discount = this.patientObservationObject.discount;
+   if(discount <= this.patientObservationObject.fees){
+    this.patientObservationObject.total = this.patientObservationObject.fees - discount;
+   }
+
   }
-}
+  }
