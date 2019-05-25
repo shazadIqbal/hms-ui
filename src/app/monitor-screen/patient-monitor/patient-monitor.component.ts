@@ -38,6 +38,10 @@ export class PatientMonitorComponent implements OnInit {
   public gynAndObsRegistration;
   public husbandOfAndFatherOf;
   public registrationDate;
+  public gyne;
+  public admit;
+  public obs;
+  public admitLabel;
   ngOnInit() {
 
 
@@ -58,7 +62,7 @@ export class PatientMonitorComponent implements OnInit {
         this.name = response.name;
         this.number = response.number;
         this.gynAndObsRegistration = response.gynAndObsRegistration || 'Not registered';
-        this.date = new Date(response.date).toDateString();
+        this.date = new Date(response.date).toLocaleString();
         this.opd = response.opd;
         this.lab = response.lab;
         this.image = response.image;
@@ -69,6 +73,11 @@ export class PatientMonitorComponent implements OnInit {
         this.registrationDate = new Date(response.registrationDate).toDateString();
         this.husbandOfAndFatherOf = response.husbandOfAndFatherOf || 'None';
         this.registration = response.gynAndObsRegistration;
+        this.admit = response.admit;
+        this.gyne = response.gyne;
+        this.obs = response.obs;
+        this.admitLabel = response.admitLabel;
+
       } else {
         this.route.navigate(['/mainscreen']);
       }

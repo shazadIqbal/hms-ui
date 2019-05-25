@@ -52,8 +52,8 @@
 
               <div class="ui-lg-12 ui-md-12 ui-sm-12">
                 <label style="color:rgb(127, 128, 126)"
-                  >Date:
-                  <span style="color:rgb(17, 17, 17)">{{ date | date: 'short' }}</span></label
+                  >Created Date:
+                  <span style="color:rgb(17, 17, 17)">{{ date  }}</span></label
                 >
               </div>
               <div *ngIf="registration">
@@ -73,6 +73,14 @@
                   <label style="color:rgb(127, 128, 126)"
                     >Husband/Father Name:
                     <span style="color:rgb(17, 17, 17)">{{ husbandOfAndFatherOf }}</span></label
+                  >
+                </div>
+              </div>
+              <div *ngIf="admitLabel">
+                <div class="ui-lg-12 ui-md-12 ui-sm-12">
+                  <label style="color:rgb(127, 128, 126)"
+                    >Admit:
+                    <span style="color:rgb(17, 17, 17)">{{ admitLabel }}</span></label
                   >
                 </div>
               </div>
@@ -96,6 +104,16 @@
                     >Lab: <span style="color:rgb(17, 17, 17)">{{ lab }}</span></label
                   >
                 </div>
+                <div class="ui-md-12 ui-lg-12 ui-sm-12">
+                  <label style="color:rgb(127, 128, 126)"
+                    >Admit: <span style="color:rgb(17, 17, 17)">{{ admit }}</span></label
+                  >
+                </div>
+                <div class="ui-md-12 ui-lg-12 ui-sm-12">
+                  <label style="color:rgb(127, 128, 126)"
+                    >Obs: <span style="color:rgb(17, 17, 17)">{{ obs }}</span></label
+                  >
+                </div>
               </p-card>
             </div>
 
@@ -109,6 +127,12 @@
                 <div class="ui-md-12 ui-lg-12 ui-sm-12">
                   <label style="color:rgb(127, 128, 126)"
                     >ER: <span style="color:rgb(17, 17, 17)">{{ er }}</span></label
+                  >
+                </div>
+
+                <div class="ui-md-12 ui-lg-12 ui-sm-12">
+                  <label style="color:rgb(127, 128, 126)"
+                    >Gyne: <span style="color:rgb(17, 17, 17)">{{ gyne }}</span></label
                   >
                 </div>
 

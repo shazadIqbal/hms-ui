@@ -64,7 +64,8 @@
                 <span
                   class="ui-inputgroup-addon"
                   style="width:37%;font-size:15px;font-weight:bold;"
-                  >BED TYPE</span
+                  >BED TYPE<i
+                    style="color: red">*</i></span
                 >
                 <p-dropdown
                   emptyFilterMessage="No bedType AVAILABLE"
@@ -120,7 +121,8 @@
                 <span
                   class="ui-inputgroup-addon"
                   style="width:37%;font-size:15px;font-weight:bold;"
-                  >SELECTED BEDS</span
+                  >SELECTED BEDS<i
+                    style="color: red">*</i></span
                 >
                 <p-dropdown
 
@@ -175,7 +177,8 @@
                 <span
                   class="ui-inputgroup-addon"
                   style="width:45%;font-size:15px;font-weight: bold;"
-                  >CASH RECIEVED</span
+                  >CASH RECIEVED<i
+                    style="color: red">*</i></span
                 >
                 <input
                   type="text"
@@ -243,7 +246,7 @@
 
     <p style="font-size: 20px;"> <b style="font-size: 20px;">Patient MR No: </b> {{patientMrNo}}</p>
     <p style="font-size: 20px;"><b style="font-size: 20px;">Patient Name: </b> {{patientName}}</p>
-    
+
     <p style="font-size: 20px;"><b style="font-size: 20px;">BED Type: </b> {{ _opdPatientAdmit.bedType }}</p>
     <p style="font-size: 20px;"><b style="font-size: 20px;"> Date: </b> {{date |  date :'short'}}</p>
 
@@ -251,20 +254,20 @@
 
 
     <div>
-      
+
 
       <hr style="width:100%;border:1px solid black;" />
       <div style="margin-bottom:5px;">
         <span><b> Bed Price: </b> <span style="float: right;"> {{_opdPatientAdmit.price}}</span></span>
-       
+
       </div>
       <div style="margin-bottom:5px;">
       <span><b> Cash Received: </b> <span style="float: right;"> {{_opdPatientAdmit.cashRecieved}}</span></span>
     </div>
-  
+
 
       <hr style="border:1px solid black;width:100%;" />
-  
+
 
 
     </div>
@@ -349,7 +352,7 @@
           </span>
         </div>
         <br />
-       
+
         <br />
         <div class="row">
           <span>
