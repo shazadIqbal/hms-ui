@@ -1,7 +1,7 @@
 import { SelectItem } from 'primeng/api';
 
 export class OpdConsultancy {
-  doctors: string[];
+  doctors: {};
   sallary: number;
   discount: number;
   cashRecieved: number;
