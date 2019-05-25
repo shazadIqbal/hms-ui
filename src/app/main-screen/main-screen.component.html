@@ -18,7 +18,7 @@
               style="height:35px;margin-left:25%;width:50%; text-align: center;" #mr="ngModel"
               placeholder="Enter MR NO:" type="text" pInputText size="35%" ngModel />
 
-            <span style="margin-left: 1em;width:10px; margin-top: 0px !important;">
+            <span  class="colorSetAllButtons" style="margin-left: 1em;width:10px; margin-top: 0px !important;">
               <app-searchbar></app-searchbar>
             </span>
           </div>
@@ -29,8 +29,8 @@
           </div>
 
           <div class="ui-md-12 ui-lg-12 ui-sm-12">
-            <button pButton type="button" label="OK" style="margin-left:40%;width:20%" (click)="check(mr.value)"
-              class="ui-button-success"></button>
+            <button pButton type="button" label="OK" class="colorSetAllButtons" style="margin-left:40%;width:20%"
+              (click)="check(mr.value)"></button>
             <p-toast [style]="{ marginTop: '40px' }" position="top-right" life="3000"> </p-toast>
           </div>
         </p-panel>
@@ -43,24 +43,24 @@
             <div class="ui-g-3 ui-sm-12">
               <!-- <span class="icon1"> -->
 
-              <button pButton type="image" label="Add Doctor" class="ui-button-success" (click)="doctorList()">
+              <button pButton type="image" label="Add Doctor" class="colorSetAllButtons" (click)="doctorList()">
                 <img src="../../assets/doctor.png" height="48" width="48" />
               </button>
               <!-- </span> -->
             </div>
             <div class="ui-g-3 ui-sm-12">
-              <button pButton type="button" label="Add Panel" (click)="panelList()" class="ui-button-success">
+              <button pButton type="button" label="Add Panel" (click)="panelList()" class="colorSetAllButtons">
                 <img src="../../assets/panel.png" height="48" width="48" />
               </button>
             </div>
             <div class="ui-g-3 ui-sm-12">
-              <button pButton type="button" label="Add Lab Test" (click)="addlabtest()" class="ui-button-success">
+              <button pButton type="button" label="Add Lab Test" (click)="addlabtest()" class="colorSetAllButtons">
 
                 <img src="../../assets/test.png" height="48" width="48" />
               </button>
             </div>
             <div class="ui-g-3 ui-sm-12">
-              <button pButton type="button" label="Package" class="ui-button-success" (click)="toPackageList()"
+              <button pButton type="button" label="Package" class="colorSetAllButtons" (click)="toPackageList()"
                 id="btnPackage">
 
                 <img src="../../assets/package.png" height="48" width="48" />
@@ -70,23 +70,23 @@
           </div>
           <div class="ui-g">
             <div class="ui-g-3 ui-sm-12">
-              <button pButton type="button" label="Admission " (click)="gotoAdmission()" class="ui-button-success">
+              <button pButton type="button" label="Admission " (click)="gotoAdmission()" class="colorSetAllButtons">
                 <img src="../../assets/admission.png" height="48" width="48" />
               </button>
             </div>
             <div class="ui-g-3 ui-sm-12">
               <button pButton type="button" label="Emergency Service" (click)="gotoErService()"
-                class="ui-button-success">
+                class="colorSetAllButtons">
                 <img src="../../assets/emergency.png" height="48" width="48" />
               </button>
             </div>
             <div class="ui-g-3 ui-sm-12">
-              <button pButton type="button" (click)="addDirectory()" label="Directory" class="ui-button-success">
+              <button pButton type="button" (click)="addDirectory()" label="Directory" class="colorSetAllButtons">
                 <img src="../../assets/diretctory.png" />
               </button>
             </div>
             <div class="ui-g-3 ui-sm-12">
-              <button pButton type="button" label="CashFlow" class="ui-button-success">
+              <button pButton type="button" label="CashFlow" class="colorSetAllButtons">
                 <img src="../../assets/cashflow.png" height="48" width="48" />
               </button>
             </div>
@@ -94,12 +94,12 @@
           <div class="ui-g">
             <div class="ui-lg-3 ui-sm-3 ui-md-3"></div>
             <div class="ui-g-3 ui-sm-12">
-              <button pButton type="button" label="Appointment" class="ui-button-success" (click)="addAppointment()">
+              <button pButton type="button" label="Appointment" class="colorSetAllButtons" (click)="addAppointment()">
                 <img src="../../assets/appointment.png" height="48" width="48" />
               </button>
             </div>
             <div class="ui-g-3 ui-sm-12">
-              <button pButton type="button" label="Gyny and Obs" class="ui-button-success" (click)="gotoGynyObsList()">
+              <button pButton type="button" label="Gyny and Obs" class="colorSetAllButtons" (click)="gotoGynyObsList()">
                 <img src="../../assets/gyny.png" height="48" width="48" />
               </button>
             </div>

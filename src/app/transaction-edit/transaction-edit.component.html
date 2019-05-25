@@ -1,0 +1,62 @@
+<p-toast></p-toast>
+<p-dialog [style]="{width:'600px'}" [modal]="true" [responsive]="true" [baseZIndex]="10000" [closeOnEscape]="true"
+  [closable]="true" [(visible)]="display">
+
+  <div class="ui-g-12">
+
+
+    <p-card header="EDIT DUES" [style]="{
+        width: '100%',
+        'font-size': '24px',
+       
+        'text-align': 'center',
+        color: 'green'
+      }">
+      <div class="ui-g ui-fluid">
+        <hr style="height:2px;width:100%;background-color:green;" />
+        <form style="width:100%;" #myForm="ngForm" (ngSubmit)="submitDirectory(); myForm.reset()">
+          <div class="ui-g">
+
+            <div class="ui-md-12 ui-lg-12 ui-sm-12">
+              <div class="ui-inputgroup">
+                <span class="ui-inputgroup-addon"  [ngStyle]="{height:'40px'}" style="width:100px;font-size:15px;">Dues<i
+                    style="color: red">*</i></span> <input (input)="onDuesChange()" type="text" [ngStyle]="{height:'40px'}"
+                  (keypress)="numberOnly($event)"  autocomplete="off" #due="ngModel" [(ngModel)]="dues" required name="dues" pInputText />
+              </div>
+              <div
+                style="padding:0px;margin-bottom:0px;font-size:14px;"
+                [hidden]="due.valid || due.pristine"
+                class="alert alert-danger"
+              >
+                dues can't be null.
+              </div>
+            </div>
+          </div>
+          <div class="ui-g">
+
+            <div class="ui-md-12 ui-lg-12 ui-sm-12">
+              <div class="ui-inputgroup">
+                <span class="ui-inputgroup-addon" [ngStyle]="{height:'40px'}"
+                  style="width:100px;font-size:15px;">Received</span>
+                <input [disabled]="true" autocomplete="off"  [(ngModel)]="receivedAmount" type="text" [ngStyle]="{height:'40px'}"
+                  required name="received amount" pInputText />
+              </div>
+            </div>
+          </div>
+
+          <div class="ui-lg-12 ui-g-12 ui-md-12 ui-sm-12 ">
+            <button (click)="updateRecord()" pButton type="button" label="Update" [disabled]="myForm.invalid || btnDisabler" class="ui-button-raised ui-button-success" style="width:100%;">
+
+            </button>
+          </div>
+
+
+
+        </form>
+      </div>
+    </p-card>
+  </div>
+
+
+</p-dialog>
+<button (click)="showDialog()" pButton [ngStyle]="{width:'80px'}" type="button" label="Edit" class="ui-button-warning">
