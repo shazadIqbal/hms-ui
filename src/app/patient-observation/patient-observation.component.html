@@ -1,23 +1,16 @@
 <div class="col-g-12">
-  <div class="ui-lg-5 ui-md-5 ui-sm-12">
-    <button pButton type="button" class=" ui-button-success" (click)="backToMonitor()"
-      style="width:45%;margin-left:30% " label="Back"></button>
-  </div>
-</div>
 
-<p-toast></p-toast>
+    <div class="ui-lg-5 ui-md-5 ui-sm-12">
+        <button pButton type="button" class="backBtnStyle" (click)="backToMonitor()" style="width:45%;margin-left:30% " label="Back"></button>
+    </div>
 
-<div class="ui-g-12">
-
-
-  <app-monitorquickview> </app-monitorquickview>
 </div>
 
 
 
 <div class="ui-g-12">
-
-  <p-card header="OBSERVATION" [style]="{
+    <p-toast></p-toast>
+    <p-card header="OBSERVATION" [style]="{
           width: '80%',
           'font-size': '26px',
           'margin-left': '10%',
@@ -86,10 +79,12 @@
               </div>
 
               <!-- Cash Recvied -->
+
               <div class="ui-g">
                 <div class="ui-md-2 ui-lg-2"></div>
                 <div class="ui-md-8 ui-lg-8 ui-sm-12">
                   <div class="ui-inputgroup">
+
 
                     <span class="ui-inputgroup-addon" style="width:45%;font-size:15px;font-weight: bold;">Cash
                       Recieved<i
@@ -140,10 +135,9 @@
 
           </div>
 
+
         </div>
-      </form>
-    </div>
-  </p-card>
+    </p-card>
 
 </div>
 
@@ -151,6 +145,7 @@
 
 
 <div *ngIf="patientObservationObject.doctors !== undefined" id="content" [hidden]="true">
+
   <!-- <div *ngIf="addEmergency.name !== undefined"> -->
 
   <h1 style="text-align: center; color:green;font-weight:bold;">OPD OBSERVATION RECEIPT</h1>
@@ -188,3 +183,4 @@
 
   </div>
 </div>
+

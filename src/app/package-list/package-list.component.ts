@@ -18,6 +18,7 @@ export class PackageListComponent implements OnInit {
   packages: any = [];
   loader: any = true;
   empty: any = false;
+  delete:any;
 
   ngOnInit() {
     this.cols = [

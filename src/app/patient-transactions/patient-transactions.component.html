@@ -1,8 +1,7 @@
 <p-toast></p-toast>
 <div class="ui-g-12">
     <div class="ui-lg-5 ui-md-5 ui-sm-12">
-        <button pButton type="button" class=" ui-button-success" (click)="backToMonitor()"
-            style="width:45%;margin-left:30% " label="Back"></button>
+        <button pButton type="button" class=" ui-button-success" (click)="backToMonitor()" style="width:45%;margin-left:30% " label="Back"></button>
     </div>
 </div>
 <div class="ui-g-12">
@@ -12,8 +11,9 @@
 
 <div class="ui-g-12">
 
-    <p-table style="text-align: center;"  [totalRecords]="totalRecords"   [resizableColumns]="true" [scrollable]="true" [paginator]="true" [rows]="10" [style]="{ 'margin-top': '20px' }" #dt
-        [columns]="cols" [value]="transaction">
+
+    <p-table style="text-align: center;" [paginator]="true" [rows]="10" [style]="{ 'margin-top': '20px' }" #dt [columns]="cols" [value]="transaction">
+
 
         <ng-template pTemplate="caption">
             <div class="ui-g-12">
@@ -22,8 +22,7 @@
             </div>
             <div style="text-align: right">
                 <i class="fa fa-search" style="margin:4px 4px 0 0"></i>
-                <input type="text" pInputText size="50" placeholder="Global Filter"
-                    (input)="dt.filterGlobal($event.target.value, 'contains')" style="width:auto">
+                <input type="text" pInputText size="50" placeholder="Global Filter" (input)="dt.filterGlobal($event.target.value, 'contains')" style="width:auto">
             </div>
 
         </ng-template>
@@ -51,13 +50,10 @@
                 <td>
 
 
-                    <app-transaction-edit [dues]="rowData['dues']" [receivedAmount]="rowData['receivedAmount']"
-                        [transactionId]="rowData['id']" [data]="datasource"></app-transaction-edit>
+                    <app-transaction-edit [dues]="rowData['dues']" [receivedAmount]="rowData['receivedAmount']" [transactionId]="rowData['id']" [data]="datasource"></app-transaction-edit>
 
 
-                    <button pButton [ngStyle]="{width:'80px',margin:'8px'}" type="button" label="Delete"
-                        class="ui-button-error"
-                        (click)="deletePatientTransaction(rowData['transactionRefId'])"></button>
+                    <button pButton [ngStyle]="{width:'80px',margin:'8px'}" type="button" label="Delete" class="ui-button-error" (click)="deletePatientTransaction(rowData['transactionRefId'])"></button>
                 </td>
 
             </tr>

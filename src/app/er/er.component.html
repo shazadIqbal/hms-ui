@@ -6,84 +6,50 @@
   <p-progressSpinner [style]="{ 'margin-left': '45%' }"></p-progressSpinner> -->
 <!-- </div> -->
 <div class="ui-g">
-  <p-toast></p-toast>
-  <div class="ui-g-6 ui-lg-6 ui-sm-12">
-    <button
-      pButton
-      type="button"
-      (click)="back()"
-      style="width:80%;margin-left:10%;  height:40px;"
-      label="BACK"
-      class=" ui-button-success"
-    ></button>
-  </div>
-  <div class="ui-g-6 ui-lg-6 ui-sm-12">
-    <button
-      pButton
-      type="button"
-      (click)="gotoErService()"
-      style="width:80%;margin-left:10%; height: 40px;"
-      label="ADD EMERGENCY SERVICE"
-      class=" ui-button-success"
-    ></button>
-  </div>
+    <p-toast></p-toast>
+    <div class="ui-lg-2 ui-md-2 ui-sm-0"></div>
+    <div class="ui-g-4 ui-lg-4 ui-sm-12">
+        <button pButton type="button" class="backBtnStyle" (click)="back()" style="width:80%;margin-left:10%;  height:40px;" label="Back"></button>
+    </div>
+    <div class="ui-g-4 ui-lg-4 ui-sm-12">
+        <button pButton type="button" (click)="gotoErService()" style="width:80%;margin-left:10%;  height:40px;" label="Add Lab Test" class="backBtnStyle"></button>
+    </div>
+    <p-card header="EMERGENCY LIST" [style]="{  width: '100%',
+'font-size': '26px',
+'text-align': 'center',
+color: 'green'
+}">
+        <hr />
+        <p-table style="word-wrap:break-word;" #dt [columns]="cols" [paginator]="true" [rows]="10" [style]="{ 'margin-top': '50px', width: '100%' }" [totalRecords]="totalRecords" [value]="erArray">
+            <ng-template pTemplate="caption">
+                <div style="text-align: right">
+                    <i class="fa fa-search" style="margin:4px 4px 0 0"></i>
+                    <input type="text" pInputText size="35" placeholder="Global Filter" (input)="dt.filterGlobal($event.target.value, 'contains')" style="width:auto;margin-right:14px" />
+                </div>
+            </ng-template>
+            <ng-template pTemplate="header" let-columns>
+                <tr>
+                    <th style="text-align:center" *ngFor="let col of columns">
+                        {{ col.header }}
+                    </th>
+                    <th style="text-align:center">Actions</th>
+                </tr>
+                <div *ngIf="loading" style="margin-left: 325%;">
+                    <p-progressSpinner></p-progressSpinner>
+                </div>
+            </ng-template>
+            <ng-template pTemplate="body" let-rowData let-columns="columns">
+                <tr>
+                    <td style="text-align:center" *ngFor="let col of columns">
+                        {{ rowData[col.field] }}
+                    </td>
+                    <td>
+                        <button pButton style="width:60%;margin-left:20%;background-color: rgb(211, 56, 56);" type="button" label="Delete" (click)="deleteErByID(rowData['id'])"></button>
+                    </td>
+                </tr>
+            </ng-template>
+        </p-table>
+    </p-card>
 
-  <p-table
-    style="word-wrap:break-word;"
-    #dt
-    [columns]="cols"
-    [paginator]="true"
-    [resizableColumns]="true"
-    [rows]="10"
-    [style]="{ 'margin-top': '10px', width: '80%', 'margin-left': '10%' }"
-    [totalRecords]="totalRecords"
-    [value]="erArray"
-
-  >
-    <ng-template pTemplate="caption">
-      <div class="ui-g-12">
-        <h1 style="font-weight:bold;">EMERGENCY LIST</h1>
-        <hr style="background-color:rgb(17, 17, 17);height:3px;" />
-      </div>
-      <div style="text-align: right">
-        <i class="fa fa-search" style="margin:4px 4px 0 0"></i>
-        <input
-          type="text"
-          pInputText
-          size="35"
-          placeholder="Global Filter"
-          (input)="dt.filterGlobal($event.target.value, 'contains')"
-          style="width:auto;margin-right:14px"
-        />
-      </div>
-    </ng-template>
-    <ng-template pTemplate="header" let-columns>
-      <tr>
-        <th style="text-align:center" *ngFor="let col of columns">
-          {{ col.header }}
-        </th>
-        <th style="text-align:center">Actions</th>
-      </tr>
-      <div *ngIf="loading" style="margin-left: 325%;">
-        <p-progressSpinner></p-progressSpinner>
-      </div>
-    </ng-template>
-    <ng-template pTemplate="body" let-rowData let-columns="columns">
-      <tr>
-        <td style="text-align:center;overflow:auto;" *ngFor="let col of columns">
-          {{ rowData[col.field] }}
-        </td>
-        <td>
-          <button
-            pButton
-            style="width:60%;margin-left:20%;background-color: rgb(211, 56, 56);"
-            type="button"
-            label="Delete"
-            (click)="deleteErByID(rowData['id'])"
-          ></button>
-        </td>
-      </tr>
-    </ng-template>
-  </p-table>
 
 </div>

@@ -16,7 +16,7 @@ export class PatientTransactionHistoryComponent implements OnInit {
   datasource: any = [];
   cols: any[];
 
-  constructor(private history:PatientTransactionHistoryService,private route:Router,private activateRoute:ActivatedRoute) { 
+  constructor(private history:PatientTransactionHistoryService,private route:Router,private activateRoute:ActivatedRoute) {
 
     this.cols = [
       { field: 'id', header: 'ID' },
@@ -53,9 +53,13 @@ export class PatientTransactionHistoryComponent implements OnInit {
       this.datasource = data;
       this.totalRecords = this.datasource.length;
       this.transaction = data;
-     
+
     });
 
+  }
+  // Zamar did'nt create the fucntion for delete
+  inactive(value:any){
+    console.log(value);
   }
 
 

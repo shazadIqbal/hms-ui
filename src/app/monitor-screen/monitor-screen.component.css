@@ -1,0 +1,9 @@
+.backgroundImage {
+    background: url('../../assets/back.jpg');
+    background-size: cover;
+    background-repeat: repeat-y;
+    height: 94vh;
+    /* overflow: hidden; */
+    width: 100%;
+    background-position: center;
+}

@@ -1,0 +1,12 @@
+.center {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: auto;
+    margin-top: auto;
+}
+
+.errorPage {
+    background-color: #479761 !important;
+    color: white
+}

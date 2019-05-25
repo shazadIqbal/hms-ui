@@ -1,277 +1,155 @@
 <div class="col-g-12">
-  <div class="ui-lg-5 ui-md-5 ui-sm-12">
-    <button
-      pButton
-      type="button"
-      class=" ui-button-success"
-      (click)="backToMonitor()"
-      style="width:45%;margin-left:30% "
-      label="Back"
-    ></button>
-  </div>
+    <div class="ui-lg-5 ui-md-5 ui-sm-12">
+        <button pButton type="button" class="backBtnStyle" (click)="backToMonitor()" style="width:45%;margin-left:30% " label="Back"></button>
+    </div>
+
 </div>
 
 <app-monitorquickview> </app-monitorquickview>
 
 <div class="ui-g-12">
-  <p-toast></p-toast>
-  <p-card
-    header="OPD GYNY"
-    [style]="{
+    <p-toast></p-toast>
+    <p-card header="OPD GYNY" [style]="{
       width: '80%',
       'font-size': '26px',
       'margin-left': '10%',
       'text-align': 'center',
       color: 'green'
-    }"
-  >
-    <div class="ui-g ui-fluid">
-      <hr style="height:2px;width:100%;background-color:green;" />
-      <form
-        style="width:100%;"
-        #myForm="ngForm"
-        (ngSubmit)="submitOpd(myForm.value)"
-      >
-        <div *ngIf="checkStatus">
-          <p-progressSpinner></p-progressSpinner>
-          <!-- here message from the server -->
-          <h2>Server Failed</h2>
-          <p>Please Reload The Page</p>
-          <div class="ui-g" style="margin-top:-20px !important;">
-            <div class="ui-md-3 ui-lg-3 ui-sm-0"></div>
-            <div class="ui-md-1 ui-lg-1 ui-sm-0"></div>
-            <br />
-            <div class="ui-md-4 ui-lg-4 ui-sm-12">
-              <button
-                pButton
-                type="button"
-                label="Click to reload"
-                style="margin-top: 0px; background-color:green;width:100%;"
-                onclick="location.reload()"
-              ></button>
-            </div>
-          </div>
-          <hr style="height:2px;width:100%;background-color:green;" />
+    }">
+        <div class="ui-g ui-fluid">
+            <hr style="height:2px;width:100%;background-color:green;" />
+            <form style="width:100%;" #myForm="ngForm" (ngSubmit)="submitOpd(myForm.value)">
+                <div *ngIf="checkStatus">
+                    <p-progressSpinner></p-progressSpinner>
+                    <!-- here message from the server -->
+                    <h2>Server Failed</h2>
+                    <p>Please Reload The Page</p>
+                    <div class="ui-g" style="margin-top:-20px !important;">
+                        <div class="ui-md-3 ui-lg-3 ui-sm-0"></div>
+                        <div class="ui-md-1 ui-lg-1 ui-sm-0"></div>
+                        <br>
+                        <div class="ui-md-4 ui-lg-4 ui-sm-12">
+                            <button pButton type="button" label="Click to reload" style="margin-top: 0px; background-color:green;width:100%;" onclick="location.reload()"></button>
+                        </div>
+                    </div>
+                    <hr style="height:2px;width:100%;background-color:green;" />
+                </div>
+                <div [hidden]="show">
+                    <!-- Add Doctor dropdwon -->
+                    <div class="ui-g">
+                        <div class="ui-md-2 ui-lg-2"></div>
+                        <div class="ui-md-8 ui-lg-8 ui-sm-12">
+                            <div class="ui-inputgroup">
+                                <span class="ui-inputgroup-addon" style="width:37%;font-size:15px;font-weight:bold;">Select Doctor<i
+                    style="color: red">*</i></span>
+                                <p-dropdown (onChange)="doctorDropdown()" [options]="doctors" name="doctors" [(ngModel)]="opdGynyObject.doctors" [filter]="true" [style]="{ width: '100%', height: '100%','font-size':'20px'}" [ngStyle]="{ 'width': '80%','font-size':'20px'}" required></p-dropdown>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Fees Field -->
+                    <div class="ui-g">
+                        <div class="ui-md-2 ui-lg-2"></div>
+                        <div class="ui-md-8 ui-lg-8 ui-sm-12">
+                            <div class="ui-inputgroup">
+                                <span class="ui-inputgroup-addon" style="width:45%;font-size:15px;font-weight: bold;">Fees</span>
+                                <input type="text" name="fees" pInputText ngModel required [(ngModel)]="opdGynyObject.fees" [readOnly]="true" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ui-g">
+                        <div class="ui-md-2 ui-lg-2"></div>
+                        <div class="ui-md-8 ui-lg-8 ui-sm-12">
+                            <div class="ui-inputgroup">
+                                <span class="ui-inputgroup-addon" style="width:45%;font-size:15px;font-weight: bold;">Discount $$</span>
+                                <input type="number" name="discount" pInputText ngModel min="0" (change)="onChangeDiscount()" placeholder="0  %" [(ngModel)]="opdGynyObject.discount" />
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Cash Recvied -->
+                    <div class="ui-g">
+                        <div class="ui-md-2 ui-lg-2"></div>
+                        <div class="ui-md-8 ui-lg-8 ui-sm-12">
+                            <div class="ui-inputgroup">
+                                <span class="ui-inputgroup-addon" style="width:45%;font-size:15px;font-weight: bold;">Cash Recieved<i
+                    style="color: red">*</i></span>
+                                <input type="text" name="cashrecieved" pInputText ngModel required placeholder="$$" [(ngModel)]="opdGynyObject.cashRecieved" (input)="getTotal(opdGynyObject.cashRecieved)" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ui-g">
+                        <div class="ui-md-2 ui-lg-2"></div>
+                        <div class="ui-md-8 ui-lg-8 ui-sm-12">
+                            <div class="ui-inputgroup">
+                                <span class="ui-inputgroup-addon" style="width:45%;font-size:15px;font-weight: bold;">Total
+                  Amount</span>
+                                <input required type="number" pInputText name="total" ngModel [readOnly]="true" placeholder="Total Amount $" [(ngModel)]="opdGynyObject.total" />
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Registration checkbox here -->
+                    <!-- <h4>Registered or not?</h4> <p>{{checked}}</p>
+          <p-checkbox [(ngModel)]="checked" binary="true" name="registration"></p-checkbox>
+          -->
+                    <div class="ui-g">
+                        <div class="ui-md-2 ui-lg-2"></div>
+                        <div class="ui-md-8 ui-lg-8 ui-sm-12">
+                            <div class="ui-inputgroup">
+                                <label style="margin-top: 1%; font-size: 25px;"> Registration: </label> &nbsp;
+                                <p-checkbox [(ngModel)]="opdGynyObject.registration" binary="true" name="registration"></p-checkbox>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="ui-g" style="margin-top:-20px !important;">
+                        <div class="ui-md-2 ui-lg-2"></div>
+                        <div class="ui-md-8 ui-lg-8 ui-sm-12">
+                            <button [disabled]="myForm.invalid" pButton type="submit" label="SAVE" style="margin-top: 0px; background-color:green;width:100%;"></button>
+                        </div>
+                    </div>
+                    <!-- PRINT BUTTON -->
+                    <div class="ui-g" style="margin-top:-20px !important;">
+                        <div class="ui-md-2 ui-lg-2"></div>
+                        <div class="ui-md-8 ui-lg-8 ui-sm-12">
+                            <button [disabled]="enable" printSectionId="content" ngxPrint pButton type="button" label="PRINT" style="margin-top: 0px; background-color:green;width:100%;"></button>
+                        </div>
+                    </div>
+                </div>
+            </form>
         </div>
-        <div [hidden]="show">
-          <!-- Add package field -->
-          <div class="ui-g">
-            <div class="ui-md-2 ui-lg-2"></div>
-            <div class="ui-md-8 ui-lg-8 ui-sm-12">
-              <div class="ui-inputgroup">
-                <span
-                  class="ui-inputgroup-addon"
-                  style="width:37%;font-size:15px;font-weight:bold;"
-                  >Package Facility</span
-                >
-                <p-dropdown
-                  [options]="facilitydrop"
-                  [(ngModel)]="gyne.pFacility"
-                  name="facility"
-                  [style]="{
-                    width: '100%',
-                    height: '100%',
-                    'font-size': '20px'
-                  }"
-                  [ngStyle]="{ width: '80%', 'font-size': '20px' }"
-                  placeholder="Select Facility"
-                  (onChange)="packageFacilityDropdown(dd)"
-                >
-                </p-dropdown>
-              </div>
-            </div>
-          </div>
-          <!-- Add Doctor dropdwon -->
-          <div class="ui-g">
-            <div class="ui-md-2 ui-lg-2"></div>
-            <div class="ui-md-8 ui-lg-8 ui-sm-12">
-              <div class="ui-inputgroup">
-                <span
-                  class="ui-inputgroup-addon"
-                  style="width:37%;font-size:15px;font-weight:bold;"
-                  >Select Doctor<i style="color: red">*</i></span
-                >
-                <p-dropdown
-                  #dd
-                  (onChange)="doctorDropdown()"
-                  [options]="doctors"
-                  name="doctors"
-                  filter="true"
-                  [(ngModel)]="opdGynyObject.doctors"
-                  [filter]="true"
-                  [style]="{
-                    width: '100%',
-                    height: '100%',
-                    'font-size': '20px'
-                  }"
-                  [ngStyle]="{ width: '80%', 'font-size': '20px' }"
-                  required
-                ></p-dropdown>
-              </div>
-            </div>
-          </div>
-          <!-- Fees Field -->
-          <div class="ui-g">
-            <div class="ui-md-2 ui-lg-2"></div>
-            <div class="ui-md-8 ui-lg-8 ui-sm-12">
-              <div class="ui-inputgroup">
-                <span
-                  class="ui-inputgroup-addon"
-                  style="width:45%;font-size:15px;font-weight: bold;"
-                  >Fees</span
-                >
-                <input
-                  type="text"
-                  name="fees"
-                  pInputText
-                  ngModel
-                  required
-                  [(ngModel)]="opdGynyObject.fees"
-                  [readOnly]="true"
-                />
-              </div>
-            </div>
-          </div>
-          <div class="ui-g">
-            <div class="ui-md-2 ui-lg-2"></div>
-            <div class="ui-md-8 ui-lg-8 ui-sm-12">
-              <div class="ui-inputgroup">
-                <span
-                  class="ui-inputgroup-addon"
-                  style="width:45%;font-size:15px;font-weight: bold;"
-                  >Discount $$</span
-                >
-                <input
-                  type="number"
-                  name="discount"
-                  pInputText
-                  ngModel
-                  min="0"
-                  (input)="onChangeDiscount()"
-                  placeholder="0  Rs"
-                  [(ngModel)]="opdGynyObject.discount"
-                />
-              </div>
-              <div
-                style="padding:0px !important;margin-bottom:0px !important;font-size: 16px; text-align:center;"
-                class="alert alert-danger"
-                [hidden]="disbaleSubmitButton"
-              >
-                discount is more than total price!
-              </div>
-            </div>
-          </div>
-          <!-- Cash Recvied -->
-          <div class="ui-g">
-            <div class="ui-md-2 ui-lg-2"></div>
-            <div class="ui-md-8 ui-lg-8 ui-sm-12">
-              <div class="ui-inputgroup">
-                <span
-                  class="ui-inputgroup-addon"
-                  style="width:45%;font-size:15px;font-weight: bold;"
-                  >Cash Recieved<i style="color: red">*</i></span
-                >
-                <input
-                  type="text"
-                  name="cashrecieved"
-                  pInputText
-                  ngModel
-                  required
-                  placeholder="Rs"
-                  [(ngModel)]="opdGynyObject.cashRecieved"
-                  (input)="getTotal(opdGynyObject.cashRecieved)"
-                />
-              </div>
-            </div>
-          </div>
-          <div class="ui-g">
-            <div class="ui-md-2 ui-lg-2"></div>
-            <div class="ui-md-8 ui-lg-8 ui-sm-12">
-              <div class="ui-inputgroup">
-                <span
-                  class="ui-inputgroup-addon"
-                  style="width:45%;font-size:15px;font-weight: bold;"
-                  >Total Amount</span
-                >
-                <input
-                  required
-                  type="number"
-                  pInputText
-                  name="total"
-                  ngModel
-                  [readOnly]="true"
-                  placeholder="Total Amount Rs"
-                  [(ngModel)]="opdGynyObject.total"
-                />
-              </div>
-            </div>
-          </div>
-          <div class="ui-g" style="margin-top:-20px !important;">
-            <div class="ui-md-2 ui-lg-2"></div>
-            <div class="ui-md-8 ui-lg-8 ui-sm-12">
-              <button
-                [disabled]="myForm.invalid || !disbaleSubmitButton"
-                pButton
-                type="submit"
-                label="SAVE"
-                style="margin-top: 0px; background-color:green;width:100%;"
-              ></button>
-            </div>
-          </div>
-          <!-- PRINT BUTTON -->
-          <div class="ui-g" style="margin-top:-20px !important;">
-            <div class="ui-md-2 ui-lg-2"></div>
-            <div class="ui-md-8 ui-lg-8 ui-sm-12">
-              <button
-                [disabled]="enable"
-                printSectionId="content"
-                ngxPrint
-                pButton
-                type="button"
-                label="PRINT"
-                style="margin-top: 0px; background-color:green;width:100%;"
-              ></button>
-            </div>
-          </div>
-        </div>
-      </form>
-    </div>
-  </p-card>
-  <p-toast></p-toast>
+    </p-card>
+    <p-toast></p-toast>
 </div>
 
 <!-- printing section -->
 <div *ngIf="opdGynyObject.doctors !== undefined" id="content" [hidden]="true">
-  <!-- <div *ngIf="addEmergency.name !== undefined"> -->
+    <!-- <div *ngIf="addEmergency.name !== undefined"> -->
 
-  <h1 style="text-align: center; color:green;font-weight:bold;">
-    OPD GYNY RECEIPT
-  </h1>
-  <hr style="border: 2px solid black;" />
-  <h3 *ngIf="!patientRegistration" style="color: crimson">
-    Pregnant women must register first!
-  </h3>
-  <div class="ui-g">
-    <p style="font-size: 20px;">
-      <b style="font-size: 20px;">Patient MR No: </b> {{ patientMrNo }}
-    </p>
-    <p style="font-size: 20px;">
-      <b style="font-size: 20px;">Patient Name: </b> {{ patientName }}
-    </p>
+    <h1 style="text-align: center; color:green;font-weight:bold;">
+        OPD GYNY RECEIPT
+    </h1>
+    <hr style="border: 2px solid black;" />
+    <h3 *ngIf="!patientRegistration" style="color: crimson">
+        Pregnant women must register first!
+    </h3>
+    <div class="ui-g">
+        <p style="font-size: 20px;">
+            <b style="font-size: 20px;">Patient MR No: </b> {{ patientMrNo }}
+        </p>
+        <p style="font-size: 20px;">
+            <b style="font-size: 20px;">Patient Name: </b> {{ patientName }}
+        </p>
 
-    <p style="font-size: 20px;">
-      <b style="font-size: 20px;">Doctor Name: </b>
-      {{ opdGynyObject.doctors["fullName"] }}
-    </p>
-    <p style="font-size: 20px;">
-      <b style="font-size: 20px;"> Date: </b> {{ date | date: "short" }}
-    </p>
+        <p style="font-size: 20px;">
+            <b style="font-size: 20px;">Doctor Name: </b> {{ opdGynyObject.doctors["fullName"] }}
+        </p>
+        <p style="font-size: 20px;">
+            <b style="font-size: 20px;"> Date: </b> {{ date | date: "short" }}
+        </p>
 
-    <div>
-      <hr style="width:100%;border:1px solid black;" />
-      <div style="margin-bottom:5px;">
-        <span
-          ><b> Cash Received: </b>
+        <div>
+            <hr style="width:100%;border:1px solid black;" />
+            <div style="margin-bottom:5px;">
+                <span><b> Cash Received: </b>
           <span style="float: right;">
             {{ opdGynyObject.cashRecieved }}</span
           ></span
@@ -280,18 +158,15 @@
       <div style="margin-bottom:5px;">
         <span
           ><b> Discount: </b>
-          <span style="float: right;"> {{ opdGynyObject.discount }}</span></span
-        >
-      </div>
-      <hr style="border:1px solid black;width:100%;" />
+          <span style="float: right;"> {{ opdGynyObject.discount }}</span></span>
+            </div>
+            <hr style="border:1px solid black;width:100%;" />
 
-      <div style="margin-bottom:5px;">
-        <span
-          ><b> Total: </b>
-          <span style="float:right;">{{ opdGynyObject.total }}</span></span
-        >
-      </div>
-      <hr style="border:1px solid black;width:100%;" />
+            <div style="margin-bottom:5px;">
+                <span><b> Total: </b>
+          <span style="float:right;">{{ opdGynyObject.total }}</span></span>
+            </div>
+            <hr style="border:1px solid black;width:100%;" />
+        </div>
     </div>
-  </div>
 </div>

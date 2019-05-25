@@ -1,43 +1,30 @@
-<div class="col-g-12">
-  <div class="ui-lg-12 ui-md-12 ui-sm-12">
-    <button
-      pButton
-      type="button"
-      class=" ui-button-success"
-      (click)="back()"
-      style="width:25%; margin-bottom: 1%; margin-left: 1%;"
-      label="Back"
-    ></button>
-  </div>
+<div class="ui-g-12">
+    <div class="ui-lg-5 ui-md-5 ui-sm-12">
+        <button pButton type="button" class="backBtnStyle" (click)="back()" style="width:45%;margin-left:30% " label="Back"></button>
+    </div>
 </div>
 <div style="position: absolute;top:70%;" class="ui-g-12" *ngIf="loader">
-  <p-progressSpinner [style]="{ 'margin-left': '45%' }"></p-progressSpinner>
+    <p-progressSpinner [style]="{ 'margin-left': '45%' }"></p-progressSpinner>
 </div>
 
 <div class="ui-g-12">
-  <p-toast></p-toast>
+    <p-toast></p-toast>
 
-  <p-card
-    header="ADD TEST"
-    [style]="{
+    <p-card header="ADD TEST" [style]="{
       width: '80%',
       'font-size': '26px',
       'margin-left': '10%',
       'text-align': 'center',
       color: 'green'
-    }"
-  >
-    <div class="ui-g ui-fluid">
-      <hr style="height:2px;width:100%;background-color:green;" />
-      <form style="width:100%;" #myForm="ngForm" (ngSubmit)="submitlab(); myForm.reset()">
-        <div class="ui-g">
-          <div class="ui-md-3 ui-lg-3"></div>
-          <div class="ui-g-12 ui-md-5">
-            <div class="ui-inputgroup">
-              <span
-                class="ui-inputgroup-addon"
-                style="width:100%;font-size:15px;height:2.2em;margin-top:5px"
-              >
+    }">
+        <div class="ui-g ui-fluid">
+            <hr style="height:2px;width:100%;background-color:green;" />
+            <form style="width:100%;" #myForm="ngForm" (ngSubmit)="submitlab(); myForm.reset()">
+                <div class="ui-g">
+                    <div class="ui-md-3 ui-lg-3"></div>
+                    <div class="ui-g-12 ui-md-5">
+                        <div class="ui-inputgroup">
+                            <span class="ui-inputgroup-addon" style="width:100%;font-size:15px;height:2.2em;margin-top:5px">
                 Lab Test Category: <i style="color: red">*</i></span
               >
               <p-dropdown required [options]="cities1" [(ngModel)]="selectedCity1" name="dropdown">
@@ -51,7 +38,7 @@
                 pButton
                 type="button"
                 label="ADD"
-                style="width:100%; margin-top: 4px"
+                style="width:100%; margin-top: 4px;background-color: #479761 !important;"
                 class="ui-button-success"
                 (click)="toAddLabCat()"
               ></button>
@@ -118,6 +105,7 @@
               label="SUBMIT"
               [disabled]="myForm.form.invalid"
               style="margin-top: 0px; background-color:green;width:100%;"
+              class="colorSetAllButtons"
             ></button>
           </div>
         </div>

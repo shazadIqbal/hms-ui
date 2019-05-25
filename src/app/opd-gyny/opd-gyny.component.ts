@@ -31,7 +31,7 @@ export class OpdGynyComponent implements OnInit {
   patientMrNo: Number;
   date;
   checked: boolean = false;
-  private opdGynyObject : opdGynyModel = new opdGynyModel();
+  opdGynyObject : opdGynyModel = new opdGynyModel();
   facilitydrop: SelectItem[];
   //packages: Package = new Package();
   package: Package = new Package();
@@ -48,9 +48,9 @@ export class OpdGynyComponent implements OnInit {
     private activatedRoute : ActivatedRoute,
     private patientService: PatientserviceService,
     private packageService: PackageServiceService,
-    
+
   ) {
-    //this.package.pFacility.push({label:'No Package',value:'NOPACKAGE'}); 
+    //this.package.pFacility.push({label:'No Package',value:'NOPACKAGE'});
 
   }
 
@@ -62,7 +62,7 @@ export class OpdGynyComponent implements OnInit {
     let id=this.activatedRoute.snapshot.params['id'];
     this.opdGynyObject.id = id;
     this.patientService.getPatientsByMRNO(id).subscribe(data => {
-      
+
       this.patientName = data.name;
       this.patientMrNo = data.id;
       this.patientRegistration = data.gynAndObsRegistration;
@@ -70,8 +70,8 @@ export class OpdGynyComponent implements OnInit {
       console.log("this is local variable in which data.name is assigned" , this.patientRegistration);
 
     })
-    
-    
+
+
   }
 
 
@@ -113,7 +113,7 @@ export class OpdGynyComponent implements OnInit {
     }
     );
   }
- 
+
 
 getPackage(){
   this.opdGynyObject.fees = 0;
@@ -121,8 +121,8 @@ getPackage(){
   this.facilitydrop.push({label:'No Package',value:'NOPACKAGE'})
   //this.package.pFacility.push("hello");
   this.gyne.pFacility = "NOPACKAGE";
-  this.packageService.getPackages().subscribe( 
-  data =>{  
+  this.packageService.getPackages().subscribe(
+  data =>{
     console.log("th",data)
     if(data){
           data.forEach(e=>{
@@ -130,7 +130,7 @@ getPackage(){
             label: e.pName+" | "+e.pFacility,
             value: {pName:e.pName,pFacility:e.pFacility,pSponsor:e.pSponsor,pPrice:e.pPrice}
           });
-          }) 
+          })
     }
 
   },error=>{
@@ -138,7 +138,7 @@ getPackage(){
 
   });
 
-  
+
 
 
 }
@@ -153,13 +153,13 @@ getPackage(){
       //this.opdGynyObject.doctors="no doc"; //console.log();
       dropdown.selectedOption = null;
     }
-    
+
       this.opdGynyObject.total = this.gyne.pFacility["pPrice"];
-    
-    
+
+
     //this.opdGynyObject.fees = this.facilitydrop;
   }
-  
+
 
 
   doctorDropdown() {
@@ -195,7 +195,7 @@ getPackage(){
    else if(discount <= this.gyne.pFacility["pPrice"]){
     this.opdGynyObject.total = this.gyne.pFacility["pPrice"] - discount;
    }
-    
+
   }
   //FUNCTION FOR BACK BUTTON
   backToMonitor() {
@@ -228,7 +228,7 @@ getPackage(){
     );
     console.log(this.opdGynyObject);
   }
-  
+
 
   //function for totalprice
   getTotal(value: any) {

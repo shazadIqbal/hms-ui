@@ -1,0 +1,15 @@
+.nav li {
+    padding: 0px;
+    display: inline;
+    color: white;
+    font-weight: bold;
+}
+
+.navbar-nav {
+    /* display: flex; */
+    flex-direction: row;
+}
+
+.navbarCss {
+    background-color: #479761 !important;
+}
