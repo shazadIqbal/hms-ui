@@ -24,7 +24,8 @@ export class PackageListComponent implements OnInit {
       { field: 'id', header: 'ID' },
       { field: 'pName', header: 'Package Name' },
       { field: 'pFacility', header: 'Package Facility' },
-      { field: 'pSponsor', header: 'Sponsor' }
+      { field: 'pSponsor', header: 'Sponsor' },
+      { field: 'pPrice' , header: 'Package Price' }
     ];
 
     this.packageService.getPackages().subscribe(
@@ -37,7 +38,8 @@ export class PackageListComponent implements OnInit {
             id: value.id,
             pName: value.pName,
             pFacility: value.pFacility,
-            pSponsor: value.pSponsor
+            pSponsor: value.pSponsor,
+            pPrice : value.pPrice,
           });
         });
       },
@@ -69,7 +71,8 @@ export class PackageListComponent implements OnInit {
             pFacility: value.pFacility,
             pStartDate: value.pStartDate,
             pEndDate: value.pEndDate,
-            pSponsor: value.pSponsor
+            pSponsor: value.pSponsor,
+            pPrice: value.pPrice
           });
         });
         this.messageService.add({

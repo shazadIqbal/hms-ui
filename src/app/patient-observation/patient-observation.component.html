@@ -62,29 +62,59 @@
                 <input type="text" name="fees" pInputText ngModel required [(ngModel)]="patientObservationObject.fees"
                   [readOnly]="true" />
               </div>
-            </div>
-          </div>
-          <div class="ui-g">
-            <div class="ui-md-2 ui-lg-2"></div>
-            <div class="ui-md-8 ui-lg-8 ui-sm-12">
-              <div class="ui-inputgroup">
-                <span class="ui-inputgroup-addon" style="width:45%;font-size:15px;font-weight: bold;">Discount $$</span>
-                <input type="number" name="discount" pInputText ngModel min="0" placeholder="0  %" [readOnly]="false"
-                  [(ngModel)]="patientObservationObject.discount" (change)="discount()" />
+              <div class="ui-g">
+                <div class="ui-md-2 ui-lg-2"></div>
+                <div class="ui-md-8 ui-lg-8 ui-sm-12">
+                  <div class="ui-inputgroup">
+                    <span
+                      class="ui-inputgroup-addon"
+                      style="width:45%;font-size:15px;font-weight: bold;"
+                      >Discount</span
+                    >
+                    <input
+                      type="number"
+                      name="discount"
+                      pInputText
+                      ngModel
+                      min="0"
+                      placeholder="0  Rps"
+                      [readOnly]="false"
+                      [(ngModel)]="patientObservationObject.discount"
+                      (input)="discount()"
+                    />
+                  </div>
+                  <div
+                  style="padding:0px !important;margin-bottom:0px !important;font-size: 16px; text-align:center;"
+                  class="alert alert-danger"
+                  [hidden]="disbaleSubmitButton"
+                >
+                  discount is more than total price!
+                </div>
+                </div>
               </div>
-            </div>
-          </div>
-          <!-- Cash Recvied -->
-          <div class="ui-g">
-            <div class="ui-md-2 ui-lg-2"></div>
-            <div class="ui-md-8 ui-lg-8 ui-sm-12">
-              <div class="ui-inputgroup">
-                <span class="ui-inputgroup-addon" style="width:45%;font-size:15px;font-weight: bold;">Cash
-                  Recieved</span>
-                <input type="text" name="cashrecieved" pInputText ngModel required placeholder="$$"
-                  [(ngModel)]="patientObservationObject.cashRecieved"
-                  (input)="getTotal(patientObservationObject.cashRecieved)" />
-              </div>
+              <!-- Cash Recvied -->
+              <div class="ui-g">
+                <div class="ui-md-2 ui-lg-2"></div>
+                <div class="ui-md-8 ui-lg-8 ui-sm-12">
+                  <div class="ui-inputgroup">
+                    <span
+                      class="ui-inputgroup-addon"
+                      style="width:45%;font-size:15px;font-weight: bold;"
+                      >Cash Recieved</span
+                    >
+                    <input
+                      type="text"
+                      name="cashrecieved"
+                      pInputText
+                      ngModel
+                      required
+                      placeholder="Rps"
+                      [(ngModel)]="patientObservationObject.cashRecieved"
+                      (input)="getTotal(patientObservationObject.cashRecieved)"
+                    />
+                  </div>
+                </div>
+
             </div>
           </div>
           <div class="ui-g">
