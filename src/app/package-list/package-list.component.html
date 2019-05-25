@@ -19,6 +19,7 @@
         <p-table style="word-wrap:break-word;" #dt [paginator]="true" [value]="packages" [rows]="10" [style]="{ 'margin-top': '50px', width: '100%'}" [columns]="cols">
             <ng-template pTemplate="caption">
 
+
                 <div style="text-align: right">
                     <i class="fa fa-search" style="margin:4px 4px 0 0"></i>
                     <input type="text" pInputText size="30" placeholder="Global Filter" (input)="dt.filterGlobal($event.target.value, 'contains')" style="width:auto;margin-right:14px;" />
@@ -32,6 +33,7 @@
                     <th style="text-align:center">Actions</th>
                 </tr>
             </ng-template>
+
 
             <ng-template pTemplate="body" let-rowData let-columns="columns">
                 <tr>

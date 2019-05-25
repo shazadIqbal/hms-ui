@@ -4,6 +4,7 @@ import { PatientserviceService } from 'src/app/patientservice.service';
 import { Component, OnInit } from '@angular/core';
 import { Patient } from './patient';
 import { Router, ActivatedRoute } from '@angular/router';
+import {Location} from '@angular/common';
 
 
 // import { Router } from '@angular/router';
@@ -26,7 +27,10 @@ export class PatientformComponent implements OnInit {
     private msgService: MessageService,
     private patientService: PatientserviceService,
     private router: Router,
-    private activeRoute: ActivatedRoute
+
+    private activeRoute:ActivatedRoute,
+    private _location: Location
+
   ) {
     this.gender = [{ label: 'Male', value: 'Male' }, { label: 'Female', value: 'Female' }];
   }
@@ -175,26 +179,6 @@ export class PatientformComponent implements OnInit {
     this.msgService.clear('c');
   }
 
-  // onSubmit() {
-  //   // this.patientService.postPatient(this.patient).subscribe(
-  //   //   data => {
-
-  //   //     this.msgService.add({
-  //   //       severity: 'success',
-  //   //       summary: 'Service message',
-  //   //       detail: 'Added'
-  //   //     });
-  //   //   },
-  //   //   error => {
-  //   //     console.log(error);
-  //   //     this.msgService.add({
-  //   //       severity: 'error',
-  //   //       summary: 'Error Found',
-  //   //       detail: 'Something went wrong check your internet connection '
-  //   //     });
-  //   //   }
-  //   // );
-  // }
 
   numberOnly(event): boolean {
     const charCode = event.which ? event.which : event.keyCode;
@@ -204,7 +188,7 @@ export class PatientformComponent implements OnInit {
     return true;
   }
   goBack() {
-    this.router.navigate(['mainscreen']);
+    this._location.back();
   }
 
 

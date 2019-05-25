@@ -24,14 +24,17 @@
         <p style="font-size: 20px;"><b style="font-size: 20px;"> Facilities: </b></p>
 
 
-        <div>
-            <span style="font-weight:bold;">Facility</span><span style="font-weight:bold;float: right;">Price</span>
-            <hr style="border: 1px solid black;width:100%;" />
-            <div *ngFor="let facility of facilitiesArray">
-                <span>{{facility.name}}</span>
-                <span style="float: right;">{{facility.price}}</span>
-                <hr style="width:100%;" />
-                <span><b> Discount: </b> <span style="float: right;"> {{addEmergency.discount}}</span></span>
+
+
+    <div>
+      <span style="font-weight:bold;">Facility</span><span style="font-weight:bold;float: right;">Price</span>
+      <hr style="border: 1px solid black;width:100%;" />
+      <div *ngFor="let facility of facilitiesArray">
+        <span>{{facility.name}}</span>
+        <span style="float: right;">{{facility.price}}</span>
+        <hr style="width:100%;" />
+        <span><b> Discount: </b> <span style="float: right;"> {{addEmergency.discount}}</span></span>
+
 
                 <hr style="border:1px solid black;width:100%;" />
                 <span><b> Total: </b> <span style="float:right;">{{addEmergency.total}}</span></span>
@@ -69,8 +72,10 @@
         color: 'green'
 	  }">
 
-        <div class="ui-g ui-fluid">
-            <hr style="height:2px;width:100%;background-color:green; margin-top: 0px" />
+
+
+    <div class="ui-g ui-fluid">
+      <hr style="height:2px;width:100%;background-color:green; margin-top: 0px" />
 
 
             <div class="ui-lg-8 ui-md-8 ui-sm-12">
@@ -129,7 +134,10 @@
                                     <span class="ui-inputgroup-addon" style="width:37%;font-size:15px;font-weight: bold;">
                     Discount</span>
 
-                                    <input type="number" (keypress)="numberOnly($event)" (ngModelChange)="discounter($event)" min="0" name="discount" [(ngModel)]="addEmergency.discount" pInputText placeholder="0">
+
+                  <input type="text" (keypress)="numberOnly($event)" (ngModelChange)="discounter($event)" min="0"
+                    name="discount" [(ngModel)]="addEmergency.discount" pInputText placeholder="0">
+
 
 
 
@@ -175,4 +183,7 @@
             </div>
         </div>
 
-    </p-card>
+
+  </p-card>
+</div>
+
