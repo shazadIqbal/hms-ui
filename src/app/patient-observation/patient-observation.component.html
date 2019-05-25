@@ -5,7 +5,10 @@
   </div>
 </div>
 
+<p-toast></p-toast>
+
 <div class="ui-g-12">
+
 
   <app-monitorquickview> </app-monitorquickview>
 </div>
@@ -13,7 +16,7 @@
 
 
 <div class="ui-g-12">
-  <p-toast></p-toast>
+
   <p-card header="OBSERVATION" [style]="{
           width: '80%',
           'font-size': '26px',
@@ -21,6 +24,7 @@
           'text-align': 'center',
           color: 'green'
         }">
+
     <div class="ui-g ui-fluid">
       <hr style="height:2px;width:100%;background-color:green;" />
       <form style="width:100%;" #myForm="ngForm" (ngSubmit)="submitOpd(myForm.value)">
@@ -84,6 +88,7 @@
           <!-- Cash Recvied -->
 
           <div class="ui-g">
+
             <div class="ui-md-2 ui-lg-2"></div>
             <div class="ui-md-8 ui-lg-8 ui-sm-12">
               <div class="ui-inputgroup">
@@ -93,6 +98,7 @@
                 <input type="text" name="cashrecieved" pInputText ngModel required placeholder="$$"
                   [(ngModel)]="patientObservationObject.cashRecieved" (keypress)="numberOnly($event)"
                   (input)="getTotal(patientObservationObject.cashRecieved)" />
+
               </div>
             </div>
           </div>
@@ -109,7 +115,9 @@
           </div>
 
 
-          <div class="ui-g" style="margin-top:-20px !important;">
+
+
+          <div class="ui-g">
             <div class="ui-md-2 ui-lg-2"></div>
             <div class="ui-md-8 ui-lg-8 ui-sm-12">
               <button [disabled]="myForm.invalid" pButton type="submit" label="SAVE"
@@ -119,25 +127,25 @@
           </div>
 
           <!-- PRINT BUTTON -->
-          <div class="ui-g" style="margin-top:-20px !important;">
+          <div class="ui-g">
+
             <div class="ui-md-2 ui-lg-2"></div>
             <div class="ui-md-8 ui-lg-8 ui-sm-12">
               <button [disabled]="enable" printSectionId="content" ngxPrint pButton type="button" label="PRINT"
                 style="margin-top: 0px; background-color:green;width:100%;"></button>
+
             </div>
+
           </div>
+
         </div>
       </form>
     </div>
   </p-card>
-  <p-toast></p-toast>
+
 </div>
 
-
-
-
 <!-- Print Section -->
-
 
 
 <div *ngIf="patientObservationObject.doctors !== undefined" id="content" [hidden]="true">
@@ -180,5 +188,3 @@
 
 
 </div>
-
-
