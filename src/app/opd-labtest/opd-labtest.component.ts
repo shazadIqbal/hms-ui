@@ -117,6 +117,7 @@ export class OpdLabtestComponent implements OnInit {
    this.showLoadingSpinnerAndHideForm("Getting labtests");
     this.labtest.getlabtest().subscribe(
       data => {
+        console.log("responseeeeeeeee",data)
              
         if(data.length){
           this.hidder = false;

@@ -4,7 +4,9 @@
       style="width:45%;margin-left:30% " label="Back"></button>
   </div>
 </div>
-<app-monitorquickview> </app-monitorquickview>
+<div class="ui-g-12">
+  <app-monitorquickview> </app-monitorquickview>
+</div>
 
 <div class="ui-g-12">
   <p-toast></p-toast>
@@ -79,7 +81,7 @@
           <div class="ui-md-8 ui-lg-8 ui-sm-12">
             <div class="ui-inputgroup">
               <span class="ui-inputgroup-addon" style="width:45%;font-size:15px;font-weight: bold;">Fees</span>
-              <input type="text" name="fees" pInputText ngModel required [(ngModel)]="opdObject.fees"
+              <input type="text" name="fees"  pInputText ngModel  [(ngModel)]="opdObject.fees"
                 [readOnly]="true" />
             </div>
           </div>
@@ -108,7 +110,7 @@
             <div class="ui-inputgroup">
               <span class="ui-inputgroup-addon" style="width:45%;font-size:15px;font-weight: bold;">Cash Recieved<i
                   style="color: red">*</i></span>
-              <input type="text" name="cashrecieved" pInputText ngModel required placeholder="$$"
+              <input type="text" name="cashrecieved" min="0" (keypress)="numberOnly($event)" pInputText ngModel required placeholder="0"
                 [(ngModel)]="opdObject.cashRecieved" />
             </div>
           </div>
@@ -207,10 +209,3 @@
 
   </div>
 </div>
-
-
-
-
-
-
-

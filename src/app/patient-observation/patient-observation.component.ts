@@ -48,7 +48,7 @@ export class PatientObservationComponent implements OnInit {
     // this.show = true
     this.enable = true;
     this.getDoctorsOption();
-    let id=this.activatedRoute.snapshot.params['id'];
+    let id = this.activatedRoute.snapshot.params['id'];
     this.patientObservationObject.id = id;
     console.log('this is id' + this.patientObservationObject.id);
     this.patientService.getPatientsByMRNO(id).subscribe((a) => {
@@ -111,7 +111,7 @@ export class PatientObservationComponent implements OnInit {
   }
   //FUNCTION FOR SUBMIT OPD CONSULTANCY
   submitOpd() {
-   
+
 
     this.patientObservationService.savePatientObservation(this.patientObservationObject).subscribe(
       data => {
@@ -137,14 +137,12 @@ export class PatientObservationComponent implements OnInit {
 
 
 
-
   //function for totalprice
   getTotal(value: any) {
     this.patientObservationObject.cashRecieved = 0;
     console.log(value);
-    this.patientObservationObject.discount = 0;
     this.patientObservationObject.cashRecieved = value;
-    this.patientObservationObject.total = this.patientObservationObject.total;
+    this.patientObservationObject.total = this.patientObservationObject.fees - this.patientObservationObject.discount;
   }
 
 
@@ -174,3 +172,4 @@ export class PatientObservationComponent implements OnInit {
   }
 
 }
+

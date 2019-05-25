@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import {Router} from '@angular/router';
-import {ActivatedRoute} from '@angular/router';
+import { Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { PatientTransactionsService } from '../Services/patient-transactions.service';
 import { Location } from '@angular/common';
+import { MessageService } from 'primeng/api';
+
 
 @Component({
   selector: 'app-patient-transactions',
@@ -15,7 +17,11 @@ export class PatientTransactionsComponent implements OnInit {
   datasource: any = [];
   cols: any[];
 
+
+
   constructor(
+    private messageService: MessageService
+    ,
     private transactionsService: PatientTransactionsService,
     private route: Router,
     private location: Location,
@@ -54,10 +60,13 @@ export class PatientTransactionsComponent implements OnInit {
       this.totalRecords = this.datasource.length;
       // data["transactionDate"] = new Date( data["transactionDate"]).toDateString()
       // this.transaction = data;
-      let trans = data.map(p => {
+      let i = 1;
+      data.map(p => {
         console.log(p);
 
+
         this.transaction.push({
+          transactionRefId: p.transactionRefId,
           id: p.id,
           transactionDate: new Date(p.transactionDate).toDateString(),
           receivedAmount: p.receivedAmount,
@@ -68,8 +77,28 @@ export class PatientTransactionsComponent implements OnInit {
           operationType: p.operationType,
           dues: p.dues
         });
+        i++;
       });
       //this.loading = false;
     });
+  }
+
+
+
+
+  editPatientTransaction(id) {
+    console.log(id)
+  }
+
+  deletePatientTransaction(transactionRefId) {
+
+    this.transactionsService.deletePatientTransaction(transactionRefId).subscribe((response) => {
+
+      this.messageService.add({ severity: 'success', summary: 'Service Message', detail: response.message });
+      console.log(response)
+      this.showTable();
+    }, (error) => {
+        this.messageService.add({ severity: 'error', summary: 'Service Message', detail: error });
+      })
   }
 }

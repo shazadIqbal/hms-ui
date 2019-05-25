@@ -1,42 +1,24 @@
 <div class="col-g-12">
   <div class="ui-lg-5 ui-md-5 ui-sm-12">
-<button
-  pButton
-  type="button"
-  class="ui-button-success"
-  style="margin-left:1%; margin-bottom: 1%; height:30px; width:45%;margin-left:30%"
-  (click)="back()"
-  label= "Back"
->
-</button>
-</div>
+    <button pButton type="button" class="ui-button-success"
+      style="margin-left:1%; margin-bottom: 1%; height:30px; width:45%;margin-left:30%" (click)="back()" label="Back">
+    </button>
+  </div>
 </div>
 <app-monitorquickview> </app-monitorquickview>
 
-<p-table
-  style="text-align: center;"
-  #dt
-  [paginator]="true"
-  [value]="transaction"
-  [rows]="10"
-  [style]="{ 'margin-top': '30px' }"
-  [columns]="cols"
->
+<p-table style="text-align: center;" #dt style="text-align: center;" [totalRecords]="totalRecords"
+  [resizableColumns]="true" [scrollable]="true" [paginator]="true" [rows]="10" [style]="{ 'margin-top': '20px' }" 
+  [value]="transaction"   [columns]="cols">
   <ng-template pTemplate="caption">
     <div class="ui-g-12">
-      <h1 style="font-weight:bold;">PATIENT TRANSACTION HISTORY</h1>
+      <h1 style="font-weight:bold;color: green;">PATIENT TRANSACTION HISTORY</h1>
       <hr style="background-color:rgb(17, 17, 17);height:3px;" />
     </div>
     <div style="text-align: right">
       <i class="fa fa-search" style="margin:4px 4px 0 0"></i>
-      <input
-        type="text"
-        pInputText
-        size="50"
-        placeholder="Global Filter"
-        (input)="dt.filterGlobal($event.target.value, 'contains')"
-        style="width:auto;margin-right:14px;"
-      />
+      <input type="text" pInputText size="50" placeholder="Global Filter"
+        (input)="dt.filterGlobal($event.target.value, 'contains')" style="width:auto;margin-right:14px;" />
     </div>
   </ng-template>
   <ng-template pTemplate="header" let-columns>
@@ -54,13 +36,8 @@
         {{ rowData[col.field] }}
       </td>
       <td>
-        <button
-          pButton
-          style="width:90%;margin-left:5%;background-color: rgb(211, 56, 56);"
-          type="button"
-          label="Delete"
-          (click)="inactive(rowData['id'])"
-        ></button>
+        <button pButton style="width:90%;margin-left:5%;background-color: rgb(211, 56, 56);" type="button"
+          label="Delete" (click)="inactive(rowData['id'])"></button>
       </td>
     </tr>
   </ng-template>

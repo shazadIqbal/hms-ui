@@ -1,34 +1,19 @@
-
-<button
-  pButton
-  type="button"
-  label="Back"
-  class="ui-button-success"
-  style="margin-left:1%; margin-bottom: 1%; width: 30%; height: 40px;"
-  (click)="backToMain()"
-></button>
+<button pButton type="button" label="Back" class="ui-button-success"
+  style="margin-left:1%; margin-bottom: 1%; width: 30%; height: 40px;" (click)="backToMain()"></button>
 <p-card header="" [style]="{ width: '100%', color: '#3EB650' }">
 
   <h2 style="color: #3EB650; text-align: center; font-weight: bold;">APPOINTMENT LIST</h2>
 
   <hr />
-  <div class="row" style="text-align: center;">
-    <button
-      pButton
-      type="button"
-      label="Existing Patient Appointment"
-      class=" ui-button-success"
-      (click)="existingPatient()"
-      style="margin-right: 5%; width: 30%;"
-    ></button>
-    <button
-      pButton
-      type="button"
-      label="New Patient Appointment"
-      class=" ui-button-success"
-      (click)="newPatient()"
-      style=" width: 30%"
-    ></button>
+  <div class="ui-g" style="text-align: center;">
+    <div class="ui-lg-6 ui-md-6 ui-sm-12">
+      <button style="width:70%;margin-left:15%" pButton type="button" label="Existing Patient Appointment" class=" ui-button-success"
+        (click)="existingPatient()"></button>
+    </div>
+    <div class="ui-lg-6 ui-md-6 ui-sm-12">
+      <button style="width:70%;margin-left:15%" pButton type="button" label="New Patient Appointment" class=" ui-button-success" (click)="newPatient()"
+       ></button>
+    </div>
   </div>
   <hr />
   <div class="row" style="margin-left: 20%;">
@@ -39,54 +24,26 @@
     <div class="ui-inputgroup col-md-5 col-lg-5 col-sm-12" style="margin-bottom: 10px">
 
       <span class="ui-inputgroup-addon">Filter By Status</span>
-      <p-dropdown
-        [options]="SelectStatus"
-        required
-        name="status"
-        [style]="{ width: '200px' }"
-        placeholder="Select Status"
-        placeholder="Filter By Status"
-
-        [(ngModel)]="_status.status"
-
-        (onChange)="statusOnClick()"
-      >
+      <p-dropdown [options]="SelectStatus" required name="status" [style]="{ width: '200px' }"
+        placeholder="Select Status" placeholder="Filter By Status" [(ngModel)]="_status.status"
+        (onChange)="statusOnClick()">
       </p-dropdown>
     </div>
 
     <div class="ui-inputgroup  col-md-5 col-lg-5 col-sm-12" style="margin-bottom: 10px">
 
       <span class="ui-inputgroup-addon">Filter By Date</span>
-      <p-calendar
-        name="filterByDate"
-        required
-        [(ngModel)]="datefilter"
-        (onSelect)="dateOnClick()"
-        placeholder="Filter By Date"
-      >
+      <p-calendar name="filterByDate" required [(ngModel)]="datefilter" (onSelect)="dateOnClick()"
+        placeholder="Filter By Date">
       </p-calendar>
     </div>
   </div>
-  <p-table
-    #dt
-    [columns]="cols"
-    [value]="_existingPatient"
-    [paginator]="true"
-    [rows]="10"
-    [totalRecords]= "totalrecords"
-
-  >
+  <p-table #dt  [style]="{ 'text-align':'center' }" [columns]="cols"  [resizableColumns]="true" [value]="_existingPatient" [paginator]="true" [rows]="10" [totalRecords]="totalrecords">
     <ng-template pTemplate="caption">
       <div style="text-align: right">
         <i class="fa fa-search" style="margin:4px 4px 0 0"></i>
-        <input
-          type="text"
-          pInputText
-          size="50"
-          placeholder="Global Filter"
-          (input)="dt.filterGlobal($event.target.value, 'contains')"
-          style="width:auto"
-        />
+        <input type="text" pInputText size="50" placeholder="Global Filter"
+          (input)="dt.filterGlobal($event.target.value, 'contains')" style="width:auto" />
       </div>
     </ng-template>
     <ng-template pTemplate="header" let-columns>
@@ -111,31 +68,21 @@
           {{ rowData[col.field] }}
         </td>
         <td>
-          <div class="ui-g-12" style="margin-left: 10%;">
+          <div class="ui-g-12" style="margin-left: 10%;overflow:auto;">
             <div class="ui-g-12 ui-md-5 ui-sm-12 ui-g-fluid">
-<!-- Done button -->
+              <!-- Done button -->
 
               <div *ngIf="show">
-              <button
-                pButton
-                type="button"
-                class="ui-button-success"
-                style="height: 50px; margin-left:30%;"
-                (click)="doneAppointmentByID(rowData['id'])"
-              >
-                <img src="https://img.icons8.com/color/48/000000/ok.png" />
-              </button>
-            </div>
+                <button pButton type="button" class="ui-button-success" style="height: 50px; margin-left:30%;"
+                  (click)="doneAppointmentByID(rowData['id'])">
+                  <img src="https://img.icons8.com/color/48/000000/ok.png" />
+                </button>
+              </div>
               <p-toast position="top-center"></p-toast>
             </div>
-            <div   *ngIf="showInactive" class="ui-g-12 ui-md-3 ui-sm-12 ui-g-fluid">
-              <button
-                pButton
-                type="button"
-                (click)="deleteAppointmentByID(rowData['id'])"
-                class="ui-button-danger"
-                style="height: 50px; margin-left: 30%;"
-              >
+            <div *ngIf="showInactive" class="ui-g-12 ui-md-3 ui-sm-12 ui-g-fluid">
+              <button pButton type="button" (click)="deleteAppointmentByID(rowData['id'])" class="ui-button-danger"
+                style="height: 50px; margin-left: 30%;">
                 <img src="https://img.icons8.com/color/48/000000/cancel.png" />
               </button>
               <p-toast position="top-center"></p-toast>

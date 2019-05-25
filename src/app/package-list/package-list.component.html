@@ -29,6 +29,8 @@
     #dt
     [paginator]="true"
     [value]="packages"
+    [resizableColumns]="true"
+    [totalRecords]="totalRecords"
     [rows]="10"
     [style]="{ 'margin-top': '50px', width: '80%', 'margin-left': '10%' }"
     [columns]="cols"
@@ -61,7 +63,7 @@
 
     <ng-template pTemplate="body" let-rowData let-columns="columns">
       <tr>
-        <td style="text-align:center" *ngFor="let col of columns">
+        <td style="text-align:center;overflow: auto" *ngFor="let col of columns">
           {{ rowData[col.field] }}
         </td>
         <td>

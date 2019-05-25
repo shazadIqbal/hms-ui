@@ -1,66 +1,35 @@
 <div class="ui-g">
-<div class="ui-g-4 ui-lg-4 ui-sm-12">
-<button
-  pButton
-  type="button"
-  class="ui-button-success"
-  style="margin-left:10%; height:40px; width: 80%"
-  (click)="backtomain()"
-  label= "Back"
->
-</button>
-</div>
+  <div class="ui-g-4 ui-lg-4 ui-sm-12">
+    <button pButton type="button" class="ui-button-success" style="margin-left:10%; height:40px; width: 80%"
+      (click)="backtomain()" label="Back">
+    </button>
+  </div>
 
-<div style="z-index:3; position: absolute;top:70%;" class="ui-g-12" *ngIf="delete">
-  <p-progressSpinner [style]="{ 'margin-left': '45%' }"></p-progressSpinner>
-</div>
+  <div style="z-index:3; position: absolute;top:70%;" class="ui-g-12" *ngIf="delete">
+    <p-progressSpinner [style]="{ 'margin-left': '45%' }"></p-progressSpinner>
+  </div>
 
   <p-toast></p-toast>
   <div class="ui-g-4 ui-lg-4 ui-sm-12">
-    <button
-      pButton
-      type="button"
-      (click)="addlabtest()"
-      style="width:80%;margin-left:10%;  height:40px;"
-      label="Add Lab Test"
-      class=" ui-button-success"
-    ></button>
+    <button pButton type="button" (click)="addlabtest()" style="width:80%;margin-left:10%;  height:40px;"
+      label="Add Lab Test" class=" ui-button-success"></button>
   </div>
   <div class="ui-g-4 ui-lg-4 ui-sm-12">
-    <button
-      pButton
-      type="button"
-      (click)="addlabcat()"
-      style="width:80%;margin-left:10%; height: 40px;"
-      label="Add Lab Test Category"
-      class=" ui-button-success"
-    ></button>
+    <button pButton type="button" (click)="addlabcat()" style="width:80%;margin-left:10%; height: 40px;"
+      label="Add Lab Test Category" class=" ui-button-success"></button>
   </div>
 
-  <p-table
-    style="word-wrap:break-word;"
-    #dt
-    [paginator]="true"
-    [value]="tests"
-    [rows]="10"
-    [style]="{ 'margin-top': '50px', width: '80%', 'margin-left': '10%' }"
-    [columns]="cols"
-  >
+  <p-table style="word-wrap:break-word;" #dt [resizableColumns]="true" [style]="{ 'margin-top': '20px' }"
+    [paginator]="true" [value]="tests" [rows]="10" [totalRecords]="totalRecords" [columns]="cols">
     <ng-template pTemplate="caption">
       <div class="ui-g-12">
-        <h1 style="font-weight:bold;">LAB TESTS</h1>
+        <h1 style="font-weight:bold;color: green;">LAB TESTS</h1>
         <hr style="background-color:rgb(17, 17, 17);height:3px;" />
       </div>
       <div style="text-align: right">
         <i class="fa fa-search" style="margin:4px 4px 0 0"></i>
-        <input
-          type="text"
-          pInputText
-          size="50"
-          placeholder="Global Filter"
-          (input)="dt.filterGlobal($event.target.value, 'contains')"
-          style="width:auto"
-        />
+        <input type="text" pInputText size="50" placeholder="Global Filter"
+          (input)="dt.filterGlobal($event.target.value, 'contains')" style="width:auto" />
       </div>
     </ng-template>
     <ng-template pTemplate="header" let-columns>
@@ -73,17 +42,12 @@
     </ng-template>
     <ng-template pTemplate="body" let-rowData let-columns="columns">
       <tr>
-        <td style="text-align:center" *ngFor="let col of columns">
+        <td style="text-align:center;overflow:auto" let col of columns>
           {{ rowData[col.field] }}
         </td>
         <td>
-          <button
-            pButton
-            style="width:60%;margin-left:20%;background-color: rgb(211, 56, 56);"
-            type="button"
-            label="Delete"
-            (click)="inactive(rowData['id'], rowData['testname'])"
-          ></button>
+          <button pButton style="width:60%;margin-left:20%;background-color: rgb(211, 56, 56);" type="button"
+            label="Delete" (click)="inactive(rowData['id'], rowData['testname'])"></button>
         </td>
       </tr>
     </ng-template>

@@ -6,8 +6,10 @@
 </div>
 
 <div class="ui-g-12">
+
   <app-monitorquickview> </app-monitorquickview>
 </div>
+
 
 
 <div class="ui-g-12">
@@ -80,10 +82,12 @@
             </div>
           </div>
           <!-- Cash Recvied -->
+
           <div class="ui-g">
             <div class="ui-md-2 ui-lg-2"></div>
             <div class="ui-md-8 ui-lg-8 ui-sm-12">
               <div class="ui-inputgroup">
+
                 <span class="ui-inputgroup-addon" style="width:45%;font-size:15px;font-weight: bold;">Cash
                   Recieved</span>
                 <input type="text" name="cashrecieved" pInputText ngModel required placeholder="$$"
@@ -178,91 +182,3 @@
 </div>
 
 
-
-
-
-<!-- 
-<div *ngIf="patientObservationObject.doctors !== undefined" id="content" [hidden]="true">
-  <div class="container">
-    <div class="row">
-      <div class="well col-xs-10 col-sm-10 col-md-6 col-xs-offset-1 col-sm-offset-1 col-md-offset-3">
-        <div class="row">
-          <span>
-            <div class="text-center ui-g-8">
-              <h1 style="text-align: center;text-decoration-line: underline">
-                OPD OBSERVATION RECEIPT
-              </h1>
-            </div>
-          </span>
-          <hr />
-        </div>
-        <br />
-        <div class="row">
-          <span>
-            <div class="text-center ui-g-8">
-              <h3 style="text-align: left;text-decoration-line: underline">
-                Doctor Name :
-                {{ patientObservationObject.doctors['fullName'] }}
-              </h3>
-            </div>
-          </span>
-        </div>
-        <div class="row">
-          <span>
-            <div class="text-center ui-g-8">
-              <h3 style="text-align: left;text-decoration-line: underline">
-                Fees :
-                {{ patientObservationObject.fees }}
-              </h3>
-            </div>
-          </span>
-        </div>
-        <br />
-        <div class="row">
-          <span>
-            <div class="text-center ui-g-8">
-              <h3 style="text-align: left;text-decoration-line: underline">
-                Discount :
-                {{ patientObservationObject.discount }}
-              </h3>
-            </div>
-          </span>
-        </div>
-        <br />
-        <div class="row">
-          <span>
-            <div class="text-center ui-g-8">
-              <h3 style="text-align: left;text-decoration-line: underline">
-                CASH RECEVIED :
-                {{ patientObservationObject.cashRecieved }}
-              </h3>
-            </div>
-          </span>
-        </div>
-        <br />
-        <div class="row">
-          <span>
-            <div class="text-center ui-g-8">
-              <h3 style="text-align: left;text-decoration-line: underline">
-                TOTAL AMOUNT :
-                {{ patientObservationObject.total }}
-              </h3>
-            </div>
-          </span>
-        </div>
-        <br />
-        <div class="row">
-          <span>
-            <div class="text-center ui-g-8">
-              <h3 style="text-align: left;text-decoration-line: underline">
-                RETURN :
-                {{ patientObservationObject.cashRecieved - patientObservationObject.total }}
-              </h3>
-            </div>
-          </span>
-        </div>
-        <br />
-      </div>
-    </div>
-  </div>
-</div> -->

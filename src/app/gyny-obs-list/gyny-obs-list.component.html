@@ -68,7 +68,7 @@
       style="word-wrap: break-word;"
     >
       <tr [pSelectableRow]="rowData">
-        <td *ngFor="let col of columns">
+        <td *ngFor="let col of columns" style="text-align:center;overflow:auto;">
           {{ rowData[col.field]  }}
         </td>
         <!-- <td>
