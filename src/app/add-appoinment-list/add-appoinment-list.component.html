@@ -38,7 +38,7 @@
       </p-calendar>
     </div>
   </div>
-  <p-table #dt [columns]="cols" [value]="_existingPatient" [paginator]="true" [rows]="10" [totalRecords]="totalrecords">
+  <p-table #dt  [style]="{ 'text-align':'center' }" [columns]="cols"  [resizableColumns]="true" [value]="_existingPatient" [paginator]="true" [rows]="10" [totalRecords]="totalrecords">
     <ng-template pTemplate="caption">
       <div style="text-align: right">
         <i class="fa fa-search" style="margin:4px 4px 0 0"></i>

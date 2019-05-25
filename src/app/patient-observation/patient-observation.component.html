@@ -8,9 +8,12 @@
 <p-toast></p-toast>
 
 <div class="ui-g-12">
-  <app-monitorquickview> </app-monitorquickview>
 
+
+  <app-monitorquickview> </app-monitorquickview>
 </div>
+
+
 
 <div class="ui-g-12">
 
@@ -66,21 +69,22 @@
                 <input type="text" name="fees" pInputText ngModel required [(ngModel)]="patientObservationObject.fees"
                   [readOnly]="true" />
               </div>
-              <div class="ui-g">
-                <div class="ui-md-2 ui-lg-2"></div>
-                <div class="ui-md-8 ui-lg-8 ui-sm-12">
-                  <div class="ui-inputgroup">
-                    <span class="ui-inputgroup-addon"
-                      style="width:45%;font-size:15px;font-weight: bold;">Discount</span>
-                    <input type="number" name="discount" pInputText ngModel min="0" placeholder="0  Rps"
-                      [readOnly]="false" [(ngModel)]="patientObservationObject.discount" (input)="discount()" />
-                  </div>
-                  <div style="padding:0px !important;margin-bottom:0px !important;font-size: 16px; text-align:center;"
-                    class="alert alert-danger" [hidden]="disbaleSubmitButton">
-                    discount is more than total price!
-                  </div>
-                </div>
+            </div>
+          </div>
+          <div class="ui-g">
+            <div class="ui-md-2 ui-lg-2"></div>
+            <div class="ui-md-8 ui-lg-8 ui-sm-12">
+              <div class="ui-inputgroup">
+                <span class="ui-inputgroup-addon" style="width:45%;font-size:15px;font-weight: bold;">Discount $$</span>
+                <input type="number" name="discount" pInputText ngModel min="0" placeholder="0"
+                  [(ngModel)]="patientObservationObject.discount" (ngModelChange)="discounter($event)"
+                  (keypress)="numberOnly($event)" />
               </div>
+              <div style="padding:0px !important;margin-bottom:0px !important;font-size: 16px; text-align:center;"
+                class="alert alert-danger" [hidden]="discountCheck">
+                discount is more than total price!
+              </div>
+
               <!-- Cash Recvied -->
               <div class="ui-g">
                 <div class="ui-md-2 ui-lg-2"></div>
@@ -96,38 +100,46 @@
                   </div>
                 </div>
 
-              </div>
             </div>
-            <div class="ui-g">
-              <div class="ui-md-2 ui-lg-2"></div>
-              <div class="ui-md-8 ui-lg-8 ui-sm-12">
-                <div class="ui-inputgroup">
-                  <span class="ui-inputgroup-addon" style="width:45%;font-size:15px;font-weight: bold;">Total
-                    Amount</span>
-                  <input required type="number" pInputText name="total" ngModel [readOnly]="true"
-                    placeholder="Total Amount $" [(ngModel)]="patientObservationObject.total" />
-                </div>
-              </div>
-            </div>
+          </div>
+          <!-- Cash Recvied -->
 
-
-            <div class="ui-g" style="margin-top:-20px !important;">
-              <div class="ui-md-2 ui-lg-2"></div>
-              <div class="ui-md-8 ui-lg-8 ui-sm-12">
-                <button [disabled]="myForm.invalid" pButton type="submit" label="SAVE"
-                  style="margin-top: 0px; background-color:green;width:100%;"></button>
-              </div>
-            </div>
-
-            <!-- PRINT BUTTON -->
-            <div class="ui-g" style="margin-top:-20px !important;">
-              <div class="ui-md-2 ui-lg-2"></div>
-              <div class="ui-md-8 ui-lg-8 ui-sm-12">
-                <button [disabled]="enable" printSectionId="content" ngxPrint pButton type="button" label="PRINT"
-                  style="margin-top: 0px; background-color:green;width:100%;"></button>
+          <div class="ui-g">
+            <div class="ui-md-2 ui-lg-2"></div>
+            <div class="ui-md-8 ui-lg-8 ui-sm-12">
+              <div class="ui-inputgroup">
+                <span class="ui-inputgroup-addon" style="width:45%;font-size:15px;font-weight: bold;">Total
+                  Amount</span>
+                <input required type="number" pInputText name="total" ngModel [readOnly]="true"
+                  placeholder="Total Amount $" [(ngModel)]="patientObservationObject.total" />
               </div>
             </div>
           </div>
+
+
+
+
+          <div class="ui-g">
+            <div class="ui-md-2 ui-lg-2"></div>
+            <div class="ui-md-8 ui-lg-8 ui-sm-12">
+              <button [disabled]="myForm.invalid" pButton type="submit" label="SAVE"
+                [disabled]="myForm.invalid || !discountCheck"
+                style="margin-top: 0px; background-color:green;width:100%;"></button>
+            </div>
+          </div>
+
+          <!-- PRINT BUTTON -->
+          <div class="ui-g">
+
+            <div class="ui-md-2 ui-lg-2"></div>
+            <div class="ui-md-8 ui-lg-8 ui-sm-12">
+              <button [disabled]="enable" printSectionId="content" ngxPrint pButton type="button" label="PRINT"
+                style="margin-top: 0px; background-color:green;width:100%;"></button>
+
+            </div>
+
+          </div>
+
         </div>
       </form>
     </div>
@@ -135,89 +147,44 @@
 
 </div>
 
-
 <!-- Print Section -->
+
+
 <div *ngIf="patientObservationObject.doctors !== undefined" id="content" [hidden]="true">
-  <div class="container">
-    <div class="row">
-      <div class="well col-xs-10 col-sm-10 col-md-6 col-xs-offset-1 col-sm-offset-1 col-md-offset-3">
-        <div class="row">
-          <span>
-            <div class="text-center ui-g-8">
-              <h1 style="text-align: center;text-decoration-line: underline">
-                OPD OBSERVATION RECEIPT
-              </h1>
-            </div>
-          </span>
-          <hr />
-        </div>
-        <br />
-        <div class="row">
-          <span>
-            <div class="text-center ui-g-8">
-              <h3 style="text-align: left;text-decoration-line: underline">
-                Doctor Name :
-                {{ patientObservationObject.doctors['fullName'] }}
-              </h3>
-            </div>
-          </span>
-        </div>
-        <div class="row">
-          <span>
-            <div class="text-center ui-g-8">
-              <h3 style="text-align: left;text-decoration-line: underline">
-                Fees :
-                {{ patientObservationObject.fees }}
-              </h3>
-            </div>
-          </span>
-        </div>
-        <br />
-        <div class="row">
-          <span>
-            <div class="text-center ui-g-8">
-              <h3 style="text-align: left;text-decoration-line: underline">
-                Discount :
-                {{ patientObservationObject.discount }}
-              </h3>
-            </div>
-          </span>
-        </div>
-        <br />
-        <div class="row">
-          <span>
-            <div class="text-center ui-g-8">
-              <h3 style="text-align: left;text-decoration-line: underline">
-                CASH RECEVIED :
-                {{ patientObservationObject.cashRecieved }}
-              </h3>
-            </div>
-          </span>
-        </div>
-        <br />
-        <div class="row">
-          <span>
-            <div class="text-center ui-g-8">
-              <h3 style="text-align: left;text-decoration-line: underline">
-                TOTAL AMOUNT :
-                {{ patientObservationObject.total }}
-              </h3>
-            </div>
-          </span>
-        </div>
-        <br />
-        <div class="row">
-          <span>
-            <div class="text-center ui-g-8">
-              <h3 style="text-align: left;text-decoration-line: underline">
-                RETURN :
-                {{ patientObservationObject.cashRecieved - patientObservationObject.total }}
-              </h3>
-            </div>
-          </span>
-        </div>
-        <br />
-      </div>
+  <!-- <div *ngIf="addEmergency.name !== undefined"> -->
+
+  <h1 style="text-align: center; color:green;font-weight:bold;">OPD OBSERVATION RECEIPT</h1>
+  <hr style="border: 2px solid black;">
+  <div class="ui-g">
+
+    <p style="font-size: 20px;"> <b style="font-size: 20px;"> MR No: </b> {{patientMrNo}}</p>
+    <p style="font-size: 20px;"><b style="font-size: 20px;"> Name: </b> {{patientName}}</p>
+    <p style="font-size: 20px;"><b style="font-size: 20px;"> Doctor Name: </b>
+      {{ patientObservationObject.doctors['fullName'] }}</p>
+    <p style="font-size: 20px;"><b style="font-size: 20px;"> Date: </b> {{date |  date :'short'}}</p>
+
+
+
+
+
+    <hr style="border: 1px solid black;width:100%;" />
+
+    <div>
+      <span>Doctor Fees</span>
+      <span style="float: right;"> {{ patientObservationObject.fees }}</span>
+      <hr style="width:100%;" />
+      <span><b> Discount: </b> <span style="float: right;"> {{ patientObservationObject.discount }}</span></span>
+
+      <hr style="border:1px solid black;width:100%;" />
+      <span><b> Total Amount: </b> <span style="float:right;"> {{ patientObservationObject.total }}</span></span>
+      <hr style="border:1px solid black;width:100%;" />
     </div>
+
+
+
+
+
+
+
   </div>
 </div>

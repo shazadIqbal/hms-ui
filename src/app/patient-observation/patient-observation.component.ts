@@ -9,6 +9,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { MessageService, SelectItem } from 'primeng/api';
 import { ErserviceService } from '../services/erservice.service';
 import { patientobservation } from './patientobservation';
+import { PatientserviceService } from '../patientservice.service';
 import { from } from 'rxjs';
 
 @Component({
@@ -27,23 +28,34 @@ export class PatientObservationComponent implements OnInit {
   show: boolean = false;
   checked: boolean = false;
   enable: boolean;
-  disbaleSubmitButton : boolean = true;
+  patientName: String;
+  patientMrNo: Number;
+  date;
+
+  discountCheck = true;
 
   constructor(
+    private patientService: PatientserviceService,
     private router: Router,
     private messageService: MessageService,
     private doctorService: DoctorService,
     private patientObservationService: PatientObservationService,
     private activatedRoute: ActivatedRoute,
-    private _location : Location
-  ) {}
+    private _location: Location
+  ) { }
 
   ngOnInit() {
     // this.show = true
     this.enable = true;
     this.getDoctorsOption();
-    this.patientObservationObject.id = this.activatedRoute.snapshot.params['id'];
+    let id = this.activatedRoute.snapshot.params['id'];
+    this.patientObservationObject.id = id;
     console.log('this is id' + this.patientObservationObject.id);
+    this.patientService.getPatientsByMRNO(id).subscribe((a) => {
+      console.log(a)
+      this.patientName = a.name;
+      this.patientMrNo = a.id;
+    })
   }
 
   getDoctorsOption() {
@@ -81,6 +93,7 @@ export class PatientObservationComponent implements OnInit {
   }
   //Getting Doctors'fees
   doctorDropdown() {
+    this.date = new Date();
     // console.log(this.selectedDoctor);
     console.log(this.patientObservationObject.doctors['fullName']);
     this.patientObservationObject.fees = 0; //it will also work for the negative
@@ -98,6 +111,8 @@ export class PatientObservationComponent implements OnInit {
   }
   //FUNCTION FOR SUBMIT OPD CONSULTANCY
   submitOpd() {
+
+
     this.patientObservationService.savePatientObservation(this.patientObservationObject).subscribe(
       data => {
         console.log(this.patientObservationObject);
@@ -119,14 +134,8 @@ export class PatientObservationComponent implements OnInit {
     );
     console.log(this.patientObservationObject);
   }
-  onGreaterDiscount(){
-    if(this.patientObservationObject.discount > this.patientObservationObject.fees){
-      this.disbaleSubmitButton = false;
-    }
-    else{
-      this.disbaleSubmitButton = true;
-    }
-  }
+
+
 
   //function for totalprice
   getTotal(value: any) {
@@ -136,13 +145,31 @@ export class PatientObservationComponent implements OnInit {
     this.patientObservationObject.total = this.patientObservationObject.fees - this.patientObservationObject.discount;
   }
 
-  discount(){
-    this.onGreaterDiscount();
-    console.log("hello discount")
-   let discount = this.patientObservationObject.discount;
-   if(discount <= this.patientObservationObject.fees){
-    this.patientObservationObject.total = this.patientObservationObject.fees - discount;
-   }
+
+
+  discounter(value) {
+
+    let dis = value;
+
+    this.patientObservationObject.total = this.patientObservationObject.fees;
+
+    dis > this.patientObservationObject.total ? this.discountCheck = false : this.discountCheck = true;
+    dis ? 0 : dis;
+
+    this.patientObservationObject.discount = dis;
+
+    this.patientObservationObject.total = this.patientObservationObject.total - this.patientObservationObject.discount;
 
   }
+
+
+  numberOnly(event): boolean {
+    const charCode = event.which ? event.which : event.keyCode;
+    if (charCode > 31 && (charCode < 48 || charCode > 57 || charCode < 44)) {
+      return false;
+    }
+    return true;
   }
+
+}
+

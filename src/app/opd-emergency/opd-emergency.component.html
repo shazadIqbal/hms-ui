@@ -132,7 +132,7 @@
                   <span class="ui-inputgroup-addon" style="width:37%;font-size:15px;font-weight: bold;">
                     Discount</span>
 
-                  <input type="number" (keypress)="numberOnly($event)" (ngModelChange)="discounter($event)" min="0"
+                  <input type="text" (keypress)="numberOnly($event)" (ngModelChange)="discounter($event)" min="0"
                     name="discount" [(ngModel)]="addEmergency.discount" pInputText placeholder="0">
 
 
