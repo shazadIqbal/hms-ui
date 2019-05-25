@@ -8,6 +8,7 @@
 
 <div class="ui-g-12">
   <p-toast></p-toast>
+
   <p-card header="OPD CONSULTANCY" [style]="{
     width: '80%',
     'font-size': '26px',
@@ -18,6 +19,7 @@
     <div class="ui-g ui-fluid">
       <hr style="height:2px;width:100%;background-color:green;" />
       <form style="width:100%;" #myForm="ngForm" (ngSubmit)="submitOpd(myForm.value)">
+
         <div *ngIf="checkStatus">
           <p-progressSpinner></p-progressSpinner>
           <!-- here message from the server -->
@@ -26,10 +28,12 @@
           <div class="ui-g" style="margin-top:-20px !important;">
             <div class="ui-md-3 ui-lg-3 ui-sm-0"></div>
             <div class="ui-md-1 ui-lg-1 ui-sm-0"></div>
+
             <br>
             <div class="ui-md-4 ui-lg-4 ui-sm-12">
               <button pButton type="button" label="Click to reload"
                 style="margin-top: 0px; background-color:green;width:100%;" onclick="location.reload()"></button>
+
             </div>
           </div>
           <hr style="height:2px;width:100%;background-color:green;" />
@@ -41,6 +45,7 @@
             <div class="ui-md-2 ui-lg-2"></div>
             <div class="ui-md-8 ui-lg-8 ui-sm-12">
               <div class="ui-inputgroup">
+
                 <span class="ui-inputgroup-addon" style="width:37%;font-size:15px;font-weight:bold;">Select panel</span>
                 <p-dropdown (onChange)="panelsDropdown()" [options]="panels" name="panels" [(ngModel)]="selectedPanel"
                   [filter]="true" [style]="{ width: '100%', height: '100%','font-size':'20px'}"
@@ -50,11 +55,13 @@
           </div>
 
 
+
           <!-- Add Doctor dropdwon -->
           <div class="ui-g">
             <div class="ui-md-2 ui-lg-2"></div>
             <div class="ui-md-8 ui-lg-8 ui-sm-12">
               <div class="ui-inputgroup">
+
                 <span class="ui-inputgroup-addon" style="width:37%;font-size:15px;font-weight:bold;">Select Doctor<i
                     style="color: red">*</i></span>
                 <p-dropdown (onChange)="doctorDropdown()" [options]="doctors" name="doctors"
@@ -85,9 +92,13 @@
             <div class="ui-inputgroup">
               <span class="ui-inputgroup-addon" style="width:45%;font-size:15px;font-weight: bold;">Discount $$</span>
               <input type="number" name="discount" pInputText ngModel min="0" placeholder="Rs"
-                [readOnly]="editablediscountfield" [(ngModel)]="opdObject.discount" (change)="onchangediscount()" />
+                [readOnly]="editablediscountfield" [(ngModel)]="opdObject.discount" (ngModelChange)="discounter($event)"/>
 
             </div>
+            <div style="padding:0px !important;margin-bottom:0px !important;font-size: 16px; text-align:center;"
+                  class="alert alert-danger" [hidden]="discountCheck">
+                  discount is more than total price!
+                </div>
           </div>
         </div>
         <!-- Cash Recvied -->
@@ -117,7 +128,7 @@
         <div class="ui-g" style="margin-top:-20px !important;">
           <div class="ui-md-2 ui-lg-2"></div>
           <div class="ui-md-8 ui-lg-8 ui-sm-12">
-            <button [disabled]="myForm.invalid" pButton type="submit" label="SAVE"
+            <button [disabled]="myForm.invalid  || !discountCheck" pButton type="submit" label="SAVE"
               style="margin-top: 0px; background-color:green;width:100%;"></button>
           </div>
         </div>
@@ -130,6 +141,7 @@
           </div>
         </div>
 
+
       </form>
     </div>
   </p-card>
@@ -139,10 +151,6 @@
 
 
 
-
-
-
-<!-- Print Section -->
 
 
 
@@ -190,17 +198,19 @@
       <hr style="border:1px solid black;width:100%;" />
       <div style="margin-bottom:5px;">
         <span><b> Total: </b> <span style="float: right;"> {{ opdObject.total }}</span></span>
+
       </div>
       <hr style="border:1px solid black;width:100%;" />
 
 
     </div>
 
-
-
-
-
   </div>
-
-
 </div>
+
+
+
+
+
+
+

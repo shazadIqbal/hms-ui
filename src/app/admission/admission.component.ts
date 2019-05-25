@@ -65,5 +65,8 @@ export class AdmissionComponent implements OnInit {
         console.log(data[i]);
       }
     });
+    this.admissionSer.getBedsForSelectBedType(this._admission.bedType).subscribe(data=>{
+        console.log(data);
+    });
   }
 }
