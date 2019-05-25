@@ -7,7 +7,6 @@
 
 <app-monitorquickview> </app-monitorquickview>
 
-
 <div class="ui-g-12">
     <p-toast></p-toast>
     <p-card header="OPD GYNY" [style]="{
@@ -121,52 +120,53 @@
     <p-toast></p-toast>
 </div>
 
-
-
 <!-- printing section -->
 <div *ngIf="opdGynyObject.doctors !== undefined" id="content" [hidden]="true">
     <!-- <div *ngIf="addEmergency.name !== undefined"> -->
 
-    <h1 style="text-align: center; color:green;font-weight:bold;">OPD GYNY RECEIPT</h1>
-    <hr style="border: 2px solid black;">
+    <h1 style="text-align: center; color:green;font-weight:bold;">
+        OPD GYNY RECEIPT
+    </h1>
+    <hr style="border: 2px solid black;" />
+    <h3 *ngIf="!patientRegistration" style="color: crimson">
+        Pregnant women must register first!
+    </h3>
     <div class="ui-g">
+        <p style="font-size: 20px;">
+            <b style="font-size: 20px;">Patient MR No: </b> {{ patientMrNo }}
+        </p>
+        <p style="font-size: 20px;">
+            <b style="font-size: 20px;">Patient Name: </b> {{ patientName }}
+        </p>
 
-        <p style="font-size: 20px;"> <b style="font-size: 20px;">Patient MR No: </b> {{patientMrNo}}</p>
-        <p style="font-size: 20px;"><b style="font-size: 20px;">Patient Name: </b> {{patientName}}</p>
-
-        <p style="font-size: 20px;"><b style="font-size: 20px;">Doctor Name: </b> {{opdGynyObject.doctors["fullName"]}}</p>
-        <p style="font-size: 20px;"><b style="font-size: 20px;"> Date: </b> {{date | date :'short'}}</p>
-
-
-
+        <p style="font-size: 20px;">
+            <b style="font-size: 20px;">Doctor Name: </b> {{ opdGynyObject.doctors["fullName"] }}
+        </p>
+        <p style="font-size: 20px;">
+            <b style="font-size: 20px;"> Date: </b> {{ date | date: "short" }}
+        </p>
 
         <div>
-
-
             <hr style="width:100%;border:1px solid black;" />
             <div style="margin-bottom:5px;">
-                <span><b> Cash Received: </b> <span style="float: right;"> {{opdGynyObject.cashRecieved}}</span></span>
-            </div>
-            <div style="margin-bottom:5px;">
-                <span><b> Discount: </b> <span style="float: right;"> {{opdGynyObject.discount}}</span></span>
-
+                <span><b> Cash Received: </b>
+          <span style="float: right;">
+            {{ opdGynyObject.cashRecieved }}</span
+          ></span
+        >
+      </div>
+      <div style="margin-bottom:5px;">
+        <span
+          ><b> Discount: </b>
+          <span style="float: right;"> {{ opdGynyObject.discount }}</span></span>
             </div>
             <hr style="border:1px solid black;width:100%;" />
 
             <div style="margin-bottom:5px;">
-                <span><b> Total: </b> <span style="float:right;">{{opdGynyObject.total}}</span></span>
+                <span><b> Total: </b>
+          <span style="float:right;">{{ opdGynyObject.total }}</span></span>
             </div>
             <hr style="border:1px solid black;width:100%;" />
-
-
-
         </div>
-
-
-
-
-
     </div>
-
-
 </div>

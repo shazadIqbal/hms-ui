@@ -1,17 +1,23 @@
-<div class="col-g-12">
+<p-toast></p-toast>
+<div class="ui-g-12">
     <div class="ui-lg-5 ui-md-5 ui-sm-12">
-        <button pButton type="button" class="backBtnStyle" (click)="backToMonitor()" style="width:45%;margin-left:30% " label="Back"></button>
+        <button pButton type="button" class=" ui-button-success" (click)="backToMonitor()" style="width:45%;margin-left:30% " label="Back"></button>
     </div>
 </div>
-<app-monitorquickview> </app-monitorquickview>
-<br>
-<br>
-<p-card header="Patient Transactions" [style]="{'width': '100%','color':'#3EB650'}">
+<div class="ui-g-12">
+    <app-monitorquickview> </app-monitorquickview>
+</div>
 
-    <hr>
-    <p-table #dt [columns]="cols" [value]="transaction">
+
+<div class="ui-g-12">
+
+    <p-table style="text-align: center;" [paginator]="true" [rows]="10" [style]="{ 'margin-top': '20px' }" #dt [columns]="cols" [value]="transaction">
 
         <ng-template pTemplate="caption">
+            <div class="ui-g-12">
+                <h1 style="font-weight:bold;color: green;">PATIENT TRANSACTION</h1>
+                <hr style="background-color:rgb(17, 17, 17);height:3px;" />
+            </div>
             <div style="text-align: right">
                 <i class="fa fa-search" style="margin:4px 4px 0 0"></i>
                 <input type="text" pInputText size="50" placeholder="Global Filter" (input)="dt.filterGlobal($event.target.value, 'contains')" style="width:auto">
@@ -22,6 +28,9 @@
             <tr>
                 <th *ngFor="let col of columns">
                     {{col.header}}
+                </th>
+                <th style="text-align: center;" pResizableColumn>
+                    Actions
                 </th>
 
             </tr>
@@ -36,13 +45,16 @@
                 <td *ngFor="let col of columns" style="overflow: auto;">
                     {{rowData[col.field]}}
                 </td>
-                <!-- <td><button pButton type="button" (click)="deletePanelByID(rowData['id'])" class="ui-button-danger"
-                      style="height: 50px; margin-left: 40%; ">
-                      <img src="https://img.icons8.com/color/48/000000/cancel.png" />
-                  </button>
-              </td> -->
+                <td>
+
+
+                    <app-transaction-edit [dues]="rowData['dues']" [receivedAmount]="rowData['receivedAmount']" [transactionId]="rowData['id']" [data]="datasource"></app-transaction-edit>
+
+
+                    <button pButton [ngStyle]="{width:'80px',margin:'8px'}" type="button" label="Delete" class="ui-button-error" (click)="deletePatientTransaction(rowData['transactionRefId'])"></button>
+                </td>
+
             </tr>
         </ng-template>
     </p-table>
-
-</p-card>
+</div>

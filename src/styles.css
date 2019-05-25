@@ -51,6 +51,8 @@ body .ui-panel .ui-panel-content {
     background-color: #3e8e41;
 }
 
-.button:hover {
-    background-color: #3e8e41;
+.colorSetAllButtons{
+ background-color: #479761 !important;
 }
+
+
