@@ -5,6 +5,11 @@ import { DoctorService } from '../adddoctor/doctor.service';
 import { OpdGynyService } from '../Services/opd-gyny.service';
 import { opdGynyModel } from './opd-gyny';
 import { PatientserviceService } from '../patientservice.service';
+import { Package } from '../addpackage/package';
+import { PackageServiceService } from '../Services/package-service.service';
+import { Gyny } from './gyny';
+import { Dropdown } from 'primeng/dropdown';
+
 
 @Component({
   selector: 'app-opd-gyny',
@@ -27,6 +32,12 @@ export class OpdGynyComponent implements OnInit {
   date;
   checked: boolean = false;
   private opdGynyObject : opdGynyModel = new opdGynyModel();
+  facilitydrop: SelectItem[];
+  //packages: Package = new Package();
+  package: Package = new Package();
+  gyne : Gyny = new Gyny();
+  patientRegistration : any;
+  disbaleSubmitButton : boolean = true;
 
 
   constructor(
@@ -35,10 +46,11 @@ export class OpdGynyComponent implements OnInit {
     private doctorService: DoctorService,
     private opd_gynyService: OpdGynyService,
     private activatedRoute : ActivatedRoute,
-    private patientService: PatientserviceService
+    private patientService: PatientserviceService,
+    private packageService: PackageServiceService,
     
-  ) { 
-    
+  ) {
+    //this.package.pFacility.push({label:'No Package',value:'NOPACKAGE'}); 
 
   }
 
@@ -46,14 +58,20 @@ export class OpdGynyComponent implements OnInit {
 
     this.enable = true;
     this.getDoctorsOption();
+    this.getPackage();
     let id=this.activatedRoute.snapshot.params['id'];
     this.opdGynyObject.id = id;
-    this.patientService.getPatientsByMRNO(id).subscribe((a) => {
-      console.log(a)
-      this.patientName = a.name;
-      this.patientMrNo = a.id;
+    this.patientService.getPatientsByMRNO(id).subscribe(data => {
+      
+      this.patientName = data.name;
+      this.patientMrNo = data.id;
+      this.patientRegistration = data.gynAndObsRegistration;
+      console.log("this is data ", data);
+      console.log("this is local variable in which data.name is assigned" , this.patientRegistration);
+
     })
-    console.log("this is the id in going to model", this.opdGynyObject.id);
+    
+    
   }
 
 
@@ -97,21 +115,87 @@ export class OpdGynyComponent implements OnInit {
   }
  
 
-  doctorDropdown() {
-    // console.log(this.selectedDoctor);
-    console.log(this.opdGynyObject.doctors["fullName"]);
+getPackage(){
+  this.opdGynyObject.fees = 0;
+  this.facilitydrop=[];
+  this.facilitydrop.push({label:'No Package',value:'NOPACKAGE'})
+  //this.package.pFacility.push("hello");
+  this.gyne.pFacility = "NOPACKAGE";
+  this.packageService.getPackages().subscribe( 
+  data =>{  
+    console.log("th",data)
+    if(data){
+          data.forEach(e=>{
+          this.facilitydrop.push({
+            label: e.pName+" | "+e.pFacility,
+            value: {pName:e.pName,pFacility:e.pFacility,pSponsor:e.pSponsor,pPrice:e.pPrice}
+          });
+          }) 
+    }
+
+  },error=>{
+    console.log(error);
+
+  });
+
+  
+
+
+}
+
+  packageFacilityDropdown(dropdown: Dropdown){
     this.opdGynyObject.fees = 0; //it will also work for the negative
     this.opdGynyObject.total = 0;
     this.opdGynyObject.discount = 0;
-    this.opdGynyObject.fees = this.opdGynyObject.doctors["fees"];
+    this.opdGynyObject.fees=this.gyne.pFacility["pPrice"];
+    console.log(this.facilitydrop["pPrice"])
+    if(this.gyne.pFacility == "NOPACKAGE"){
+      //this.opdGynyObject.doctors="no doc"; //console.log();
+      dropdown.selectedOption = null;
+    }
+    
+      this.opdGynyObject.total = this.gyne.pFacility["pPrice"];
+    
+    
+    //this.opdGynyObject.fees = this.facilitydrop;
+  }
+  
+
+
+  doctorDropdown() {
+    // console.log(this.selectedDoctor);
+    console.log(this.opdGynyObject.doctors["fullName"]);
+    //it will also work for the negative
+    this.opdGynyObject.total = 0;
+    this.opdGynyObject.discount = 0;
+    if(this.gyne.pFacility["pFacility"] == undefined){
+      this.opdGynyObject.fees = 0;
+      this.opdGynyObject.fees = this.opdGynyObject.doctors["fees"]*2;
+    }
     console.log(this.opdGynyObject.fees)
     this.opdGynyObject.total = this.opdGynyObject.fees;
   }
 
+  onGreaterDiscount(){
+    if(this.opdGynyObject.discount > this.opdGynyObject.fees || this.opdGynyObject.discount > this.gyne.pFacility["pPrice"] ){
+      this.disbaleSubmitButton = false;
+    }
+    else{
+       this.disbaleSubmitButton = true;
+    }
+  }
+
   onChangeDiscount(){
+    this.onGreaterDiscount();
     console.log("hello discount")
-   let discount = this.opdGynyObject.discount/100;
-   this.opdGynyObject.total = this.opdGynyObject.fees - (discount * this.opdGynyObject.fees)
+   let discount = this.opdGynyObject.discount;
+   if(discount <= this.opdGynyObject.fees){
+    this.opdGynyObject.total = this.opdGynyObject.fees - discount;
+   }
+   else if(discount <= this.gyne.pFacility["pPrice"]){
+    this.opdGynyObject.total = this.gyne.pFacility["pPrice"] - discount;
+   }
+    
   }
   //FUNCTION FOR BACK BUTTON
   backToMonitor() {
@@ -149,8 +233,6 @@ export class OpdGynyComponent implements OnInit {
   //function for totalprice
   getTotal(value: any) {
     this.opdGynyObject.cashRecieved = 0;
-    console.log(value);
-    this.opdGynyObject.discount = 0;
     this.opdGynyObject.cashRecieved = value;
     this.opdGynyObject.total = this.opdGynyObject.total;
   }
