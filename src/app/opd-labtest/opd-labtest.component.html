@@ -23,12 +23,12 @@
 
 
 
-    <div>
-      <span style="font-weight:bold;">Labtest</span><span style="font-weight:bold;float: right;">Price</span>
-      <hr style="border: 1px solid black;width:100%;" />
-      <div *ngFor="let lab of labtestArray" style="margin: 5px">
-        <span>{{lab.name}}</span>
-        <span style="float: right;">{{lab.price}}</span>
+        <div>
+            <span style="font-weight:bold;">Labtest</span><span style="font-weight:bold;float: right;">Price</span>
+            <hr style="border: 1px solid black;width:100%;" />
+            <div *ngFor="let lab of labtestArray" style="margin: 5px">
+                <span>{{lab.name}}</span>
+                <span style="float: right;">{{lab.price}}</span>
 
 
 
@@ -72,20 +72,20 @@
       color: 'green'
   }">
 
-      <div class="ui-g ui-fluid">
-        <hr style="height:2px;width:100%;background-color:green; margin-top: 0px" />
-        <form style="width:100%" #myForm="ngForm" (ngSubmit)=saveOpdLabTest();>
-          <div *ngIf="showspinloading">
-            <p-progressSpinner></p-progressSpinner>
-            <h2>{{showspinLoadingMessage}}</h2>
-          </div>
-          <div *ngIf="show">
-            <div class="ui-g">
-              <div class="ui-md-2 ui-lg-2"></div>
-              <div class="ui-md-8 ui-lg-8 ui-sm-12">
-                <div class="ui-inputgroup">
+            <div class="ui-g ui-fluid">
+                <hr style="height:2px;width:100%;background-color:green; margin-top: 0px" />
+                <form style="width:100%" #myForm="ngForm" (ngSubmit)=saveOpdLabTest();>
+                    <div *ngIf="showspinloading">
+                        <p-progressSpinner></p-progressSpinner>
+                        <h2>{{showspinLoadingMessage}}</h2>
+                    </div>
+                    <div *ngIf="show">
+                        <div class="ui-g">
+                            <div class="ui-md-2 ui-lg-2"></div>
+                            <div class="ui-md-8 ui-lg-8 ui-sm-12">
+                                <div class="ui-inputgroup">
 
-                  <span class="ui-inputgroup-addon" style="width:37%;font-size:15px;font-weight: bold;">
+                                    <span class="ui-inputgroup-addon" style="width:37%;font-size:15px;font-weight: bold;">
                     Select LabTest<i
                     style="color: red">*</i></span>
 
@@ -118,15 +118,14 @@
 
 
 
-            <div class="ui-g">
-              <div class="ui-md-2 ui-lg-2"></div>
-              <div class="ui-md-8 ui-lg-8 ui-sm-12">
-                <div class="ui-inputgroup">
-                  <span class="ui-inputgroup-addon" style="width:37%;font-size:15px; font-weight: bold;">
+                        <div class="ui-g">
+                            <div class="ui-md-2 ui-lg-2"></div>
+                            <div class="ui-md-8 ui-lg-8 ui-sm-12">
+                                <div class="ui-inputgroup">
+                                    <span class="ui-inputgroup-addon" style="width:37%;font-size:15px; font-weight: bold;">
                     Cash Recieve<i
                     style="color: red">*</i></span>
-                  <input type="text" name="cashRecieve" (keypress)="numberOnly($event)" [(ngModel)]="addLabTests.cashRecieve" pInputText placeholder="$"
-                    required>
+                                    <input type="text" name="cashRecieve" (keypress)="numberOnly($event)" [(ngModel)]="addLabTests.cashRecieve" pInputText placeholder="$" required>
 
 
                                 </div>
@@ -176,13 +175,9 @@
                     </div>
 
                 </form>
+
             </div>
+        </p-card>
 
-          </div>
-        </form>
-      </div>
-    </p-card>
-
-  </div>
+    </div>
 </div>
-
