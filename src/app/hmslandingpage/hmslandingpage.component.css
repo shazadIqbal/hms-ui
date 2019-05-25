@@ -1,104 +1,89 @@
 .ui-g-12 {
-  margin-top: 5%;
- 
+    margin-top: 5%;
 }
 
 .wrap {
-  
-  height:100vh !important;
- 
-  background-size: cover;
-  background-position: center center;
-  background-image: url("../../assets/img.jpg")
+    height: 100vh !important;
+    background-size: cover;
+    background-position: center center;
+    background-image: url("../../assets/hospital2.jpg")
 }
 
-body
-{
-  font-family: 'Mukta', sans-serif;
+body {
+    font-family: 'Mukta', sans-serif;
 }
-
 
 .card-signin {
-  border: 0;
-  border-radius:0px;
-  background-color: rgb(255, 255, 255);
-  height:350px !important;
- 
- 
-  box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.8);
+    border: 0;
+    border-radius: 0px;
+    background-color: rgb(255, 255, 255);
+    height: 350px !important;
+    box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.8);
 }
 
 .card-signin .card-title {
-  margin-bottom: 2rem;
-  font-weight: 300;
-  font-size: 1.5rem;
-  text-align: center;
+    margin-bottom: 2rem;
+    font-weight: 300;
+    font-size: 1.5rem;
+    text-align: center;
 }
 
 .card-signin .card-body {
-  padding: 2rem;
+    padding: 2rem;
 }
 
 .form-signin {
-  width: 100%;
+    width: 100%;
 }
 
 .form-signin .btn {
-  font-size: 80%;
-  border-radius: 5rem;
-  letter-spacing: .1rem;
-  font-weight: bold;
-  padding: 1rem;
-  transition: all 0.2s;
+    font-size: 80%;
+    border-radius: 5rem;
+    letter-spacing: .1rem;
+    font-weight: bold;
+    padding: 1rem;
+    transition: all 0.2s;
 }
 
 .form-label-group {
-  position: relative;
-  margin-bottom: 2rem;
- 
+    position: relative;
+    margin-bottom: 2rem;
 }
 
 .form-label-group input {
-  height: auto;
-  border-radius:0px;
+    height: auto;
+    border-radius: 0px;
 }
 
-
-#login
-{
-  background-color: rgb(95, 196, 95);
+#login {
+    background-color: rgb(95, 196, 95);
 }
 
-.input-group
-{
-  margin-bottom:26px !important;
+.input-group {
+    margin-bottom: 26px !important;
 }
 
 .form-label-group>label {
-  position: absolute;
-  top: 0;
-  left: 0;
-  display: block;
-  width: 100%;
-  margin-bottom: 0;
-  /* Override default `<label>` margin */
-  line-height: 1.5;
-  color: #495057;
-  border: 1px solid transparent;
-  border-radius: .25rem;
-  transition: all .1s ease-in-out;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+    width: 100%;
+    margin-bottom: 0;
+    /* Override default `<label>` margin */
+    line-height: 1.5;
+    color: #495057;
+    border: 1px solid transparent;
+    border-radius: .25rem;
+    transition: all .1s ease-in-out;
 }
 
-
-#loginForm
-{
-  margin-top: 98px;
- 
+#loginForm {
+    margin-top: 98px;
 }
 
-
-button:hover{
-  border-color: rgb(0, 162, 255);
-  box-shadow: inset 0 2px 2px rgba(58, 153, 190, 0.075), 0 0 8px rgba(70, 131, 209, 0.6);
-  font-size: 18px !important;
+button:hover {
+    border-color: rgb(0, 162, 255);
+    box-shadow: inset 0 2px 2px rgba(58, 153, 190, 0.075), 0 0 8px rgba(70, 131, 209, 0.6);
+    font-size: 18px !important;
 }

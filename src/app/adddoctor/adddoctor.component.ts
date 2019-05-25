@@ -29,6 +29,7 @@ export class AdddoctorComponent implements OnInit {
   selectedcity1: any;
 
 
+
   constructor(
     private drservice: DoctorService,
     private router: Router,

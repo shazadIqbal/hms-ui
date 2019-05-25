@@ -1,56 +1,48 @@
 <div class="col-g-12">
     <div class="ui-lg-5 ui-md-5 ui-sm-12">
-      <button
-        pButton
-        type="button"
-        class=" ui-button-success"
-        (click)="backToMonitor()"
-        style="width:45%;margin-left:30% "
-        label="Back"
-      ></button>
+        <button pButton type="button" class="backBtnStyle" (click)="backToMonitor()" style="width:45%;margin-left:30% " label="Back"></button>
     </div>
-  </div>
+</div>
 <app-monitorquickview> </app-monitorquickview>
 <br>
 <br>
 <p-card header="Patient Transactions" [style]="{'width': '100%','color':'#3EB650'}">
 
-  <hr>
-  <p-table #dt [columns]="cols" [value]="transaction">
+    <hr>
+    <p-table #dt [columns]="cols" [value]="transaction">
 
-      <ng-template pTemplate="caption">
-          <div style="text-align: right">
-              <i class="fa fa-search" style="margin:4px 4px 0 0"></i>
-              <input type="text" pInputText size="50" placeholder="Global Filter"
-                  (input)="dt.filterGlobal($event.target.value, 'contains')" style="width:auto">
-          </div>
+        <ng-template pTemplate="caption">
+            <div style="text-align: right">
+                <i class="fa fa-search" style="margin:4px 4px 0 0"></i>
+                <input type="text" pInputText size="50" placeholder="Global Filter" (input)="dt.filterGlobal($event.target.value, 'contains')" style="width:auto">
+            </div>
 
-      </ng-template>
-      <ng-template pTemplate="header" let-columns>
-          <tr>
-              <th *ngFor="let col of columns">
-                  {{col.header}}
-              </th>
+        </ng-template>
+        <ng-template pTemplate="header" let-columns>
+            <tr>
+                <th *ngFor="let col of columns">
+                    {{col.header}}
+                </th>
 
-          </tr>
-          <!-- <div *ngIf="showLoading" style="margin-left: 325%;">
+            </tr>
+            <!-- <div *ngIf="showLoading" style="margin-left: 325%;">
               <p-progressSpinner></p-progressSpinner>
           </div> -->
-      </ng-template>
+        </ng-template>
 
-      <ng-template pTemplate="body" let-rowData let-columns="columns">
+        <ng-template pTemplate="body" let-rowData let-columns="columns">
 
-          <tr [pSelectableRow]="rowData">
-              <td *ngFor="let col of columns" style="overflow: auto;">
-                  {{rowData[col.field]}}
-              </td>
-              <!-- <td><button pButton type="button" (click)="deletePanelByID(rowData['id'])" class="ui-button-danger"
+            <tr [pSelectableRow]="rowData">
+                <td *ngFor="let col of columns" style="overflow: auto;">
+                    {{rowData[col.field]}}
+                </td>
+                <!-- <td><button pButton type="button" (click)="deletePanelByID(rowData['id'])" class="ui-button-danger"
                       style="height: 50px; margin-left: 40%; ">
                       <img src="https://img.icons8.com/color/48/000000/cancel.png" />
                   </button>
               </td> -->
-          </tr>
-      </ng-template>
-  </p-table>
+            </tr>
+        </ng-template>
+    </p-table>
 
 </p-card>

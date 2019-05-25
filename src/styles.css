@@ -1,26 +1,56 @@
 /* You can add global styles to this file, and also import other style files */
 
 @keyframes ui-progress-spinner-color {
-  100%,
-  0% {
-    stroke: #d62d20;
-  }
-  40% {
-    stroke: #0057e7;
-  }
-  66% {
-    stroke: #008744;
-  }
-  80%,
-  90% {
-    stroke: #ffa700;
-  }
+    100%,
+    0% {
+        stroke: #d62d20;
+    }
+    40% {
+        stroke: #0057e7;
+    }
+    66% {
+        stroke: #008744;
+    }
+    80%,
+    90% {
+        stroke: #ffa700;
+    }
 }
+
 .loading-indicator {
-  width: 40%;
-  margin-left: 44%;
-  overflow: hidden;
-  background: none;
+    width: 40%;
+    margin-left: 44%;
+    overflow: hidden;
+    background: none;
 }
 
+.colorSetAllButtons {
+    background-color: #479761 !important;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    color: white;
+}
 
+body .ui-panel .ui-panel-content {
+    background-color: transparent !important;
+    color: #333333;
+    padding: 0.571em 1em;
+}
+
+.backBtnStyle {
+    background-color: #479761 !important;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    color: white !important;
+}
+
+.submitBtnStyle {
+    background-color: #479761 !important;
+    color: white;
+}
+
+.button:hover {
+    background-color: #3e8e41;
+}
+
+.button:hover {
+    background-color: #3e8e41;
+}

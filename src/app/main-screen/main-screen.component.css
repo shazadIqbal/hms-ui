@@ -1,0 +1,19 @@
+/* .colorSetAllButtons {
+        background-color: #479761 !important;
+        box-shadow: 5px 5px grey;
+    } */
+
+body,
+html .backgroundImage {
+    background: url('../../assets/back.jpg');
+    background-size: cover;
+    background-repeat: repeat-y;
+    height: 94vh;
+    /* overflow: hidden; */
+    width: 100%;
+    background-position: center;
+}
+
+.shadowPanel {
+    box-shadow: 5px 5px 20px 0px #c8c8c8;
+}

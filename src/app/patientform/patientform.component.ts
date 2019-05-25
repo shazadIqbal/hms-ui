@@ -16,7 +16,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 export class PatientformComponent implements OnInit {
   gender: any = [];
   patient: Patient = new Patient();
-  value : Date;
+  value: Date;
   isGynyObs: boolean = false;
   patientid: number;
 
@@ -26,7 +26,7 @@ export class PatientformComponent implements OnInit {
     private msgService: MessageService,
     private patientService: PatientserviceService,
     private router: Router,
-    private activeRoute:ActivatedRoute
+    private activeRoute: ActivatedRoute
   ) {
     this.gender = [{ label: 'Male', value: 'Male' }, { label: 'Female', value: 'Female' }];
   }
@@ -39,35 +39,35 @@ export class PatientformComponent implements OnInit {
 
     console.log(this.isGynyObs);
     this.patientid = this.activeRoute.snapshot.params['id'];
-    if(this.patientid){
-    this.gettingPatientById();
+    if (this.patientid) {
+      this.gettingPatientById();
     }
 
   }
 
-  isGynObsFn(){
+  isGynObsFn() {
     console.log(this.isGynyObs)
     this.patient.gynAndObsRegistration = this.isGynyObs;
-    console.log("mein gynu obs hon",this.patient.gynAndObsRegistration)
+    console.log("mein gynu obs hon", this.patient.gynAndObsRegistration)
   }
 
-  gettingPatientById(){
-    this.patientService.getPatientsByMRNO(this.patientid).subscribe(data=>{
-      if(this.patientid && data.gynAndObsRegistration == true){
+  gettingPatientById() {
+    this.patientService.getPatientsByMRNO(this.patientid).subscribe(data => {
+      if (this.patientid && data.gynAndObsRegistration == true) {
         this.isGynyObs = true;
         this.patient.name = data.name;
-        this.patient.cnic= data.cnic;
+        this.patient.cnic = data.cnic;
         this.patient.age = data.age;
         this.patient.address = data.address;
         this.patient.gender = data.gender;
         this.patient.phoneNo = data.phoneNo;
         this.patient.husbandOfAndFatherOf = data.husbandOfAndFatherOf;
-        this.patient.registrationDate =new Date(data.registrationDate);
+        this.patient.registrationDate = new Date(data.registrationDate);
         console.log("if main hun")
       }
-      else if(this.patientid){
+      else if (this.patientid) {
         this.patient.name = data.name;
-        this.patient.cnic= data.cnic;
+        this.patient.cnic = data.cnic;
         this.patient.age = data.age;
         this.patient.address = data.address;
         this.patient.gender = data.gender;
@@ -78,30 +78,30 @@ export class PatientformComponent implements OnInit {
   }
 
   // onSubmit() {
-    // if(this.patientid != undefined){
-    //   this.patientService.UpdatePatient(this.patientid,this.patient).subscribe(
-    //     data =>{
-    //       this.msgService.add({
-    //         severity: 'info',
-    //         summary: 'Service message',
-    //         detail: 'Patient updated successfully!'
-    //       });
-    //     },
-    //     error => {
-    //       console.log(error);
-    //       this.msgService.add({
-    //         severity: 'error',
-    //         summary: 'Error Found',
-    //         detail: 'Something went wrong check your internet connection '
-    //       });
-    //     }
+  // if(this.patientid != undefined){
+  //   this.patientService.UpdatePatient(this.patientid,this.patient).subscribe(
+  //     data =>{
+  //       this.msgService.add({
+  //         severity: 'info',
+  //         summary: 'Service message',
+  //         detail: 'Patient updated successfully!'
+  //       });
+  //     },
+  //     error => {
+  //       console.log(error);
+  //       this.msgService.add({
+  //         severity: 'error',
+  //         summary: 'Error Found',
+  //         detail: 'Something went wrong check your internet connection '
+  //       });
+  //     }
 
-    //   );
-    //   console.log("in update patient",this.patient);
-    // }
+  //   );
+  //   console.log("in update patient",this.patient);
+  // }
 
-    // else{
-    //   console.log("Request payload",this.patient)
+  // else{
+  //   console.log("Request payload",this.patient)
 
 
   showConfirm() {
@@ -111,11 +111,11 @@ export class PatientformComponent implements OnInit {
 
   onConfirm() {
     this.msgService.clear('c');
-    if(this.patientid != undefined){
-      this.patientService.UpdatePatient(this.patientid,this.patient).subscribe(
-        data =>{
+    if (this.patientid) {
+      this.patientService.UpdatePatient(this.patientid, this.patient).subscribe(
+        data => {
           this.msgService.add({
-            key:'p',
+            key: 'p',
             severity: 'info',
             summary: 'Service message',
             detail: 'Patient updated successfully!'
@@ -124,7 +124,7 @@ export class PatientformComponent implements OnInit {
         error => {
           console.log(error);
           this.msgService.add({
-            key:'p',
+            key: 'p',
             severity: 'error',
             summary: 'Error Found',
             detail: 'Something went wrong check your internet connection '
@@ -132,35 +132,44 @@ export class PatientformComponent implements OnInit {
         }
 
       );
-      console.log("in update patient",this.patient);
+      console.log("in update patient", this.patient);
     }
+    // Agr new patient aya hay koi add hony toh
+    else {
+      console.log("Request payload", this.patient)
 
-    else{
-      console.log("Request payload",this.patient)
+      this.patientService.postPatient(this.patient).subscribe(
+        data => {
 
-
-    this.patientService.postPatient(this.patient).subscribe(
-      data => {
-        this.msgService.add({
-          key: 'p',
-          severity: 'success',
-          summary: 'Patient Added',
-          detail: 'Added'
-        });
-
-      },
-      error => {
-        console.log(error);
-        this.msgService.add({
-          key: 'p',
-          severity: 'error',
-          summary: 'Error Found',
-          detail: 'Something went wrong check your internet connection '
-        });
-      }
-    );
+          if (data == "00") {
+            this.msgService.add({
+              key: 'p',
+              severity: 'success',
+              summary: 'Patient Added',
+              detail: 'Added'
+            });
+          }
+          else{
+            this.msgService.add({
+              key: 'p',
+              severity: 'warn',
+              summary: 'Paient Already Exists ',
+              detail: 'Failed'
+            });
+          }
+        },
+        error => {
+          console.log(error);
+          this.msgService.add({
+            key: 'p',
+              severity: 'warn',
+              summary: 'Paient Already Exists ',
+              detail: 'Failed'
+          });
+        }
+      );
+    }
   }
-}
 
   onReject() {
     this.msgService.clear('c');

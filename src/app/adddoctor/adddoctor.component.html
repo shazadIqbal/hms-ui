@@ -1,60 +1,35 @@
-<div class="ui-g-6 ui-lg-6 ui-sm-12">
-<button
-  pButton
-  type="button"
-  class="ui-button-success"
-  style="width:80%;margin-left:10%;  height:40px;"
-  (click)="routePage()"
-  label= "Back"
->
-</button>
+<div class="ui-g-12">
+    <div class="ui-lg-5 ui-md-5 ui-sm-12">
+        <button pButton type="button" class="backBtnStyle" (click)="routePage()" style="width:45%;margin-left:30% " label="Back"></button>
+    </div>
 </div>
 <div class="ui-g-12 ui-fluid ">
-  <div class="ui-g-12 ui-md-12">
-    <div class="container">
-      <p-card
-        header="ADD DOCTOR"
-        [style]="{
+    <div class="ui-g-12 ui-md-12">
+        <div class="container">
+            <p-card header="ADD DOCTOR" [style]="{
           width: '100%',
           'margin-top': '5px !important',
           color: '#3EB650',
           'text-align': 'center',
           height: '30% !important'
-        }"
-      >
-        <hr />
-        <form #myForm="ngForm">
-          <div class="ui-g ui-fluid">
-            <div class="ui-g-12 ui-sm-12 ui-md-4">
-              <div class="ui-inputgroup">
-                <span class="ui-inputgroup-addon" style="width: 30%"
-                  >FullName<i style="color: red">*</i>
+        }">
+                <hr />
+                <form #myForm="ngForm">
+                    <div class="ui-g ui-fluid">
+                        <div class="ui-g-12 ui-sm-12 ui-md-4">
+                            <div class="ui-inputgroup">
+                                <span class="ui-inputgroup-addon" style="width: 30%">FullName<i style="color: red">*</i>
                 </span>
-                <input
-                  style="width:100%;"
-                  type="text"
-                  required
-                  #abc="ngModel"
-                  pInputText
-                  placeholder="Full Name"
-                  [(ngModel)]="doctor.fullName"
-                  name="fullName"
-                  ngModel
-                />
-              </div>
-              <div
-                style="padding:0px;margin-bottom:4px"
-                [hidden]="abc.valid || abc.pristine"
-                class="alert alert-danger"
-              >
-                Please Enter a fullName
-              </div>
-            </div>
+                                <input style="width:100%;" type="text" required #abc="ngModel" pInputText placeholder="Full Name" [(ngModel)]="doctor.fullName" name="fullName" ngModel />
+                            </div>
+                            <div style="padding:0px;margin-bottom:4px" [hidden]="abc.valid || abc.pristine" class="alert alert-danger">
+                                Please Enter a fullName
+                            </div>
+                        </div>
 
-            <div class="ui-g-12 ui-sm-12 ui-md-4">
-              <div class="ui-inputgroup">
-                <span style="width:30%;" class="ui-inputgroup-addon"
-                  >Gender<i style="color: red">*</i></span
+                        <div class="ui-g-12 ui-sm-12 ui-md-4">
+                            <div class="ui-inputgroup">
+                                <span style="width:30%;" class="ui-inputgroup-addon">Gender<i style="color: red">*</i></span
                 >
                 <p-dropdown
                   [autoWidth]="false"
@@ -71,24 +46,14 @@
             <div class="ui-g-12 ui-sm-12 ui-md-4">
               <div class="ui-inputgroup">
                 <span style="width:20%" class="ui-inputgroup-addon">DOB</span>
-                <p-calendar
-                  [ngStyle]="{ width: '100%' }"
-                  [(ngModel)]="doctor.dateOfbirth"
-                  [monthNavigator]="true"
-                  [yearNavigator]="true"
-                  yearRange="1947:2090"
-                  name="DateOfBirth"
-                  showButtonBar="true"
-                  dateFormat="dd/mm/yy"
-                >
-                </p-calendar>
-              </div>
-            </div>
+                                <p-calendar [ngStyle]="{ width: '100%' }" [(ngModel)]="doctor.dateOfbirth" [monthNavigator]="true" [yearNavigator]="true" yearRange="1947:2090" name="DateOfBirth" showButtonBar="true" dateFormat="dd/mm/yy">
+                                </p-calendar>
+                            </div>
+                        </div>
 
-            <div class="ui-g-12 ui-sm-12 ui-md-4">
-              <div class="ui-inputgroup">
-                <span style="width:20%;" class="ui-inputgroup-addon"
-                  >Mobile<i style="color: red">*</i></span
+                        <div class="ui-g-12 ui-sm-12 ui-md-4">
+                            <div class="ui-inputgroup">
+                                <span style="width:20%;" class="ui-inputgroup-addon">Mobile<i style="color: red">*</i></span
                 >
                 <input
                   type="text"
@@ -283,6 +248,7 @@
                 <span style="width:20%;" class="ui-inputgroup-addon"
                   >Service</span
                 >
+                <p-toast key="s" [showTransitionOptions]="'2ms'"></p-toast>
                 <input
                   type="text"
                   pInputText
@@ -304,30 +270,16 @@
             <div class="ui-g-12 ui-sm-12 ui-md-4">
               <div class="ui-inputgroup">
                 <span style="width:20%;" class="ui-inputgroup-addon">CNIC</span>
-                <input
-                  type="text"
-                  pInputText
-                  #abi="ngModel"
-                  (keypress)="numberOnly($event)"
-                  placeholder="CNIC"
-                  name="cnic"
-                  [(ngModel)]="doctor.cnic"
-                  ngModel
-                />
-              </div>
-              <div
-                style="padding:0px;margin-bottom:4px"
-                [hidden]="abi.valid || abi.pristine"
-                class="alert alert-danger"
-              >
-                Please Enter your cnic
-              </div>
-            </div>
+                                <input type="text" pInputText #abi="ngModel" (keypress)="numberOnly($event)" placeholder="CNIC" name="cnic" [(ngModel)]="doctor.cnic" ngModel />
+                            </div>
+                            <div style="padding:0px;margin-bottom:4px" [hidden]="abi.valid || abi.pristine" class="alert alert-danger">
+                                Please Enter your cnic
+                            </div>
+                        </div>
 
-            <div class="ui-g-12 ui-sm-12 ui-md-4">
-              <div class="ui-inputgroup">
-                <span style="width:20%;" class="ui-inputgroup-addon"
-                  >Email</span
+                        <div class="ui-g-12 ui-sm-12 ui-md-4">
+                            <div class="ui-inputgroup">
+                                <span style="width:20%;" class="ui-inputgroup-addon">Email</span
                 >
                 <input
                   type="text"
@@ -523,8 +475,7 @@
             </div>
           </div>
         </form>
-        <p-toast key="s"></p-toast>
-        <p-toast key="u"></p-toast>
+        <p-toast key="u" [showTransitionOptions]="'3ms'"></p-toast>
       </p-card>
     </div>
   </div>
