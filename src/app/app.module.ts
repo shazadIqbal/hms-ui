@@ -99,6 +99,7 @@ import { FacilitiesComponent } from './Component/facilities/facilities.component
 import { GynyObsListComponent } from './gyny-obs-list/gyny-obs-list.component';
 
 import { MonitorquickviewComponent } from './monitorquickview/monitorquickview.component';
+import { TransactionEditComponent } from './transaction-edit/transaction-edit.component';
 
 
 
@@ -165,7 +166,9 @@ import { MonitorquickviewComponent } from './monitorquickview/monitorquickview.c
     //obsAndGynyRegistration-branch,
     GynyObsListComponent,
 
-    MonitorquickviewComponent
+    MonitorquickviewComponent,
+
+    TransactionEditComponent
 
 
   ],
@@ -197,7 +200,8 @@ import { MonitorquickviewComponent } from './monitorquickview/monitorquickview.c
     CheckboxModule
   ],
 
-  providers: [DoctorService, AddpanellistseviceService, MessageService, NavBarService, AuthGuard, AddErComponent, AdmissionService],
+  providers: [DoctorService, AddpanellistseviceService, MessageService, NavBarService, AuthGuard,PatientTransactionsComponent
+    , AddErComponent, AdmissionService],
 
   bootstrap: [AppComponent],
   exports: [FormsModule]

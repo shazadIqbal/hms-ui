@@ -4,7 +4,9 @@
       style="width:45%;margin-left:30% " label="Back"></button>
   </div>
 </div>
-<app-monitorquickview> </app-monitorquickview>
+<div class="ui-g-12">
+  <app-monitorquickview> </app-monitorquickview>
+</div>
 
 <div class="ui-g-12">
   <p-toast></p-toast>
@@ -80,7 +82,7 @@
           <div class="ui-md-8 ui-lg-8 ui-sm-12">
             <div class="ui-inputgroup">
               <span class="ui-inputgroup-addon" style="width:45%;font-size:15px;font-weight: bold;">Fees</span>
-              <input type="text" name="fees" pInputText ngModel required [(ngModel)]="opdObject.fees"
+              <input type="text" name="fees"  pInputText ngModel  [(ngModel)]="opdObject.fees"
                 [readOnly]="true" />
             </div>
           </div>
@@ -93,9 +95,13 @@
             <div class="ui-inputgroup">
               <span class="ui-inputgroup-addon" style="width:45%;font-size:15px;font-weight: bold;">Discount $$</span>
               <input type="number" name="discount" pInputText ngModel min="0" placeholder="Rs"
-                [readOnly]="editablediscountfield" [(ngModel)]="opdObject.discount" (change)="onchangediscount()" />
+                [readOnly]="editablediscountfield" [(ngModel)]="opdObject.discount" (ngModelChange)="discounter($event)"/>
 
             </div>
+            <div style="padding:0px !important;margin-bottom:0px !important;font-size: 16px; text-align:center;"
+                  class="alert alert-danger" [hidden]="discountCheck">
+                  discount is more than total price!
+                </div>
           </div>
         </div>
         <!-- Cash Recvied -->
@@ -125,7 +131,7 @@
         <div class="ui-g" style="margin-top:-20px !important;">
           <div class="ui-md-2 ui-lg-2"></div>
           <div class="ui-md-8 ui-lg-8 ui-sm-12">
-            <button [disabled]="myForm.invalid" pButton type="submit" label="SAVE"
+            <button [disabled]="myForm.invalid  || !discountCheck" pButton type="submit" label="SAVE"
               style="margin-top: 0px; background-color:green;width:100%;"></button>
           </div>
         </div>
@@ -204,10 +210,3 @@
 
   </div>
 </div>
-
-
-
-
-
-
-

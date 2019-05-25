@@ -1,47 +1,48 @@
 <br />
-<p-card
-  [style]="{
-    width: '80%',
-    'font-size': '18px',
-    'margin-left': '10%',
-    'text-align': 'none',
-    color: 'green',
-    height: '90px',
+<p-card [style]="{
+    width: '90%',
+    marginLeft:'5%',
+    'font-size': '16px',
     'text-align': 'center',
+    color: 'green',
     'line-height': '0px'
-  }"
->
-  <div [hidden]="!isLoading">
-    <div class="ui-g">
-      <div class="ui-lg-12 ui-md-3 ui-sm-12">
-        <p-progressSpinner
-          [ngStyle]="{ marginLeft: '40%' }"
-        ></p-progressSpinner>
+  }">
+  <div class="ui-g ui-fluid">
+    <div [hidden]="!isLoading">
+      <div class="ui-g">
+        <div  class="ui-lg-12 ui-md-3 ui-sm-12">
+          <div [ngStyle]="{ marginLeft: '40%' }">
+          <p-progressSpinner ></p-progressSpinner>
+        </div>
+        </div>
       </div>
     </div>
-  </div>
-  <div [hidden]="isLoading">
-    <div class="ui-g">
-      <div class="ui-lg-2 ui-md-1 ui-sm-12">
-        <label style="color:rgb(127, 128, 126)"
-          >Patient ID:
-          <span style="color:rgb(17, 17, 17)">{{ id }}</span></label
-        >
-      </div>
-      <div class="ui-lg-4 ui-md-5 ui-sm-12">
-        <label style="color:rgb(127, 128, 126)"
-          >Patient Name:
-          <span style="color:rgb(17, 17, 17)">{{ name }}</span></label
-        >
-      </div>
-      <div class="ui-lg-4 ui-md-3 ui-sm-12">
-        <label style="color:rgb(127, 128, 126)"
-          >Phone Number: <span style="color:rgb(17, 17, 17)">{{ number }}</span>
-        </label>
-      </div>
-      <div class="ui-lg-2 ui-md-3 ui-sm-12">
-        <label style="color:rgb(127, 128, 126)">Registration: </label>
-        <span style="color:rgb(17, 17, 17);font-weight: bold">{{ registration }}</span>
+    <div [hidden]="isLoading" style="width:100%;">
+      <div class="ui-g">
+        <div class="ui-lg-3 ui-md-6 ui-sm-12">
+          
+          <label style="color:rgb(127, 128, 126)">Patient ID:
+            <span style="color:rgb(17, 17, 17)"> {{ id }}</span></label>
+         
+        </div>
+        <div class="ui-lg-3 ui-md-6 ui-sm-12">
+         
+          <label style="color:rgb(127, 128, 126)">Patient Name:
+            <span style="color:rgb(17, 17, 17)"> {{ name | titlecase  }}</span></label>
+            
+        </div>
+        <div class="ui-lg-3 ui-md-6 ui-sm-12">
+         
+          <label style="color:rgb(127, 128, 126)">Phone Number: <span style="color:rgb(17, 17, 17)"> {{ number }}</span>
+          </label>
+        
+        </div>
+        <div class="ui-lg-3 ui-md-6 ui-sm-12">
+          
+          <label style="color:rgb(127, 128, 126)">Registration: </label>
+          <span style="color:rgb(17, 17, 17);">{{ registration }}</span>
+          
+        </div>
       </div>
     </div>
   </div>
