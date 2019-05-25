@@ -29,7 +29,7 @@
       <div *ngFor="let lab of labtestArray" style="margin: 5px">
         <span>{{lab.name}}</span>
         <span style="float: right;">{{lab.price}}</span>
-        
+
 
       </div>
       <hr style="width:100%;" />
@@ -70,6 +70,7 @@
       'text-align': 'center',
       color: 'green'
   }">
+
       <div class="ui-g ui-fluid">
         <hr style="height:2px;width:100%;background-color:green; margin-top: 0px" />
         <form style="width:100%" #myForm="ngForm" (ngSubmit)=saveOpdLabTest();>
@@ -84,7 +85,8 @@
                 <div class="ui-inputgroup">
 
                   <span class="ui-inputgroup-addon" style="width:37%;font-size:15px;font-weight: bold;">
-                    Select LabTest</span>
+                    Select LabTest<i
+                    style="color: red">*</i></span>
 
                   <p-multiSelect name="multiDropdown" [options]="multiDropdown" [(ngModel)]="addLabTests.labTests"
                     (onChange)="onChangeLabTest()" [ngStyle]="{width:'100%'}" [style]="{'height':'100%'}" required>
@@ -115,12 +117,14 @@
 
             </div>
 
+
             <div class="ui-g">
               <div class="ui-md-2 ui-lg-2"></div>
               <div class="ui-md-8 ui-lg-8 ui-sm-12">
                 <div class="ui-inputgroup">
                   <span class="ui-inputgroup-addon" style="width:37%;font-size:15px; font-weight: bold;">
-                    Cash Recieve</span>
+                    Cash Recieve<i
+                    style="color: red">*</i></span>
                   <input type="text" name="cashRecieve" (keypress)="numberOnly($event)" [(ngModel)]="addLabTests.cashRecieve" pInputText placeholder="$"
                     required>
 
@@ -204,6 +208,7 @@
 
 
     </p-card>
+
 
 
 
