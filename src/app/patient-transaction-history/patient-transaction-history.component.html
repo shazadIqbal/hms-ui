@@ -6,7 +6,7 @@
 </div>
 <app-monitorquickview> </app-monitorquickview>
 
-<p-table style="text-align: center;" #dt [paginator]="true" [value]="transaction" [rows]="10" [style]="{ 'margin-top': '30px' }" [columns]="cols">
+<p-table style="text-align: center;" #dt [scrollable]="true" [resizableColumns]="true"  [totalRecords]="totalRecords" [paginator]="true" [value]="transaction" [rows]="10" [style]="{ 'margin-top': '30px' }" [columns]="cols">
     <ng-template pTemplate="caption">
         <div class="ui-g-12">
             <h1 style="font-weight:bold;color: green;">PATIENT TRANSACTION HISTORY</h1>

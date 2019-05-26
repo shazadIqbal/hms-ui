@@ -165,6 +165,7 @@
                   required
                   placeholder="Fees"
                   name="Fees"
+                  (keypress)="numberOnly($event)"
                   #abf="ngModel"
                   [(ngModel)]="doctor.fees"
                   ngModel

@@ -21,7 +21,7 @@
     color: 'green'
     }">
         <hr />
-        <p-table style="word-wrap:break-word;" #dt [paginator]="true" [value]="tests" [rows]="10" [style]="{ 'margin-top': '50px', width: '100%'}" [columns]="cols">
+        <p-table style="word-wrap:break-word;" [totalRecords]="totalRecords" #dt [paginator]="true" [value]="tests" [rows]="10" [style]="{ 'margin-top': '50px', width: '100%'}" [columns]="cols">
             <ng-template pTemplate="caption">
 
                 <div style="text-align: right">

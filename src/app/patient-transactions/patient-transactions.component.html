@@ -12,7 +12,7 @@
 <div class="ui-g-12">
 
 
-    <p-table style="text-align: center;" [paginator]="true" [rows]="10" [style]="{ 'margin-top': '20px' }" #dt [columns]="cols" [value]="transaction">
+    <p-table style="text-align: center;"  [paginator]="true" [rows]="10" [style]="{ 'margin-top': '20px' }"  [totalRecords]="totalRecords" #dt [columns]="cols" [value]="transaction">
 
 
         <ng-template pTemplate="caption">

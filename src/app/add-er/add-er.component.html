@@ -1,14 +1,9 @@
-<div class="col-g-12">
-  <div class="ui-lg-5 ui-md-5 ui-sm-12">
-    <button
-      pButton
-      type="button"
-      class=" ui-button-success"
-      (click)="back()"
-      style="width:45%;margin-left:30% "
-      label="Back"
-    ></button>
-  </div>
+<div class="ui-g">
+    <div class="ui-lg-2 ui-md-2 ui-sm-0"></div>
+    <div class="ui-g-4 ui-lg-4 ui-sm-12">
+        <button pButton type="button" class="backBtnStyle" (click)="back()" style="width:80%;margin-left:10%;  height:40px;" label="Back"></button>
+    </div>
+  
 </div>
 <!-- <div style="position: absolute;top:70%;" class="ui-g-12" *ngIf="loader">
   <p-progressSpinner [style]="{ 'margin-left': '45%' }"></p-progressSpinner>
@@ -136,6 +131,7 @@
                       placeholder="Price $$"
                       name="price"
                       required
+                      (keypress)="numberOnly($event)"
                       [(ngModel)]="addEmergency.price"
                     />
                   </div>

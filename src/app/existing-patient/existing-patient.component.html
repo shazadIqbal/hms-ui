@@ -1,55 +1,38 @@
-<button
-  pButton
-  type="button"
-  label="Back"
-  class="ui-button-success"
-  style="width:30%;margin-left:10%;  height:40px;"
-  (click)="addPanelList()"
-></button>
-<div style="float: right; margin-right:20%;">
-  <label style="color:rgb(67, 139, 78); font-size: 18px;"
-    >Patient Lookup
-  </label>
-  &nbsp;
-  <app-searchbar> </app-searchbar>
+<div class="ui-g">
+  <div class="ui-lg-1 ui-md-1 ui-sm-0"></div>
+  <div class="ui-g-4 ui-lg-4 ui-md-1 ui-sm-12">
+    <button pButton type="button" class="backBtnStyle" (click)="addPanelList()"
+      style="width:80%;margin-left:10%;  height:40px;" label="Back"></button>
+  </div>
+  <div class="ui-lg-2 ui-md-2"></div>
+  <div class="ui-lg-5 ui-sm-12 ui-md-7" >
+    <label style="color:rgb(67, 139, 78); font-size: 18px;">Patient Lookup
+    </label>
+    &nbsp;
+    <app-searchbar> </app-searchbar>
+  </div>
 </div>
 <div class="ui-g-12 ui-fluid  ">
   <div class="ui-g-12 ui-md-12">
     <div class="container">
-      <p-card
-        header="EXISTING PATIENT"
-        [style]="{
+      <p-card header="EXISTING PATIENT" [style]="{
           width: '100%',
           'margin-top': '5px !important',
           color: '#3EB650',
           'text-align': 'center',
           height: '30% !important'
-        }"
-      >
+        }">
         <hr />
         <form (ngSubmit)="Onsubmit(form.value); form.reset()" #form="ngForm">
           <div class="ui-g ui-fluid">
             <div class="ui-g-12 ui-md-12 ui-lg-5">
               <div class="ui-inputgroup">
-                <span class="ui-inputgroup-addon" style="width:50%;"
-                  >MR.NO<i style="color: red">*</i></span
-                >
-                <input
-                  type="text"
-                  required
-                  #mrNo="ngModel"
-                  pInputText
-                  placeholder="MR Number"
-                  name="mrNo"
-                  ngModel
-                  [(ngModel)]="appointments.id"
-                />
+                <span class="ui-inputgroup-addon" style="width:50%;">MR.NO<i style="color: red">*</i></span>
+                <input type="text" required  (keypress)="numberOnly($event)" #mrNo="ngModel" pInputText placeholder="MR Number" name="mrNo" ngModel
+                  [(ngModel)]="appointments.id" />
               </div>
-              <div
-                style="padding:0px;margin-bottom:4px"
-                [hidden]="mrNo.valid || mrNo.pristine"
-                class="alert alert-danger"
-              >
+              <div style="padding:0px;margin-bottom:4px" [hidden]="mrNo.valid || mrNo.pristine"
+                class="alert alert-danger">
                 Please Enter a MR Number
               </div>
             </div>
@@ -57,19 +40,10 @@
 
             <div class="ui-g-12 ui-md-12 ui-lg-5">
               <div class="ui-inputgroup">
-                <span
-                  class="ui-inputgroup-addon"
-                  style="width:50%;  font-size: 11px; line-height: 15px;"
-                  >SELECT DOCTOR<i style="color: red">*</i></span
-                >
-                <p-dropdown
-                  [options]="_selectDoctor"
-                  required
-                  name="doctor"
-                  [style]="{ width: '300px' }"
-                  placeholder="Select Doctor"
-                  [(ngModel)]="appointments.selectDoctor"
-                >
+                <span class="ui-inputgroup-addon" style="width:50%;  font-size: 11px; line-height: 15px;">SELECT
+                  DOCTOR<i style="color: red">*</i></span>
+                <p-dropdown [options]="_selectDoctor" required name="doctor" [style]="{ width: '300px' }"
+                  placeholder="Select Doctor" [(ngModel)]="appointments.selectDoctor">
                 </p-dropdown>
               </div>
             </div>
@@ -84,18 +58,10 @@
 
             <div class="ui-g-12 ui-md-12 ui-lg-5 ui-sm-12">
               <div class="ui-inputgroup">
-                <span
-                  class="ui-inputgroup-addon"
-                  style="width:50%;  font-size: 11px;"
-                  >APPOINTMENT DATE<i style="color: red">*</i></span
-                >
-                <p-calendar
-                  [style]="{ width: '300px' }"
-                  name="appoinmentDate"
-                  required
-                  placeholder="Enter Appointment Date here"
-                  [(ngModel)]="appointments.appoinmentDate"
-                >
+                <span class="ui-inputgroup-addon" style="width:50%;  font-size: 11px;">APPOINTMENT DATE<i
+                    style="color: red">*</i></span>
+                <p-calendar [style]="{ width: '300px' }" name="appoinmentDate" required
+                  placeholder="Enter Appointment Date here" [(ngModel)]="appointments.appoinmentDate">
                 </p-calendar>
               </div>
             </div>
@@ -103,28 +69,16 @@
             <div class="ui-g-12 ui-md-12 ui-lg-5">
               <div class="ui-inputgroup">
                 <span class="ui-inputgroup-addon" style="width:50%;">TIME<i style="color: red">*</i></span>
-                <p-calendar
-                  [style]="{ width: '300px' }"
-                  name="time"
-                  required
-                  placeholder="Enter Time here"
-                  [timeOnly]="true"
-                  [(ngModel)]="appointmentTime"
-                >
+                <p-calendar [style]="{ width: '300px' }" name="time" required placeholder="Enter Time here"
+                  [timeOnly]="true" [(ngModel)]="appointmentTime">
                 </p-calendar>
               </div>
             </div>
 
             <div class="ui-g-12 ">
               <div class=" ui-g-12 ui-md-12 ui-lg-12 ui-sm-12">
-                <button
-                  pButton
-                  type="submit"
-                  label="Save"
-                  class=" ui-button-success  one"
-                  style="width:100%;"
-                  [disabled]="form.invalid"
-                ></button>
+                <button pButton type="submit" label="Save" class=" ui-button-success  one" style="width:100%;"
+                  [disabled]="form.invalid"></button>
               </div>
               <p-toast position="top-center"></p-toast>
             </div>

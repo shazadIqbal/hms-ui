@@ -127,4 +127,12 @@ export class AddErComponent implements OnInit {
     this.addEmergency.total =
       this.addEmergency.price + this.addEmergency.extraCharges;
   }
+  numberOnly(event): boolean {
+    const charCode = event.which ? event.which : event.keyCode;
+    if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+      return false;
+    }
+    return true;
+  }
+
 }

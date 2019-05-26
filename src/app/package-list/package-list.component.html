@@ -8,7 +8,7 @@
         <button pButton type="button" class="backBtnStyle" (click)="backtoMain()" style="width:80%;margin-left:10%;  height:40px;" label="Back"></button>
     </div>
     <div class="ui-g-4 ui-lg-4 ui-sm-12">
-        <button pButton type="button" (click)="toAddPackage()" style="width:80%;margin-left:10%;  height:40px;" label="Add Lab Test" class="backBtnStyle"></button>
+        <button pButton type="button" (click)="toAddPackage()" style="width:80%;margin-left:10%;  height:40px;" label="Add Package Facility" class="backBtnStyle"></button>
     </div>
     <p-card header="PACKAGE LIST" [style]="{  width: '100%',
     'font-size': '26px',
@@ -16,7 +16,7 @@
     color: 'green'
     }">
         <hr />
-        <p-table style="word-wrap:break-word;" #dt [paginator]="true" [value]="packages" [rows]="10" [style]="{ 'margin-top': '50px', width: '100%'}" [columns]="cols">
+        <p-table style="word-wrap:break-word;" [totalRecords]="totalRecords" #dt [paginator]="true" [value]="packages" [rows]="10" [style]="{ 'margin-top': '50px', width: '100%'}" [columns]="cols">
             <ng-template pTemplate="caption">
 
 
