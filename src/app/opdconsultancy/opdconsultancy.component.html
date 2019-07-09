@@ -139,7 +139,7 @@
                 <div class="ui-g" style="margin-top:-20px !important;">
                     <div class="ui-md-2 ui-lg-2"></div>
                     <div class="ui-md-8 ui-lg-8 ui-sm-12">
-                        <button [disabled]="enable" printSectionId="content" class="colorSetAllButtons" ngxPrint pButton type="button" label="PRINT" style="margin-top: 0px; ;width:100%;"></button>
+                        <button [disabled]="enable" printSectionId="content" class="colorSetAllButtons" ngxPrint pButton type="button" label="PRINT" [printStyle]="{'height':'100vh'}" style="margin-top: 0px; ;width:100%;"></button>
                     </div>
                 </div>
 
@@ -161,7 +161,7 @@
 
 
 
-<div *ngIf="opdObject.doctors !== undefined" id="content" [hidden]="true">
+<div *ngIf="opdObject.doctors !== undefined" id="content" [hidden]="true" style="height:50px;">
     <!-- <div *ngIf="addEmergency.name !== undefined"> -->
 
     <h1 style="text-align: center; color:green;font-weight:bold;"> OPD CONSULTANCY RECEIPT</h1>
@@ -195,4 +195,5 @@
             </div>
 
         </div>
+    </div>
     </div>
