@@ -100,6 +100,7 @@ export class OpdLabtestComponent implements OnInit {
       this.addLabTests.price = this.addLabTests.price + parseInt(f["price"]);
 
       // this.addLabTests.cashRecieve-(this.addLabTests.discount*this.addLabTests.cashRecieve);
+      this.addLabTests.total = this.addLabTests.price;
       console.log(this.addLabTests.total);
 
     });
