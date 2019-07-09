@@ -148,8 +148,6 @@ export class PatientformComponent implements OnInit {
 
       this.patientService.postPatient(this.patient).subscribe(
         data => {
-            debugger;
-
             console.log('dwadawdawdawdawdadawdada')
           if (data['SAVEDSUCCESFULLY'] == 1) {
             this.msgService.add({
