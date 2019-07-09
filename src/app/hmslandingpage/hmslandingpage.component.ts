@@ -21,21 +21,31 @@ export class HmslandingpageComponent implements OnInit {
   }
 
   check(uname: string, p: string){
-    var output = this.service.checkUserandPass(uname, p);
+    //var output = this.service.checkUserandPass(uname, p);
+      this.service.checkUserandPass(uname,p).subscribe((res)=>{
+          console.log('toker',res)
+           sessionStorage.setItem('token' , res.result.token);
+           //localStorage.setItem('username', 'admin');
+           this.messageService.add({severity:'success', summary:'Service Message', detail:'Login Succesful'});
+            setTimeout(() => {
+              this.router.navigate(['mainscreen']);
+            }, 1000);
+      }, error=>{
+        console.log(error);
+        this.messageService.add({severity:'error', summary:'Service Message', detail:'Wrong username and password'});
+      })
 
-    if(output == true){
 
-      this.messageService.add({severity:'success', summary:'Service Message', detail:'Login Succesful'});
-      setTimeout(() => {
-        this.router.navigate(['mainscreen']);
-      }, 1000);
+    // if(output == true){
+
+     
      
     }
-    else{
-      this.messageService.add({severity:'error', summary:'Service Message', detail:'Invalid Username or Password'});
+    // else{
+    //   this.messageService.add({severity:'error', summary:'Service Message', detail:'Invalid Username or Password'});
      
-    }
-  }
+    // }
+  
 
   // toMainscreen() {
   //   this.router.navigate(['mainscreen']);

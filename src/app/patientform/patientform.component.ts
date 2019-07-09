@@ -52,6 +52,10 @@ export class PatientformComponent implements OnInit {
   isGynObsFn() {
     console.log(this.isGynyObs)
     this.patient.gynAndObsRegistration = this.isGynyObs;
+    if(!this.isGynyObs){
+      this.patient.registrationDate = null;
+      this.patient.husbandOfAndFatherOf = null;
+    }
     console.log("mein gynu obs hon", this.patient.gynAndObsRegistration)
   }
 
