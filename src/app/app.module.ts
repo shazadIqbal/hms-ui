@@ -100,6 +100,8 @@ import { GynyObsListComponent } from './gyny-obs-list/gyny-obs-list.component';
 
 import { MonitorquickviewComponent } from './monitorquickview/monitorquickview.component';
 import { TransactionEditComponent } from './transaction-edit/transaction-edit.component';
+import {HTTP_INTERCEPTORS} from '@angular/common/http';
+import { NoopInterceptor } from './request.intercept';
 
 
 
@@ -200,7 +202,11 @@ import { TransactionEditComponent } from './transaction-edit/transaction-edit.co
     CheckboxModule
   ],
 
-  providers: [DoctorService, AddpanellistseviceService, MessageService, NavBarService, AuthGuard,PatientTransactionsComponent
+  providers: [{
+    provide: HTTP_INTERCEPTORS,
+    useClass: NoopInterceptor,
+    multi: true,
+  },DoctorService, AddpanellistseviceService, MessageService, NavBarService, AuthGuard,PatientTransactionsComponent
     , AddErComponent, AdmissionService],
 
   bootstrap: [AppComponent],
