@@ -19,3 +19,7 @@ label {
 .required {
   color: red;
 }
+
+.spanWidth{
+  width : 40% !important;
+}
