@@ -47,7 +47,7 @@ export class AddTestComponent implements OnInit {
   }
 
   back() {
-    this.route.navigate(['/addlabtest']);
+    history.back();
   }
 
   submitlab() {
@@ -73,7 +73,7 @@ export class AddTestComponent implements OnInit {
       }
     );
   }
-  
+
   toAddLabCat() {
     this.route.navigate(['/addlabcat']);
   }

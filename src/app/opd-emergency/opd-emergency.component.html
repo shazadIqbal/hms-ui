@@ -3,7 +3,11 @@
 
 <div class="ui-g-12">
     <div class="ui-lg-5 ui-md-5 ui-sm-12">
-        <button type="button" class=" backBtnStyle" (click)="back()" style="width:45%;margin-left:30%;padding:4px">Back</button>
+        <button type="button" class="backBtnStyle" (click)="back()" style="margin-left: 14%;
+        margin-bottom: 1%;
+        height: 35px;
+        width: 30%;
+        width: 50%;">Back</button>
     </div>
 </div>
 <div class="ui-g-12">
@@ -21,46 +25,42 @@
         <p style="font-size: 20px;"><b style="font-size: 20px;"> Date: </b> {{date | date :'short'}}</p>
 
 
-       
-
-
-
-    <div>
-      <span style="font-weight:bold;">Facility</span><span style="font-weight:bold;float: right;">Price</span>
-      <hr style="border: 1px solid black;width:100%;" />
-      <div *ngFor="let facility of facilitiesArray">
-        <span>{{facility.name}}</span>
-        <span style="float: right;">{{facility.price}}</span>
-        <hr style="width:100%;" />
-      </div>
-      <div>
-        <span><b> Discount: </b> <span style="float: right;"> {{addEmergency.discount}}</span></span>
+        <div>
+            <span style="font-weight:bold;">Facility</span><span style="font-weight:bold;float: right;">Price</span>
+            <hr style="border: 1px solid black;width:100%;" />
+            <div *ngFor="let facility of facilitiesArray">
+                <span>{{facility.name}}</span>
+                <span style="float: right;">{{facility.price}}</span>
+                <hr style="width:100%;" />
+            </div>
+            <div>
+                <span><b> Discount: </b> <span style="float: right;"> {{addEmergency.discount}}</span></span>
 
 
                 <hr style="border:1px solid black;width:100%;" />
                 <span><b> Total: </b> <span style="float:right;">{{addEmergency.total}}</span></span>
                 <hr style="border:1px solid black;width:100%;" />
 
-            
+
+            </div>
+
+
+
+
+
         </div>
 
 
-
-
-
     </div>
-
-
-</div>
 </div>
 
 
 
-<div style="margin-top:40px;" [hidden]="!hidder">
+<div [hidden]="!hidder">
     <p-card>
 
         <p style="margin:20px;display:block;text-align: center;">No Facility Added,Please add a facility</p>
-        <button style="width:40%;margin-left:30%" pButton type="button" label="Add new Faciity" (click)="routeToEr()" class="ui-button-success"></button>
+        <button style="width:40%;margin-left:30%" pButton type="button" label="Add new Faciity" (click)="routeToEr()" class="ui-button-success submitBtnStyle"></button>
 
     </p-card>
 </div>
@@ -76,8 +76,8 @@
 
 
 
-    <div class="ui-g ui-fluid">
-      <hr style="height:2px;width:100%;background-color:green; margin-top: 0px" />
+        <div class="ui-g ui-fluid">
+            <hr style="height:2px;width:100%;background-color:green; margin-top: 0px" />
 
 
             <div class="ui-lg-8 ui-md-8 ui-sm-12">
@@ -137,8 +137,7 @@
                     Discount</span>
 
 
-                  <input type="text" (keypress)="numberOnly($event)" (ngModelChange)="discounter($event)" min="0"
-                    name="discount" [(ngModel)]="addEmergency.discount" pInputText placeholder="0">
+                                    <input type="text" (keypress)="numberOnly($event)" (ngModelChange)="discounter($event)" min="0" name="discount" [(ngModel)]="addEmergency.discount" pInputText placeholder="0">
 
 
 
@@ -186,6 +185,5 @@
         </div>
 
 
-  </p-card>
+    </p-card>
 </div>
-

@@ -17,3 +17,15 @@ html .backgroundImage {
 .shadowPanel {
     box-shadow: 5px 5px 20px 0px #c8c8c8;
 }
+
+@media only screen and (max-height:600px) {
+    .backgroundImage {
+        background: url('../../assets/back.jpg');
+        background-size: cover;
+        background-repeat: repeat-y;
+        height: 190vh;
+        /* overflow: hidden; */
+        width: 100%;
+        background-position: center;
+    }
+}
