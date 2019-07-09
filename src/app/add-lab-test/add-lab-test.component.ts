@@ -86,7 +86,7 @@ export class AddLabTestComponent implements OnInit {
   }
 
   backtomain(){
-    this.route.navigate(['mainscreen']);
+    history.back();
   }
 
 }

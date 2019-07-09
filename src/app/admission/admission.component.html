@@ -88,7 +88,7 @@
                 </div>
               </div>
             </div>
-        <div class="ui-g">
+        <!-- <div class="ui-g">
           <div class="ui-md-2 ui-lg-2"></div>
           <div class="ui-md-8 ui-lg-8 ui-sm-12">
             <button
@@ -99,7 +99,25 @@
               style="margin-top: 0px; background-color:green;width:100%;"
             ></button>
           </div>
+        </div> -->
+        <div class="ui-g-12 ">
+          <div class="ui-g ui-fluid">
+            <!-- Submit button -->
+            <div class="ui-md-2 ui-lg-2"></div>
+            <div class="ui-md-8 ui-lg-8 ui-sm-12">
+
+                <button
+                  type="submit"
+                  [disabled]="myForm.invalid"
+                  class="btn btn-success btn-block colorSetAllButtons"
+                >
+                  Submit
+                </button>
+
+            </div>
+          </div>
         </div>
+
 
             <!-- <p-progressSpinner class="loading-indicator"></p-progressSpinner> -->
 

@@ -1,11 +1,10 @@
 <p-toast position="top-right"></p-toast>
 
 <div class="ui-g">
-  <div class="ui-lg-2 ui-md-2 ui-sm-0"></div>
-  <div class="ui-g-4 ui-lg-4 ui-sm-12">
-    <button pButton type="button" class="backBtnStyle" (click)="backtoPackageList()"
-      style="width:80%;margin-left:10%;  height:40px;" label="Back"></button>
-  </div>
+    <div class="ui-lg-2 ui-md-2 ui-sm-0"></div>
+    <div class="ui-g-4 ui-lg-4 ui-sm-2">
+        <button pButton type="button" class="backBtnStyle" (click)="backtoPackageList()" style="width:80%;margin-left:-19%;  height:40px;" label="Back"></button>
+    </div>
 </div>
 
 <div class="ui-g-12" style="width: 80%;
@@ -13,68 +12,65 @@
       margin-left: 10%;
       text-align: center;
       color: green;">
-  <p-card header="Add Package">
-    <div class="ui-g ui-fluid">
-      <hr style="height:2px;width:100%;background-color:green;" />
-      <form style="width:100%;" #myForm="ngForm" (ngSubmit)="submitPackage(); myForm.reset()">
-        <div class="ui-g">
-          <div class="ui-md-3 ui-lg-3"></div>
-          <div class="ui-md-6 ui-lg-6 ui-sm-12">
-            <div class="ui-inputgroup">
-              <span class="ui-inputgroup-addon" style="width:50%;font-size:15px; font-weight: bold;">Package Name <i
+    <p-card header="Add Package">
+        <div class="ui-g ui-fluid">
+            <hr style="height:2px;width:100%;background-color:green;" />
+            <form style="width:100%;" #myForm="ngForm" (ngSubmit)="submitPackage(); myForm.reset()">
+                <div class="ui-g">
+                    <div class="ui-md-3 ui-lg-3"></div>
+                    <div class="ui-md-6 ui-lg-6 ui-sm-12">
+                        <div class="ui-inputgroup">
+                            <span class="ui-inputgroup-addon" style="width:50%;font-size:15px; font-weight: bold;">Package Name <i
                   style="color: red">*</i></span>
-              <input type="text" [(ngModel)]="package.pName" required name="packageName" pInputText />
-            </div>
-          </div>
-        </div>
+                            <input type="text" [(ngModel)]="package.pName" required name="packageName" pInputText />
+                        </div>
+                    </div>
+                </div>
 
-        <div class="ui-g">
-          <div class="ui-md-3 ui-lg-3"></div>
-          <div class="ui-md-6 ui-lg-6 ui-sm-12">
-            <div class="ui-inputgroup">
-              <span class="ui-inputgroup-addon" style="width: 170px;font-size:13px; font-weight: bold;">Package Facility
+                <div class="ui-g">
+                    <div class="ui-md-3 ui-lg-3"></div>
+                    <div class="ui-md-6 ui-lg-6 ui-sm-12">
+                        <div class="ui-inputgroup">
+                            <span class="ui-inputgroup-addon" style="width: 170px;font-size:13px; font-weight: bold;">Package Facility
                 <i style="color: red">*</i></span>
-              <p-dropdown [options]="facilitydrop" [(ngModel)]="package.pFacility" required name="facility"
-                [style]="{ width: '335px' }" placeholder="Select Facility">
-              </p-dropdown>
-            </div>
-          </div>
-        </div>
+                            <p-dropdown [options]="facilitydrop" [(ngModel)]="package.pFacility" required name="facility" [style]="{ width: '335px' }" placeholder="Select Facility">
+                            </p-dropdown>
+                        </div>
+                    </div>
+                </div>
 
-        <div class="ui-g">
-          <div class="ui-md-3 ui-lg-3"></div>
-          <div class="ui-md-6 ui-lg-6 ui-sm-12">
-            <div class="ui-inputgroup">
-              <span class="ui-inputgroup-addon" style="width:50%;font-size:15px; font-weight: bold;">Package Price <i
+                <div class="ui-g">
+                    <div class="ui-md-3 ui-lg-3"></div>
+                    <div class="ui-md-6 ui-lg-6 ui-sm-12">
+                        <div class="ui-inputgroup">
+                            <span class="ui-inputgroup-addon" style="width:50%;font-size:15px; font-weight: bold;">Package Price <i
                   style="color: red">*</i></span>
-              <input type="text" [(ngModel)]="package.pPrice" (keypress)="numberOnly($event)" required
-                name="packageDuration" pInputText />
-            </div>
-          </div>
-        </div>
+                            <input type="text" [(ngModel)]="package.pPrice" (keypress)="numberOnly($event)" required name="packageDuration" pInputText />
+                        </div>
+                    </div>
+                </div>
 
-        <div class="ui-g">
-          <div class="ui-md-3 ui-lg-3"></div>
-          <div class="ui-md-6 ui-lg-6 ui-sm-12">
-            <div class="ui-inputgroup">
-              <span class="ui-inputgroup-addon" style="width:50%;font-size:15px; font-weight: bold;">Package Sponsor <i
+                <div class="ui-g">
+                    <div class="ui-md-3 ui-lg-3"></div>
+                    <div class="ui-md-6 ui-lg-6 ui-sm-12">
+                        <div class="ui-inputgroup">
+                            <span class="ui-inputgroup-addon" style="width:50%;font-size:15px; font-weight: bold;">Package Sponsor <i
                   style="color: red">*</i></span>
-              <input type="text" [(ngModel)]="package.pSponsor" required name="packageSponsor" pInputText />
-            </div>
-          </div>
-        </div>
+                            <input type="text" [(ngModel)]="package.pSponsor" required name="packageSponsor" pInputText />
+                        </div>
+                    </div>
+                </div>
 
-        <div class="ui-g">
-          <div class="ui-md-3 ui-lg-3"></div>
-          <div class="ui-md-6 ui-lg-6 ui-sm-12">
-            <button pButton type="submit" label="Add Package" [disabled]="myForm.form.invalid"
-              style="margin-top: 0px; background-color:green;width:100%; font-weight: bold;"></button>
-          </div>
+                <div class="ui-g">
+                    <div class="ui-md-3 ui-lg-3"></div>
+                    <div class="ui-md-6 ui-lg-6 ui-sm-12">
+                        <button pButton type="submit" class="colorSetAllButtons" label="Add Package" [disabled]="myForm.form.invalid" style="margin-top: 0px;width:100%; font-weight: bold;"></button>
+                    </div>
+                </div>
+            </form>
+            <div class="ui-g-12" *ngIf="loader">
+                <p-progressSpinner></p-progressSpinner>
+            </div>
         </div>
-      </form>
-      <div class="ui-g-12" *ngIf="loader">
-        <p-progressSpinner></p-progressSpinner>
-      </div>
-    </div>
-  </p-card>
+    </p-card>
 </div>
