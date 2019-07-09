@@ -25,11 +25,6 @@
         <p style="font-size: 20px;"><b style="font-size: 20px;"> Date: </b> {{date | date :'short'}}</p>
 
 
-        <p style="font-size: 20px;"><b style="font-size: 20px;"> Facilities: </b></p>
-
-
-
-
         <div>
             <span style="font-weight:bold;">Facility</span><span style="font-weight:bold;float: right;">Price</span>
             <hr style="border: 1px solid black;width:100%;" />
@@ -37,6 +32,8 @@
                 <span>{{facility.name}}</span>
                 <span style="float: right;">{{facility.price}}</span>
                 <hr style="width:100%;" />
+            </div>
+            <div>
                 <span><b> Discount: </b> <span style="float: right;"> {{addEmergency.discount}}</span></span>
 
 
@@ -44,16 +41,17 @@
                 <span><b> Total: </b> <span style="float:right;">{{addEmergency.total}}</span></span>
                 <hr style="border:1px solid black;width:100%;" />
 
+
             </div>
+
+
+
+
+
         </div>
 
 
-
-
-
     </div>
-
-
 </div>
 
 
