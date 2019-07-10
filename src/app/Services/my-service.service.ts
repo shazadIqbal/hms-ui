@@ -12,9 +12,10 @@ export class MyServiceService {
   checkUserandPass(name: string, pwd: string):Observable <any> {
     let user = {
       username:name,
-      password:parseInt(pwd)
+      password:pwd
     }
-    return this.http.post(environment.baseUrl+"token/generate-token",user);
+    
+    return this.http.post(environment.baseUrl+"token/generate-token",JSON.stringify(user));
       
     // if (uname == 'admin' && pwd == 'admin') {
     //   sessionStorage.setItem('username' , 'admin');
