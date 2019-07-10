@@ -43,6 +43,10 @@ export class MainScreenComponent implements OnInit {
     this.router.navigate(['appoinmentList'])
   }
 
+  addUser(){
+    this.router.navigate(['signupform'])
+  }
+
 
   check(mrNo: any) {
     this.loading = true;

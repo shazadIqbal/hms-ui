@@ -27,9 +27,9 @@ export class HmslandingpageComponent implements OnInit {
            sessionStorage.setItem('token' , res.result.token);
            //localStorage.setItem('username', 'admin');
            this.messageService.add({severity:'success', summary:'Service Message', detail:'Login Succesful'});
-            setTimeout(() => {
+            
               this.router.navigate(['mainscreen']);
-            }, 1000);
+            
       }, error=>{
         console.log(error);
         this.messageService.add({severity:'error', summary:'Service Message', detail:'Wrong username and password'});
