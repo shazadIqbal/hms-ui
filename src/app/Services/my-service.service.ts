@@ -14,7 +14,8 @@ export class MyServiceService {
       username:name,
       password:pwd
     }
-    return this.http.post(environment.baseUrl+"token/generate-token",user);
+    
+    return this.http.post(environment.baseUrl+"token/generate-token",JSON.stringify(user));
       
     // if (uname == 'admin' && pwd == 'admin') {
     //   sessionStorage.setItem('username' , 'admin');

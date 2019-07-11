@@ -26,12 +26,12 @@ export class AddpanellistComponent implements OnInit {
 
       { label: 'free', value: 'free' },
       { label: '50% Off', value: '50% Off' },
-      {label:'No panel',value:'No panel'}
+      { label: 'No panel', value: 'No panel' }
 
 
     ];
 
-      this.cars = [
+    this.cars = [
       { label: 'choose facilities', value: null },
       { label: 'Audi', value: 'Audi' },
       { label: 'BMW', value: 'BMW' },
@@ -66,12 +66,12 @@ export class AddpanellistComponent implements OnInit {
 
   save() {
     this.panelService.savePanel(this.panels).subscribe(
-      data => {
-        console.log(data);
-        this.messageService.add({ severity: 'success', summary: 'Status', detail: 'Successfull' });
-      },
       error => {
         console.log(error);
+        this.messageService.add({ severity: 'success', summary: 'Status', detail: 'unSuccessfull' });
+      },
+      data => {
+        console.log(data);
         this.messageService.add({ severity: 'success', summary: 'Status', detail: 'Successfull' });
       }
     );
@@ -100,8 +100,9 @@ export class AddpanellistComponent implements OnInit {
     this.facilityObj.facilityName = this.facilityObj.facilityName.toUpperCase();
     this.panelService.saveFacility(this.facilityObj).subscribe(
       data => {
-        console.log(data);
+        console.log("heehehe" + data);
         const stat = Object.keys(data);
+        console.log(stat[0])
         // tslint:disable-next-line: triple-equals
         if (stat[0] != 'Already Exsist') {
           this.messageService.add({
