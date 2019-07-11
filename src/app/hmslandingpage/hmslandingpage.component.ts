@@ -27,8 +27,9 @@ export class HmslandingpageComponent implements OnInit {
       console.log('toker', res);
 
       sessionStorage.setItem('token', res.result.token);
-      var username = localStorage.setItem('username', res.result.username);
-      console.log(username);
+      var username = sessionStorage.setItem('username', res.result.username);
+      var userType = sessionStorage.setItem('userType',res.result.userType);
+      // console.log(username+"  "+userType);
 
       //  sessionStorage.getItem('token');
       // localStorage.setItem('username', 'admin');
