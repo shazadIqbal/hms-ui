@@ -10,14 +10,14 @@ export class PackageServiceService {
   constructor(private http: HttpClient) {}
 
   getPackages(): Observable<any> {
-    return this.http.get(environment.baseUrl + '/api/addpackage/');
+    return this.http.get(environment.baseUrl + 'api/addpackage/');
   }
 
   postPackage(obj): Observable<any> {
-    return this.http.post(environment.baseUrl + '/api/addpackage/', obj);
+    return this.http.post(environment.baseUrl + 'api/addpackage/', obj);
   }
 
   deletePackage(id): Observable<any> {
-    return this.http.delete(environment.baseUrl + '/api/addpackage/' + id);
+    return this.http.delete(environment.baseUrl + 'api/addpackage/' + id);
   }
 }
