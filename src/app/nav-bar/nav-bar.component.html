@@ -1,15 +1,23 @@
 <nav class="navbar navbarCss" style="padding:0px;">
     <div class="container-fluid" style="background-color:#479761">
         <div class="navbar-header">
-            <a class="navbar-brand" style="color:white;font-weight: bold" href="#">BARKHIA HOSPITAL</a>
+            <a class="navbar-brand" style="color:white;font-weight: bold">BARKHIA HOSPITAL</a>
         </div>
         <ul class="nav navbar-nav navbar-right">
+
             <a class="navbar-brand" href="mainscreen" routerLink="mainscreen" routerLinkActive="active">
-                <li>Main Screen</li>
+                <li>MainScreen</li>
             </a>
-            <a class="navbar-brand" href="#">
-                <li>log out</li>
-            </a>
+            <div *ngIf="isHide">
+                <!-- isHide is true then logout button will be shown else not -->
+                <a class="navbar-brand username">
+                    <li>UserName: <span style="border-bottom-style:solid ">{{userName}}</span></li>
+                </a>
+                <a class="navbar-brand logout" href="#">
+                    <li (click)="clearCache()">logOut</li>
+                </a>
+
+            </div>
         </ul>
 
     </div>
