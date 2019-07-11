@@ -10,7 +10,7 @@ import {environment} from '../../environments/environment';
 })
 export class LabtestServiceService {
 
-  private url:any= environment.baseUrl+"/api/labtest";
+  private url:any= environment.baseUrl+"api/labtest";
   constructor(private http:HttpClient) { 
   }
 

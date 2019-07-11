@@ -12,7 +12,7 @@ export class MyServiceService {
   checkUserandPass(name: string, pwd: string):Observable <any> {
     let user = {
       username:name,
-      password:pwd
+      password:parseInt(pwd)
     }
     return this.http.post(environment.baseUrl+"token/generate-token",user);
       

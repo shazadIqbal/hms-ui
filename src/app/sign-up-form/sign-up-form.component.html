@@ -1,4 +1,86 @@
+<p-toast position="top-right"></p-toast>
 
-<p>
-  helloooo
-</p>
+<div class="ui-g">
+    <div class="ui-lg-2 ui-md-2 ui-sm-0"></div>
+    <div class="ui-g-4 ui-lg-4 ui-sm-2">
+        <button pButton type="button" class="backBtnStyle" (click)=backToMainScreen() style="width:80%;margin-left:-19%;  height:40px;" label="Back"></button>
+    </div>
+</div>
+
+<div class="ui-g-12" style="width: 80%;
+      font-size: 26px;
+      margin-left: 10%;
+      text-align: center;
+      color: green;">
+    <p-card header="Sign Up">
+        <div class="ui-g ui-fluid">
+            <hr style="height:2px;width:100%;background-color:green;" />
+            <form style="width:100%;" #myForm="ngForm" (ngSubmit)="saveSignUpForm(); myForm.reset()">
+                <div class="ui-g">
+                    <div class="ui-md-3 ui-lg-3"></div>
+                    <div class="ui-md-6 ui-lg-6 ui-sm-12">
+                        <div class="ui-inputgroup">
+                            <span class="ui-inputgroup-addon" style="width:50%;font-size:15px; font-weight: bold;">Name <i
+                  style="color: red">*</i></span>
+                            <input type="text" [(ngModel)]="signUpObj.name" required name="UserName" pInputText />
+                        </div>
+                    </div>
+                </div>
+
+                <div class="ui-g">
+                    <div class="ui-md-3 ui-lg-3"></div>
+                    <div class="ui-md-6 ui-lg-6 ui-sm-12">
+                        <div class="ui-inputgroup">
+                            <span class="ui-inputgroup-addon" style="width: 50%;font-size:15px; font-weight: bold;">Email
+
+                <i style="color: red">*</i></span>
+                <input type="text" [(ngModel)]="signUpObj.email" required name="Email" pInputText />
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="ui-g">
+                    <div class="ui-md-3 ui-lg-3"></div>
+                    <div class="ui-md-6 ui-lg-6 ui-sm-12">
+                        <div class="ui-inputgroup">
+                            <span class="ui-inputgroup-addon" style="width:50%;font-size:15px; font-weight: bold;">Password <i
+                  style="color: red">*</i></span>
+                            <input type="password" [(ngModel)]="signUpObj.password"  required name="Password" pInputText />
+                        </div>
+                    </div>
+                </div>
+
+                <div class="ui-g">
+                  <div class="ui-md-3 ui-lg-3"></div>
+                  <div class="ui-md-6 ui-lg-6 ui-sm-12">
+                      <div class="ui-inputgroup">
+                          <span class="ui-inputgroup-addon" style="width:33.5%;font-size:15px; font-weight: bold;">User Type <i
+                style="color: red">*</i></span>
+                <p-dropdown [options]="usertypes" [(ngModel)]="signUpObj.userType" required name="userType" [style]="{ width: '335px' }" placeholder="Select user type">
+                </p-dropdown>
+                      </div>
+                  </div>
+              </div>
+
+              <div class="ui-g">
+                <div class="ui-md-3 ui-lg-3"></div>
+                <div class="ui-md-6 ui-lg-6 ui-sm-12">
+                    <div class="ui-inputgroup">
+                        <span class="ui-inputgroup-addon" style="width:50%;font-size:15px; font-weight: bold;">Client ID <i
+              style="color: red">*</i></span>
+                        <input type="text" [(ngModel)]="signUpObj.clientId" required name="Active" pInputText />
+                    </div>
+                </div>
+            </div>
+
+                <div class="ui-g">
+                    <div class="ui-md-3 ui-lg-3"></div>
+                    <div class="ui-md-6 ui-lg-6 ui-sm-12">
+                        <button pButton type="submit" class="colorSetAllButtons" label="Submit" [disabled]="myForm.form.invalid" style="margin-top: 0px;width:100%; font-weight: bold;"></button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </p-card>
+</div>

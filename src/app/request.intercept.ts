@@ -6,7 +6,16 @@ import { Observable } from 'rxjs';
 export class NoopInterceptor implements HttpInterceptor {
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
       console.log("hello interceptor");
-    const changedReq = req.clone({headers: req.headers.set('Authorization', 'eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhQGIuY29tIiwic2NvcGVzIjpbeyJhdXRob3JpdHkiOiJST0xFX0FETUlOIn1dLCJpc3MiOiJodHRwOi8vZGV2Z2xhbi5jb20iLCJpYXQiOjE1NjI3Njg1ODYsImV4cCI6MTU2Mjc4NjU4Nn0.r8gfWu6uttKgojsTXAIzdM-85m4CkXZk-WdMbn-kM_k')});
-    return next.handle(changedReq);
+
+
+      if(sessionStorage.length>0){
+        const changedReq = req.clone({headers: req.headers.set('Authorization', sessionStorage.getItem('token'))});
+        return next.handle(changedReq);
+      }else{
+        const changedReq = req.clone();
+        return next.handle(changedReq);
+      }
+    
+
   }
 }
