@@ -53,13 +53,13 @@
           >
           <input
                 placeholder="    Please Enter no of beds"
-                type="number"
+                type="text"
                 name="bedsQuantity"
                 pInputText
                 ngModel
                 required
+                (keypress)="numberOnly($event)"
                 style="text-align: center"
-                [min]="0"
                 [(ngModel)]="_admission.bedsQuantity"
               />
             </div>
@@ -76,13 +76,14 @@
               >
               <input
                     placeholder="Select Bed Type Price"
-                    type="number"
+                    type="text"
+                    (keypress)="numberOnly($event)"
                     name="price"
                     pInputText
                     ngModel
                     required
                     style="text-align: center"
-                    [min]="0"
+                   
                     [(ngModel)]="_admission.price"
                   />
                 </div>
