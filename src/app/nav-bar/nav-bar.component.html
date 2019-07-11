@@ -5,19 +5,15 @@
         </div>
         <ul class="nav navbar-nav navbar-right">
 
+            <a *ngIf="isHide" class="navbar-brand">
+                <li>UserName: {{userName}}</li>
+            </a>
             <a *ngIf="isHide" class="navbar-brand" href="mainscreen" routerLink="mainscreen" routerLinkActive="active">
 
                 <li>MainScreen</li>
 
             </a>
             <div *ngIf="isHide">
-                <!-- <a class="navbar-brand">
-                    <li>User Type : {{userType}}</li>
-                </a> -->
-                <!-- isHide is true then logout button will be shown else not -->
-                <a class="navbar-brand">
-                    <li>UserName: {{userName}}</li>
-                </a>
                 <a class="navbar-brand logout" href="#">
                     <li (click)="clearCache()">logOut</li>
                 </a>
