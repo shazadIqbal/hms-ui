@@ -7,10 +7,10 @@ import { environment } from 'src/environments/environment';
 })
 export class AppointmentServiceService {
 
-  private url= environment.baseUrl+"/api/appoinment/";
-  private urlDone= environment.baseUrl+"/api/appoinment/complete/";
-  private statusUrl = environment.baseUrl+"/api/appoinment/filterbystatus/"
-  private dateUrl = environment.baseUrl+"/api/appoinment/filter/"
+  private url= environment.baseUrl+"api/appoinment/";
+  private urlDone= environment.baseUrl+"api/appoinment/complete/";
+  private statusUrl = environment.baseUrl+"api/appoinment/filterbystatus/"
+  private dateUrl = environment.baseUrl+"api/appoinment/filter/"
   constructor(private http: HttpClient) { }
 
   public saveAppointment(appointment: Object): Observable<Object>{

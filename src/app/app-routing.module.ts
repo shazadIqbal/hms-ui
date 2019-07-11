@@ -1,3 +1,4 @@
+import { NavBarComponent } from "./nav-bar/nav-bar.component";
 import { PatientPaymentComponent } from "./patient-slip/patient-payment/patient-payment.component";
 import { AdmissionComponent } from "./admission/admission.component";
 import { AddErComponent } from "./add-er/add-er.component";
@@ -47,6 +48,8 @@ import { PatientTransactionHistoryComponent } from "./patient-transaction-histor
 import { OpdLabtestComponent } from "./opd-labtest/opd-labtest.component";
 import { PatientTransactionsComponent } from "./patient-transactions/patient-transactions.component";
 import { GynyObsListComponent } from "./gyny-obs-list/gyny-obs-list.component";
+
+import { SignUpFormComponent } from './sign-up-form/sign-up-form.component';
 // import { NewcompComponent } from "./newcomp/newcomp.component";
 
 const routes: Routes = [
@@ -170,7 +173,12 @@ const routes: Routes = [
     path: "adddoctor/:id",
     canActivate: [AuthGuard],
     component: AdddoctorComponent
-  }, { path: '**', canActivate: [AuthGuard], component: PatientPaymentComponent }
+  },//{ path: '**', canActivate: [AuthGuard], component: PatientPaymentComponent },
+  {
+    path:"signupform",
+    canActivate:[AuthGuard],
+    component: SignUpFormComponent
+  }
 ];
 
 @NgModule({
