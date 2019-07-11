@@ -112,7 +112,6 @@ export class PatientObservationComponent implements OnInit {
   //FUNCTION FOR SUBMIT OPD CONSULTANCY
   submitOpd() {
 
-
     this.patientObservationService.savePatientObservation(this.patientObservationObject).subscribe(
       data => {
         console.log(this.patientObservationObject);
