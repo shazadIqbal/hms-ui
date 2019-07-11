@@ -1,0 +1,143 @@
+api : User
+http://localhost:8080/token/user
+{
+	"name" : "bbc3",
+	"email" : "abc@xyz.com",
+	"password" : "593",
+	"active" : true,
+	"userType" : "ADMIN",
+	"clientId" : 3
+}
+////////////////////////////////////////
+INSERT INTO user
+
+(
+
+	client_id,
+
+	email,
+
+	is_active,
+
+	name,
+
+	password,
+
+	user_type
+
+) values(
+
+	1,
+
+	'abc@xyz.com',
+
+	1,
+
+	'abc1',
+
+	123,
+
+	'ADMIN'
+
+);
+INSERT INTO user
+
+(
+
+	client_id,
+
+	email,
+
+	is_active,
+
+	name,
+
+	password,
+
+	user_type
+
+) values(
+
+	1,
+
+	'abc@xyz.com',
+
+	1,
+
+	'abc1',
+
+	123,
+
+	'EMPLOYEE'
+
+);
+INSERT INTO user
+
+(
+
+	client_id,
+
+	email,
+
+	is_active,
+
+	name,
+
+	password,
+
+	user_type
+
+) values(
+
+	2,
+
+	'abc@xyz.com',
+
+	1,
+
+	'abc2',
+
+	123,
+
+	'EMPLOYEE'
+
+);
+INSERT INTO user
+
+(
+
+	client_id,
+
+	email,
+
+	is_active,
+
+	name,
+
+	password,
+
+	user_type
+
+) values(
+
+	3,
+
+	'abc@xyz.com',
+
+	1,
+
+	'abc3',
+
+	123,
+
+	'EMPLOYEE'
+
+);
+////////////////////
+api : vendor
+http://localhost:8081/api/vendor/
+
+{
+  "name":"Barkhia Hospital",
+  "description":"This is a Welfare Hospital"
+}
