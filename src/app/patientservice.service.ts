@@ -35,7 +35,7 @@ export class PatientserviceService {
   }
   UpdatePatient(id: number,patient: any): Observable<Object> {
    
-    return this.http.put(this.baseUrl+"/update/"+id, patient);
+    return this.http.put(this.baseUrl+"update/"+id, patient);
   }
 
   getAllGynyObsPatients(){

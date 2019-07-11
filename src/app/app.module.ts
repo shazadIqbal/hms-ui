@@ -102,6 +102,7 @@ import { MonitorquickviewComponent } from './monitorquickview/monitorquickview.c
 import { TransactionEditComponent } from './transaction-edit/transaction-edit.component';
 import {HTTP_INTERCEPTORS} from '@angular/common/http';
 import { NoopInterceptor } from './request.intercept';
+import { SignUpFormComponent } from './sign-up-form/sign-up-form.component';
 
 
 
@@ -170,7 +171,9 @@ import { NoopInterceptor } from './request.intercept';
 
     MonitorquickviewComponent,
 
-    TransactionEditComponent
+    TransactionEditComponent,
+
+    SignUpFormComponent
 
 
   ],
