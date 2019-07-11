@@ -1,6 +1,7 @@
 <div class="col-ui-g-12">
     <div class="ui-lg-5  ui-md-5">
-        <button pButton type="button" class="backBtnStyle" (click)="back()" style="width:45%;margin-left:30% " label="Back"></button>
+        <button pButton type="button" class="backBtnStyle" (click)="back()" style="width:45%;margin-left:30% "
+            label="Back"></button>
     </div>
 </div>
 
@@ -53,7 +54,8 @@
     <p-card>
 
         <p style="margin:20px;display:block;text-align: center;">No labtest Added,Please add a labtest</p>
-        <button style="width:40%;margin-left:30%" pButton type="button" label="Add new Labtest" (click)="routeToAddLab()" class="ui-button-success submitBtnStyle"></button>
+        <button style="width:40%;margin-left:30%" pButton type="button" label="Add new Labtest"
+            (click)="routeToAddLab()" class="ui-button-success submitBtnStyle"></button>
 
     </p-card>
 </div>
@@ -74,7 +76,9 @@
 
             <div class="ui-g ui-fluid">
                 <hr style="height:2px;width:100%;background-color:green; margin-top: 0px" />
-                <form style="width:100%" #myForm="ngForm" (ngSubmit)=saveOpdLabTest();>
+
+                <form style="width:100%" #myForm="ngForm" (ngSubmit)=saveOpdLabTest();myForm.reset();>
+
                     <div *ngIf="showspinloading">
                         <p-progressSpinner></p-progressSpinner>
                         <h2>{{showspinLoadingMessage}}</h2>
@@ -85,11 +89,14 @@
                             <div class="ui-md-8 ui-lg-8 ui-sm-12">
                                 <div class="ui-inputgroup">
 
-                                    <span class="ui-inputgroup-addon" style="width:37%;font-size:15px;font-weight: bold;">
-                    Select LabTest<i style="color: red">*</i></span>
+                                    <span class="ui-inputgroup-addon"
+                                        style="width:37%;font-size:15px;font-weight: bold;">
+                                        Select LabTest<i style="color: red">*</i></span>
 
 
-                                    <p-multiSelect name="multiDropdown" [options]="multiDropdown" [(ngModel)]="addLabTests.labTests" (onChange)="onChangeLabTest()" [ngStyle]="{width:'100%'}" [style]="{'height':'100%'}" required>
+                                    <p-multiSelect name="multiDropdown" [options]="multiDropdown"
+                                        [(ngModel)]="addLabTests.labTests" (onChange)="onChangeLabTest()"
+                                        [ngStyle]="{width:'100%'}" [style]="{'height':'100%'}" required>
                                     </p-multiSelect>
 
 
@@ -97,7 +104,8 @@
 
                             </div>
                             <div class="ui-md-2 ui-lg-2 ui-sm-12 ">
-                                <button pButton type="button" label="ADD" (click)="routeToAddLab()" class="ui-button-success submitBtnStyle" style="width:100%"></button>
+                                <button pButton type="button" label="ADD" (click)="routeToAddLab()"
+                                    class="ui-button-success submitBtnStyle" style="width:100%"></button>
                             </div>
                         </div>
 
@@ -105,9 +113,11 @@
                             <div class="ui-md-2 ui-lg-2"></div>
                             <div class="ui-md-8 ui-lg-8 ui-sm-12">
                                 <div class="ui-inputgroup">
-                                    <span class="ui-inputgroup-addon" style="width:37%;font-size:15px; font-weight: bold;">
-                    LabTest Price</span>
-                                    <input type="text" name="price" [(ngModel)]="addLabTests.price" [readOnly]="true" pInputText placeholder="$" required>
+                                    <span class="ui-inputgroup-addon"
+                                        style="width:37%;font-size:15px; font-weight: bold;">
+                                        LabTest Price</span>
+                                    <input type="text" name="price" [(ngModel)]="addLabTests.price" [readOnly]="true"
+                                        pInputText placeholder="$" required>
 
                                 </div>
                             </div>
@@ -116,9 +126,11 @@
                             <div class="ui-md-2 ui-lg-2"></div>
                             <div class="ui-md-8 ui-lg-8 ui-sm-12">
                                 <div class="ui-inputgroup">
-                                    <span class="ui-inputgroup-addon" style="width:37%;font-size:15px; font-weight: bold;">
-                    Cash Recieve<i style="color: red">*</i></span>
-                                    <input type="text" name="cashRecieve" (keypress)="numberOnly($event)" [(ngModel)]="addLabTests.cashRecieve" pInputText placeholder="$" required>
+                                    <span class="ui-inputgroup-addon"
+                                        style="width:37%;font-size:15px; font-weight: bold;">
+                                        Cash Recieve<i style="color: red">*</i></span>
+                                    <input type="text" name="cashRecieve" (keypress)="numberOnly($event)"
+                                        [(ngModel)]="addLabTests.cashRecieve" pInputText placeholder="$" required>
 
 
                                 </div>
@@ -129,12 +141,16 @@
                             <div class="ui-md-2 ui-lg-2"></div>
                             <div class="ui-md-8 ui-lg-8 ui-sm-12">
                                 <div class="ui-inputgroup">
-                                    <span class="ui-inputgroup-addon" style="width:37%;font-size:15px;font-weight: bold;">
-                    Discount</span>
-                                    <input type="number" min="0" name="discount" (ngModelChange)="discounter($event)" (keypress)="numberOnly($event)" [(ngModel)]="addLabTests.discount" pInputText placeholder="0">
+                                    <span class="ui-inputgroup-addon"
+                                        style="width:37%;font-size:15px;font-weight: bold;">
+                                        Discount</span>
+                                    <input type="number" min="0" name="discount" (ngModelChange)="discounter($event)"
+                                        (keypress)="numberOnly($event)" [(ngModel)]="addLabTests.discount" pInputText
+                                        placeholder="0">
 
                                 </div>
-                                <div style="padding:0px !important;margin-bottom:0px !important;font-size: 16px; text-align:center;" class="alert alert-danger" [hidden]="discountCheck">
+                                <div style="padding:0px !important;margin-bottom:0px !important;font-size: 16px; text-align:center;"
+                                    class="alert alert-danger" [hidden]="discountCheck">
                                     discount is more than price!
                                 </div>
                             </div>
@@ -144,9 +160,11 @@
                             <div class="ui-md-2 ui-lg-2"></div>
                             <div class="ui-md-8 ui-lg-8 ui-sm-12">
                                 <div class="ui-inputgroup">
-                                    <span class="ui-inputgroup-addon" style="width:37%;font-size:15px;font-weight: bold;">
-                    Total</span>
-                                    <input type="text" pInputText name="total" [(ngModel)]="addLabTests.total" placeholder="Total Amount $$" [readOnly]="true" required>
+                                    <span class="ui-inputgroup-addon"
+                                        style="width:37%;font-size:15px;font-weight: bold;">
+                                        Total</span>
+                                    <input type="text" pInputText name="total" [(ngModel)]="addLabTests.total"
+                                        placeholder="Total Amount $$" [readOnly]="true" required>
 
                                 </div>
                             </div>
@@ -155,14 +173,16 @@
                         <div class="ui-g">
                             <div class="ui-md-2 ui-lg-2"></div>
                             <div class="ui-md-8 ui-lg-8 ui-sm-12">
-                                <button pButton type="submit" label="SAVE" class="ui-button-success submitBtnStyle" [disabled]="myForm.invalid || !discountCheck "></button>
+                                <button pButton type="submit" label="SAVE" class="ui-button-success submitBtnStyle"
+                                    [disabled]="myForm.invalid || !discountCheck "></button>
                             </div>
                         </div>
 
                         <div class="ui-g">
                             <div class="ui-md-2 ui-lg-2"></div>
                             <div class="ui-md-8 ui-lg-8 ui-sm-12">
-                                <button pButton type="button" label="PRINT" class="ui-button-success submitBtnStyle" printSectionId="print-section" ngxPrint [disabled]="printer"></button>
+                                <button pButton type="button" label="PRINT" class="ui-button-success submitBtnStyle"
+                                    printSectionId="print-section" ngxPrint [disabled]="printer"></button>
                             </div>
                         </div>
                     </div>

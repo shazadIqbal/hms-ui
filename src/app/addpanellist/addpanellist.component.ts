@@ -31,19 +31,7 @@ export class AddpanellistComponent implements OnInit {
 
     ];
 
-    this.cars = [
-      { label: 'choose facilities', value: null },
-      { label: 'Audi', value: 'Audi' },
-      { label: 'BMW', value: 'BMW' },
-      { label: 'Fiat', value: 'Fiat' },
-      { label: 'Ford', value: 'Ford' },
-      { label: 'Honda', value: 'Honda' },
-      { label: 'Jaguar', value: 'Jaguar' },
-      { label: 'Mercedes', value: 'Mercedes' },
-      { label: 'Renault', value: 'Renault' },
-      { label: 'VW', value: 'VW' },
-      { label: 'Volvo', value: 'Volvo' }
-    ];
+    
   }
 
   ngOnInit() {
@@ -51,7 +39,7 @@ export class AddpanellistComponent implements OnInit {
   }
 
   getFcilityInIt() {
-    this.multidropdown = [];
+    
     this.panelService.getFacility().subscribe(response => {
       console.log('response is here', response);
 
@@ -118,10 +106,12 @@ export class AddpanellistComponent implements OnInit {
             detail: 'Already Exsist'
           });
         }
+        this.facilityObj.facilityName='';
       },
       error => {
         console.log(error);
         this.messageService.add({ severity: 'error', summary: 'Failed', detail: 'Failed' });
+        this.facilityObj.facilityName='';
       }
     );
     this.getFcilityInIt();
