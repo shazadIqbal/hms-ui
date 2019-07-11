@@ -156,12 +156,7 @@ getfacilitiesInDropdown() {
         this.hidder = true;
       }
 
-      // for (var keys in data){
-      //   this.name.push((data[keys].facilities));
-      //   // this.name.push((data[keys].price));
-      //   console.log("men names honn"+name);
-      // }
-      // // console.log(data[0]);
+     
       console.log("hello")
       data.map(e => {
 
@@ -197,15 +192,13 @@ saveOpdLabTest(){
   this.labtestservice.saveOpdEr(this.addLabTests).subscribe(
 
     data => {
-      // here is printer thing
-      // this.printId = "print-section";
-      //this.showprint = false;
+   
       this.printer = false;
       console.log(data);
       this.messageservice.add({
         severity: "success",
         summary: "Added Succesfully",
-        detail: "Emergency Service Added"
+        detail: "Opd Lab test successfully done!"
 
       });
     },

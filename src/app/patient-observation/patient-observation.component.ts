@@ -119,7 +119,8 @@ export class PatientObservationComponent implements OnInit {
         console.log(data);
         this.messageService.add({
           severity: 'success',
-          summary: 'Succesfully'
+          summary: 'Succesfully',
+          detail: 'Patient Observation successfully done.'
         });
         this.enable = false;
       },

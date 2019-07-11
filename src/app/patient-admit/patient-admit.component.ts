@@ -139,7 +139,7 @@ export class PatientAdmitComponent implements OnInit {
           this.messageService.add({
             severity: "success",
             summary: "OPD ADMIT SUCCESSFULL",
-            detail: "True"
+            detail: "Bed Successfully Assigned"
           });
         }
         this.enable = false;

@@ -1,15 +1,4 @@
-<!-- <div class="ui-g-6 ui-lg-6 ui-sm-12">
-<button
-  pButton
-  type="button"
-  class="ui-button-success"
-  style="width:80%;margin-left:10%;  height:40px;"
-  (click)="addpanel()"
-  label= "Back"
->
-</button>
-</div> -->
-<!-- Back Button -->
+
 <div class="ui-g">
     <div class="ui-lg-1 ui-sm-0 ui-md-1"></div>
     <div class="ui-g-4 ui-lg-4 ui-sm-12">
@@ -50,14 +39,7 @@
                             </div>
                         </div>
 
-                        <!-- <div class="ui-g-12 ui-md-3">
-              <div class="ui-inputgroup">
-                <span class="ui-inputgroup-addon">DOB</span>
-                                <p-calendar></p-calendar>
-                            </div>
-
-                        </div> -->
-
+                  
                         <div class="ui-g-12 ui-md-5">
                             <div class="ui-inputgroup">
                                 <span class="ui-inputgroup-addon" style="width:50%">Panel Start Date<i style="color: red">*</i></span>
@@ -75,30 +57,20 @@
                             </div>
                         </div>
                         <div class="ui-g-12 ui-md-5 ">
-                            <div class="ui-inputgroup">
-                                <span class="ui-inputgroup-addon" style="height:80%; width: 50%;">Panel Facility<i
-                    style="color: red">*</i></span>
+                            <div >
+                                <!-- <span class="ui-inputgroup-addon" style="height:80%; width: 50%;">Panel Facility<i
+                    style="color: red">*</i></span> -->
 
-                                <p-multiSelect [options]="multidropdown" [(ngModel)]="panels.panelFacility" [panelStyle]="{ minWidth: '12em' }" name="pfacility" [style]="{ width: '300px' }"></p-multiSelect>
+                                <p-multiSelect defaultLabel="Choose Facility" [options]="multidropdown" [(ngModel)]="panels.panelFacility" [panelStyle]="{ width: '12em' }" name="pfacility" [style]="{ width: '435px' }"></p-multiSelect>
 
-                                <!-- <p-multiSelect
-                  [options]="multidropdown"
-                  (click)="OnClickInMulti()"
->>>>>>> master
-                  [panelStyle]="{ minWidth: '12em' }"
-                  [(ngModel)]="panels.panelFacility"
-                  [style]="{ width: '300px' }"
-                  name="pfacility"
-                  required
-
-                ></p-multiSelect> -->
+                  
                             </div>
                         </div>
                         <div class="ui-g-12 ui-md-5 ">
                             <div class="ui-inputgroup">
                                 <p-dialog header="Add Facility" [(visible)]="display" [modal]="true" [responsive]="true" [style]="{ width: '500px', minWidth: '200px' }" [minY]="70" [maximizable]="true" [baseZIndex]="10000">
                                     <form #addFacility="ngForm">
-                                        <!-- <span class="ui-inputgroup-addon">Add Facility</span> -->
+                                       
                                         <input type="text" pInputText placeholder="Add Facility " name="addFacility" [(ngModel)]="facilityObj.facilityName" required ngModel />
 
                                         <p-footer>
@@ -110,13 +82,7 @@
                                 <button type="button" (click)="showDialog()" class="ui-button-success" class="backBtnStyle" pButton icon="pi pi-info-circle" label="ADD"></button>
                             </div>
                         </div>
-                        <!-- <div class="ui-g-12 ">
-              <div class=" ui-g-12 ui-md-4">
-                <button pButton type="submit" label="Save" class=" ui-button-success  one"
-                  style="width:100%; margin-left:100% " [disabled]="form.invalid"></button>
-              </div>
-              <p-toast position="top-center"></p-toast>
-            </div> -->
+            
                         <div class="ui-g-12 ">
                             <div class="ui-g ui-fluid">
                                 <!-- Submit button -->

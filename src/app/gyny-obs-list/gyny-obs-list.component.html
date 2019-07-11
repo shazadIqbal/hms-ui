@@ -1,11 +1,18 @@
 <div class="ui-g">
     <div class="ui-lg-2 ui-md-2 ui-sm-0"></div>
     <div class="ui-g-4 ui-lg-4 ui-sm-12">
-        <button pButton type="button" class="backBtnStyle" (click)="backToMain()" style="width:80%;margin-left:10%;  height:40px;" label="Back"></button>
+        <button pButton type="button" class="backBtnStyle" (click)="backToMain()"
+            style="width:80%;margin-left:10%;  height:40px;" label="Back"></button>
     </div>
     <div class="ui-g-4 ui-lg-4 ui-sm-12">
-        <button pButton type="button" (click)="toAddPatient()" style="width:80%;margin-left:10%;  height:40px;" label="Add Gyny/Obs" class="backBtnStyle"></button>
+        <button pButton type="button" (click)="toAddPatient()" style="width:80%;margin-left:10%;  height:40px;"
+            label="Add Gyny/Obs" class="backBtnStyle"></button>
     </div>
+</div>
+
+
+<div>
+    <app-monitorquickview> </app-monitorquickview>
 </div>
 
 <p-card header="GYNY/OBS LIST" [style]="{  width: '100%',
@@ -15,11 +22,13 @@ color: 'green'
 }">
     <hr />
 
-    <p-table #dt [columns]="cols" [value]="patient" [paginator]="true" [scrollable]="true" [rows]="10" [totalRecords]="totalRecords" scrollHeight="200px" [style]="{ 'margin-top': '50px', width: '100%' }">
+    <p-table #dt [columns]="cols" [value]="patient" [paginator]="true" [scrollable]="true" [rows]="10"
+        [totalRecords]="totalRecords" scrollHeight="200px" [style]="{ 'margin-top': '50px', width: '100%' }">
         <ng-template pTemplate="caption">
             <div style="text-align: right">
                 <i class="fa fa-search" style="margin:4px 4px 0 0"></i>
-                <input type="text" pInputText size="50" placeholder="Global Filter" (input)="dt.filterGlobal($event.target.value, 'contains')" style="width:auto" />
+                <input type="text" pInputText size="50" placeholder="Global Filter"
+                    (input)="dt.filterGlobal($event.target.value, 'contains')" style="width:auto" />
             </div>
         </ng-template>
 
