@@ -13,6 +13,8 @@ import { NavBarService } from '../Services/NavBarService';
 })
 export class MainScreenComponent implements OnInit {
   loading = false;
+  usertype = sessionStorage.getItem('userType');
+
   constructor(
     private router: Router,
     private patientService: PatientserviceService,
