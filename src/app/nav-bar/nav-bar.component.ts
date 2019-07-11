@@ -18,7 +18,7 @@ export class NavBarComponent implements OnInit {
   ngDoCheck() {
     //console.log('Ng Do Check  is Checking the availability of the token');
     const token = sessionStorage.getItem('token');
-    //this.userName = sessionStorage.getItem('username');
+    this.userName = sessionStorage.getItem('username');
     //this.userType = sessionStorage.getItem('userType');
 
     //console.log("username", this.userName);
