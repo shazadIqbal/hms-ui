@@ -40,7 +40,7 @@
         <div class="ui-inputgroup  col-md-5 col-lg-5 col-sm-12" style="margin-bottom: 10px">
 
             <span class="ui-inputgroup-addon">Filter By Date</span>
-            <p-calendar name="filterByDate" required [(ngModel)]="datefilter" (onSelect)="dateOnClick()" placeholder="Filter By Date">
+            <p-calendar name="filterByDate" required [(ngModel)]="datefilter" [monthNavigator]="true" [yearNavigator]="true" yearRange="1947:2090" showButtonBar = "true" (onSelect)="dateOnClick()" placeholder="Filter By Date">
             </p-calendar>
         </div>
     </div>
@@ -60,7 +60,7 @@
                     Actions
                 </th>
             </tr>
- 
+
 
             <div *ngIf="showLoading" style="margin-left:235%;">
 
