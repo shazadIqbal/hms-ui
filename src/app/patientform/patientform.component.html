@@ -1,6 +1,7 @@
 <div class="ui-g-12">
     <div class="ui-lg-5 ui-md-5 ui-sm-12">
-        <button pButton type="button" class="backBtnStyle" (click)="goBack()" style="width:45%;margin-left:30% " label="Back"></button>
+        <button pButton type="button" class="backBtnStyle" (click)="goBack()" style="width:45%;margin-left:30% "
+            label="Back"></button>
     </div>
 </div>
 
@@ -22,8 +23,9 @@
                 <!-- checkbox for registration of gyny and obs -->
                 <div class="ui-g-12" style="float: left;">
                     <label style="color:rgb(67, 139, 78); font-size: 18px; ">Gyny/Obs
-    </label> &nbsp;
-                    <p-checkbox [(ngModel)]="isGynyObs" (onChange)="isGynObsFn()" binary="true" name="GynyObs"></p-checkbox>
+                    </label> &nbsp;
+                    <p-checkbox [(ngModel)]="isGynyObs" (onChange)="isGynObsFn()" binary="true" name="GynyObs">
+                    </p-checkbox>
                 </div>
             </div>
             <hr />
@@ -33,13 +35,16 @@
                 <div class="ui-g ui-fluid">
                     <div class="ui-g-12 ui-md-6">
                         <div class="ui-inputgroup">
-                            <span style="width:30%;" class="ui-inputgroup-addon"><b>Full Name&ensp;<i style="color: red">*</i></b><i></i></span>
+                            <span style="width:30%;" class="ui-inputgroup-addon"><b>Full Name&ensp;<i
+                                        style="color: red">*</i></b><i></i></span>
                             <!-- Full name -->
 
-                            <input type="text" [(ngModel)]="patient.name" #nameref="ngModel" required pInputText placeholder="&ensp;Full Name" style="width:100%;" name="fullName" />
+                            <input type="text" [(ngModel)]="patient.name" #nameref="ngModel" required pInputText
+                                placeholder="&ensp;Full Name" style="width:100%;" name="fullName" />
                             <span class="ui-inputgroup-addon"></span>
                         </div>
-                        <div style="padding:0px;margin-bottom:0px" [hidden]="nameref.valid || nameref.pristine" class="alert alert-danger">
+                        <div style="padding:0px;margin-bottom:0px" [hidden]="nameref.valid || nameref.pristine"
+                            class="alert alert-danger">
                             Please Enter a Name
                         </div>
                     </div>
@@ -50,11 +55,14 @@
                         <div class="ui-inputgroup">
 
                             <span style="width:30%;" class="ui-inputgroup-addon"><b>CNIC&ensp;</b><i></i></span>
-                            <input type="text" (keypress)="numberOnly($event)" #position="ngModel" pInputText placeholder="&ensp;Cnic (Optional)" name="position" [(ngModel)]="patient.cnic" ngModel />
+                            <input type="text" (keypress)="numberOnly($event)" #position="ngModel" pInputText
+                                placeholder="&ensp;Cnic (Optional)" name="position" [(ngModel)]="patient.cnic"
+                                ngModel />
                             <span class="ui-inputgroup-addon"></span>
                         </div>
 
-                        <div [hidden]="position.valid || position.pristine" style="padding:0px;margin-bottom:0px" class="alert alert-danger">
+                        <div [hidden]="position.valid || position.pristine" style="padding:0px;margin-bottom:0px"
+                            class="alert alert-danger">
                             ! required
                         </div>
                     </div>
@@ -65,12 +73,15 @@
                     <!-- Age No -->
                     <div class="ui-g-12 ui-md-6">
                         <div class="ui-inputgroup">
-                            <span style="width:30%" class="ui-inputgroup-addon"><b>Age&ensp;<i style="color: red">*</i></b><i></i></span>
+                            <span style="width:30%" class="ui-inputgroup-addon"><b>Age&ensp;<i
+                                        style="color: red">*</i></b><i></i></span>
 
-                            <input type="text" (keypress)="numberOnly($event)" #agRef="ngModel" pInputText required placeholder="&ensp;Age" name="age" ngModel [(ngModel)]="patient.age" />
+                            <input type="text" (keypress)="numberOnly($event)" #agRef="ngModel" pInputText required
+                                placeholder="&ensp;Age" name="age" ngModel [(ngModel)]="patient.age" />
                             <span class="ui-inputgroup-addon"></span>
                         </div>
-                        <div style="padding:0px;margin-bottom:0px" [hidden]="agRef.valid || agRef.pristine" class="alert alert-danger">
+                        <div style="padding:0px;margin-bottom:0px" [hidden]="agRef.valid || agRef.pristine"
+                            class="alert alert-danger">
                             !required
                         </div>
                     </div>
@@ -80,17 +91,21 @@
                     <div class="ui-g-12 ui-md-5">
                         <div class="ui-inputgroup">
 
-                            <span style="width: 27%" class="ui-inputgroup-addon"><b>GENDER&ensp;<i style="color: red">*</i></b><i></i></span>
+                            <span style="width: 27%" class="ui-inputgroup-addon"><b>GENDER&ensp;<i
+                                        style="color: red">*</i></b><i></i></span>
 
 
 
-                            <p-dropdown [options]="gender" name="gender" placeholder="Select Gender" [(ngModel)]="patient.gender" required #genderRef="ngModel" [autoWidth]="false" [ngStyle]="{ width: '100%' }">
+                            <p-dropdown [options]="gender" name="gender" placeholder="Select Gender"
+                                [(ngModel)]="patient.gender" required #genderRef="ngModel" [autoWidth]="false"
+                                [ngStyle]="{ width: '100%' }">
                             </p-dropdown>
 
                             <!-- <span class="ui-inputgroup-addon"></span> -->
                             <!-- <label style="margin-top:5px">{{ patient.gender }}</label> -->
                         </div>
-                        <div style="padding:0px;margin-bottom:0px" [hidden]="genderRef.valid || genderRef.pristine" class="alert alert-danger">
+                        <div style="padding:0px;margin-bottom:0px" [hidden]="genderRef.valid || genderRef.pristine"
+                            class="alert alert-danger">
                             !required
                         </div>
                     </div>
@@ -100,12 +115,15 @@
                     <!-- Mobile No -->
                     <div class="ui-g-12 ui-md-6">
                         <div class="ui-inputgroup">
-                            <span style="width:30%" class="ui-inputgroup-addon"><b>Phone No&ensp;<i style="color: red">*</i></b><i></i></span>
-                            <input type="text" (keypress)="numberOnly($event)" #TelRef="ngModel" pInputText required placeholder="&ensp;PhoneNo" name="MobileNo" ngModel [(ngModel)]="patient.phoneNo" />
+                            <span style="width:30%" class="ui-inputgroup-addon"><b>Phone No&ensp;<i
+                                        style="color: red">*</i></b><i></i></span>
+                            <input type="text" (keypress)="numberOnly($event)" #TelRef="ngModel" pInputText required
+                                placeholder="&ensp;PhoneNo" name="MobileNo" ngModel [(ngModel)]="patient.phoneNo" />
                             <span class="ui-inputgroup-addon"></span>
 
                         </div>
-                        <div style="padding:0px;margin-bottom:0px" [hidden]="TelRef.valid || TelRef.pristine" class="alert alert-danger">
+                        <div style="padding:0px;margin-bottom:0px" [hidden]="TelRef.valid || TelRef.pristine"
+                            class="alert alert-danger">
                             Please Enter a Valid Mobile No.
                         </div>
                     </div>
@@ -116,10 +134,12 @@
                         <div class="ui-inputgroup">
 
                             <span style="width:30%" class="ui-inputgroup-addon"><b>ADDRESS&ensp;</b><i></i></span>
-                            <input type="text" #adRef="ngModel" pInputText placeholder="&ensp;Address (Optional)" name="Address" ngModel autocomplete="off" [(ngModel)]="patient.address" />
+                            <input type="text" #adRef="ngModel" pInputText placeholder="&ensp;Address (Optional)"
+                                name="Address" ngModel autocomplete="off" [(ngModel)]="patient.address" />
                             <span class="ui-inputgroup-addon"></span>
                         </div>
-                        <div style="padding:0px;margin-bottom:0px" [hidden]="adRef.valid || adRef.pristine" class="alert alert-danger">
+                        <div style="padding:0px;margin-bottom:0px" [hidden]="adRef.valid || adRef.pristine"
+                            class="alert alert-danger">
                             !required
                         </div>
                     </div>
@@ -128,10 +148,12 @@
                 <div *ngIf="isGynyObs" class="ui-g ui-fluid">
                     <div class="ui-g-12 ui-md-6">
                         <div class="ui-inputgroup">
-                            <span style="width:30%;" class="ui-inputgroup-addon"><b>Father/Husband Name&ensp;</b><i></i
-        ></span>
+                            <span style="width:34%;" class="ui-inputgroup-addon"><b>Father/Husband
+                                    Name&ensp;</b><i></i></span>
                             <!-- Full name -->
-                            <input type="text" [(ngModel)]="patient.husbandOfAndFatherOf" #nameref="ngModel" required pInputText placeholder="&ensp;Husband Name/Father Name" style="width:100%;" name="husbandOrFatherName" />
+                            <input type="text" [(ngModel)]="patient.husbandOfAndFatherOf" #nameref="ngModel" required
+                                pInputText placeholder="Husband Name/Father Name" style="width:100%;"
+                                name="husbandOrFatherName" />
                             <!-- <span class="ui-inputgroup-addon"></span> -->
                         </div>
                     </div>
@@ -140,9 +162,12 @@
                     <!-- cnic_n0 -->
                     <div class="ui-g-12 ui-md-5">
                         <div class="ui-inputgroup">
-                            <span style="width:30%;" class="ui-inputgroup-addon"><b style="font-size: 9.5px;">REGISTRATION DATE&ensp;</b><i></i
-        ></span>
-                            <p-calendar [(ngModel)]="patient.registrationDate" name="calender" required></p-calendar>
+
+                            <span style="width:40%;" class="ui-inputgroup-addon"><b
+                                    style="font-size: 11px;">REGISTRATION DATE&ensp;</b><i></i></span>
+                            <p-calendar [(ngModel)]="patient.registrationDate" [style]="{width:'260px'}" name="calender"
+                                required></p-calendar>
+
                         </div>
                     </div>
                 </div>
@@ -152,9 +177,10 @@
                     <!-- Submit button -->
                     <div class="ui-g-12 ui-md-12">
 
-                        <button type="button" (click)="showConfirm()" [disabled]="userForm.invalid" class="colorSetAllButtons" style="width:100%;padding: 6px;">
-        Submit
-    </button>
+                        <button type="button" (click)="showConfirm()" [disabled]="userForm.invalid"
+                            class="colorSetAllButtons" style="width:100%;padding: 6px;">
+                            Submit
+                        </button>
 
                         <!-- Confirm wala toast -->
                         <p-toast position="center" key="c" (onClose)="onReject()" [modal]="true" [baseZIndex]="5000">
@@ -166,10 +192,12 @@
                                 </div>
                                 <div class="ui-g ui-fluid">
                                     <div class="ui-g-6">
-                                        <button type="button" pButton (click)="onConfirm();userForm.reset();" label="Yes" class="submitBtnStyle"></button>
+                                        <button type="button" pButton (click)="onConfirm();userForm.reset();"
+                                            label="Yes" class="submitBtnStyle"></button>
                                     </div>
                                     <div class="ui-g-6">
-                                        <button type="button" pButton (click)="onReject()" label="No" class="ui-button-secondary"></button>
+                                        <button type="button" pButton (click)="onReject()" label="No"
+                                            class="ui-button-secondary"></button>
                                     </div>
                                 </div>
                             </ng-template>

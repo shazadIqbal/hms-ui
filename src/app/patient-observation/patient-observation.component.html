@@ -1,12 +1,15 @@
 <div class="col-g-12">
 
     <div class="ui-lg-5 ui-md-5 ui-sm-12">
-        <button pButton type="button" class="backBtnStyle" (click)="backToMonitor()" style="width:45%;margin-left:30% " label="Back"></button>
+        <button pButton type="button" class="backBtnStyle" (click)="backToMonitor()" style="width:45%;margin-left:30% "
+            label="Back"></button>
     </div>
 
 </div>
 
-
+<div>
+    <app-monitorquickview> </app-monitorquickview>
+</div>
 
 <div class="ui-g-12">
     <p-toast></p-toast>
@@ -31,7 +34,9 @@
                         <div class="ui-md-1 ui-lg-1 ui-sm-0"></div>
                         <br />
                         <div class="ui-md-4 ui-lg-4 ui-sm-12">
-                            <button pButton type="button" label="Click to reload" style="margin-top: 0px; background-color:green;width:100%;" onclick="location.reload()"></button>
+                            <button pButton type="button" label="Click to reload"
+                                style="margin-top: 0px; background-color:green;width:100%;"
+                                onclick="location.reload()"></button>
                         </div>
                     </div>
                     <hr style="height:2px;width:100%;background-color:green;" />
@@ -42,10 +47,13 @@
                         <div class="ui-md-2 ui-lg-2"></div>
                         <div class="ui-md-8 ui-lg-8 ui-sm-12">
                             <div class="ui-inputgroup">
-                                <span class="ui-inputgroup-addon" style="width:37%;font-size:15px;font-weight:bold;">Select
-                  Doctor</span>
-                                <p-dropdown (onChange)="doctorDropdown()" [options]="doctors" name="doctors" [(ngModel)]="patientObservationObject.doctors" [filter]="true" [style]="{ width: '100%', height: '100%', 'font-size': '20px' }" [ngStyle]="{ width: '80%', 'font-size': '20px' }"
-                                    required></p-dropdown>
+                                <span class="ui-inputgroup-addon"
+                                    style="width:37%;font-size:15px;font-weight:bold;">Select
+                                    Doctor</span>
+                                <p-dropdown (onChange)="doctorDropdown()" [options]="doctors" name="doctors"
+                                    [(ngModel)]="patientObservationObject.doctors" [filter]="true"
+                                    [style]="{ width: '100%', height: '100%', 'font-size': '20px' }"
+                                    [ngStyle]="{ width: '80%', 'font-size': '20px' }" required></p-dropdown>
                             </div>
                         </div>
 
@@ -55,8 +63,10 @@
                         <div class="ui-md-2 ui-lg-2"></div>
                         <div class="ui-md-8 ui-lg-8 ui-sm-12">
                             <div class="ui-inputgroup">
-                                <span class="ui-inputgroup-addon" style="width:45%;font-size:15px;font-weight: bold;">Fees</span>
-                                <input type="text" name="fees" pInputText ngModel required [(ngModel)]="patientObservationObject.fees" [readOnly]="true" />
+                                <span class="ui-inputgroup-addon"
+                                    style="width:45%;font-size:15px;font-weight: bold;">Fees</span>
+                                <input type="text" name="fees" pInputText ngModel required
+                                    [(ngModel)]="patientObservationObject.fees" [readOnly]="true" />
                             </div>
                         </div>
                     </div>
@@ -64,10 +74,14 @@
                         <div class="ui-md-2 ui-lg-2"></div>
                         <div class="ui-md-8 ui-lg-8 ui-sm-12">
                             <div class="ui-inputgroup">
-                                <span class="ui-inputgroup-addon" style="width:45%;font-size:15px;font-weight: bold;">Discount $$</span>
-                                <input type="number" name="discount" pInputText ngModel min="0" placeholder="0" [(ngModel)]="patientObservationObject.discount" (ngModelChange)="discounter($event)" (keypress)="numberOnly($event)" />
+                                <span class="ui-inputgroup-addon"
+                                    style="width:45%;font-size:15px;font-weight: bold;">Discount $$</span>
+                                <input type="number" name="discount" pInputText ngModel min="0" placeholder="0"
+                                    [(ngModel)]="patientObservationObject.discount" (ngModelChange)="discounter($event)"
+                                    (keypress)="numberOnly($event)" />
                             </div>
-                            <div style="padding:0px !important;margin-bottom:0px !important;font-size: 16px; text-align:center;" class="alert alert-danger" [hidden]="discountCheck">
+                            <div style="padding:0px !important;margin-bottom:0px !important;font-size: 16px; text-align:center;"
+                                class="alert alert-danger" [hidden]="discountCheck">
                                 discount is more than total price!
                             </div>
                         </div>
@@ -80,9 +94,12 @@
                             <div class="ui-inputgroup">
 
 
-                                <span class="ui-inputgroup-addon" style="width:45%;font-size:15px;font-weight: bold;">Cash
-                  Recieved<i style="color: red">*</i></span>
-                                <input type="text" name="cashrecieved" pInputText ngModel required placeholder="Rps" (keypress)="numberOnly($event)" [(ngModel)]="patientObservationObject.cashRecieved" (input)="getTotal(patientObservationObject.cashRecieved)" />
+                                <span class="ui-inputgroup-addon"
+                                    style="width:45%;font-size:15px;font-weight: bold;">Cash
+                                    Recieved<i style="color: red">*</i></span>
+                                <input type="text" name="cashrecieved" pInputText ngModel required placeholder="Rps"
+                                    (keypress)="numberOnly($event)" [(ngModel)]="patientObservationObject.cashRecieved"
+                                    (input)="getTotal(patientObservationObject.cashRecieved)" />
                             </div>
                         </div>
 
@@ -94,9 +111,11 @@
                         <div class="ui-md-2 ui-lg-2"></div>
                         <div class="ui-md-8 ui-lg-8 ui-sm-12">
                             <div class="ui-inputgroup">
-                                <span class="ui-inputgroup-addon" style="width:45%;font-size:15px;font-weight: bold;">Total
-                  Amount</span>
-                                <input required type="number" pInputText name="total" ngModel [readOnly]="true" placeholder="Total Amount $" [(ngModel)]="patientObservationObject.total" />
+                                <span class="ui-inputgroup-addon"
+                                    style="width:45%;font-size:15px;font-weight: bold;">Total
+                                    Amount</span>
+                                <input required type="number" pInputText name="total" ngModel [readOnly]="true"
+                                    placeholder="Total Amount $" [(ngModel)]="patientObservationObject.total" />
                             </div>
                         </div>
                     </div>
@@ -104,7 +123,9 @@
                     <div class="ui-g">
                         <div class="ui-md-2 ui-lg-2"></div>
                         <div class="ui-md-8 ui-lg-8 ui-sm-12">
-                            <button [disabled]="myForm.invalid" pButton type="submit" label="SAVE" class="submitBtnStyle" [disabled]="myForm.invalid || !discountCheck" style="margin-top: 0px;width:100%;"></button>
+                            <button [disabled]="myForm.invalid" pButton type="submit" label="SAVE"
+                                class="submitBtnStyle" [disabled]="myForm.invalid || !discountCheck"
+                                style="margin-top: 0px;width:100%;"></button>
                         </div>
                     </div>
 
@@ -113,7 +134,8 @@
 
                         <div class="ui-md-2 ui-lg-2"></div>
                         <div class="ui-md-8 ui-lg-8 ui-sm-12">
-                            <button [disabled]="enable" printSectionId="content" class="submitBtnStyle" ngxPrint pButton type="button" label="PRINT" style="margin-top: 0px;width:100%;"></button>
+                            <button [disabled]="enable" printSectionId="content" class="submitBtnStyle" ngxPrint pButton
+                                type="button" label="PRINT" style="margin-top: 0px;width:100%;"></button>
 
                         </div>
                     </div>
@@ -135,7 +157,8 @@
 
                         <p style="font-size: 20px;"> <b style="font-size: 20px;"> MR No: </b> {{patientMrNo}}</p>
                         <p style="font-size: 20px;"><b style="font-size: 20px;"> Name: </b> {{patientName}}</p>
-                        <p style="font-size: 20px;"><b style="font-size: 20px;"> Doctor Name: </b> {{ patientObservationObject.doctors['fullName'] }}</p>
+                        <p style="font-size: 20px;"><b style="font-size: 20px;"> Doctor Name: </b>
+                            {{ patientObservationObject.doctors['fullName'] }}</p>
                         <p style="font-size: 20px;"><b style="font-size: 20px;"> Date: </b> {{date | date :'short'}}</p>
 
 
@@ -149,11 +172,11 @@
                             <span style="float: right;"> {{ patientObservationObject.fees }}</span>
                             <hr style="width:100%;" />
                             <span><b> Discount: </b> <span style="float: right;">
-                  {{ patientObservationObject.discount }}</span></span>
+                                    {{ patientObservationObject.discount }}</span></span>
 
                             <hr style="border:1px solid black;width:100%;" />
                             <span><b> Total Amount: </b> <span style="float:right;">
-                  {{ patientObservationObject.total }}</span></span>
+                                    {{ patientObservationObject.total }}</span></span>
                             <hr style="border:1px solid black;width:100%;" />
                         </div>
                     </div>

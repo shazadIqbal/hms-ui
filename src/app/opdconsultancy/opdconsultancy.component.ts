@@ -165,7 +165,8 @@ export class OpdconsultancyComponent implements OnInit {
         console.log(this.opdObject);
         this.messageService.add({
           severity: "success",
-          summary: "Succesfully"
+          summary: "Succesfully",
+          detail: "Opd consultancy successfully Done!"
         });
         this.enable = false;
       },

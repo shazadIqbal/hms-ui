@@ -37,7 +37,7 @@ export class MonitorquickviewComponent implements OnInit {
       this.name=response.name;
       this.number=response.number;
 
-      if(response.registrationDate!=null)
+      if(response.gynAndObsRegistration)
       this.registration="yes";
       else
       this.registration="No";

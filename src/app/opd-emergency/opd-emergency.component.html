@@ -60,7 +60,8 @@
     <p-card>
 
         <p style="margin:20px;display:block;text-align: center;">No Facility Added,Please add a facility</p>
-        <button style="width:40%;margin-left:30%" pButton type="button" label="Add new Faciity" (click)="routeToEr()" class="ui-button-success submitBtnStyle"></button>
+        <button style="width:40%;margin-left:30%" pButton type="button" label="Add new Faciity" (click)="routeToEr()"
+            class="ui-button-success submitBtnStyle"></button>
 
     </p-card>
 </div>
@@ -85,7 +86,7 @@
                     <p-progressSpinner></p-progressSpinner>
                     <h2>{{showspinLoadingMessage}}</h2>
                 </div>
-                <form style="width:100%" #myForm="ngForm">
+                <form style="width:100%;" #myForm="ngForm">
 
 
                     <div *ngIf="show">
@@ -95,10 +96,13 @@
                             <div class="ui-md-2 ui-lg-2"></div>
                             <div class="ui-md-8 ui-lg-8 ui-sm-12">
                                 <div class="ui-inputgroup">
-                                    <span class="ui-inputgroup-addon" style="height:37px;width:45%;font-size:15px;font-weight: bold;">
-                    Select ER</span>
+                                    <span class="ui-inputgroup-addon"
+                                        style="height:37px;width:45%;font-size:15px;font-weight: bold;">
+                                        Select ER</span>
 
-                                    <p-multiSelect name="multiDropdown" [options]="multiDropdown" [(ngModel)]="addEmergency.facilities" (onChange)="onChangeFacility()" [ngStyle]="{width:'100%'}" [style]="{height:'37px'}" required>
+                                    <p-multiSelect name="multiDropdown" [options]="multiDropdown"
+                                        [(ngModel)]="addEmergency.facilities" (onChange)="onChangeFacility()"
+                                        [ngStyle]="{width:'100%'}" [style]="{height:'37px'}" required>
                                     </p-multiSelect>
                                 </div>
                             </div>
@@ -108,9 +112,11 @@
                             <div class="ui-md-2 ui-lg-2"></div>
                             <div class="ui-md-8 ui-lg-8 ui-sm-12">
                                 <div class="ui-inputgroup">
-                                    <span class="ui-inputgroup-addon" style="width:37%;font-size:15px; font-weight: bold;">
-                    Facility Price</span>
-                                    <input type="text" name="price" [(ngModel)]="addEmergency.price" [readOnly]="true" pInputText placeholder="$" required>
+                                    <span class="ui-inputgroup-addon"
+                                        style="width:37%;font-size:15px; font-weight: bold;">
+                                        Facility Price</span>
+                                    <input type="text" name="price" [(ngModel)]="addEmergency.price" [readOnly]="true"
+                                        pInputText placeholder="$" required>
 
                                 </div>
                             </div>
@@ -121,9 +127,13 @@
                             <div class="ui-md-2 ui-lg-2"></div>
                             <div class="ui-md-8 ui-lg-8 ui-sm-12">
                                 <div class="ui-inputgroup">
-                                    <span class="ui-inputgroup-addon" style="width:37%;font-size:15px; font-weight: bold;">
-                    Cash Recieved<i style="color: red">*</i></span>
-                                    <input type="text" (keypress)="numberOnly($event)" name="cashRecieve" [(ngModel)]="addEmergency.cashRecieve" pInputText placeholder="$" required>
+
+                                    <span class="ui-inputgroup-addon"
+                                        style="width:37%;font-size:15px; font-weight: bold;">
+                                        Cash Recieved<i style="color: red">*</i></span>
+                                    <input type="text" (keypress)="numberOnly($event)" name="cashRecieve"
+                                        [(ngModel)]="addEmergency.cashRecieve" pInputText placeholder="$" required>
+
 
                                 </div>
                             </div>
@@ -133,17 +143,21 @@
                             <div class="ui-md-2 ui-lg-2"></div>
                             <div class="ui-md-8 ui-lg-8 ui-sm-12">
                                 <div class="ui-inputgroup">
-                                    <span class="ui-inputgroup-addon" style="width:37%;font-size:15px;font-weight: bold;">
-                    Discount</span>
+                                    <span class="ui-inputgroup-addon"
+                                        style="width:37%;font-size:15px;font-weight: bold;">
+                                        Discount</span>
 
 
-                                    <input type="text" (keypress)="numberOnly($event)" (ngModelChange)="discounter($event)" min="0" name="discount" [(ngModel)]="addEmergency.discount" pInputText placeholder="0">
+                                    <input type="text" (keypress)="numberOnly($event)"
+                                        (ngModelChange)="discounter($event)" min="0" name="discount"
+                                        [(ngModel)]="addEmergency.discount" pInputText placeholder="0">
 
 
 
 
                                 </div>
-                                <div style="padding:0px !important;margin-bottom:0px !important;font-size: 16px; text-align:center;" class="alert alert-danger" [hidden]="discountCheck">
+                                <div style="padding:0px !important;margin-bottom:0px !important;font-size: 16px; text-align:center;"
+                                    class="alert alert-danger" [hidden]="discountCheck">
                                     discount is more than total price!
                                 </div>
                             </div>
@@ -153,9 +167,11 @@
                             <div class="ui-md-2 ui-lg-2"></div>
                             <div class="ui-md-8 ui-lg-8 ui-sm-12">
                                 <div class="ui-inputgroup">
-                                    <span class="ui-inputgroup-addon" style="width:37%;font-size:15px;font-weight: bold;">
-                    Total</span>
-                                    <input type="text" pInputText name="total" [(ngModel)]="addEmergency.total" placeholder="Total Amount $$" [readOnly]="true" required>
+                                    <span class="ui-inputgroup-addon"
+                                        style="width:37%;font-size:15px;font-weight: bold;">
+                                        Total</span>
+                                    <input type="text" pInputText name="total" [(ngModel)]="addEmergency.total"
+                                        placeholder="Total Amount $$" [readOnly]="true" required>
 
                                 </div>
                             </div>
@@ -164,14 +180,23 @@
                         <div class="ui-g">
                             <div class="ui-md-2 ui-lg-2"></div>
                             <div class="ui-md-8 ui-lg-8 ui-sm-12">
-                                <button pButton type="button" (click)="saveOpdEmergency();myForm.reset();" label="SAVE" class="ui-button-success submitBtnStyle" [disabled]="myForm.invalid || !discountCheck"></button>
+
+                                <button pButton type="button" (click)="saveOpdEmergency();myForm.reset();" label="SAVE"
+                                    class="ui-button-success submitBtnStyle"
+                                    [disabled]="myForm.invalid || !discountCheck"></button>
+
                             </div>
                         </div>
                     </div>
                     <div class="ui-g">
                         <div class="ui-md-2 ui-lg-2"></div>
                         <div class="ui-md-8 ui-lg-8 ui-sm-12">
-                            <button pButton type="button" [printStyle]="{h1 : {'color': 'red'}, h2 : {'border': 'solid 1px'}}" label="PRINT" class="ui-button-success submitBtnStyle" printSectionId="print-section" (click)="print()" ngxPrint [disabled]="printer"></button>
+
+                            <button pButton type="button"
+                                [printStyle]="{h1 : {'color': 'red'}, h2 : {'border': 'solid 1px'}}" label="PRINT"
+                                class="ui-button-success submitBtnStyle" printSectionId="print-section"
+                                (click)="print()" ngxPrint [disabled]="printer"></button>
+
                         </div>
                     </div>
 
