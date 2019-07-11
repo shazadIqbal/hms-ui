@@ -11,15 +11,15 @@ export class AdmissionService {
 
   // tslint:disable-next-line: ban-typesp
   public saveAdmission(admission: any): Observable<Object> {
-    return this.http.post(environment.baseUrl + "/api/bed/", admission);
+    return this.http.post(environment.baseUrl + "api/bed/", admission);
   }
   public getAvailableBeds(): Observable<any> {
-    return this.http.get(environment.baseUrl + "/api/bed/");
+    return this.http.get(environment.baseUrl + "api/bed/");
   }
   public getBedsForSelectBedType(bedType: any): Observable<any>{
-    return this.http.get(environment.baseUrl + '/api/bed/selectbedtype/'+bedType)
+    return this.http.get(environment.baseUrl + 'api/bed/selectbedtype/'+bedType)
   }
   public savedOpdAdmit(admit: any): Observable<Object> {
-    return this.http.post(environment.baseUrl + "/api/opdadmit/", admit);
+    return this.http.post(environment.baseUrl + "api/opdadmit/", admit);
   }
 }
