@@ -1,24 +1,24 @@
 <p-card [style]="{marginTop:'10px'}" header="Selected Facilities">
 
-<!-- <ol style="margin-top:20px">
+    <!-- <ol style="margin-top:20px">
   <li style="margin:10px" *ngFor="let facility of facilities">{{facility}}</li>
 </ol> -->
-<p style="margin:10px" [hidden]="facilities.length">No Facility selected!</p>
-<p-table [hidden]="!facilities.length" [ngStyle]="{textAlign:'center'}" [value]="facilities">
-  <ng-template pTemplate="header">
-      <tr>
-          <th [ngStyle]="{textAlign:'center'}" *ngFor="let col of cols">
-              {{col.header}}
-          </th>
-      </tr>
-  </ng-template>
-  <ng-template pTemplate="body" let-car>
-      <tr>
-          <td *ngFor="let col of cols">
-                  {{car[col.field]}}
-          </td>
-      </tr>
-  </ng-template>
-</p-table>
-  <button pButton type="button" label="Add new Faciity" (click)="routeToEr()" class="ui-button-success"></button>
+    <p style="margin:10px" [hidden]="facilities.length">No Facility selected!</p>
+    <p-table [hidden]="!facilities.length" [ngStyle]="{textAlign:'center'}" [value]="facilities">
+        <ng-template pTemplate="header">
+            <tr>
+                <th [ngStyle]="{textAlign:'center'}" *ngFor="let col of cols">
+                    {{col.header}}
+                </th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-car>
+            <tr>
+                <td *ngFor="let col of cols">
+                    {{car[col.field]}}
+                </td>
+            </tr>
+        </ng-template>
+    </p-table>
+    <button pButton type="button" label="Add new Faciity" (click)="routeToEr()" class="ui-button-success submitBtnStyle"></button>
 </p-card>

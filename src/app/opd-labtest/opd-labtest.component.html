@@ -74,7 +74,7 @@
 
             <div class="ui-g ui-fluid">
                 <hr style="height:2px;width:100%;background-color:green; margin-top: 0px" />
-                <form style="width:100%" #myForm="ngForm" (ngSubmit)=saveOpdLabTest();>
+                <form style="width:100%" #myForm="ngForm" (ngSubmit)=saveOpdLabTest();myForm.reset();>
                     <div *ngIf="showspinloading">
                         <p-progressSpinner></p-progressSpinner>
                         <h2>{{showspinLoadingMessage}}</h2>
