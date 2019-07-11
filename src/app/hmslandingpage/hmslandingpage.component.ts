@@ -42,6 +42,7 @@ export class HmslandingpageComponent implements OnInit {
     });
 
 
+
     // if(output == true){
 
 
