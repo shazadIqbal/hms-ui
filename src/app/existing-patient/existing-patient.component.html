@@ -55,7 +55,7 @@
                             <div class="ui-inputgroup">
                                 <span class="ui-inputgroup-addon" style="width:50%;  font-size: 11px;">APPOINTMENT DATE<i
                     style="color: red">*</i></span>
-                                <p-calendar [style]="{ width: '300px' }" name="appoinmentDate" required placeholder="Enter Appointment Date here" [(ngModel)]="appointments.appoinmentDate">
+                                <p-calendar [style]="{ width: '300px' }" [monthNavigator]="true" [yearNavigator]="true" yearRange="1947:2090" showButtonBar = "true" name="appoinmentDate" required placeholder="Enter Appointment Date here" [(ngModel)]="appointments.appoinmentDate">
                                 </p-calendar>
                             </div>
                         </div>

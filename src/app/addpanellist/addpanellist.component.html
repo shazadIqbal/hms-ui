@@ -62,7 +62,7 @@
                             <div class="ui-inputgroup">
                                 <span class="ui-inputgroup-addon" style="width:50%">Panel Start Date<i style="color: red">*</i></span>
 
-                                <p-calendar [style]="{ width: '300px' }" [(ngModel)]="panels.panelStartDate" name="startdate" required>
+                                <p-calendar [style]="{ width: '300px' }" [(ngModel)]="panels.panelStartDate" [monthNavigator]="true" [yearNavigator]="true" yearRange="1947:2090" showButtonBar = "true" name="startdate" required>
                                 </p-calendar>
                             </div>
                         </div>
@@ -70,7 +70,7 @@
                         <div class="ui-g-12 ui-md-5">
                             <div class="ui-inputgroup">
                                 <span class="ui-inputgroup-addon" style="width:50%">Panel End Date<i style="color: red">*</i></span>
-                                <p-calendar [style]="{ width: '300px' }" [(ngModel)]="panels.panelEndDate" name="enddate" required>
+                                <p-calendar [style]="{ width: '300px' }" [(ngModel)]="panels.panelEndDate" [monthNavigator]="true" [yearNavigator]="true" yearRange="1947:2090" showButtonBar = "true" name="enddate" required>
                                 </p-calendar>
                             </div>
                         </div>
@@ -132,6 +132,7 @@
                         </div>
                     </div>
                 </form>
+                <p-toast  [showTransitionOptions]="'3ms'"></p-toast>
             </p-card>
         </div>
     </div>
