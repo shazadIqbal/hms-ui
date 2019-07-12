@@ -26,6 +26,8 @@ export class OpdLabtestComponent implements OnInit {
   labtestArray = [];
   patientName: String;
   patientMrNo: Number;
+  discount=0;
+  total=0;
 
   discountCheck = true;
 
@@ -185,10 +187,12 @@ getfacilitiesInDropdown() {
   );
 }
 saveOpdLabTest(){
-  console.log(this.addLabTests)
-  console.log(this.addLabTests.labTests);
+ 
   this.addLabTests.labTests = this.printLabTest;
-  console.log(this.addLabTests)
+
+this.total=this.addLabTests.total;
+this.discount=this.addLabTests.discount;
+
   this.labtestservice.saveOpdEr(this.addLabTests).subscribe(
 
     data => {

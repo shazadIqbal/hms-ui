@@ -37,6 +37,8 @@ export class OpdEmergencyComponent implements OnInit {
   patientName: String;
   patientMrNo: Number;
   date;
+  discount=0;
+  total=0;
   // id: number;
 
   // printStatus : boolean;
@@ -218,7 +220,10 @@ export class OpdEmergencyComponent implements OnInit {
 
   saveOpdEmergency() {
     console.log(this.addEmergency)
-    console.log(this.addEmergency.facilities);
+    this.total=this.addEmergency.total;
+    this.discount=this.addEmergency.discount;
+
+    console.log("total,discount",this.total+"  ,"+this.discount);
     this.addEmergency.facilities = this.printFacilities;
     this.opdEr.saveOpdEr(this.addEmergency).subscribe(
 
