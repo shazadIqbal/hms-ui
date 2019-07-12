@@ -44,9 +44,10 @@ color: 'green'
                     {{ rowData[col.field] }}
                 </td>
                 <td>
-                    <button pButton type="button" (click)="deletePanelByID(rowData['id'])" class="ui-button-danger" style="height: 50px; margin-left: 40%; ">
-            <img src="https://img.icons8.com/color/48/000000/cancel.png" />
-          </button>
+                        <button pButton [ngStyle]="{width:'80px',margin:'8px'}" type="button" label="Delete" class="ui-button-danger"  (click)="deletePanelByID(rowData['id'])"></button>
+                    <!-- <button pButton type="button" (click)="deletePanelByID(rowData['id'])" class="ui-button-danger" style="width:20%;height: 50px; margin-left: 40%; "> -->
+         
+          <!-- </button> -->
                 </td>
             </tr>
         </ng-template>

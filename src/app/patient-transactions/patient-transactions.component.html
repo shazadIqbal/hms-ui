@@ -53,7 +53,7 @@
                     <app-transaction-edit [dues]="rowData['dues']" [receivedAmount]="rowData['receivedAmount']" [transactionId]="rowData['id']" [data]="datasource"></app-transaction-edit>
 
 
-                    <button pButton [ngStyle]="{width:'80px',margin:'8px'}" type="button" label="Delete" class="ui-button-error" (click)="deletePatientTransaction(rowData['transactionRefId'])"></button>
+                    <button pButton [ngStyle]="{width:'80px',margin:'8px'}" type="button" label="Delete" class="ui-button-danger" (click)="deletePatientTransaction(rowData['transactionRefId'])"></button>
                 </td>
 
             </tr>
