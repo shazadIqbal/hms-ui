@@ -94,7 +94,7 @@
                         <div class="ui-inputgroup">
                             <span class="ui-inputgroup-addon"
                                 style="width:45%;font-size:15px;font-weight: bold;">Fees</span>
-                            <input type="text" name="fees" pInputText ngModel required [(ngModel)]="opdObject.fees"
+                            <input type="text" placeholder="0" name="fees" pInputText ngModel required [(ngModel)]="opdObject.fees"
                                 [readOnly]="true" />
                         </div>
                     </div>
@@ -106,8 +106,8 @@
                     <div class="ui-md-8 ui-lg-8 ui-sm-12">
                         <div class="ui-inputgroup">
                             <span class="ui-inputgroup-addon"
-                                style="width:45%;font-size:15px;font-weight: bold;">Discount $$</span>
-                            <input type="number" name="discount" pInputText ngModel min="0" placeholder="Rs"
+                                style="width:45%;font-size:15px;font-weight: bold;">Discount</span>
+                            <input type="number" name="discount" pInputText ngModel min="0" placeholder="0"
                                 [readOnly]="editablediscountfield" [(ngModel)]="opdObject.discount"
                                 (ngModelChange)="discounter($event)" />
 
@@ -139,7 +139,7 @@
 
                                 Amount</span>
                             <input required type="number" pInputText name="total" ngModel [readOnly]="true"
-                                placeholder="Total Amount $" [(ngModel)]="opdObject.total" />
+                                placeholder="Total Amount" [(ngModel)]="opdObject.total" />
                         </div>
                     </div>
                 </div>

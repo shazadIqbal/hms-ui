@@ -60,8 +60,8 @@
                         <div class="ui-md-2 ui-lg-2"></div>
                         <div class="ui-md-8 ui-lg-8 ui-sm-12">
                             <div class="ui-inputgroup">
-                                <span class="ui-inputgroup-addon" style="width:45%;font-size:15px;font-weight: bold;">Discount $$</span>
-                                <input type="number" name="discount" pInputText ngModel min="0" (change)="onChangeDiscount()" placeholder="0  %" [(ngModel)]="opdGynyObject.discount" />
+                                <span class="ui-inputgroup-addon" style="width:45%;font-size:15px;font-weight: bold;">Discount</span>
+                                <input type="number" name="discount" pInputText ngModel min="0" (change)="onChangeDiscount()" placeholder="0 " [(ngModel)]="opdGynyObject.discount" />
                             </div>
                         </div>
                     </div>
@@ -72,7 +72,7 @@
                             <div class="ui-inputgroup">
                                 <span class="ui-inputgroup-addon" style="width:45%;font-size:15px;font-weight: bold;">Cash Recieved<i
                     style="color: red">*</i></span>
-                                <input type="text" name="cashrecieved" pInputText ngModel required placeholder="$$" [(ngModel)]="opdGynyObject.cashRecieved" (input)="getTotal(opdGynyObject.cashRecieved)" />
+                                <input type="text" name="cashrecieved" pInputText ngModel required placeholder="0" [(ngModel)]="opdGynyObject.cashRecieved" (input)="getTotal(opdGynyObject.cashRecieved)" />
                             </div>
                         </div>
                     </div>
@@ -82,21 +82,12 @@
                             <div class="ui-inputgroup">
                                 <span class="ui-inputgroup-addon" style="width:45%;font-size:15px;font-weight: bold;">Total
                   Amount</span>
-                                <input required type="number" pInputText name="total" ngModel [readOnly]="true" placeholder="Total Amount $" [(ngModel)]="opdGynyObject.total" />
+                                <input required type="number" pInputText name="total" ngModel [readOnly]="true" placeholder="Total Amount" [(ngModel)]="opdGynyObject.total" />
                             </div>
                         </div>
                     </div>
                    
          
-                    <!-- <div class="ui-g">
-                        <div class="ui-md-2 ui-lg-2"></div>
-                        <div class="ui-md-8 ui-lg-8 ui-sm-12">
-                            <div class="ui-inputgroup">
-                                <label style="margin-top: 1%; font-size: 25px;"> Registration: </label> &nbsp;
-                                <p-checkbox [(ngModel)]="opdGynyObject.registration" binary="true" name="registration"></p-checkbox>
-                            </div>
-                        </div>
-                    </div> -->
 
                     <div class="ui-g" style="margin-top:-20px !important;">
                         <div class="ui-md-2 ui-lg-2"></div>

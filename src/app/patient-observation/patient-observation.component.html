@@ -75,7 +75,7 @@
                         <div class="ui-md-8 ui-lg-8 ui-sm-12">
                             <div class="ui-inputgroup">
                                 <span class="ui-inputgroup-addon"
-                                    style="width:45%;font-size:15px;font-weight: bold;">Discount $$</span>
+                                    style="width:45%;font-size:15px;font-weight: bold;">Discount</span>
                                 <input type="number" name="discount" pInputText ngModel min="0" placeholder="0"
                                     [(ngModel)]="patientObservationObject.discount" (ngModelChange)="discounter($event)"
                                     (keypress)="numberOnly($event)" />
@@ -97,7 +97,7 @@
                                 <span class="ui-inputgroup-addon"
                                     style="width:45%;font-size:15px;font-weight: bold;">Cash
                                     Recieved<i style="color: red">*</i></span>
-                                <input type="text" name="cashrecieved" pInputText ngModel required placeholder="Rps"
+                                <input type="text" name="cashrecieved" pInputText ngModel required placeholder="0"
                                     (keypress)="numberOnly($event)" [(ngModel)]="patientObservationObject.cashRecieved"
                                     (input)="getTotal(patientObservationObject.cashRecieved)" />
                             </div>
@@ -115,7 +115,7 @@
                                     style="width:45%;font-size:15px;font-weight: bold;">Total
                                     Amount</span>
                                 <input required type="number" pInputText name="total" ngModel [readOnly]="true"
-                                    placeholder="Total Amount $" [(ngModel)]="patientObservationObject.total" />
+                                    placeholder="Total Amount" [(ngModel)]="patientObservationObject.total" />
                             </div>
                         </div>
                     </div>
