@@ -103,6 +103,7 @@ import { TransactionEditComponent } from './transaction-edit/transaction-edit.co
 import {HTTP_INTERCEPTORS} from '@angular/common/http';
 import { NoopInterceptor } from './request.intercept';
 import { SignUpFormComponent } from './sign-up-form/sign-up-form.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 
 
@@ -173,7 +174,9 @@ import { SignUpFormComponent } from './sign-up-form/sign-up-form.component';
 
     TransactionEditComponent,
 
-    SignUpFormComponent
+    SignUpFormComponent,
+
+    DashboardComponent
 
 
   ],

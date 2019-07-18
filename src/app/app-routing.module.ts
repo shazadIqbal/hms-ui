@@ -50,6 +50,7 @@ import { PatientTransactionsComponent } from "./patient-transactions/patient-tra
 import { GynyObsListComponent } from "./gyny-obs-list/gyny-obs-list.component";
 
 import { SignUpFormComponent } from './sign-up-form/sign-up-form.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 // import { NewcompComponent } from "./newcomp/newcomp.component";
 
 const routes: Routes = [
@@ -178,7 +179,8 @@ const routes: Routes = [
     path:"signupform",
     canActivate:[AuthGuard],
     component: SignUpFormComponent
-  }
+  },
+  {path:"dashboard",component:DashboardComponent}
 ];
 
 @NgModule({
