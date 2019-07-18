@@ -49,7 +49,9 @@ import { OpdLabtestComponent } from "./opd-labtest/opd-labtest.component";
 import { PatientTransactionsComponent } from "./patient-transactions/patient-transactions.component";
 import { GynyObsListComponent } from "./gyny-obs-list/gyny-obs-list.component";
 
+
 import { SignUpFormComponent } from './sign-up-form/sign-up-form.component';
+import { OpdpackageComponent } from './opdpackage/opdpackage.component';
 // import { NewcompComponent } from "./newcomp/newcomp.component";
 
 const routes: Routes = [
@@ -146,6 +148,7 @@ const routes: Routes = [
   },
   { path: "opdEmergency/:id", canActivate: [AuthGuard], component: OpdEmergencyComponent },
   { path: "opdconsultancy/:id", canActivate: [AuthGuard], component: OpdconsultancyComponent },
+  { path: "opdpackage/:id", canActivate: [AuthGuard], component: OpdpackageComponent },
   { path: "history/:id", canActivate: [AuthGuard], component: PatientTransactionHistoryComponent },
   { path: "opdGyny/:id", canActivate: [AuthGuard], component: OpdGynyComponent },
   { path: "opdlabtest/:id", canActivate: [AuthGuard], component: OpdLabtestComponent },
