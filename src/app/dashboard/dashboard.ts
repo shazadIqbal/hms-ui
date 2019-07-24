@@ -1,6 +1,6 @@
 export class dashboard{
-from:Date;
-till:Date;
+from:string;
+till:string;
 role:string="Hospital";
 
 
