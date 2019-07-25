@@ -1,4 +1,5 @@
 import { DropdownModule } from "primeng/dropdown";
+import { FusionChartsModule } from "angular-fusioncharts";
 
 import { AddPanelComponent } from './main-screen/add-panel/add-panel.component';
 import { SearchbarComponent } from './searchbar/searchbar.component';
@@ -16,8 +17,6 @@ import { PanelModule } from 'primeng/panel';
 import { InputTextModule } from 'primeng/inputtext';
 import { DialogModule } from 'primeng/dialog';
 import { ToastModule } from 'primeng/toast';
-// import { CheckboxModule, Checkbox } from 'primeng/checkbox';
-
 import { PatientSlipComponent } from './patient-slip/patient-slip.component';
 import { PatientInputComponent } from './patient-slip/patient-input/patient-input.component';
 import { PatientCardComponent } from './patient-slip/patient-card/patient-card.component';
@@ -103,7 +102,17 @@ import { TransactionEditComponent } from './transaction-edit/transaction-edit.co
 import {HTTP_INTERCEPTORS} from '@angular/common/http';
 import { NoopInterceptor } from './request.intercept';
 import { SignUpFormComponent } from './sign-up-form/sign-up-form.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { DashboardgraphsComponent } from './dashboardgraphs/dashboardgraphs.component';
+import * as FusionCharts from 'fusioncharts';
+// Load Charts module
+import * as Charts from 'fusioncharts/fusioncharts.charts';
+// Load fusion theme
+import * as Fusion from 'fusioncharts/themes/fusioncharts.theme.fusion';
+import { AllreportsComponent } from './services/allreports/allreports.component'
 
+// Add dependencies to FusionChartsModule
+FusionChartsModule.fcRoot(FusionCharts, Charts, Fusion)
 
 
 
@@ -173,17 +182,25 @@ import { SignUpFormComponent } from './sign-up-form/sign-up-form.component';
 
     TransactionEditComponent,
 
-    SignUpFormComponent
+    SignUpFormComponent,
+
+    DashboardComponent,
+
+    DashboardgraphsComponent,
+
+    AllreportsComponent
 
 
   ],
   imports: [
     BrowserModule,
+    
     FormsModule,
     ProgressSpinnerModule,
     NgxPrintModule,
     AppRoutingModule,
     AccordionModule,
+    FusionChartsModule,
     ButtonModule,
     CardModule,
     TableModule,
