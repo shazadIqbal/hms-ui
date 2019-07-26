@@ -25,18 +25,18 @@
         </div>
         <div  class="ui-g-3 ui-sm-12  ui-md-4   ui-lg-4"> </div>
         <div  class="ui-g-3 ui-sm-12  ui-md-4   ui-lg-4">
-            <button pButton type="button" class="backBtnStyle"  style="width:50%;margin-left:10%;  height:40px;" label="All Reports"></button>
+            <button pButton type="button" class="backBtnStyle"  style="width:50%;margin-left:10%;  height:40px;" label="All Reports" (click)="allreports()" ></button>
  
 
           </div>
-
+         
 
           <div class="ui-g ui-g-12 ui-inputgroup ">
             <div  class="ui-g-3 ui-sm-12  ui-md-3   ui-lg-3" > </div>
               <div  class=" ui-g-3 ui-sm-12  ui-md-3   ui-lg-3  ">
                   <span class="ui-inputgroup-addon "style="font-size:14px" >Date From</span>
                   <p-calendar name="filterByDate"  required [(ngModel)]="datefrom" [monthNavigator]="true" [yearNavigator]="true" yearRange="1947:2090" showButtonBar = "true"  placeholder="Select Date">
-                  </p-calendar>
+                    </p-calendar>
                 </div>
                 
                

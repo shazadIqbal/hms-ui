@@ -51,6 +51,8 @@ import { GynyObsListComponent } from "./gyny-obs-list/gyny-obs-list.component";
 
 import { SignUpFormComponent } from './sign-up-form/sign-up-form.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { AllReportsComponent } from './all-reports/all-reports.component';
+
 // import { NewcompComponent } from "./newcomp/newcomp.component";
 
 const routes: Routes = [
@@ -60,6 +62,7 @@ const routes: Routes = [
     canActivate: [AuthGuard],
     component: DoctorListComponent
   },
+  
   {
     path: "contact",
     canActivate: [AuthGuard],
@@ -180,7 +183,8 @@ const routes: Routes = [
     canActivate:[AuthGuard],
     component: SignUpFormComponent
   },
-  {path:"dashboard",component:DashboardComponent}
+  {path:"dashboard",component:DashboardComponent},
+  {path:"allreports",component:AllReportsComponent}
 ];
 
 @NgModule({

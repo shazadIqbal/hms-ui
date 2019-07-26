@@ -39,7 +39,7 @@ patientsbydatetotal=  {
     subcaption: "",
     numbersuffix: " ",
     rotatelabels: "0",
-    setadaptiveymin: "1",
+    setadaptiveymin: "2",
     theme: "fusion",
     paletteColors:"#479761"
   },
@@ -138,7 +138,6 @@ totalamountcolumnchart=  {
 
     this.service.totalbydate(this.dashboard).subscribe((data) =>{ 
       console.log("totalbydate",data);
-     
       this.totalbydatelinechart.data=data;
       this.totalbydatelinechart.chart.subcaption="["+datefrom+" "+" "+"to"+" "+" " +datetill+"]";
       this.showspinloading=false;
@@ -218,7 +217,8 @@ this.service.patientsbydate(this.dashboard).subscribe((data) =>{
 
     this.service.totalbydate(this.dashboard).subscribe((data) =>{ 
       console.log(data);
-      this.totalbydatelinechart.data=data;
+   
+      this.totalbydatelinechart.data=data.reverse();
       this.totalbydatelinechart.chart.subcaption="["+date1+" "+" "+"to"+" "+" " +date2+"]";
       this.showspinloading=false;
       
@@ -231,7 +231,7 @@ this.service.patientsbydate(this.dashboard).subscribe((data) =>{
 
     this.service.total(this.dashboard).subscribe((data) =>{ //for total 
       console.log(data);
-      this.totalamountcolumnchart.data = data;
+      this.totalamountcolumnchart.data = data.reverse();
       this.totalamountcolumnchart.chart.subcaption="["+date1+" "+" "+"to"+" "+" " +date2+"]";
       this.showspinloading=false;
       
@@ -246,7 +246,7 @@ this.service.patientsbydate(this.dashboard).subscribe((data) =>{
 
   this.service.duestotal(this.dashboard).subscribe((data) =>{  
     console.log(data);
-    this.duestotalcoloumnchart.data=data;
+    this.duestotalcoloumnchart.data=data.reverse();
     this.duestotalcoloumnchart.chart.subcaption="["+date1+" "+" "+"to"+" "+" " +date2+"]";
     this.showspinloading=false;
   }, error=>{
@@ -257,7 +257,7 @@ this.service.patientsbydate(this.dashboard).subscribe((data) =>{
 
   this.service.duesbydate(this.dashboard).subscribe((data) =>{ 
     console.log(data);
-    this.duesbydatetotal.data=data;
+    this.duesbydatetotal.data=data.reverse();
     this.duesbydatetotal.chart.subcaption="["+date1+" "+" "+"to"+" "+" " +date2+"]";
     this.showspinloading=false;
   }, error=>{
@@ -268,7 +268,7 @@ this.service.patientsbydate(this.dashboard).subscribe((data) =>{
 
 this.service.patientsbydate(this.dashboard).subscribe((data) =>{ 
   console.log(data);
-  this.patientsbydatetotal.data=data;
+  this.patientsbydatetotal.data=data.reverse();
   this.patientsbydatetotal.chart.subcaption="["+date1+" "+" "+"to"+" "+" " +date2+"]";
   this.showspinloading=false;
 }, error=>{
@@ -290,6 +290,9 @@ this.service.patientsbydate(this.dashboard).subscribe((data) =>{
 
   backToMonitor() {
     this.router.navigate(['mainscreen']);
+  }
+  allreports() {
+    this.router.navigate(['allreports']);
   }
 
   changedatetostring(date:Date) // method of date to string;

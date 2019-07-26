@@ -109,7 +109,8 @@ import * as FusionCharts from 'fusioncharts';
 import * as Charts from 'fusioncharts/fusioncharts.charts';
 // Load fusion theme
 import * as Fusion from 'fusioncharts/themes/fusioncharts.theme.fusion';
-import { AllreportsComponent } from './services/allreports/allreports.component'
+import { AllReportsComponent } from './all-reports/all-reports.component';
+
 
 // Add dependencies to FusionChartsModule
 FusionChartsModule.fcRoot(FusionCharts, Charts, Fusion)
@@ -188,7 +189,9 @@ FusionChartsModule.fcRoot(FusionCharts, Charts, Fusion)
 
     DashboardgraphsComponent,
 
-    AllreportsComponent
+    AllReportsComponent,
+
+    
 
 
   ],
