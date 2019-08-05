@@ -110,6 +110,8 @@ import * as Charts from 'fusioncharts/fusioncharts.charts';
 // Load fusion theme
 import * as Fusion from 'fusioncharts/themes/fusioncharts.theme.fusion';
 import { AllReportsComponent } from './all-reports/all-reports.component';
+import { CashflowOfDoctorComponent } from './cashflow-of-doctor/cashflow-of-doctor.component';
+import { CashflowOfHospitalComponent } from './cashflow-of-hospital/cashflow-of-hospital.component';
 
 
 // Add dependencies to FusionChartsModule
@@ -190,6 +192,10 @@ FusionChartsModule.fcRoot(FusionCharts, Charts, Fusion)
     DashboardgraphsComponent,
 
     AllReportsComponent,
+
+    CashflowOfDoctorComponent,
+
+    CashflowOfHospitalComponent,
 
     
 
