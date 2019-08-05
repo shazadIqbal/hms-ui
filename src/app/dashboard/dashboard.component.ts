@@ -4,6 +4,7 @@ import { OpdConsultancy } from '../opdconsultancy/opdconsultancy';
 import { dashboard } from './dashboard';
 import { DashboardserviceService } from '../Services/dashboardservice.service';
 import { MessageService } from 'primeng/api';
+import { isNull } from 'util';
 
 
 
@@ -130,7 +131,7 @@ totalamountcolumnchart=  {
 
   
   saveddate(){
-    this.showdate =this.date1.getDate()+"-"+this.date1.getMonth()+"-"+this.date1.getFullYear();
+    this.showdate =this.date1.getDate()+"-"+(this.date1.getMonth() + 1)+"-"+this.date1.getFullYear();
     let datefrom = this.changedatetostring(this.date1); 
     let datetill= this.changedatetostring(this.date1);   
     this.dashboard.from=datefrom;
@@ -205,16 +206,41 @@ this.service.patientsbydate(this.dashboard).subscribe((data) =>{
   }
 
   onfilter(){
-    console.log(this.datefrom);         
-    this.showdate=this.showdate =this.date1.getDate()+"-"+this.date1.getMonth()+"-"+this.date1.getFullYear();              
-    let date1=this.changedatetostring(this.datefrom);
+    console.log(this.datefrom);  
+    let date1;
+    let date2;
+
+    this.showdate =this.date1.getDate()+"-"+(this.date1.getMonth() + 1)+"-"+this.date1.getFullYear();
+    let checkdate1=this.datefrom;
+    let checkdate2=this.datetill;
+     if (checkdate1==undefined)
+    {
+      
+      this.dashboard.from=this.changedatetostring(this.date1);
+
+      
+    }
+     if(checkdate2==undefined)
+     {
+
+      this.dashboard.till=this.changedatetostring(this.date1);
+     }
+
+    
   
-    let date2=this.changedatetostring(this.datetill);
+    
     
 
+    
+    
+   else{
+     date1=this.changedatetostring(this.datefrom);
+     date2=this.changedatetostring(this.datetill);
     this.dashboard.from=date1;
     this.dashboard.till=date2;
-
+   }
+    
+    
     this.service.totalbydate(this.dashboard).subscribe((data) =>{ 
       console.log(data);
    
