@@ -52,7 +52,11 @@ import { GynyObsListComponent } from './gyny-obs-list/gyny-obs-list.component';
 import { SignUpFormComponent } from './sign-up-form/sign-up-form.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { AllReportsComponent } from './all-reports/all-reports.component';
+
 import { EmployeecashflowComponent } from './employeecashflow/employeecashflow.component';
+
+import { CashflowOfDoctorComponent } from './cashflow-of-doctor/cashflow-of-doctor.component';
+import { CashflowOfHospitalComponent } from './cashflow-of-hospital/cashflow-of-hospital.component';
 
 // import { NewcompComponent } from "./newcomp/newcomp.component";
 
@@ -193,8 +197,11 @@ const routes: Routes = [
     canActivate: [AuthGuard],
     component: SignUpFormComponent
   },
+
   { path: 'dashboard', component: DashboardComponent },
-  { path: 'allreports', component: AllReportsComponent }
+  { path: 'allreports', component: AllReportsComponent },
+  { path: 'cashflowofdoctor', component: CashflowOfDoctorComponent },
+  { path: 'cashflowofhospital', component: CashflowOfHospitalComponent }
 ];
 
 @NgModule({

@@ -13,6 +13,12 @@ export class AllReportsComponent implements OnInit {
   backTodashboard() {
     this.router.navigate(['dashboard']);
   }
+  routetocashflowofdoctor() {
+    this.router.navigate(['cashflowofdoctor']);
+  }
+  routetocashflowofhospital() {
+    this.router.navigate(['cashflowofhospital']);
+  }
 
   toEmployeeCashflow() {
     this.router.navigate(['employeecashflow']);

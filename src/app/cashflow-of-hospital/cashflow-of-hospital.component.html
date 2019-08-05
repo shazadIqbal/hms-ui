@@ -1,0 +1,106 @@
+<div class="ui-lg-5 ui-md-5 ui-sm-12">
+  <button
+    pButton
+    type="button"
+    class="backBtnStyle"
+    (click)="allreports()"
+    style="width:45%;margin-left:30% "
+    label="Back"
+  ></button>
+</div>
+
+<div class="ui-g-12">
+  <p-card
+    header="Cash Flow Of Hospital"
+    [style]="{
+      width: '100%',
+      'font-size': '25px',
+      'text-align': 'center',
+      color: 'green'
+    }"
+  >
+    <hr style="height:2px;width:100%;background-color:green" />
+    <div class="ui-g ui-inputgroup">
+      <div class="ui-g-3 ui-sm-12  ui-md-4   ui-lg-4">
+        <label style="font-size: 25px !important "> Today: </label>
+        <label
+          style="font-size:22px !important;color:black;margin-left:10px; text-decoration:underline  "
+        >
+          {{ showdate }}</label
+        >
+      </div>
+
+      <div class="ui-g-3 ui-sm-12  ui-md-4  ui-lg-4 ">
+        <span class="ui-inputgroup-addon " style="font-size:14px">select opd-module</span>
+        <p-dropdown
+          name="employees"
+          placeholder="please select"
+          [options]=""
+          [filter]="true"
+          [style]="{ width: '65%', 'font-size': '20px' }"
+          [ngStyle]="{ width: '100%', 'font-size': '20px' }"
+        >
+        </p-dropdown>
+      </div>
+    </div>
+
+    <div class="  ui-g  ui-inputgroup">
+      <div class="ui-g-3 ui-sm-12  ui-md-3   ui-lg-3"></div>
+      <div class=" ui-g-3 ui-sm-12  ui-md-3   ui-lg-3  ">
+        <span class="ui-inputgroup-addon " style="font-size:14px">Date From</span>
+        <p-calendar
+          name="filterByDate"
+          required
+          [(ngModel)]="datefrom"
+          [monthNavigator]="true"
+          [yearNavigator]="true"
+          yearRange="1947:2090"
+          showButtonBar="true"
+          placeholder="Select Date"
+        >
+        </p-calendar>
+      </div>
+
+      <div class="ui-g-3 ui-sm-12  ui-md-3   ui-lg-3 ">
+        <span class="ui-inputgroup-addon " style="font-size:14px">Date Till</span>
+        <p-calendar
+          name="filterByDate"
+          required
+          [(ngModel)]="datetill"
+          [monthNavigator]="true"
+          [yearNavigator]="true"
+          yearRange="1947:2090"
+          showButtonBar="true"
+          placeholder="Select Date"
+        >
+        </p-calendar>
+      </div>
+    </div>
+    <div class=" ui-g ">
+      <div class="ui-g-3 ui-sm-12  ui-md-5   ui-lg-5"></div>
+      <div class="ui-g-3 ui-sm-12  ui-md-2   ui-lg-2">
+        <button
+          pButton
+          type="button"
+          class="backBtnStyle"
+          (click)="onfilter()"
+          style="width:80%;margin-left:10%;  height:40px;"
+          label="Filter"
+        ></button>
+      </div>
+    </div>
+  </p-card>
+</div>
+
+<div class="ui-g-12">
+  <p-card
+    [style]="{
+      width: '100%',
+
+      'font-size': '25px',
+      'text-align': 'center',
+      color: 'green'
+    }"
+  >
+  </p-card>
+</div>
