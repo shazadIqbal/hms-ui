@@ -1,86 +1,186 @@
-<div class="ui-lg-5 ui-md-5 ui-sm-12">
-  <button
-    pButton
-    type="button"
-    class="backBtnStyle"
-    (click)="backtoAllReports()"
-    style="width:45%;margin-left:30% "
-    label="Back"
-  ></button>
+<div id="print-section" [hidden]="true">
+  <div class="container">
+    <h2 style="text-align: center">Employee Cashflow</h2>
+    <table class="table table-striped">
+      <thead>
+        <th *ngFor="let col of cols">
+          {{ col.header }}
+        </th>
+      </thead>
+      <tbody>
+        <tr *ngFor="let trans of employeeTransactions" style="overflow: auto;">
+          <td>{{ trans.id }}</td>
+          <td>{{ trans.transactionDate }}</td>
+          <td>{{ trans.receivedAmount }}</td>
+          <td>{{ trans.totalAmount }}</td>
+          <td>{{ trans.transactionType }}</td>
+          <td>{{ trans.description }}</td>
+          <td>{{ trans.currency }}</td>
+          <td>{{ trans.operationType }}</td>
+          <td>{{ trans.dues }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </div>
-<p-card
-  header="Employee Cashflow"
-  [style]="{
-    width: '100%',
-    'font-size': '25px',
-    'text-align': 'center',
-    color: 'green'
-  }"
->
-  <hr style="height:2px;width:100%;background-color:green" />
-  <div class="ui-g">
-    <div class="ui-g-3 ui-sm-12  ui-md-4   ui-lg-4">
-      <label style="font-size: 25px !important"> Today: </label>
-      <label
-        style="font-size:22px !important;color:black;margin-left:10px; text-decoration:underline  "
-      >
-        {{ showdate }}</label
-      >
-    </div>
+
+<div class="ui-g">
+  <div class="ui-lg-5 ui-md-5 ui-sm-12">
+    <button
+      pButton
+      type="button"
+      class="backBtnStyle"
+      (click)="backtoAllReports()"
+      style="width:45%;margin-left:30% "
+      label="Back"
+    ></button>
   </div>
-
-  <div class="ui-g ui-inputgroup">
-    <div class="ui-g-3 ui-sm-12 ui-md-4 ui-lg-4">
-      <span class="ui-inputgroup-addon" style="font-size: 14px">Select Employee</span>
-      <p-dropdown
-        name="employees"
-        placeholder="Select an employee"
-        [options]=""
-        [filter]="true"
-        [style]="{ width: '50%', 'font-size': '20px' }"
-        [ngStyle]="{ width: '100%', 'font-size': '20px' }"
-      ></p-dropdown>
-    </div>
-
-    <div class="ui-g-12 ui-sm-12 ui-md-4 ui-lg-4">
-      <span class="ui-inputgroup-addon" style="font-size: 14px">Date From</span>
-      <p-calendar
-        name="filterByDate"
-        reqired
-        [ngStyle]="{ width: '100%' }"
-        [monthNavigator]="true"
-        [yearNavigator]="true"
-        yearRange="1947:2090"
-        showButtonBar="true"
-        placeholder="Select Date"
-      ></p-calendar>
-    </div>
-
-    <div class="ui-g-12 ui-lg-4 ui-md-4 ui-sm-12">
-      <span class="ui-inputgroup-addon" style="font-size: 14px">Date Till</span>
-      <p-calendar
-        name="filterByDate"
-        required
-        [ngStyle]="{ width: '100%' }"
-        [monthNavigator]="true"
-        [yearNavigator]="true"
-        yearRange="1947:2090"
-        showButtonBar="true"
-        placeholder="Select Date"
-      ></p-calendar>
-    </div>
+  <div class="ui-lg-2 ui-md-5 ui-sm-12"></div>
+  <div class="ui-lg-5 ui-md-5 ui-sm-12">
+    <button
+      pButton
+      type="button"
+      class="backBtnStyle"
+      (click)="print()"
+      style="width:45%;margin-left:30% "
+      label="Print"
+    ></button>
   </div>
+</div>
 
-  <div class="ui-g">
-    <div class="ui-g-12 ui-lg-4 ui-md-4 ui-sm-12"></div>
-    <div class="ui-g-12 ui-lg-4 ui-md-4 ui-sm-12">
-      <button
-        pButton
-        type="button"
-        label="Filter"
-        class="backBtnStyle"
-        style="font-size: 14px; width:60%;"
-      ></button>
+<div class="ui-g-12">
+  <p-card
+    header="Employee Cashflow"
+    [style]="{
+      width: '100%',
+      'font-size': '25px',
+      'text-align': 'center',
+      color: 'green'
+    }"
+  >
+    <hr style="height:2px;width:100%;background-color:green" />
+    <div class="ui-g ui-inputgroup">
+      <div class="ui-g-3 ui-sm-12  ui-md-4   ui-lg-4">
+        <label style="font-size: 25px !important"> Today: </label>
+        <label
+          style="font-size:22px !important;color:black;margin-left:10px; text-decoration:underline  "
+        >
+          {{ showdate }}</label
+        >
+      </div>
+
+      <div class="ui-g-3 ui-sm-12  ui-md-4  ui-lg-4">
+        <span class="ui-inputgroup-addon" style="font-size: 14px">Select Employee</span>
+        <p-dropdown
+          name="employees"
+          [options]="users"
+          [filter]="true"
+          [style]="{ width: '50%', 'font-size': '20px' }"
+          [ngStyle]="{ width: '100%', 'font-size': '20px' }"
+          [(ngModel)]="role"
+          defaultLabel="Select an Employee"
+        ></p-dropdown>
+      </div>
     </div>
-  </div>
-</p-card>
+
+    <div class="ui-g ui-inputgroup">
+      <div class="ui-g-3 ui-sm-12  ui-md-3   ui-lg-3"></div>
+      <div class=" ui-g-3 ui-sm-12  ui-md-3   ui-lg-3  ">
+        <span class="ui-inputgroup-addon" style="font-size: 14px">Date From</span>
+        <p-calendar
+          name="filterByDate"
+          reqired
+          [ngStyle]="{ width: '100%' }"
+          [monthNavigator]="true"
+          [yearNavigator]="true"
+          yearRange="1947:2090"
+          showButtonBar="true"
+          placeholder="Select Date"
+          [(ngModel)]="dateFrom"
+        ></p-calendar>
+      </div>
+
+      <div class="ui-g-3 ui-sm-12  ui-md-3   ui-lg-3 ">
+        <span class="ui-inputgroup-addon" style="font-size: 14px">Date Till</span>
+        <p-calendar
+          name="filterByDate"
+          required
+          [ngStyle]="{ width: '100%' }"
+          [monthNavigator]="true"
+          [yearNavigator]="true"
+          yearRange="1947:2090"
+          showButtonBar="true"
+          placeholder="Select Date"
+          [(ngModel)]="dateTill"
+        ></p-calendar>
+      </div>
+    </div>
+
+    <div class="ui-g">
+      <div class="ui-g-3 ui-sm-12  ui-md-5   ui-lg-5"></div>
+      <div class="ui-g-3 ui-sm-12  ui-md-2   ui-lg-2">
+        <button
+          pButton
+          type="button"
+          label="Filter"
+          (click)="onfilter()"
+          class="backBtnStyle"
+          style="width:80%;margin-left:10%;  height:40px;"
+        ></button>
+      </div>
+    </div>
+  </p-card>
+</div>
+
+<div class="ui-g-12">
+  <p-card
+    [style]="{
+      width: '100%',
+      'font-size': '25px',
+      'text-align': 'center',
+      color: 'green'
+    }"
+  >
+    <p-table
+      #dt
+      [columns]="cols"
+      [value]="employeeTransactions"
+      [paginator]="true"
+      [rows]="10"
+      id="print-section"
+    >
+      <ng-template pTemplate="caption">
+        <div style="text-align: right">
+          <i class="fa fa-search" style="margin:4px 4px 0 0"></i>
+          <input
+            type="text"
+            pInputText
+            size="50"
+            placeholder="Global Filter"
+            (input)="dt.filterGlobal($event.target.value, 'contains')"
+            style="width:auto"
+          />
+        </div>
+      </ng-template>
+      <ng-template pTemplate="header" let-columns>
+        <tr>
+          <th *ngFor="let col of columns">
+            {{ col.header }}
+          </th>
+        </tr>
+        <div *ngIf="showLoading" style="margin-left: 325%;">
+          <p-progressSpinner></p-progressSpinner>
+        </div>
+      </ng-template>
+
+      <ng-template pTemplate="body" let-rowData let-columns="columns">
+        <tr [pSelectableRow]="rowData">
+          <td *ngFor="let col of columns" style="overflow: auto;">
+            {{ rowData[col.field] }}
+          </td>
+        </tr>
+      </ng-template>
+      <!--hello beta-->
+    </p-table>
+  </p-card>
+</div>
