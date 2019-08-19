@@ -7,12 +7,13 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class SignUpServiceService {
+  constructor(private http: HttpClient) {}
 
-  constructor(private http: HttpClient) { }
+  postSignUpForm(signUpForm: any): Observable<Object> {
+    return this.http.post(environment.baseUrl + 'token/user', signUpForm);
+  }
 
-  postSignUpForm(signUpForm: any): Observable<Object>{
-
-    return this.http.post(environment.baseUrl+'token/user',signUpForm);
-
+  getAllUsers(): Observable<any> {
+    return this.http.get(environment.baseUrl + 'token/getusers/');
   }
 }

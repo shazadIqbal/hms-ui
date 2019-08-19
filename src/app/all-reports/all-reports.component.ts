@@ -7,19 +7,20 @@ import { Router } from '@angular/router';
   styleUrls: ['./all-reports.component.css']
 })
 export class AllReportsComponent implements OnInit {
+  constructor(private router: Router) {}
 
-  constructor(private router:Router) { }
-
-  ngOnInit() {
-  }
+  ngOnInit() {}
   backTodashboard() {
     this.router.navigate(['dashboard']);
   }
-routetocashflowofdoctor(){
-  this.router.navigate(['cashflowofdoctor']);
-}
-routetocashflowofhospital(){
+  routetocashflowofdoctor() {
+    this.router.navigate(['cashflowofdoctor']);
+  }
+  routetocashflowofhospital() {
+    this.router.navigate(['cashflowofhospital']);
+  }
 
-  this.router.navigate(['cashflowofhospital']);
-}
+  toEmployeeCashflow() {
+    this.router.navigate(['employeecashflow']);
+  }
 }
