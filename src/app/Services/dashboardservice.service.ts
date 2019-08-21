@@ -15,6 +15,8 @@ export class DashboardserviceService {
   private patientsbydateurl=environment.baseUrl+"api/dashboard/patients";
   private duesbydateurl=environment.baseUrl+"api/dashboard/duesbydate";
   private totalbydateurl=environment.baseUrl+"api/dashboard/totalbydate";
+  private cashFlowHospital = environment.baseUrl+"api/dashboard/hospitalreports";
+  private cashflowdoctor=environment.baseUrl+"api/dashboard/doctortransactions";
 
 
 
@@ -41,6 +43,12 @@ export class DashboardserviceService {
  
   }
 
+  public postCashFlowOfHospital(cashFlowHospital : Object): Observable<any>{
+    return this.http.post(this.cashFlowHospital,cashFlowHospital);
+  }
 
+public postCashFlowOfDoctor(cashflowdoctor: Object): Observable<any>{
+  return this.http.post(this.cashflowdoctor,cashflowdoctor);
+}
 
 }
