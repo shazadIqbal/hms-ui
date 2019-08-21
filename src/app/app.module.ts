@@ -1,5 +1,5 @@
-import { DropdownModule } from "primeng/dropdown";
-import { FusionChartsModule } from "angular-fusioncharts";
+import { DropdownModule } from 'primeng/dropdown';
+import { FusionChartsModule } from 'angular-fusioncharts';
 
 import { AddPanelComponent } from './main-screen/add-panel/add-panel.component';
 import { SearchbarComponent } from './searchbar/searchbar.component';
@@ -64,7 +64,7 @@ import { HmslandingpageComponent } from './hmslandingpage/hmslandingpage.compone
 import { AuthGuard } from './auth.guard';
 import { AddpackageComponent } from './addpackage/addpackage.component';
 import { PackageListComponent } from './package-list/package-list.component';
-import { OpdconsultancyComponent } from "./opdconsultancy/opdconsultancy.component";
+import { OpdconsultancyComponent } from './opdconsultancy/opdconsultancy.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
@@ -88,9 +88,7 @@ import { AdmissionService } from './Services/admission.service';
 import { PatientTransactionHistoryComponent } from './patient-transaction-history/patient-transaction-history.component';
 import { PatientObservationComponent } from './patient-observation/patient-observation.component';
 
-
 import { OpdLabtestComponent } from './opd-labtest/opd-labtest.component';
-
 
 import { PatientTransactionsComponent } from './patient-transactions/patient-transactions.component';
 import { FacilitiesComponent } from './Component/facilities/facilities.component';
@@ -99,7 +97,7 @@ import { GynyObsListComponent } from './gyny-obs-list/gyny-obs-list.component';
 
 import { MonitorquickviewComponent } from './monitorquickview/monitorquickview.component';
 import { TransactionEditComponent } from './transaction-edit/transaction-edit.component';
-import {HTTP_INTERCEPTORS} from '@angular/common/http';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NoopInterceptor } from './request.intercept';
 import { SignUpFormComponent } from './sign-up-form/sign-up-form.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
@@ -110,14 +108,14 @@ import * as Charts from 'fusioncharts/fusioncharts.charts';
 // Load fusion theme
 import * as Fusion from 'fusioncharts/themes/fusioncharts.theme.fusion';
 import { AllReportsComponent } from './all-reports/all-reports.component';
+
+import { EmployeecashflowComponent } from './employeecashflow/employeecashflow.component';
+
 import { CashflowOfDoctorComponent } from './cashflow-of-doctor/cashflow-of-doctor.component';
 import { CashflowOfHospitalComponent } from './cashflow-of-hospital/cashflow-of-hospital.component';
 
-
 // Add dependencies to FusionChartsModule
-FusionChartsModule.fcRoot(FusionCharts, Charts, Fusion)
-
-
+FusionChartsModule.fcRoot(FusionCharts, Charts, Fusion);
 
 @NgModule({
   declarations: [
@@ -169,7 +167,6 @@ FusionChartsModule.fcRoot(FusionCharts, Charts, Fusion)
     OpdEmergencyComponent,
     OpdconsultancyComponent,
 
-
     PatientTransactionHistoryComponent,
     AdmissionComponent,
     PatientAdmitComponent,
@@ -193,17 +190,15 @@ FusionChartsModule.fcRoot(FusionCharts, Charts, Fusion)
 
     AllReportsComponent,
 
+    EmployeecashflowComponent,
+
     CashflowOfDoctorComponent,
 
-    CashflowOfHospitalComponent,
-
-    
-
-
+    CashflowOfHospitalComponent
   ],
   imports: [
     BrowserModule,
-    
+
     FormsModule,
     ProgressSpinnerModule,
     NgxPrintModule,
@@ -231,14 +226,23 @@ FusionChartsModule.fcRoot(FusionCharts, Charts, Fusion)
     CheckboxModule
   ],
 
-  providers: [{
-    provide: HTTP_INTERCEPTORS,
-    useClass: NoopInterceptor,
-    multi: true,
-  },DoctorService, AddpanellistseviceService, MessageService, NavBarService, AuthGuard,PatientTransactionsComponent
-    , AddErComponent, AdmissionService],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: NoopInterceptor,
+      multi: true
+    },
+    DoctorService,
+    AddpanellistseviceService,
+    MessageService,
+    NavBarService,
+    AuthGuard,
+    PatientTransactionsComponent,
+    AddErComponent,
+    AdmissionService
+  ],
 
   bootstrap: [AppComponent],
   exports: [FormsModule]
 })
-export class AppModule { }
+export class AppModule {}
