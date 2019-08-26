@@ -21,17 +21,16 @@ export class AddpanellistComponent implements OnInit {
   display = false;
   facilityObj: Facility = new Facility();
 
-  constructor(private panelService: AddpanellistseviceService, private messageService: MessageService, private router: Router) {
+  constructor(
+    private panelService: AddpanellistseviceService,
+    private messageService: MessageService,
+    private router: Router
+  ) {
     this.paneldrop = [
-
       { label: 'free', value: 'free' },
       { label: '50% Off', value: '50% Off' },
       { label: 'No panel', value: 'No panel' }
-
-
     ];
-
-    
   }
 
   ngOnInit() {
@@ -39,7 +38,6 @@ export class AddpanellistComponent implements OnInit {
   }
 
   getFcilityInIt() {
-    
     this.panelService.getFacility().subscribe(response => {
       console.log('response is here', response);
 
@@ -56,7 +54,11 @@ export class AddpanellistComponent implements OnInit {
     this.panelService.savePanel(this.panels).subscribe(
       error => {
         console.log(error);
-        this.messageService.add({ severity: 'success', summary: 'Status', detail: 'unSuccessfull' });
+        this.messageService.add({
+          severity: 'success',
+          summary: 'Status',
+          detail: 'unSuccessfull'
+        });
       },
       data => {
         console.log(data);
@@ -88,9 +90,9 @@ export class AddpanellistComponent implements OnInit {
     this.facilityObj.facilityName = this.facilityObj.facilityName.toUpperCase();
     this.panelService.saveFacility(this.facilityObj).subscribe(
       data => {
-        console.log("heehehe" + data);
+        console.log(data);
         const stat = Object.keys(data);
-        console.log(stat[0])
+        console.log(stat[0]);
         // tslint:disable-next-line: triple-equals
         if (stat[0] != 'Already Exsist') {
           this.messageService.add({
@@ -106,12 +108,12 @@ export class AddpanellistComponent implements OnInit {
             detail: 'Already Exsist'
           });
         }
-        this.facilityObj.facilityName='';
+        this.facilityObj.facilityName = '';
       },
       error => {
         console.log(error);
         this.messageService.add({ severity: 'error', summary: 'Failed', detail: 'Failed' });
-        this.facilityObj.facilityName='';
+        this.facilityObj.facilityName = '';
       }
     );
     this.getFcilityInIt();
