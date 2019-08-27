@@ -93,7 +93,7 @@
                         </div>
                         <div class="ui-g">
                             <!-- <div class="ui-lg-3 ui-sm-3 ui-md-4"></div> -->
-                            <div class="ui-g-3 ui-sm-12 ui-md-offset-2 ui-md-4   ui-lg-4">
+                            <div class="ui-g-3 ui-sm-12  ui-md-4   ui-lg-4">
                                 <button pButton type="button" label="Appointment" class="colorSetAllButtons" (click)="addAppointment()">
                   <img src="../../assets/appointment.png" height="48" width="48"/>
 
@@ -101,10 +101,20 @@
                             </div>
                             <div *ngIf="usertype == 'ADMIN'" class="ui-g-3 ui-sm-12  ui-md-4   ui-lg-4">
                                 <button pButton type="button" label="Add User" class="colorSetAllButtons" (click)="addUser()">
-                  <img src="../../assets/icons8-male-user-48.png" height="48" width="48"/>
+                  <img src="../../assets/addUser.png" height="48" width="48"/>
                   
                 </button>
                             </div>
+                             <div  class="ui-g-3 ui-sm-12  ui-md-4   ui-lg-4">
+                                <button pButton type="button" label="Dashboard" class="colorSetAllButtons"(click)="dashboard()" >
+                  <img src="../../assets/dashboard.png" height="48" width="48"/>
+                  
+                </button>
+                            </div>
+                            
+                            
+                            
+                            
                             <!-- <div class="ui-g-3 ui-sm-12">
                 <button pButton type="button" label="Gyny and Obs" class="colorSetAllButtons"
                   (click)="gotoGynyObsList()">
@@ -112,6 +122,7 @@
                 </button>
               </div> -->
                         </div>
+                        
                     </p-panel>
                 </div>
             </div>

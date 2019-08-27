@@ -1,0 +1,128 @@
+<div class="ui-lg-5 ui-md-5 ui-sm-12">
+  <button
+    pButton
+    type="button"
+    class="backBtnStyle"
+    (click)="backTodashboard()"
+    style="width:45%;margin-left:30% "
+    label="Back"
+  ></button>
+</div>
+<div class="ui-g-12 ">
+  <p-toast></p-toast>
+  <p-card
+    header="All Reports"
+    [style]="{
+      width: '100%',
+
+      'font-size': '20px',
+      'text-align': 'center',
+      color: 'green'
+    }"
+  >
+    <hr style="height:2px;width:100%;background-color:green" />
+    <div class="ui-g ">
+      <div class="ui-g-3 ui-sm-12  ui-md-4   ui-lg-4">
+        <p-card
+          [style]="{
+            width: '100%',
+            'text-align': 'center',
+            color: 'green'
+          }"
+        >
+          <div class="ui-g">
+            <div class="ui-g-3 ui-sm-12  ui-md-12   ui-lg-12">
+              <img src="../../assets/employeelogo.png" height="120" width="125" />
+            </div>
+          </div>
+          <div class="ui-g">
+            <div class="ui-g-3 ui-sm-12  ui-md-12   ui-lg-12">
+              <h4 style="color:grey !important">Cash flow of employee</h4>
+            </div>
+          </div>
+
+          <div class="ui-g">
+            <div class="ui-g-3 ui-sm-12  ui-md-12   ui-lg-12">
+              <button
+                pButton
+                type="button"
+                class="backBtnStyle"
+                style="width:50%;  height:40px;"
+                label="Check Cashflows"
+                (click)="toEmployeeCashflow()"
+              ></button>
+            </div>
+          </div>
+        </p-card>
+      </div>
+
+      <div class="ui-g-3 ui-sm-12  ui-md-4   ui-lg-4">
+        <p-card
+          [style]="{
+            width: '100%',
+            'text-align': 'center',
+            color: 'green'
+          }"
+        >
+          <div class="ui-g">
+            <div class="ui-g-3 ui-sm-12  ui-md-12   ui-lg-12">
+              <img src="../../assets/hospitalogo.png" height="120" width="125" />
+            </div>
+          </div>
+          <div class="ui-g">
+            <div class="ui-g-3 ui-sm-12  ui-md-12   ui-lg-12">
+              <h4 style="color:grey !important">Cash flow of hospital</h4>
+            </div>
+          </div>
+
+          <div class="ui-g">
+            <div class="ui-g-3 ui-sm-12  ui-md-12   ui-lg-12">
+              <button
+                pButton
+                type="button"
+                class="backBtnStyle"
+                style="width:50%;  height:40px;"
+                label="Check Cashflows"
+                (click)="routetocashflowofhospital()"
+              ></button>
+            </div>
+          </div>
+        </p-card>
+      </div>
+
+      <div class="ui-g-3 ui-sm-12  ui-md-4   ui-lg-4">
+        <p-card
+          [style]="{
+            width: '100%',
+            'text-align': 'center',
+            color: 'green'
+          }"
+        >
+          <div class="ui-g">
+            <div class="ui-g-3 ui-sm-12  ui-md-12   ui-lg-12">
+              <img src="../../assets/doctorlogo.png" height="120" width="125" />
+            </div>
+          </div>
+          <div class="ui-g">
+            <div class="ui-g-3 ui-sm-12  ui-md-12   ui-lg-12">
+              <h4 style="color:grey !important">Cash flow of doctor</h4>
+            </div>
+          </div>
+
+          <div class="ui-g">
+            <div class="ui-g-3 ui-sm-12  ui-md-12   ui-lg-12">
+              <button
+                pButton
+                type="button"
+                class="backBtnStyle"
+                style="width:50%;  height:40px;"
+                label="Check Cashflows"
+                (click)="routetocashflowofdoctor()"
+              ></button>
+            </div>
+          </div>
+        </p-card>
+      </div>
+    </div>
+  </p-card>
+</div>
