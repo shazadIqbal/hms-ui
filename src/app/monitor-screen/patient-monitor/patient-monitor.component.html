@@ -1,32 +1,40 @@
 <p-toast></p-toast>
 
-<button pButton type="button" class="backBtnStyle" style="margin-left:1%; margin-bottom: 1%; height:30px; width: 30%" (click)="backToMain()" label="Back">
-
-</button>
+<button
+  pButton
+  type="button"
+  class="backBtnStyle"
+  style="margin-left:1%; margin-bottom: 1%; height:30px; width: 30%"
+  (click)="backToMain()"
+  label="Back"
+></button>
 <p-panel header="Patient Data">
-    <div class="ui-g">
-        <div class="ui-lg-3 ui-md-3 ui-sm-12">
-            <div id="img">
-
-                <img style="height:220px;margin-left:15%;width:70%;padding:5px;border:1px solid black" [src]="image || '../../assets/patient.jpg'" alt="icon">
-
+  <div class="ui-g">
+    <div class="ui-lg-3 ui-md-3 ui-sm-12">
+      <div id="img">
+        <img
+          style="height:220px;margin-left:15%;width:70%;padding:5px;border:1px solid black"
+          [src]="image || '../../assets/patient.jpg'"
+          alt="icon"
+        />
+      </div>
+      <!-- https://cdn5.vectorstock.com/i/1000x1000/23/54/user-icon-man-human-profile-avatar-vector-10552354.jpg -->
+    </div>
+    <div class="ui-lg-9 ui-md-9 ui-sm-12">
+      <p-card [ngStyle]="{ width: '100%' }">
+        <div [hidden]="!isLoading">
+          <div class="ui-g">
+            <div class="ui-lg-12 ui-md-12 ui-sm-12">
+              <p-progressSpinner [ngStyle]="{ marginLeft: '40%' }"></p-progressSpinner>
             </div>
-            <!-- https://cdn5.vectorstock.com/i/1000x1000/23/54/user-icon-man-human-profile-avatar-vector-10552354.jpg -->
+          </div>
         </div>
-        <div class="ui-lg-9 ui-md-9 ui-sm-12">
-            <p-card [ngStyle]="{ width: '100%' }">
-                <div [hidden]="!isLoading">
-                    <div class="ui-g">
-                        <div class="ui-lg-12 ui-md-12 ui-sm-12">
-                            <p-progressSpinner [ngStyle]="{ marginLeft: '40%' }"></p-progressSpinner>
-                        </div>
-                    </div>
-                </div>
-                <div [hidden]="isLoading">
-                    <div class="ui-g">
-                        <div class="ui-lg-4 ui-md-4 ui-sm-12">
-                            <div class="ui-lg-12 ui-md-12 ui-sm-12">
-                                <label style="color:rgb(127, 128, 126)">Patient ID: <span style="color:rgb(17, 17, 17)">{{ id }}</span></label
+        <div [hidden]="isLoading">
+          <div class="ui-g">
+            <div class="ui-lg-4 ui-md-4 ui-sm-12">
+              <div class="ui-lg-12 ui-md-12 ui-sm-12">
+                <label style="color:rgb(127, 128, 126)"
+                  >Patient ID: <span style="color:rgb(17, 17, 17)">{{ id }}</span></label
                 >
               </div>
               <div class="ui-lg-12 ui-md-12 ui-sm-12">
@@ -38,13 +46,12 @@
                 <label style="color:rgb(127, 128, 126)"
                   >Phone Number: <span style="color:rgb(17, 17, 17)">{{ number }}</span>
                 </label>
-                            </div>
+              </div>
 
-
-                            <div class="ui-lg-12 ui-md-12 ui-sm-12">
-                                <label style="color:rgb(127, 128, 126)">Date:
+              <div class="ui-lg-12 ui-md-12 ui-sm-12">
+                <label style="color:rgb(127, 128, 126)"
+                  >Date:
                   <span style="color:rgb(17, 17, 17)">{{ date | date: 'short' }}</span></label
-
                 >
               </div>
               <div *ngIf="registration">
@@ -70,8 +77,7 @@
               <div *ngIf="admitLabel">
                 <div class="ui-lg-12 ui-md-12 ui-sm-12">
                   <label style="color:rgb(127, 128, 126)"
-                    >Admit:
-                    <span style="color:rgb(17, 17, 17)">{{ admitLabel }}</span></label
+                    >Admit: <span style="color:rgb(17, 17, 17)">{{ admitLabel }}</span></label
                   >
                 </div>
               </div>
@@ -79,12 +85,12 @@
 
             <div class="ui-lg-4 ui-md-4 ui-sm-12">
               <p-card>
-                <!-- <div class="ui-md-12 ui-lg-12  ui-sm-12">
+                <div class="ui-md-12 ui-lg-12  ui-sm-12">
                   <label style="color:rgb(127, 128, 126)"
                     >Patient Package:
-                    <span style="color:rgb(17, 17, 17)">{{ package }}</span></label
+                    <span style="color:rgb(17, 17, 17)">{{ this.opdPackage }}</span></label
                   >
-                </div> -->
+                </div>
                 <div class="ui-md-12 ui-lg-12 ui-sm-12">
                   <label style="color:rgb(127, 128, 126)"
                     >OPD: <span style="color:rgb(17, 17, 17)">{{ opd }}</span></label
@@ -114,9 +120,10 @@
                   <label style="color:rgb(127, 128, 126)">
                     Dues: <span style="color:rgb(17, 17, 17)">{{ dues }}</span>
                   </label>
-                            </div>
-                            <div class="ui-md-12 ui-lg-12 ui-sm-12">
-                                <label style="color:rgb(127, 128, 126)">ER: <span style="color:rgb(17, 17, 17)">{{ er }}</span></label
+                </div>
+                <div class="ui-md-12 ui-lg-12 ui-sm-12">
+                  <label style="color:rgb(127, 128, 126)"
+                    >ER: <span style="color:rgb(17, 17, 17)">{{ er }}</span></label
                   >
                 </div>
 

@@ -102,6 +102,7 @@ import { NoopInterceptor } from './request.intercept';
 import { SignUpFormComponent } from './sign-up-form/sign-up-form.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { DashboardgraphsComponent } from './dashboardgraphs/dashboardgraphs.component';
+import { OpdpackageComponent } from './opdpackage/opdpackage.component';
 import * as FusionCharts from 'fusioncharts';
 // Load Charts module
 import * as Charts from 'fusioncharts/fusioncharts.charts';
@@ -185,9 +186,8 @@ FusionChartsModule.fcRoot(FusionCharts, Charts, Fusion);
     SignUpFormComponent,
 
     DashboardComponent,
-
+    OpdpackageComponent,
     DashboardgraphsComponent,
-
     AllReportsComponent,
 
     EmployeecashflowComponent,
