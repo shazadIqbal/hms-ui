@@ -50,10 +50,12 @@ import { PatientTransactionsComponent } from './patient-transactions/patient-tra
 import { GynyObsListComponent } from './gyny-obs-list/gyny-obs-list.component';
 
 import { SignUpFormComponent } from './sign-up-form/sign-up-form.component';
+
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { AllReportsComponent } from './all-reports/all-reports.component';
 
 import { EmployeecashflowComponent } from './employeecashflow/employeecashflow.component';
+import { OpdpackageComponent } from './opdpackage/opdpackage.component';
 
 import { CashflowOfDoctorComponent } from './cashflow-of-doctor/cashflow-of-doctor.component';
 import { CashflowOfHospitalComponent } from './cashflow-of-hospital/cashflow-of-hospital.component';
@@ -160,6 +162,7 @@ const routes: Routes = [
   },
   { path: 'opdEmergency/:id', canActivate: [AuthGuard], component: OpdEmergencyComponent },
   { path: 'opdconsultancy/:id', canActivate: [AuthGuard], component: OpdconsultancyComponent },
+  { path: 'opdpackage/:id', canActivate: [AuthGuard], component: OpdpackageComponent },
   { path: 'history/:id', canActivate: [AuthGuard], component: PatientTransactionHistoryComponent },
   { path: 'opdGyny/:id', canActivate: [AuthGuard], component: OpdGynyComponent },
   { path: 'opdlabtest/:id', canActivate: [AuthGuard], component: OpdLabtestComponent },
