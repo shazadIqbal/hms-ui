@@ -50,6 +50,7 @@ export class OpdLabtestComponent implements OnInit {
       console.log(a)
       this.patientName = a.name;
       this.patientMrNo = a.id;
+      this.addLabTests.patient = a;
     })
 
 
@@ -192,7 +193,7 @@ saveOpdLabTest(){
 
 this.total=this.addLabTests.total;
 this.discount=this.addLabTests.discount;
-
+  this.addLabTests.patient = 
   this.labtestservice.saveOpdEr(this.addLabTests).subscribe(
 
     data => {
