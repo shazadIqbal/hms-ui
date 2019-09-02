@@ -84,6 +84,7 @@ export class AddpanellistComponent implements OnInit {
     console.log('test value ', value);
   }
   OnFacilitysubmit(value) {
+    console.log('========================', value);
     console.log('in facility');
     this.multidropdown = [];
     this.panels.panelFacility = [];
