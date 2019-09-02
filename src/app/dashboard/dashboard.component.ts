@@ -142,15 +142,15 @@ export class DashboardComponent implements OnInit {
         this.totalamountcolumnchart.chart.subcaption =
           '[' + datefrom + ' ' + ' ' + 'to' + ' ' + ' ' + datetill + ']';
         this.showspinloading = false;
-      },
-      error => {
-        console.log(error);
-        this.messageservice.add({
-          severity: 'error',
-          summary: 'Status',
-          detail: 'something went wrong please refresh the page'
-        });
       }
+      // error => {
+      //   console.log(error);
+      //   this.messageservice.add({
+      //     severity: 'error',
+      //     summary: 'Status',
+      //     detail: 'something went wrong please refresh the page'
+      //   });
+      // }
     );
 
     this.service.duestotal(this.dashboard).subscribe(
@@ -160,15 +160,15 @@ export class DashboardComponent implements OnInit {
         this.duestotalcoloumnchart.chart.subcaption =
           '[' + datefrom + ' ' + ' ' + 'to' + ' ' + ' ' + datetill + ']';
         this.showspinloading = false;
-      },
-      error => {
-        console.log(error);
-        this.messageservice.add({
-          severity: 'error',
-          summary: 'Status',
-          detail: 'something went wrong please refresh the page'
-        });
       }
+      // error => {
+      //   console.log(error);
+      //   this.messageservice.add({
+      //     severity: 'error',
+      //     summary: 'Status',
+      //     detail: 'something went wrong please refresh the page'
+      //   });
+      // }
     );
 
     this.service.duesbydate(this.dashboard).subscribe(
@@ -178,15 +178,15 @@ export class DashboardComponent implements OnInit {
         this.duesbydatetotal.chart.subcaption =
           '[' + datefrom + ' ' + ' ' + 'to' + ' ' + ' ' + datetill + ']';
         this.showspinloading = false;
-      },
-      error => {
-        console.log(error);
-        this.messageservice.add({
-          severity: 'error',
-          summary: 'Status',
-          detail: 'something went wrong please refresh the page'
-        });
       }
+      // error => {
+      //   console.log(error);
+      //   this.messageservice.add({
+      //     severity: 'error',
+      //     summary: 'Status',
+      //     detail: 'something went wrong please refresh the page'
+      //   });
+      // }
     );
 
     this.service.patientsbydate(this.dashboard).subscribe(
@@ -196,15 +196,15 @@ export class DashboardComponent implements OnInit {
         this.patientsbydatetotal.chart.subcaption =
           '[' + datefrom + ' ' + ' ' + 'to' + ' ' + ' ' + datetill + ']';
         this.showspinloading = false;
-      },
-      error => {
-        console.log(error);
-        this.messageservice.add({
-          severity: 'error',
-          summary: 'Status',
-          detail: 'something went wrong please refresh the page'
-        });
       }
+      // error => {
+      //   console.log(error);
+      //   this.messageservice.add({
+      //     severity: 'error',
+      //     summary: 'Status',
+      //     detail: 'something went wrong please refresh the page'
+      //   });
+      // }
     );
   }
 
@@ -246,15 +246,15 @@ export class DashboardComponent implements OnInit {
         this.totalamountcolumnchart.chart.subcaption =
           '[' + date1 + ' ' + ' ' + 'to' + ' ' + ' ' + date2 + ']';
         this.showspinloading = false;
-      },
-      error => {
-        console.log(error);
-        this.messageservice.add({
-          severity: 'error',
-          summary: 'Status',
-          detail: 'something went wrong please refresh the page'
-        });
       }
+      // error => {
+      //   console.log(error);
+      //   this.messageservice.add({
+      //     severity: 'error',
+      //     summary: 'Status',
+      //     detail: 'something went wrong please refresh the page'
+      //   });
+      // }
     );
 
     this.service.duestotal(this.dashboard).subscribe(
@@ -264,15 +264,15 @@ export class DashboardComponent implements OnInit {
         this.duestotalcoloumnchart.chart.subcaption =
           '[' + date1 + ' ' + ' ' + 'to' + ' ' + ' ' + date2 + ']';
         this.showspinloading = false;
-      },
-      error => {
-        console.log(error);
-        this.messageservice.add({
-          severity: 'error',
-          summary: 'Status',
-          detail: 'something went wrong please refresh the page'
-        });
       }
+      // error => {
+      //   console.log(error);
+      //   this.messageservice.add({
+      //     severity: 'error',
+      //     summary: 'Status',
+      //     detail: 'something went wrong please refresh the page'
+      //   });
+      // }
     );
 
     this.service.duesbydate(this.dashboard).subscribe(
@@ -282,15 +282,15 @@ export class DashboardComponent implements OnInit {
         this.duesbydatetotal.chart.subcaption =
           '[' + date1 + ' ' + ' ' + 'to' + ' ' + ' ' + date2 + ']';
         this.showspinloading = false;
-      },
-      error => {
-        console.log(error);
-        this.messageservice.add({
-          severity: 'error',
-          summary: 'Status',
-          detail: 'something went wrong please refresh the page'
-        });
       }
+      // error => {
+      //   console.log(error);
+      //   this.messageservice.add({
+      //     severity: 'error',
+      //     summary: 'Status',
+      //     detail: 'something went wrong please refresh the page'
+      //   });
+      // }
     );
 
     this.service.patientsbydate(this.dashboard).subscribe(
@@ -300,15 +300,15 @@ export class DashboardComponent implements OnInit {
         this.patientsbydatetotal.chart.subcaption =
           '[' + date1 + ' ' + ' ' + 'to' + ' ' + ' ' + date2 + ']';
         this.showspinloading = false;
-      },
-      error => {
-        console.log(error);
-        this.messageservice.add({
-          severity: 'error',
-          summary: 'Status',
-          detail: 'something went wrong please refresh the page'
-        });
       }
+      // error => {
+      //   console.log(error);
+      //   this.messageservice.add({
+      //     severity: 'error',
+      //     summary: 'Status',
+      //     detail: 'something went wrong please refresh the page'
+      //   });
+      // }
     );
   }
 

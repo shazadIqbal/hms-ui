@@ -1,3 +1,3 @@
-export class Facility{
-    facilityName: string;
+export class Facility {
+  facilityName: String;
 }

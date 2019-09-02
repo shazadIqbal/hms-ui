@@ -1,10 +1,11 @@
 import { PatientComponent } from '../patient/patient.component';
 import { Component, OnInit } from '@angular/core';
-import {Router} from '@angular/router';
-import {PatientserviceService} from '../patientservice.service';
-import {MessageService} from 'primeng/api';
+import { Router } from '@angular/router';
+import { PatientserviceService } from '../patientservice.service';
+import { MessageService } from 'primeng/api';
 import { DoctorListComponent } from '../doctor-list/doctor-list.component';
 import { NavBarService } from '../Services/NavBarService';
+import { LocationStrategy } from '@angular/common';
 
 @Component({
   selector: 'app-main-screen',
@@ -19,12 +20,13 @@ export class MainScreenComponent implements OnInit {
     private router: Router,
     private patientService: PatientserviceService,
     private mesgService: MessageService,
-    public nav: NavBarService
-  ) {
-  }
+    public nav: NavBarService,
+    private location: LocationStrategy
+  ) {}
 
-    ngOnInit() {
-      this.nav.show();
+  ngOnInit() {
+    this.nav.show();
+    this.preventBackButton();
   }
 
   numberOnly(event): boolean {
@@ -35,40 +37,36 @@ export class MainScreenComponent implements OnInit {
     return true;
   }
 
-  addDirectory()
-  {
-    this.router.navigate(['adddirectory'])
+  addDirectory() {
+    this.router.navigate(['adddirectory']);
   }
 
-  addAppointment()
-  {
-    this.router.navigate(['appoinmentList'])
+  addAppointment() {
+    this.router.navigate(['appoinmentList']);
   }
 
-  addUser(){
-    this.router.navigate(['signupform'])
+  addUser() {
+    this.router.navigate(['signupform']);
   }
-
 
   check(mrNo: any) {
     this.loading = true;
     this.patientService.getPatientsByMRNO(mrNo).subscribe(data => {
       // tslint:disable-next-line: triple-equals
-      if (data == null || mrNo == "") {
+      if (data == null || mrNo == '') {
         console.log(data);
         // console.log(mrNo+"hello");
-        console.log("patientDoesNoteExists");
+        console.log('patientDoesNoteExists');
         this.mesgService.add({
-          severity: "error",
-          summary: "No Record Found",
-          detail: "Add a new Patient Please"
+          severity: 'error',
+          summary: 'No Record Found',
+          detail: 'Add a new Patient Please'
         });
 
         setTimeout(() => {
           this.router.navigate(['/patientform']);
         }, 2000);
-      }
-      else {
+      } else {
         this.mesgService.add({
           severity: 'success',
           summary: 'SUCCESS',
@@ -76,12 +74,11 @@ export class MainScreenComponent implements OnInit {
         });
         console.log('patientExists');
         setTimeout(() => {
-          this.router.navigate(['/monitor/',mrNo]);
+          this.router.navigate(['/monitor/', mrNo]);
         }, 2000);
-
       }
     }),
-// tslint:disable-next-line: no-unused-expression
+      // tslint:disable-next-line: no-unused-expression
       error => {
         this.mesgService.add({
           severity: 'error',
@@ -92,40 +89,46 @@ export class MainScreenComponent implements OnInit {
   }
 
   onConfirm() {
-    this.mesgService.clear("c");
+    this.mesgService.clear('c');
   }
 
   onReject() {
-    this.mesgService.clear("c");
+    this.mesgService.clear('c');
   }
 
-  doctorList(){
-    this.router.navigate(["/doctorlist"]);
+  doctorList() {
+    this.router.navigate(['/doctorlist']);
   }
 
-  panelList(){
-    this.router.navigate(["/panellist"]);
+  panelList() {
+    this.router.navigate(['/panellist']);
   }
 
-  addlabtest(){
-    this.router.navigate(["/addlabtest"]);
+  addlabtest() {
+    this.router.navigate(['/addlabtest']);
   }
   gotoErService() {
-    this.router.navigate(["/er"]);
+    this.router.navigate(['/er']);
   }
 
-  toPackageList(){
-    this.router.navigate(["/packagelist"]);
+  toPackageList() {
+    this.router.navigate(['/packagelist']);
   }
-  gotoAdmission(){
-    this.router.navigate(["/admission"]);
-  }
-
-  gotoGynyObsList(){
-    this.router.navigate(["/gynObsList"])
-  }
-  dashboard(){
-    this.router.navigate(["/dashboard"])
+  gotoAdmission() {
+    this.router.navigate(['/admission']);
   }
 
+  gotoGynyObsList() {
+    this.router.navigate(['/gynObsList']);
+  }
+  dashboard() {
+    this.router.navigate(['/dashboard']);
+  }
+
+  preventBackButton() {
+    history.pushState(null, null, location.href);
+    this.location.onPopState(() => {
+      history.pushState(null, null, location.href);
+    });
+  }
 }
