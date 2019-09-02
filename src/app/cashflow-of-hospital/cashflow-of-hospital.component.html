@@ -1,12 +1,52 @@
-<div class="ui-lg-5 ui-md-5 ui-sm-12">
-  <button
-    pButton
-    type="button"
-    class="backBtnStyle"
-    (click)="allreports()"
-    style="width:45%;margin-left:30% "
-    label="Back"
-  ></button>
+<div id="print-section" [hidden]="true">
+    <div class="container">
+        <h2>Transactions of Hospital</h2>
+        <table class="table table-striped">
+          <thead>
+              <th *ngFor="let col of cols">
+                  {{ col.header }}
+              </th>
+          </thead>
+          <tbody>
+                  <tr *ngFor="let hos of hospitalTransactions" style="overflow: auto;">
+                    <td>{{ hos.id }}</td>
+                    <td>{{ hos.transactionDate }}</td>
+                    <td>{{ hos.receivedAmount }}</td>
+                    <td>{{ hos.totalAmount }}</td>
+                    <td>{{ hos.transactionType }}</td>
+                    <td>{{ hos.description  }}</td>
+                    <td>{{ hos.currency }}</td>
+                    <td>{{ hos.operationType }}</td>
+                    <td>{{ hos.dues }}</td>
+
+                  </tr>
+               
+          </tbody>
+        </table>
+      </div>
+</div>
+<div class="ui-g">
+  <div class="ui-g-5">
+    <button
+      pButton
+      type="button"
+      class="backBtnStyle"
+      (click)="allreports()"
+      style="width:45%;margin-left:30% "
+      label="Back"
+    ></button>
+  </div>
+  <div class="ui-g-2"></div>
+  <div class="ui-g-5">
+    <button
+      pButton
+      type="button"
+      label="Print"
+      style="width:45%;margin-left:30%"
+      (click)="print()"
+      class="backBtnStyle"
+    ></button>
+  </div>
 </div>
 
 <div class="ui-g-12">
@@ -31,14 +71,16 @@
       </div>
 
       <div class="ui-g-3 ui-sm-12  ui-md-4  ui-lg-4 ">
-        <span class="ui-inputgroup-addon " style="font-size:14px">select opd-module</span>
+        <span class="ui-inputgroup-addon " style="font-size:13.5px"
+          >select opd-module</span
+        >
         <p-dropdown
-          name="employees"
+          name="role"
           placeholder="please select"
-          [options]=""
+          [options]="cashFlowType"
           [filter]="true"
-          [style]="{ width: '65%', 'font-size': '20px' }"
-          [ngStyle]="{ width: '100%', 'font-size': '20px' }"
+          [style]="{ width: '65%' }"
+          [(ngModel)]="role"
         >
         </p-dropdown>
       </div>
@@ -47,11 +89,13 @@
     <div class="  ui-g  ui-inputgroup">
       <div class="ui-g-3 ui-sm-12  ui-md-3   ui-lg-3"></div>
       <div class=" ui-g-3 ui-sm-12  ui-md-3   ui-lg-3  ">
-        <span class="ui-inputgroup-addon " style="font-size:14px">Date From</span>
+        <span class="ui-inputgroup-addon " style="font-size:14px"
+          >Date From</span
+        >
         <p-calendar
           name="filterByDate"
           required
-          [(ngModel)]="datefrom"
+          [(ngModel)]="dateFrom"
           [monthNavigator]="true"
           [yearNavigator]="true"
           yearRange="1947:2090"
@@ -62,11 +106,13 @@
       </div>
 
       <div class="ui-g-3 ui-sm-12  ui-md-3   ui-lg-3 ">
-        <span class="ui-inputgroup-addon " style="font-size:14px">Date Till</span>
+        <span class="ui-inputgroup-addon " style="font-size:14px"
+          >Date Till</span
+        >
         <p-calendar
           name="filterByDate"
           required
-          [(ngModel)]="datetill"
+          [(ngModel)]="dateTill"
           [monthNavigator]="true"
           [yearNavigator]="true"
           yearRange="1947:2090"
@@ -92,15 +138,52 @@
   </p-card>
 </div>
 
-<div class="ui-g-12">
-  <p-card
-    [style]="{
-      width: '100%',
+<div class="ui-g-12" > 
+  <div class="ui-g-12">
+    <p-table
+      #dt
+      [columns]="cols"
+      [value]="hospitalTransactions"
+      [paginator]="true"
+      [rows]="10"
+      [totalRecords]="totalRecords"
+      [style]="{ 'text-align': 'center' }"
+    >
+      <ng-template pTemplate="caption">
+        <div style="text-align: right">
+          <i class="fa fa-search" style="margin:4px 4px 0 0"></i>
+          <input
+            type="text"
+            pInputText
+            size="50"
+            placeholder="Global Filter"
+            (input)="dt.filterGlobal($event.target.value, 'contains')"
+            style="width:auto"
+          />
+        </div>
+      </ng-template>
+      <ng-template pTemplate="header" let-columns>
+        <tr>
+          <th *ngFor="let col of columns">
+            {{ col.header }}
+          </th>
+        </tr>
+        <div *ngIf="showLoading" style="margin-left: 325%;">
+          <p-progressSpinner></p-progressSpinner>
+        </div>
+      </ng-template>
 
-      'font-size': '25px',
-      'text-align': 'center',
-      color: 'green'
-    }"
-  >
-  </p-card>
+      <ng-template pTemplate="body" let-rowData let-columns="columns">
+        <tr [pSelectableRow]="rowData">
+          <td *ngFor="let col of columns" style="overflow: auto;">
+            {{ rowData[col.field] }}
+          </td>
+        </tr>
+      </ng-template>
+    </p-table>
+    <div *ngIf="!hospitalTransactions.length" class="ui-g" style=" color: green">
+        <h3 class="ui-g-12" style="text-align:center; font-weight: bold;">No transactions found!</h3>
+       </div>
+
+  </div>
 </div>

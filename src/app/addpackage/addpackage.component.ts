@@ -4,6 +4,7 @@ import { Package } from './package';
 import { PackageServiceService } from '../Services/package-service.service';
 import { from } from 'rxjs';
 import { MessageService } from 'primeng/api';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-addpackage',
@@ -18,12 +19,13 @@ export class AddpackageComponent implements OnInit {
   constructor(
     private router: Router,
     private messageService: MessageService,
-    private packageServ: PackageServiceService
+    private packageServ: PackageServiceService,
+    private _location: Location
   ) {
-    this.facilitydrop= [
-      {label: 'With Medication', value: 'with medication'},
-      {label: 'Without Medication', value: 'without medication'}
-    ]
+    this.facilitydrop = [
+      { label: 'With Medication', value: 'with medication' },
+      { label: 'Without Medication', value: 'without medication' }
+    ];
   }
 
   cols: any = [];
@@ -34,7 +36,7 @@ export class AddpackageComponent implements OnInit {
   }
 
   backtoPackageList() {
-    this.router.navigate(['packagelist']);
+    this._location.back();
   }
 
   submitPackage() {
