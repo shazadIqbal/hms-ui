@@ -66,7 +66,7 @@ export class PatientMonitorComponent implements OnInit {
           this.image = response.image;
           this.er = response.er;
           this.dues = response.dues;
-          this.opdPackage = response.opdPackage;
+          this.opdPackage = response.patientPackage;
           console.log(response.opdPackage);
           console.log(this.opdPackage);
           this.total = response.total;
