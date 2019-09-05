@@ -6,8 +6,7 @@ import { environment } from '../../environments/environment';
 
 @Injectable()
 export class DoctorService {
-
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   //  '/api/doctor/';
 
@@ -21,7 +20,11 @@ export class DoctorService {
     return this.http.get(environment.baseUrl + 'api/doctor/' + mrNo);
   }
 
-  updateDoctorById(mrNo,oldPhoneNo,doc): Observable<any> {
-      return this.http.post(environment.baseUrl +'api/doctor/'+mrNo+'/'+oldPhoneNo,doc);
+  deleteDoctorById(mrNo): Observable<any> {
+    return this.http.delete(environment.baseUrl + 'api/doctor/' + mrNo);
+  }
+
+  updateDoctorById(mrNo, oldPhoneNo, doc): Observable<any> {
+    return this.http.post(environment.baseUrl + 'api/doctor/' + mrNo + '/' + oldPhoneNo, doc);
   }
 }

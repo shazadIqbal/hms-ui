@@ -38,7 +38,7 @@
                             </div>
                         </div>
 
-
+<!--
                         <div class="ui-g-12 ui-md-5">
                             <div class="ui-inputgroup">
                                 <span class="ui-inputgroup-addon" style="width:50%">Panel Start Date<i style="color: red">*</i></span>
@@ -54,13 +54,13 @@
                                 <p-calendar [style]="{ width: '300px' }" [(ngModel)]="panels.panelEndDate" [monthNavigator]="true" [yearNavigator]="true" yearRange="1947:2090" showButtonBar="true" name="enddate" required>
                                 </p-calendar>
                             </div>
-                        </div>
+                        </div>-->
                         <div class="ui-g-12 ui-md-5 ">
                             <div>
                                 <!-- <span class="ui-inputgroup-addon" style="height:80%; width: 50%;">Panel Facility<i
                     style="color: red">*</i></span> -->
 
-                                <p-multiSelect defaultLabel="Choose Facility" [options]="multidropdown" [(ngModel)]="panels.panelFacility" [panelStyle]="{ width: '12em' }" name="pfacility" [style]="{ width: '435px' }"></p-multiSelect>
+                                <p-multiSelect defaultLabel="Choose Facility *" [options]="multidropdown" [(ngModel)]="panels.panelFacility" [panelStyle]="{ width: '12em' }" name="pfacility" required [style]="{ width: '435px' }"></p-multiSelect>
 
 
                             </div>

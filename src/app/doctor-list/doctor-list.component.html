@@ -1,4 +1,5 @@
 <div class="ui-g">
+  <p-toast></p-toast>
   <div class="ui-sm-0 ui-lg-2 ui-md-2"></div>
   <div class="ui-g-4 ui-lg-4 ui-sm-12">
     <button
@@ -34,14 +35,7 @@
   <hr />
 
   <hr />
-  <p-table
-    #dt
-    [columns]="cols"
-    [value]="doctors"
-    [totalRecords]="totalRecords"
-    [paginator]="true"
-    [rows]="10"
-  >
+  <p-table #dt [columns]="cols" [value]="doctors" [paginator]="true" [rows]="10">
     <ng-template pTemplate="caption">
       <div style="text-align: right">
         <i class="fa fa-search" style="margin:4px 4px 0 0"></i>
@@ -79,7 +73,7 @@
             pButton
             type="button"
             label="EDIT"
-            (click)="editDoctorById(rowData['mrNo'])"
+            (click)="editDoctorById(rowData['mrno'])"
             class="ui-button-success"
             [ngStyle]="{ width: '80px', margin: '8px' }"
           ></button>
@@ -89,6 +83,7 @@
             [ngStyle]="{ width: '80px', margin: '8px' }"
             type="button"
             label="DELETE"
+            (click)="onDelete(rowData['mrno'])"
             class="ui-button-danger"
           ></button>
         </td>
