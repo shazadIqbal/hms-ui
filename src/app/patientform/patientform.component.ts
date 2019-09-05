@@ -170,8 +170,8 @@ export class PatientformComponent implements OnInit {
           console.log(error);
           this.msgService.add({
             key: 'p',
-            severity: 'warn',
-            summary: 'Paient Already Exists ',
+            severity: 'error',
+            summary: 'Network Error  ',
             detail: 'Failed'
           });
         }

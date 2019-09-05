@@ -106,7 +106,7 @@ export class OpdEmergencyComponent implements OnInit {
       this.printFacilities.push(f['name']);
       let obj = {
         name: f['name'],
-        price: f['price']
+        price: f['price'] + f['extraCharges']
       };
       this.facilitiesArray.push(obj);
     });
@@ -118,7 +118,8 @@ export class OpdEmergencyComponent implements OnInit {
     this.addEmergency.price = 0;
     this.addEmergency.total = 0;
     this.addEmergency.facilities.map(f => {
-      this.addEmergency.price = this.addEmergency.price + parseInt(f['price']);
+      this.addEmergency.price =
+        this.addEmergency.price + parseInt(f['price']) + parseInt(f['extraCharges']);
       this.addEmergency.total = this.addEmergency.price;
     });
   }
@@ -141,7 +142,7 @@ export class OpdEmergencyComponent implements OnInit {
 
     // this.showLoading = true;
     this.showLoadingSpinnerAndHideForm('Getting facilities');
-    this.erService.getErFacility().subscribe(
+    this.erService.getEr().subscribe(
       data => {
         if (data.length) {
           this.hidder = false;
@@ -153,7 +154,7 @@ export class OpdEmergencyComponent implements OnInit {
 
         data.forEach(e => {
           this.multiDropdown.push({
-            label: e.name + ' / ' + e.price + 'Rs',
+            label: e.name + ' / ' + (e.price + e.extraCharges) + 'Rs',
             value: e
           });
         });

@@ -47,7 +47,7 @@ export class AddTestComponent implements OnInit {
   }
 
   back() {
-    history.back();
+    this.route.navigate(['/addlabtest']);
   }
 
   submitlab() {
