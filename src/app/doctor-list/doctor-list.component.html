@@ -1,57 +1,93 @@
 <div class="ui-g">
-    <div class="ui-sm-0 ui-lg-2 ui-md-2"></div>
-    <div class="ui-g-4 ui-lg-4 ui-sm-12">
-        <button pButton type="button" class="backBtnStyle" (click)="backToMain()" style="width:80%;margin-left:10%;  height:40px;" label="Back"></button>
-    </div>
-    <div class="ui-g-4 ui-lg-4 ui-sm-12">
-        <button pButton type="button" (click)="adddoctor()" style="width:80%;margin-left:10%;  height:40px;" label="Add Doctor" class="backBtnStyle"></button>
-    </div>
+  <p-toast></p-toast>
+  <div class="ui-sm-0 ui-lg-2 ui-md-2"></div>
+  <div class="ui-g-4 ui-lg-4 ui-sm-12">
+    <button
+      pButton
+      type="button"
+      class="backBtnStyle"
+      (click)="backToMain()"
+      style="width:80%;margin-left:10%;  height:40px;"
+      label="Back"
+    ></button>
+  </div>
+  <div class="ui-g-4 ui-lg-4 ui-sm-12">
+    <button
+      pButton
+      type="button"
+      (click)="adddoctor()"
+      style="width:80%;margin-left:10%;  height:40px;"
+      label="Add Doctor"
+      class="backBtnStyle"
+    ></button>
+  </div>
 </div>
 
-
-<p-card header="Doctor List" [style]="{
-  width: '100%',
+<p-card
+  header="Doctor List"
+  [style]="{
+    width: '100%',
     'font-size': '26px',
     'text-align': 'center',
     color: 'green'
-  }">
-    <hr />
+  }"
+>
+  <hr />
 
-    <hr />
-    <p-table #dt [columns]="cols" [value]="doctors" [totalRecords]="totalRecords" [paginator]="true" [rows]="10">
-        <ng-template pTemplate="caption">
-            <div style="text-align: right">
-                <i class="fa fa-search" style="margin:4px 4px 0 0"></i>
-                <input type="text" pInputText size="50" placeholder="Global Filter" (input)="dt.filterGlobal($event.target.value, 'contains')" style="width:auto" />
-            </div>
-        </ng-template>
-        <ng-template pTemplate="header" let-columns>
-            <tr>
-                <th *ngFor="let col of columns">
-                    {{ col.header }}
-                </th>
-                <th style="text-align: center;">
-                    Actions
-                </th>
-            </tr>
-            <div *ngIf="showLoading" style="margin-left: 325%;">
-                <p-progressSpinner></p-progressSpinner>
-                <h2 style="color: black">Getting Doctors...</h2>
-            </div>
-        </ng-template>
-        <ng-template pTemplate="body" let-rowData let-columns="columns">
-            <tr [pSelectableRow]="rowData">
-                <td *ngFor="let col of columns">
-                    {{ rowData[col.field] }}
-                </td>
-                <td>
-                    <button pButton type="button" (click)="editDoctorById(rowData['mrNo'])" class="ui-button-info" style="height: 30px;width:45% ;margin-left: 30%; ">
-            <span style="font-size: 20px;">EDIT</span>
+  <hr />
+  <p-table #dt [columns]="cols" [value]="doctors" [paginator]="true" [rows]="10">
+    <ng-template pTemplate="caption">
+      <div style="text-align: right">
+        <i class="fa fa-search" style="margin:4px 4px 0 0"></i>
+        <input
+          type="text"
+          pInputText
+          size="50"
+          placeholder="Global Filter"
+          (input)="dt.filterGlobal($event.target.value, 'contains')"
+          style="width:auto"
+        />
+      </div>
+    </ng-template>
+    <ng-template pTemplate="header" let-columns>
+      <tr>
+        <th *ngFor="let col of columns">
+          {{ col.header }}
+        </th>
+        <th style="text-align: center;">
+          Actions
+        </th>
+      </tr>
+      <div *ngIf="showLoading" style="margin-left: 325%;">
+        <p-progressSpinner></p-progressSpinner>
+        <h2 style="color: black">Getting Doctors...</h2>
+      </div>
+    </ng-template>
+    <ng-template pTemplate="body" let-rowData let-columns="columns">
+      <tr [pSelectableRow]="rowData">
+        <td *ngFor="let col of columns">
+          {{ rowData[col.field] }}
+        </td>
+        <td>
+          <button
+            pButton
+            type="button"
+            label="EDIT"
+            (click)="editDoctorById(rowData['mrno'])"
+            class="ui-button-success"
+            [ngStyle]="{ width: '80px', margin: '8px' }"
+          ></button>
 
-
-          </button>
-                </td>
-            </tr>
-        </ng-template>
-    </p-table>
+          <button
+            pButton
+            [ngStyle]="{ width: '80px', margin: '8px' }"
+            type="button"
+            label="DELETE"
+            (click)="onDelete(rowData['mrno'])"
+            class="ui-button-danger"
+          ></button>
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
 </p-card>

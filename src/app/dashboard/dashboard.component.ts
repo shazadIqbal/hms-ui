@@ -50,7 +50,11 @@ export class DashboardComponent implements OnInit {
       rotatelabels: '0',
       setadaptiveymin: '1',
       theme: 'fusion',
-      paletteColors: '#479761'
+      paletteColors: '#479761',
+      formatNumberScale: '0',
+      decimalSeparator: '.',
+      thousandSeparator: ',',
+      thousandSeparatorPosition: '2,3'
     },
     data: []
   };
@@ -64,7 +68,11 @@ export class DashboardComponent implements OnInit {
       rotatelabels: '0',
       setadaptiveymin: '1',
       theme: 'fusion',
-      paletteColors: '#479761'
+      paletteColors: '#479761',
+      formatNumberScale: '0',
+      decimalSeparator: '.',
+      thousandSeparator: ',',
+      thousandSeparatorPosition: '2,3'
     },
     data: []
   };
@@ -78,7 +86,11 @@ export class DashboardComponent implements OnInit {
       rotatelabels: '0',
       setadaptiveymin: '1',
       theme: 'fusion',
-      paletteColors: '#479761'
+      paletteColors: '#479761',
+      formatNumberScale: '0',
+      decimalSeparator: '.',
+      thousandSeparator: ',',
+      thousandSeparatorPosition: '2,3'
     },
     data: []
   };
@@ -92,7 +104,11 @@ export class DashboardComponent implements OnInit {
       rotatelabels: '0',
       setadaptiveymin: '1',
       theme: 'fusion',
-      paletteColors: '#479761'
+      paletteColors: '#479761',
+      formatNumberScale: '0',
+      decimalSeparator: '.',
+      thousandSeparator: ',',
+      thousandSeparatorPosition: '2,3'
     },
     data: []
   };

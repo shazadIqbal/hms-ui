@@ -56,10 +56,8 @@ export class OpdLabtestComponent implements OnInit {
       this.patientName = a.name;
       this.patientMrNo = a.id;
       this.addLabTests.patient = a;
-    })
+    });
   }
-
-
 
   back() {
     this.router.navigate(['/monitor/' + this.addLabTests.id]);
@@ -127,10 +125,7 @@ export class OpdLabtestComponent implements OnInit {
     this.addLabTests.total = this.addLabTests.price - this.addLabTests.discount;
   }
 
-
-
-
-
+  
   discounter(value) {
     let dis = value;
 
@@ -143,10 +138,6 @@ export class OpdLabtestComponent implements OnInit {
 
     this.addLabTests.total = this.addLabTests.total - this.addLabTests.discount;
   }
-
-
-
-
 
   getfacilitiesInDropdown() {
     this.multiDropdown = [];
@@ -185,14 +176,6 @@ export class OpdLabtestComponent implements OnInit {
       }
     );
   }
-
-
-
-
-
-  
- 
- 
 
 saveOpdLabTest(){
  

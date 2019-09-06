@@ -21,7 +21,7 @@
                     </h3>
                 </div>
                 <!-- checkbox for registration of gyny and obs -->
-                <div class="ui-g-12" style="float: left;">
+                <div class="ui-g-12" style="float: left;" *ngIf= "gen.value === 'Female'">
                     <label style="color:rgb(67, 139, 78); font-size: 18px; ">Gyny/Obs
                     </label> &nbsp;
                     <p-checkbox [(ngModel)]="isGynyObs" (onChange)="isGynObsFn()" binary="true" name="GynyObs">
@@ -96,7 +96,7 @@
 
 
 
-                            <p-dropdown [options]="gender" name="gender" placeholder="Select Gender"
+                            <p-dropdown #gen [options]="gender" name="gender" placeholder="Select Gender"
                                 [(ngModel)]="patient.gender" required #genderRef="ngModel" [autoWidth]="false"
                                 [ngStyle]="{ width: '100%' }">
                             </p-dropdown>
@@ -145,7 +145,7 @@
                     </div>
                 </div>
                 <!-- Row 4 -->
-                <div *ngIf="isGynyObs" class="ui-g ui-fluid">
+                <div *ngIf="isGynyObs && gen.value == 'Female'" class="ui-g ui-fluid">
                     <div class="ui-g-12 ui-md-6">
                         <div class="ui-inputgroup">
                             <span style="width:34%;" class="ui-inputgroup-addon"><b>Father/Husband

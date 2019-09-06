@@ -4,7 +4,6 @@ import { PatientserviceService } from '../patientservice.service';
 import { LazyLoadEvent, MessageService } from 'primeng/api';
 import { Router, ActivatedRoute } from '@angular/router';
 
-
 @Component({
   selector: 'app-searchbar',
   templateUrl: './searchbar.component.html',
@@ -20,16 +19,16 @@ export class SearchbarComponent implements OnInit {
   patientObject: Patient = new Patient();
   // tslint:disable-next-line: ban-types
   totalRecords: Number;
-  
+
   constructor(
     private router: Router,
     private patientService: PatientserviceService,
     private mesgService: MessageService,
-    private activeRoute:ActivatedRoute
+    private activeRoute: ActivatedRoute
   ) {}
   ngOnInit() {
     this.datasource = this.patient = [];
-    this.patientObject.id= this.activeRoute.snapshot.params['id'];
+    this.patientObject.id = this.activeRoute.snapshot.params['id'];
   }
 
   showDialog() {
@@ -63,27 +62,39 @@ export class SearchbarComponent implements OnInit {
       { field: 'address', header: 'ADDRESS' },
       { field: 'phoneNo', header: 'Phone No' },
       { field: 'gender', header: 'Gender' },
-     // { field: 'cnic', header: 'CnicNo' },
+      // { field: 'cnic', header: 'CnicNo' },
       { field: 'status', header: 'Status' }
     ];
 
     // console.log(this.patient);
   }
-  // deletePatientByID(rowData: any) {
-  //   this.loading = true;
-  //   console.log(rowData);
-  //   //  this.indexFind = this.patient.findIndex(i => i.id === rowData);
-  //   //   console.log(this.indexFind);
-  //   // this.patient.splice(this.indexFind,1);
-  //   this.patientService.deletePatientByMRNO(rowData).subscribe(
-  //     data => {
-  //       this.loading = false;
-  //       if (data) {
-  //         this.mesgService.add({
-  //           severity: 'success',
-  //           summary: 'Deleted',
-  //           detail: 'Patient deleted SuccesFully'
-  //         });
+  deletePatientByID(rowData) {
+    this.loading = true;
+    console.log(rowData);
+    //  this.indexFind = this.patient.findIndex(i => i.id === rowData);
+    //   console.log(this.indexFind);
+    // this.patient.splice(this.indexFind,1);
+    this.patientService.deletePatientById(rowData).subscribe(
+      data => {
+        this.loading = false;
+        if (data) {
+          this.mesgService.add({
+            severity: 'success',
+            summary: 'Deleted',
+            detail: 'Patient deleted SuccesFully'
+          });
+        }
+      },
+      error => {
+        console.log(error);
+        this.mesgService.add({
+          severity: 'error',
+          summary: 'Service Message',
+          detail: 'Enable to delete!'
+        });
+      }
+    );
+  }
   //         this.showDialog();
   //         // this.patientService.getPatients().subscribe((data: any) => {});
   //         console.log(data);
@@ -94,27 +105,26 @@ export class SearchbarComponent implements OnInit {
   //           summary: 'Can\'t delete',
   //           detail: 'You are not authorized for this action'
   //         });
-// tslint:disable-next-line: triple-equals
-      //     if (this.loading == true) {
-      //       this.loading = false;
-      //     }
-      //   }
-      // },
-//       error => {
-//         this.loading = false;
-//         this.mesgService.add({
-//           severity: 'error',
-//           summary: 'Cant not delete',
-//           detail: 'You are not authorized for this action'
-//         });
-//         console.log(error);
-//       }
-//     );
-//   }
+  // tslint:disable-next-line: triple-equals
+  //     if (this.loading == true) {
+  //       this.loading = false;
+  //     }
+  //   }
+  // },
+  //       error => {
+  //         this.loading = false;
+  //         this.mesgService.add({
+  //           severity: 'error',
+  //           summary: 'Cant not delete',
+  //           detail: 'You are not authorized for this action'
+  //         });
+  //         console.log(error);
+  //       }
+  //     );
+  //   }
 
-routeToPatientForm(rowData: any){
-  console.log("yeh id hai ",rowData);
-  this.router.navigate(['/patientFormWithId/' + rowData])
+  routeToPatientForm(rowData: any) {
+    console.log('yeh id hai ', rowData);
+    this.router.navigate(['/patientFormWithId/' + rowData]);
+  }
 }
- }
-
