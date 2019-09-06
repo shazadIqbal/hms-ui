@@ -5,7 +5,5 @@ export class opdlabtest{
     discount: number =0;
     total: number = 0;
     price : number;
-
-
-
+    patient : {}; 
 }

@@ -118,8 +118,7 @@ export class OpdEmergencyComponent implements OnInit {
     this.addEmergency.price = 0;
     this.addEmergency.total = 0;
     this.addEmergency.facilities.map(f => {
-      this.addEmergency.price =
-        this.addEmergency.price + parseInt(f['price']) + parseInt(f['extraCharges']);
+      this.addEmergency.price = this.addEmergency.price + parseInt(f['price']) + parseInt(f['extraCharges']);
       this.addEmergency.total = this.addEmergency.price;
     });
   }
