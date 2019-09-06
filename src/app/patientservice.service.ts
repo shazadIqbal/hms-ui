@@ -10,15 +10,12 @@ import { environment } from 'src/environments/environment';
 export class PatientserviceService {
   constructor(private http: HttpClient) {}
 
-
-  private baseUrl = environment.baseUrl+"api/patient/";
-
-
+  private baseUrl = environment.baseUrl + 'api/patient/';
 
   getPatientsByMRNO(mrNo: number): Observable<any> {
     // const params = new HttpParams().set('id', mrNo.toString()); concatenation & params do the
     // same work
-    return this.http.get(this.baseUrl+mrNo);
+    return this.http.get(this.baseUrl + mrNo);
   }
   // tslint:disable-next-line: ban-types
   postPatient(patient: any): Observable<Object> {
@@ -28,17 +25,14 @@ export class PatientserviceService {
   getPatients() {
     return this.http.get(this.baseUrl);
   }
-  deletePatientByMRNO(mrNo: number): Observable<any> {
-
-    return this.http.delete(this.baseUrl + mrNo);
-
+  deletePatientById(id: number): Observable<any> {
+    return this.http.delete(this.baseUrl + id);
   }
-  UpdatePatient(id: number,patient: any): Observable<Object> {
-   
-    return this.http.put(this.baseUrl+"update/"+id, patient);
+  UpdatePatient(id: number, patient: any): Observable<Object> {
+    return this.http.put(this.baseUrl + 'update/' + id, patient);
   }
 
-  getAllGynyObsPatients(){
-    return this.http.get(this.baseUrl + "allgynyobs");
+  getAllGynyObsPatients() {
+    return this.http.get(this.baseUrl + 'allgynyobs');
   }
 }
