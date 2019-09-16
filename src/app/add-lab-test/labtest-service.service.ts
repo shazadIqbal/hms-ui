@@ -36,6 +36,10 @@ export class LabtestServiceService {
     return this.http.delete(this.url+"/"+id);
   }
 
+  getCompleteProcessReportAgainstPatient(id:any):Observable<any>{
+    return this.http.get(environment.baseUrl +"api/patientReport/" + id);
+  }
+
 
 
 

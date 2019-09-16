@@ -59,11 +59,12 @@ import { OpdpackageComponent } from './opdpackage/opdpackage.component';
 
 import { CashflowOfDoctorComponent } from './cashflow-of-doctor/cashflow-of-doctor.component';
 import { CashflowOfHospitalComponent } from './cashflow-of-hospital/cashflow-of-hospital.component';
+import { LabReportsComponent } from './lab-reports/lab-reports.component';
 
 // import { NewcompComponent } from "./newcomp/newcomp.component";
 
 const routes: Routes = [
-  { path: '', component: HmslandingpageComponent },
+  { path: '', redirectTo:'/doctorlist',pathMatch:"full"},
   {
     path: 'doctorlist',
     canActivate: [AuthGuard],
@@ -204,7 +205,8 @@ const routes: Routes = [
   { path: 'dashboard', component: DashboardComponent },
   { path: 'allreports', component: AllReportsComponent },
   { path: 'cashflowofdoctor', component: CashflowOfDoctorComponent },
-  { path: 'cashflowofhospital', component: CashflowOfHospitalComponent }
+  { path: 'cashflowofhospital', component: CashflowOfHospitalComponent },
+  { path: 'labReports/:id', component: LabReportsComponent }
 ];
 
 @NgModule({

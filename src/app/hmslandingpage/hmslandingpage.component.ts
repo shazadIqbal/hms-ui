@@ -21,7 +21,7 @@ export class HmslandingpageComponent implements OnInit {
     private messageService: MessageService,
     private service: MyServiceService,
     private _location: Location
-  ) {}
+  ) { }
   msg;
   deleteAllHistory;
   ngOnInit() {
@@ -38,19 +38,24 @@ export class HmslandingpageComponent implements OnInit {
         sessionStorage.setItem('token', res.result.token);
         var username = sessionStorage.setItem('username', res.result.username);
         var userType = sessionStorage.setItem('userType', res.result.userType);
+        var getType = sessionStorage.getItem('userType').toUpperCase();
 
-        // console.log(username+"  "+userType);
+        switch (getType) {
+          case "LAB":
+            this.succesMethod();
+            this.goToLabApplication()
+            break;
+          case "ADMIN":
+            this.succesMethod();
+            this.goToOpd();
+            break;
+          case "USER":
+            this.succesMethod();
+            this.goToPharmacy()
+            break;
 
-        //  sessionStorage.getItem('token');
-        // localStorage.setItem('username', 'admin');
-        this.messageService.add({
-          severity: 'success',
-          summary: 'Service Message',
-          detail: 'Login Succesful'
-        });
-        setTimeout(() => {
-          this.router.navigate(['mainscreen']);
-        }, 1000);
+        }
+
       },
       error => {
         console.log(error);
@@ -61,15 +66,36 @@ export class HmslandingpageComponent implements OnInit {
         });
       }
     );
-
-    // if(output == true){
   }
-  // else{
-  //   this.messageService.add({severity:'error', summary:'Service Message', detail:'Invalid Username or Password'});
 
-  // }
+  succesMethod() {
+    this.messageService.add({
+      severity: 'success',
+      summary: 'Service Message',
+      detail: 'Login Succesful'
+    });
+  }
 
-  // toMainscreen() {
-  //   this.router.navigate(['mainscreen']);
-  // }
+
+  goToLabApplication() {
+    setTimeout(() => {
+      window.location.href = "http://localhost:4201/";
+    }, 1000);
+  }
+  goToOpd() {
+    setTimeout(() => {
+      this.router.navigate(['mainscreen'])
+    }, 1000);
+  }
+
+  goToPharmacy() {
+    setTimeout(() => {
+      window.location.href = "http://localhost:4202/"
+    }, 1000);
+  }
+
 }
+
+
+
+
