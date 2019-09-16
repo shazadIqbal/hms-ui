@@ -27,6 +27,9 @@ export class DashboardComponent implements OnInit {
   changedwidth2: any = 600;
   changedwidth1: any = 800;
   showdate: string;
+  totalamountInHospital = 0;
+  totalAmountInOPD = 0;
+  totalPatientsInHospital = 0;
   patientsbydatetotal = {
     chart: {
       caption: 'Total No Of Patients Arrived in Barkhia hospital',
@@ -133,7 +136,12 @@ export class DashboardComponent implements OnInit {
 
     this.service.totalbydate(this.dashboard).subscribe(
       data => {
-        console.log('totalbydate', data);
+        this.totalamountInHospital = 0;
+        data.map(e => {
+          this.totalamountInHospital = this.totalamountInHospital + parseInt(e.value);
+        });
+        // console.log(this.totalamountInHospital);
+        // console.log('totalbydate', data[0]['value']);
         this.totalbydatelinechart.data = data;
         this.totalbydatelinechart.chart.subcaption =
           '[' + datefrom + ' ' + ' ' + 'to' + ' ' + ' ' + datetill + ']';
@@ -152,6 +160,10 @@ export class DashboardComponent implements OnInit {
 
     this.service.total(this.dashboard).subscribe(
       responce => {
+        this.totalAmountInOPD = 0;
+        responce.map(r => {
+          this.totalAmountInOPD = this.totalAmountInOPD + parseInt(r.value);
+        });
         console.log('totalamount', responce);
 
         this.totalamountcolumnchart.data = responce;
@@ -207,6 +219,9 @@ export class DashboardComponent implements OnInit {
 
     this.service.patientsbydate(this.dashboard).subscribe(
       data => {
+        data.map(e => {
+          this.totalPatientsInHospital = this.totalPatientsInHospital + parseInt(e.value);
+        });
         console.log('patientsbydate', data);
         this.patientsbydatetotal.data = data;
         this.patientsbydatetotal.chart.subcaption =
@@ -225,7 +240,6 @@ export class DashboardComponent implements OnInit {
   }
 
   onfilter() {
-    console.log(this.datefrom);
     this.showdate = this.showdate =
       this.date1.getDate() + '-' + this.date1.getMonth() + '-' + this.date1.getFullYear();
     let date1 = this.changedatetostring(this.datefrom);
@@ -237,8 +251,12 @@ export class DashboardComponent implements OnInit {
 
     this.service.totalbydate(this.dashboard).subscribe(
       data => {
-        console.log(data);
+        this.totalamountInHospital = 0;
+        data.map(d => {
+          this.totalamountInHospital = this.totalamountInHospital + parseInt(d.value);
+        });
 
+        // console.log('totla am', this.totalamountInHospital);
         this.totalbydatelinechart.data = data.reverse();
         this.totalbydatelinechart.chart.subcaption =
           '[' + date1 + ' ' + ' ' + 'to' + ' ' + ' ' + date2 + ']';
@@ -256,6 +274,11 @@ export class DashboardComponent implements OnInit {
 
     this.service.total(this.dashboard).subscribe(
       data => {
+        this.totalAmountInOPD = 0;
+        console.log('===========================');
+        data.map(d => {
+          this.totalAmountInOPD = this.totalAmountInOPD + parseInt(d.value);
+        });
         //for total
         console.log(data);
         this.totalamountcolumnchart.data = data.reverse();
@@ -311,6 +334,11 @@ export class DashboardComponent implements OnInit {
 
     this.service.patientsbydate(this.dashboard).subscribe(
       data => {
+        this.totalPatientsInHospital = 0;
+        data.map(d => {
+          console.log(d.value + '=================');
+          this.totalPatientsInHospital = this.totalPatientsInHospital + parseInt(d.value);
+        });
         console.log(data);
         this.patientsbydatetotal.data = data.reverse();
         this.patientsbydatetotal.chart.subcaption =
