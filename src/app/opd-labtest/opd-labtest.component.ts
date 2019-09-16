@@ -74,10 +74,6 @@ export class OpdLabtestComponent implements OnInit {
     this.showspinloading = false;
   }
 
-
-
-
-
   onChangeLabTest() {
     console.log('yeh id hai' + this.addLabTests.id);
     // for(var i in this.addEmergency.facilities)
@@ -113,11 +109,6 @@ export class OpdLabtestComponent implements OnInit {
     });
   }
 
-
-
-
-
-
   onChangeDiscount() {
     console.log('hello discount');
     let discount = this.addLabTests.discount;
@@ -125,7 +116,6 @@ export class OpdLabtestComponent implements OnInit {
     this.addLabTests.total = this.addLabTests.price - this.addLabTests.discount;
   }
 
-  
   discounter(value) {
     let dis = value;
 
@@ -177,53 +167,41 @@ export class OpdLabtestComponent implements OnInit {
     );
   }
 
-saveOpdLabTest(){
- 
-  this.addLabTests.labTests = this.printLabTest;
+  saveOpdLabTest() {
+    this.addLabTests.labTests = this.printLabTest;
 
-this.total=this.addLabTests.total;
-this.discount=this.addLabTests.discount;
-  this.addLabTests.patient = 
-  this.labtestservice.saveOpdEr(this.addLabTests).subscribe(
-
-    data => {
-   
-      this.printer = false;
-      console.log(data);
-      this.messageservice.add({
-        severity: "success",
-        summary: "Added Succesfully",
-        detail: "Opd Lab test successfully done!"
-
-      });
-    },
-    error => {
-      this.printer = true;
-      console.log(error);
-      this.messageservice.add({
-        severity: "error",
-        summary: "Error Found",
-        detail: "Something went wrong check your internet connection "
-      });
-    }
-
-  )
-}
-
-
-routeToAddLab()
-{
-  this.router.navigate(['addlab']);
-}
-
-
-
-numberOnly(event): boolean {
-  const charCode = event.which ? event.which : event.keyCode;
-  if (charCode > 31 && (charCode < 48 || charCode > 57 || charCode < 44)) {
-    return false;
+    this.total = this.addLabTests.total;
+    this.discount = this.addLabTests.discount;
+    this.addLabTests.patient = this.labtestservice.saveOpdEr(this.addLabTests).subscribe(
+      data => {
+        this.printer = false;
+        console.log(data);
+        this.messageservice.add({
+          severity: 'success',
+          summary: 'Added Succesfully',
+          detail: 'Opd Lab test successfully done!'
+        });
+      },
+      error => {
+        this.printer = true;
+        console.log(error);
+        this.messageservice.add({
+          severity: 'error',
+          summary: 'Error Found',
+          detail: 'Something went wrong check your internet connection '
+        });
+      }
+    );
   }
 
-}
+  routeToAddLab() {
+    this.router.navigate(['addlab']);
+  }
 
+  numberOnly(event): boolean {
+    const charCode = event.which ? event.which : event.keyCode;
+    if (charCode > 31 && (charCode < 48 || charCode > 57 || charCode < 44)) {
+      return false;
+    }
+  }
 }
