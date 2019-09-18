@@ -22,7 +22,7 @@ export class LabReportsComponent implements OnInit {
 
   ngOnInit() {
    this.getCols();
-   this.getPatientId();
+    this.getReportAgainstPatientId(this.getPatientId());
   }
 
   backtomain(){
@@ -40,9 +40,10 @@ export class LabReportsComponent implements OnInit {
     ];
   }
 
-  getPatientId(){
+ getPatientId(){
     this.activated.params.subscribe(params => {
-        this.id = params.id     
+        this.id = params.id  
+        return this.id;   
     });
   }
 
