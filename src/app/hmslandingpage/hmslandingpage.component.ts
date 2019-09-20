@@ -26,7 +26,7 @@ export class HmslandingpageComponent implements OnInit {
   deleteAllHistory;
   ngOnInit() {
     this.nav.hide();
-    this.deleteAllHistory = this._location.isCurrentPathEqualTo('mainscreen');
+    this.deleteAllHistory = this._location.isCurrentPathEqualTo('home');
   }
 
   check(uname: string, p: string) {
@@ -39,23 +39,8 @@ export class HmslandingpageComponent implements OnInit {
         var username = sessionStorage.setItem('username', res.result.username);
         var userType = sessionStorage.setItem('userType', res.result.userType);
         var getType = sessionStorage.getItem('userType').toUpperCase();
-
-        switch (getType) {
-          case "LAB":
-            this.succesMethod();
-            this.goToLabApplication()
-            break;
-          case "ADMIN":
-            this.succesMethod();
-            this.goToOpd();
-            break;
-          case "USER":
-            this.succesMethod();
-            this.goToPharmacy()
-            break;
-
-        }
-
+        this.succesMethod();
+        this.goToOpd();
       },
       error => {
         console.log(error);
@@ -77,11 +62,7 @@ export class HmslandingpageComponent implements OnInit {
   }
 
 
-  goToLabApplication() {
-    setTimeout(() => {
-      window.location.href = "http://localhost:4201/";
-    }, 1000);
-  }
+ 
   goToOpd() {
     setTimeout(() => {
       this.router.navigate(['mainscreen'])
@@ -90,7 +71,7 @@ export class HmslandingpageComponent implements OnInit {
 
   goToPharmacy() {
     setTimeout(() => {
-      window.location.href = "http://localhost:4202/"
+      window.location.href = "http://localhost:4202/home"
     }, 1000);
   }
 

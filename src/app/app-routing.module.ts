@@ -60,16 +60,26 @@ import { OpdpackageComponent } from './opdpackage/opdpackage.component';
 import { CashflowOfDoctorComponent } from './cashflow-of-doctor/cashflow-of-doctor.component';
 import { CashflowOfHospitalComponent } from './cashflow-of-hospital/cashflow-of-hospital.component';
 import { LabReportsComponent } from './lab-reports/lab-reports.component';
+import { FrontPageComponent } from './front-page/front-page.component';
 
 // import { NewcompComponent } from "./newcomp/newcomp.component";
 
 const routes: Routes = [
-  { path: '', redirectTo:'/doctorlist',pathMatch:"full"},
+  {
+    path: '',
+    redirectTo: '/applicationPanel',
+    pathMatch: 'full'
+  },
+  {
+    path: 'applicationPanel',
+    component: FrontPageComponent
+  },
   {
     path: 'doctorlist',
     canActivate: [AuthGuard],
     component: DoctorListComponent
   },
+  { path: 'home', component: HmslandingpageComponent },
 
   {
     path: 'contact',
@@ -213,4 +223,4 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }

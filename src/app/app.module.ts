@@ -115,6 +115,8 @@ import { EmployeecashflowComponent } from './employeecashflow/employeecashflow.c
 import { CashflowOfDoctorComponent } from './cashflow-of-doctor/cashflow-of-doctor.component';
 import { CashflowOfHospitalComponent } from './cashflow-of-hospital/cashflow-of-hospital.component';
 import { LabReportsComponent } from './lab-reports/lab-reports.component';
+import { from } from 'rxjs';
+import { FrontPageComponent } from './front-page/front-page.component';
 
 // Add dependencies to FusionChartsModule
 FusionChartsModule.fcRoot(FusionCharts, Charts, Fusion);
@@ -197,7 +199,9 @@ FusionChartsModule.fcRoot(FusionCharts, Charts, Fusion);
 
     CashflowOfHospitalComponent,
 
-    LabReportsComponent
+    LabReportsComponent,
+
+    FrontPageComponent
   ],
   imports: [
     BrowserModule,

@@ -182,5 +182,8 @@
       </ng-template>
       <!--hello beta-->
     </p-table>
+    <div *ngIf="!employeeTransactions.length" class="ui-g" style=" color: green">
+      <p class="ui-g-12" style="text-align:center; font-weight: bold;">No transactions found!</p>
+    </div>
   </p-card>
 </div>
