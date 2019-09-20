@@ -8,10 +8,12 @@
 .navbar-nav {
     /* display: flex; */
     flex-direction: row;
+    
 }
 
 .navbarCss {
-    background-color: #479761 !important;
+    /* background-color: #479761 !important; */
+    margin-bottom: 0px !important;
 }
 
 
@@ -20,7 +22,7 @@
     border-style: solid;
     border-width: 1px;
 } */
-
+/*  */
 
 /* a.username:hover {
     text-decoration: none;
