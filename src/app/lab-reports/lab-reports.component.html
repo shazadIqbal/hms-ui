@@ -1,0 +1,81 @@
+<div class="ui-g">
+  <div class="ui-g-4 ui-lg-4 ui-sm-12">
+    <button pButton
+      type="button"
+      class="backBtnStyle"
+      (click)="backtomain()"
+      style="width:80%;margin-left:10%;  height:40px;"
+      label="Back"></button>
+  </div>
+
+  <div class="ui-g-12">
+    <app-monitorquickview> </app-monitorquickview>
+  </div>
+
+  <div style="z-index:3; position: absolute;top:70%;"
+    class="ui-g-12"
+    *ngIf="delete">
+    <!-- <p-progressSpinner [style]="{ 'margin-left': '45%' }"></p-progressSpinner> -->
+  </div>
+
+  <div class="ui-g-4 ui-lg-4 ui-sm-12"></div>
+  <p-toast></p-toast>
+  <p-card header="LAB REPORTS  LIST"
+    [style]="{  width: '100%',
+  'font-size': '26px',
+  'text-align': 'center',
+  color: 'green'
+  }">
+    <hr />
+    <p-table style="word-wrap:break-word;"
+      #dt
+      [totalRecords]="totalRecords"
+      [paginator]="true"
+      [value]="patientReportDetails"
+      [rows]="10"
+      [style]="{ 'margin-top': '50px', width: '100%'}"
+      [columns]="cols">
+      <ng-template pTemplate="caption">
+
+        <div style="text-align: right">
+          <i class="fa fa-search"
+            style="margin:4px 4px 0 0"></i>
+            
+          <input type="text"
+            pInputText
+            size="50"
+            placeholder="Global Filter"
+            (input)="dt.filterGlobal($event.target.value, 'contains')"
+            style="width:auto" />
+        </div>
+      </ng-template>
+      <ng-template pTemplate="header"
+        let-columns>
+        <tr>
+          <th style="text-align:center"
+            *ngFor="let col of columns">
+            {{ col.header }}
+          </th>
+          
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body"
+        let-rowData
+        
+        let-columns="columns">
+        <tr>
+          <td style="text-align:center"
+            *ngFor="let col of columns">
+            {{ rowData[col.field] }}
+          </td>
+    
+        </tr>
+      </ng-template>
+    </p-table>
+  </p-card>
+ 
+  <div class="ui-g-12"
+    *ngIf="empty">
+    <p style="text-align:center;">No Lab test to show!</p>
+  </div>
+</div>
