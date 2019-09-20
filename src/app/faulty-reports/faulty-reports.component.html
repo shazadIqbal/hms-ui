@@ -1,6 +1,6 @@
 <div id="print-section" [hidden]="true">
   <div class="container">
-    <h2 style="text-align: center">Employee Cashflow</h2>
+    <h2 style="text-align: center">Faulty Reports</h2>
     <table class="table table-striped">
       <thead>
         <th *ngFor="let col of cols">
@@ -8,8 +8,9 @@
         </th>
       </thead>
       <tbody>
-        <tr *ngFor="let trans of employeeTransactions" style="overflow: auto;">
+        <tr *ngFor="let trans of faultyTransactions" style="overflow: auto;">
           <td>{{ trans.id }}</td>
+          <td>{{ trans.createdBy }}</td>
           <td>{{ trans.transactionDate }}</td>
           <td>{{ trans.receivedAmount }}</td>
           <td>{{ trans.totalAmount }}</td>
@@ -23,6 +24,7 @@
     </table>
   </div>
 </div>
+
 
 <div class="ui-g">
   <div class="ui-lg-5 ui-md-5 ui-sm-12">
@@ -47,10 +49,9 @@
     ></button>
   </div>
 </div>
-
 <div class="ui-g-12">
   <p-card
-    header="Employee Cashflow"
+    header="Faulty Reports"
     [style]="{
       width: '100%',
       'font-size': '25px',
@@ -144,7 +145,7 @@
     <p-table
       #dt
       [columns]="cols"
-      [value]="employeeTransactions"
+      [value]="faultyTransactions"
       [paginator]="true"
       [rows]="10"
       id="print-section"
@@ -182,7 +183,7 @@
       </ng-template>
       <!--hello beta-->
     </p-table>
-    <div *ngIf="!employeeTransactions.length" class="ui-g" style=" color: green">
+    <div *ngIf="!faultyTransactions.length" class="ui-g" style=" color: green">
       <h3 class="ui-g-12" style="text-align:center; font-weight: bold;">No transactions found!</h3>
     </div>
   </p-card>

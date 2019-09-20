@@ -1,5 +1,3 @@
-
-
 import { AddpanellistseviceService } from '../addpanellist/addpanellistsevice.service';
 
 import { Status } from './../add-appoinment-list/SelectStatus';
@@ -15,12 +13,10 @@ import { OpdConsultancy } from './opdconsultancy';
 import { opdGynyModel } from '../opd-gyny/opd-gyny';
 import { PatientserviceService } from '../patientservice.service';
 
-
-
 @Component({
-  selector: "app-opdconsultancy",
-  templateUrl: "./opdconsultancy.component.html",
-  styleUrls: ["./opdconsultancy.component.css"]
+  selector: 'app-opdconsultancy',
+  templateUrl: './opdconsultancy.component.html',
+  styleUrls: ['./opdconsultancy.component.css']
 })
 export class OpdconsultancyComponent implements OnInit {
   doctors: SelectItem[];
@@ -49,7 +45,7 @@ export class OpdconsultancyComponent implements OnInit {
     private opd_Service: OpdService,
     private activatedRoute: ActivatedRoute,
     private panelservice: AddpanellistseviceService
-  ) { }
+  ) {}
 
   ngOnInit() {
     // this.show = true
@@ -60,20 +56,18 @@ export class OpdconsultancyComponent implements OnInit {
     this.enable = true;
     this.getDoctorsOption();
 
-    console.log(this.opdObject, "opdddddddddddddddddddd")
+    console.log(this.opdObject, 'opdddddddddddddddddddd');
 
     let id = this.activatedRoute.snapshot.params['id'];
-    this.patientService.getPatientsByMRNO(id).subscribe((a) => {
-      console.log(a)
+    this.patientService.getPatientsByMRNO(id).subscribe(a => {
+      console.log(a);
       this.patientName = a.name;
       this.patientMrNo = a.id;
-    })
+    });
 
     this.opdObject.id = id;
-    console.log("this is id" + this.opdObject.id);
-
+    console.log('this is id' + this.opdObject.id);
   }
-
 
   getDoctorsOption() {
     let i = 0;
@@ -87,7 +81,7 @@ export class OpdconsultancyComponent implements OnInit {
           console.log(data);
           data.forEach(e => {
             console.log(e);
-            console.log("This is doctors id " + e.mrNo);
+            console.log('This is doctors id ' + e.mrNo);
             this.doctors.push({
               label: e.fullName,
               value: {
@@ -102,49 +96,40 @@ export class OpdconsultancyComponent implements OnInit {
         }
       },
       error => {
-        console.log("error agya yar");
+        console.log('error agya yar');
         this.show = true;
         this.checkStatus = true;
         this.messageService.add({
-          severity: "error",
-          summary: "Error Found",
-          detail: "Something went wrong check your internet connection "
+          severity: 'error',
+          summary: 'Error Found',
+          detail: 'Something went wrong check your internet connection '
         });
       }
     );
   }
 
   doctorDropdown() {
-    console.log(this.opdObject.doctors["fullName"]);
-    console.log(this.doctors["fullName"])
+    console.log(this.opdObject.doctors['fullName']);
+    console.log(this.doctors['fullName']);
     this.opdObject.sallary = 0; //it will also work for the negative
     this.opdObject.total = 0;
 
-
-    console.log(this.opdObject.doctors["fees"])
+    console.log(this.opdObject.doctors['fees']);
     // if(this.opdObject.panels.values() == "free")
 
     //console.log("yeh hai panels",this.opdObject["opdObject"].panels);
-    if (this.selectedPanel == "free") {
-      this.opdObject.discount = (this.opdObject.doctors["fees"] * 2);
+    if (this.selectedPanel == 'free') {
+      this.opdObject.discount = this.opdObject.doctors['fees'] * 2;
       this.opdObject.discount = this.opdObject.discount;
-      this.opdObject.fees = (this.opdObject.doctors["fees"] * 2);
+      this.opdObject.fees = this.opdObject.doctors['fees'] * 2;
       this.opdObject.total = this.opdObject.fees - this.opdObject.discount;
-      this.editablediscountfield = false
-
-
-
-
-    }
-    else {
-
-      this.opdObject.discount = this.opdObject.doctors["fees"];
-      this.opdObject.fees = (this.opdObject.doctors["fees"] * 2);
+      this.editablediscountfield = false;
+    } else {
+      this.opdObject.discount = this.opdObject.doctors['fees'];
+      this.opdObject.fees = this.opdObject.doctors['fees'] * 2;
       this.opdObject.total = this.opdObject.fees - this.opdObject.discount;
       this.editablediscountfield = true;
-
     }
-
 
     //console.log(this.opdObject.sallary)
     // this.opdObject.total = this.opdObject.fees - this.opdObject.discount;
@@ -152,30 +137,28 @@ export class OpdconsultancyComponent implements OnInit {
 
   //FUNCTION FOR BACK BUTTON
   backToMonitor() {
-    this.router.navigate(["/monitor/" + this.opdObject.id]);
+    this.router.navigate(['/monitor/' + this.opdObject.id]);
   }
   //FUNCTION FOR SUBMIT OPD CONSULTANCY
   submitOpd() {
-
-
     this.date = new Date();
 
     this.opd_Service.saveOPD(this.opdObject).subscribe(
       data => {
-        console.log(this.opdObject);
+        console.log(this.opdObject, '==========================');
         this.messageService.add({
-          severity: "success",
-          summary: "Succesfully",
-          detail: "Opd consultancy successfully Done!"
+          severity: 'success',
+          summary: 'Succesfully',
+          detail: 'Opd consultancy successfully Done!'
         });
         this.enable = false;
       },
       error => {
         console.log(error);
         this.messageService.add({
-          severity: "error",
-          summary: "Error Found",
-          detail: "Something went wrong check your internet connection "
+          severity: 'error',
+          summary: 'Error Found',
+          detail: 'Something went wrong check your internet connection '
         });
       }
     );
@@ -194,66 +177,51 @@ export class OpdconsultancyComponent implements OnInit {
   getpanelsoption() {
     this.panels = [];
 
-    this.panelservice.getPanel().subscribe(
-      data => {
-        console.log(data);
+    this.panelservice.getPanel().subscribe(data => {
+      console.log(data);
 
-
-        if (data) {
-          this.show = false;
-          this.checkStatus = false; //this is for form hide property
-          this.panels.push({ label: 'No panel', value: 'No panel' })
-          data.forEach(e => {
-            console.log(e)
-            this.panels.push({
-              label: e.panelType,
-              value: e.panelType
-
-            });
+      if (data) {
+        this.show = false;
+        this.checkStatus = false; //this is for form hide property
+        this.panels.push({ label: 'No panel', value: 'No panel' });
+        data.forEach(e => {
+          console.log(e);
+          this.panels.push({
+            label: e.panelType,
+            value: e.panelType
           });
-
-        }
-        error => {
-          console.log("error agya yar");
-          this.show = true;
-          this.checkStatus = true;
-          this.messageService.add({
-            severity: "error",
-            summary: "Error Found",
-            detail: "Something went wrong check your internet connection "
-          });
-
-
-        }
-        this.selectedPanel = "No panel";
-
-
+        });
       }
-    );
+      error => {
+        console.log('error agya yar');
+        this.show = true;
+        this.checkStatus = true;
+        this.messageService.add({
+          severity: 'error',
+          summary: 'Error Found',
+          detail: 'Something went wrong check your internet connection '
+        });
+      };
+      this.selectedPanel = 'No panel';
+    });
   }
   panelsDropdown() {
     // console.log(this.selectedDoctor);
 
-    console.log("hello", this.selectedPanel);
+    console.log('hello', this.selectedPanel);
 
     if (!this.isEmpty(this.opdObject.doctors)) {
-      if (this.selectedPanel == "free") {
-        this.opdObject.discount = (this.opdObject.doctors["fees"] * 2);
+      if (this.selectedPanel == 'free') {
+        this.opdObject.discount = this.opdObject.doctors['fees'] * 2;
         this.opdObject.total = this.opdObject.fees - this.opdObject.discount;
         this.editablediscountfield = false;
-
-
-
       } else {
-        this.opdObject.discount = this.opdObject.doctors["fees"];
-        this.opdObject.fees = (this.opdObject.doctors["fees"] * 2);
+        this.opdObject.discount = this.opdObject.doctors['fees'];
+        this.opdObject.fees = this.opdObject.doctors['fees'] * 2;
         this.opdObject.total = this.opdObject.fees - this.opdObject.discount;
         this.editablediscountfield = true;
-
-
       }
     }
-
   }
 
   onchangediscount() {
@@ -261,30 +229,28 @@ export class OpdconsultancyComponent implements OnInit {
     this.opdObject.total = this.opdObject.fees - this.opdObject.discount;
   }
 
-
   discounter(value) {
-
     let dis = value;
 
     this.opdObject.total = this.opdObject.fees;
 
-
-
-
-    dis > this.opdObject.total ? this.discountCheck = false : this.discountCheck = true;
+    dis > this.opdObject.total ? (this.discountCheck = false) : (this.discountCheck = true);
+    if (dis < this.opdObject.fees) {
+      this.opdObject.flag = true;
+      console.log('Flag set ho gya hai' + this.opdObject.flag);
+    } else {
+      this.opdObject.flag = false;
+    }
     dis ? 0 : dis;
 
     this.opdObject.discount = dis;
 
     this.opdObject.total = this.opdObject.total - this.opdObject.discount;
-
-
   }
-  
+
   isEmpty(obj) {
     for (var key in obj) {
-      if (obj.hasOwnProperty(key))
-        return false;
+      if (obj.hasOwnProperty(key)) return false;
     }
     return true;
   }
@@ -296,6 +262,4 @@ export class OpdconsultancyComponent implements OnInit {
     }
     return true;
   }
-
 }
-
