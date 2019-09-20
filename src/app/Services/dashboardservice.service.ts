@@ -14,10 +14,9 @@ export class DashboardserviceService {
   private duesbydateurl = environment.baseUrl + 'api/dashboard/duesbydate';
   private totalbydateurl = environment.baseUrl + 'api/dashboard/totalbydate';
   private employeecashflowurl = environment.baseUrl + 'api/dashboard/employeereports';
-  private cashFlowHospital = environment.baseUrl+"api/dashboard/hospitalreports";
-  private cashflowdoctor=environment.baseUrl+"api/dashboard/doctortransactions";
-
-
+  private cashFlowHospital = environment.baseUrl + 'api/dashboard/hospitalreports';
+  private cashflowdoctor = environment.baseUrl + 'api/dashboard/doctortransactions';
+  private faultyreportsurl = environment.baseUrl + 'api/dashboard/faultyreports';
 
   public total(dashboard: Object): Observable<any> {
     return this.http.post(this.totalurl, dashboard);
@@ -36,15 +35,19 @@ export class DashboardserviceService {
     return this.http.post(this.patientsbydateurl, dashboard);
   }
 
-  public postCashFlowOfHospital(cashFlowHospital : Object): Observable<any>{
-    return this.http.post(this.cashFlowHospital,cashFlowHospital);
+  public postCashFlowOfHospital(cashFlowHospital: Object): Observable<any> {
+    return this.http.post(this.cashFlowHospital, cashFlowHospital);
   }
 
-public postCashFlowOfDoctor(cashflowdoctor: Object): Observable<any>{
-  return this.http.post(this.cashflowdoctor,cashflowdoctor);
-}
+  public postCashFlowOfDoctor(cashflowdoctor: Object): Observable<any> {
+    return this.http.post(this.cashflowdoctor, cashflowdoctor);
+  }
 
   public postEmployeeCashFlow(employeecashflow: Object): Observable<any> {
     return this.http.post(this.employeecashflowurl, employeecashflow);
+  }
+
+  public postFaultyReports(faultyreports: Object): Observable<any> {
+    return this.http.post(this.faultyreportsurl, faultyreports);
   }
 }

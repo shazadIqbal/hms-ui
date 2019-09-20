@@ -59,6 +59,7 @@ import { OpdpackageComponent } from './opdpackage/opdpackage.component';
 
 import { CashflowOfDoctorComponent } from './cashflow-of-doctor/cashflow-of-doctor.component';
 import { CashflowOfHospitalComponent } from './cashflow-of-hospital/cashflow-of-hospital.component';
+import { FaultyReportsComponent } from './faulty-reports/faulty-reports.component';
 
 // import { NewcompComponent } from "./newcomp/newcomp.component";
 
@@ -146,7 +147,7 @@ const routes: Routes = [
   },
   {
     path: 'employeecashflow',
-    canActivate: [AuthGuard],
+    //canActivate: [AuthGuard],
     component: EmployeecashflowComponent
   },
   {
@@ -201,10 +202,11 @@ const routes: Routes = [
     component: SignUpFormComponent
   },
 
-  { path: 'dashboard', component: DashboardComponent },
-  { path: 'allreports', component: AllReportsComponent },
-  { path: 'cashflowofdoctor', component: CashflowOfDoctorComponent },
-  { path: 'cashflowofhospital', component: CashflowOfHospitalComponent }
+  { path: 'dashboard', canActivate: [AuthGuard], component: DashboardComponent },
+  { path: 'allreports', canActivate: [AuthGuard], component: AllReportsComponent },
+  { path: 'cashflowofdoctor', canActivate: [AuthGuard], component: CashflowOfDoctorComponent },
+  { path: 'cashflowofhospital', canActivate: [AuthGuard], component: CashflowOfHospitalComponent },
+  { path: 'faultyreports', canActivate: [AuthGuard], component: FaultyReportsComponent }
 ];
 
 @NgModule({
