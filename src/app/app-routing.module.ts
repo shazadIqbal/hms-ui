@@ -61,6 +61,8 @@ import { CashflowOfDoctorComponent } from './cashflow-of-doctor/cashflow-of-doct
 import { CashflowOfHospitalComponent } from './cashflow-of-hospital/cashflow-of-hospital.component';
 
 import { LabReportsComponent } from './lab-reports/lab-reports.component';
+import { FrontPageComponent } from './front-page/front-page.component';
+import { FaultyReportsComponent } from './faulty-reports/faulty-reports.component';
 
 import { FaultyReportsComponent } from './faulty-reports/faulty-reports.component';
 
@@ -68,12 +70,21 @@ import { FaultyReportsComponent } from './faulty-reports/faulty-reports.componen
 // import { NewcompComponent } from "./newcomp/newcomp.component";
 
 const routes: Routes = [
-  { path: '', redirectTo:'/doctorlist',pathMatch:"full"},
+  {
+    path: '',
+    redirectTo: '/applicationPanel',
+    pathMatch: 'full'
+  },
+  {
+    path: 'applicationPanel',
+    component: FrontPageComponent
+  },
   {
     path: 'doctorlist',
     canActivate: [AuthGuard],
     component: DoctorListComponent
   },
+  { path: 'home', component: HmslandingpageComponent },
 
   {
     path: 'contact',
@@ -211,14 +222,19 @@ const routes: Routes = [
   { path: 'allreports', component: AllReportsComponent },
   { path: 'cashflowofdoctor', component: CashflowOfDoctorComponent },
   { path: 'cashflowofhospital', component: CashflowOfHospitalComponent },
+<<<<<<< HEAD
   { path: 'labReports/:id', component: LabReportsComponent }
 
   { path: 'faultyreports', canActivate: [AuthGuard], component: FaultyReportsComponent }
 
+=======
+  { path: 'labReports/:id', component: LabReportsComponent },
+  { path: 'faultyreports', canActivate: [AuthGuard], component: FaultyReportsComponent }
+>>>>>>> UserTypeRoutingCase
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }

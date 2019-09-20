@@ -6,6 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
+  // hide :Boolean = false;
+  // show :Boolean = false;
   date1: Date;
 
   date2: Date;
@@ -46,6 +48,7 @@ export class AppComponent implements OnInit {
   invalidDates: Array<Date>;
 
   ngOnInit() {
+    // this.hideNavbar(event);
     this.es = {
       firstDayOfWeek: 1,
       dayNames: ['domingo', 'lunes', 'martes', 'miércoles', 'jueves', 'viernes', 'sábado'],
@@ -105,4 +108,7 @@ export class AppComponent implements OnInit {
     invalidDate.setDate(today.getDate() - 1);
     this.invalidDates = [today, invalidDate];
   }
+  // hideNavbar(event){
+  //   this.hide = false;
+  // }
 }

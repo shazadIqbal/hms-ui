@@ -6,7 +6,9 @@ export class NavBarService {
 
   constructor() { this.visible = false; }
 
-  hide() { this.visible = false; }
+  hide() {
+     this.visible = false;
+     }
 
   show() { this.visible = true; }
 
