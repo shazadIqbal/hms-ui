@@ -8,4 +8,5 @@ export class OpdConsultancy {
   total: number;
   id: number;
   fees: number;
+  flag: boolean;
 }
