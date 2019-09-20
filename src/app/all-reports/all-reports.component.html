@@ -22,7 +22,7 @@
   >
     <hr style="height:2px;width:100%;background-color:green" />
     <div class="ui-g ">
-      <div class="ui-g-3 ui-sm-12  ui-md-4   ui-lg-4">
+      <div class="ui-g-3 ui-sm-12  ui-md-3   ui-lg-3">
         <p-card
           [style]="{
             width: '100%',
@@ -47,7 +47,7 @@
                 pButton
                 type="button"
                 class="backBtnStyle"
-                style="width:50%;  height:40px;"
+                style="width:50%;  height:50px;"
                 label="Check Cashflows"
                 (click)="toEmployeeCashflow()"
               ></button>
@@ -56,7 +56,7 @@
         </p-card>
       </div>
 
-      <div class="ui-g-3 ui-sm-12  ui-md-4   ui-lg-4">
+      <div class="ui-g-3 ui-sm-12  ui-md-3   ui-lg-3">
         <p-card
           [style]="{
             width: '100%',
@@ -81,7 +81,7 @@
                 pButton
                 type="button"
                 class="backBtnStyle"
-                style="width:50%;  height:40px;"
+                style="width:50%;  height:50px;"
                 label="Check Cashflows"
                 (click)="routetocashflowofhospital()"
               ></button>
@@ -90,7 +90,7 @@
         </p-card>
       </div>
 
-      <div class="ui-g-3 ui-sm-12  ui-md-4   ui-lg-4">
+      <div class="ui-g-3 ui-sm-12  ui-md-3   ui-lg-3">
         <p-card
           [style]="{
             width: '100%',
@@ -115,9 +115,43 @@
                 pButton
                 type="button"
                 class="backBtnStyle"
-                style="width:50%;  height:40px;"
+                style="width:50%;  height:50px;"
                 label="Check Cashflows"
                 (click)="routetocashflowofdoctor()"
+              ></button>
+            </div>
+          </div>
+        </p-card>
+      </div>
+
+      <div class="ui-g-3 ui-sm-12  ui-md-3   ui-lg-3">
+        <p-card
+          [style]="{
+            width: '100%',
+            'text-align': 'center',
+            color: 'green'
+          }"
+        >
+          <div class="ui-g">
+            <div class="ui-g-3 ui-sm-12  ui-md-12   ui-lg-12">
+              <img src="../../assets/icons8-business-report-48.png" height="120" width="125" />
+            </div>
+          </div>
+          <div class="ui-g">
+            <div class="ui-g-3 ui-sm-12  ui-md-12   ui-lg-12">
+              <h4 style="color:grey !important">Faulty Reports</h4>
+            </div>
+          </div>
+
+          <div class="ui-g">
+            <div class="ui-g-3 ui-sm-12  ui-md-12   ui-lg-12">
+              <button
+                pButton
+                type="button"
+                class="backBtnStyle"
+                style="width:50%;  height:50px;"
+                label="Check Faulty Reports"
+                (click)="routeToFaultyReports()"
               ></button>
             </div>
           </div>

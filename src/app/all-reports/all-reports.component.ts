@@ -20,6 +20,10 @@ export class AllReportsComponent implements OnInit {
     this.router.navigate(['cashflowofhospital']);
   }
 
+  routeToFaultyReports() {
+    this.router.navigate(['faultyreports']);
+  }
+
   toEmployeeCashflow() {
     this.router.navigate(['employeecashflow']);
   }
