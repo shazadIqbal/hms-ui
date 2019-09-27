@@ -73,19 +73,17 @@ import { VideoPageComponent } from './video-page/video-page.component';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: '/home',
+    redirectTo: '/opd',
     pathMatch: 'full'
   },
-  {
-    path:'videoPage',component:VideoPageComponent
-  },
+  
   
   {
     path: 'doctorlist',
     canActivate: [AuthGuard],
     component: DoctorListComponent
   },
-  { path: 'home', component: HmslandingpageComponent },
+  { path: 'opd', component: HmslandingpageComponent },
 
   {
     path: 'contact',

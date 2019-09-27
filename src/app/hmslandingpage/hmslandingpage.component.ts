@@ -7,6 +7,7 @@ import { from } from 'rxjs';
 import { ToastModule } from 'primeng/toast';
 import { MessageService } from 'primeng/api';
 import { Location } from '@angular/common';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-hmslandingpage',
@@ -24,9 +25,17 @@ export class HmslandingpageComponent implements OnInit {
   ) { }
   msg;
   deleteAllHistory;
+  labUrl;
+  opdUrl;
+  pharmacyUrl;
   ngOnInit() {
     this.nav.hide();
-    this.deleteAllHistory = this._location.isCurrentPathEqualTo('home');
+    this.deleteAllHistory = this._location.isCurrentPathEqualTo('opd');
+    
+    this.labUrl = environment.labUrl;
+    this.opdUrl = environment.opdUrl;
+    this.pharmacyUrl = environment.pharmacyUrl;
+    
   }
 
   check(uname: string, p: string) {
