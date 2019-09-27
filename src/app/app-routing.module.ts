@@ -61,8 +61,9 @@ import { CashflowOfDoctorComponent } from './cashflow-of-doctor/cashflow-of-doct
 import { CashflowOfHospitalComponent } from './cashflow-of-hospital/cashflow-of-hospital.component';
 
 import { LabReportsComponent } from './lab-reports/lab-reports.component';
-import { FrontPageComponent } from './front-page/front-page.component';
+// import { FrontPageComponent } from './front-page/front-page.component';
 import { FaultyReportsComponent } from './faulty-reports/faulty-reports.component';
+import { VideoPageComponent } from './video-page/video-page.component';
 
 // import { FaultyReportsComponent } from './faulty-reports/faulty-reports.component';
 
@@ -72,19 +73,17 @@ import { FaultyReportsComponent } from './faulty-reports/faulty-reports.componen
 const routes: Routes = [
   {
     path: '',
-    redirectTo: '/applicationPanel',
+    redirectTo: '/opd',
     pathMatch: 'full'
   },
-  {
-    path: 'applicationPanel',
-    component: FrontPageComponent
-  },
+  
+  
   {
     path: 'doctorlist',
     canActivate: [AuthGuard],
     component: DoctorListComponent
   },
-  { path: 'home', component: HmslandingpageComponent },
+  { path: 'opd', component: HmslandingpageComponent },
 
   {
     path: 'contact',

@@ -120,6 +120,8 @@ import { FaultyReportsComponent } from './faulty-reports/faulty-reports.componen
 
 import { from } from 'rxjs';
 import { FrontPageComponent } from './front-page/front-page.component';
+import { VideoPageComponent } from './video-page/video-page.component';
+import { ExternalLinkDirective } from './hmslandingpage/external-link.directive';
 
 // Add dependencies to FusionChartsModule
 FusionChartsModule.fcRoot(FusionCharts, Charts, Fusion);
@@ -206,7 +208,9 @@ FusionChartsModule.fcRoot(FusionCharts, Charts, Fusion);
     LabReportsComponent,
 
     FrontPageComponent,
-    FaultyReportsComponent
+    FaultyReportsComponent,
+    VideoPageComponent,
+    ExternalLinkDirective
   ],
   imports: [
     BrowserModule,
@@ -235,8 +239,8 @@ FusionChartsModule.fcRoot(FusionCharts, Charts, Fusion);
     MultiSelectModule,
     ProgressSpinnerModule,
     NgxPrintModule,
-    CheckboxModule,
-    LabReportsComponent
+    CheckboxModule
+    
   ],
 
   providers: [
