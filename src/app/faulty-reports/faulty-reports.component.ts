@@ -20,6 +20,7 @@ export class FaultyReportsComponent implements OnInit {
   dateTill: Date;
   role: string;
   sum: number;
+  showLoading: any = true;
   users: any[];
 
   constructor(
@@ -82,6 +83,7 @@ export class FaultyReportsComponent implements OnInit {
             dues: value.dues
           });
         });
+        this.showLoading = false;
       },
       error => {
         console.log('error agya yar');

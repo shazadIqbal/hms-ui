@@ -20,6 +20,7 @@ export class EmployeecashflowComponent implements OnInit {
   users: any[];
   employeeCashFlowObj: employeecashflow = new employeecashflow();
   role: string;
+  showloading: any = true;
   sum: number;
 
   constructor(
@@ -77,6 +78,7 @@ export class EmployeecashflowComponent implements OnInit {
             dues: value.dues
           });
         });
+        this.showloading = false;
       },
       error => {
         console.log('error agya yar');

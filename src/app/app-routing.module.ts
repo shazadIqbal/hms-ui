@@ -64,11 +64,10 @@ import { LabReportsComponent } from './lab-reports/lab-reports.component';
 
 import { FaultyReportsComponent } from './faulty-reports/faulty-reports.component';
 
-
 // import { NewcompComponent } from "./newcomp/newcomp.component";
 
 const routes: Routes = [
-  { path: '', redirectTo:'/doctorlist',pathMatch:"full"},
+  { path: '', component: HmslandingpageComponent },
   {
     path: 'doctorlist',
     canActivate: [AuthGuard],
@@ -206,15 +205,13 @@ const routes: Routes = [
     component: SignUpFormComponent
   },
 
-
   { path: 'dashboard', component: DashboardComponent },
   { path: 'allreports', component: AllReportsComponent },
   { path: 'cashflowofdoctor', component: CashflowOfDoctorComponent },
   { path: 'cashflowofhospital', component: CashflowOfHospitalComponent },
-  { path: 'labReports/:id', component: LabReportsComponent }
+  { path: 'labReports/:id', component: LabReportsComponent },
 
   { path: 'faultyreports', canActivate: [AuthGuard], component: FaultyReportsComponent }
-
 ];
 
 @NgModule({
