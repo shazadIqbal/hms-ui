@@ -67,10 +67,12 @@ import { VideoPageComponent } from './video-page/video-page.component';
 
 // import { FaultyReportsComponent } from './faulty-reports/faulty-reports.component';
 
-
 // import { NewcompComponent } from "./newcomp/newcomp.component";
 
 const routes: Routes = [
+
+  { path: '', component: HmslandingpageComponent },
+
   {
     path: '',
     redirectTo: '/opd',
@@ -78,6 +80,7 @@ const routes: Routes = [
   },
   
   
+
   {
     path: 'doctorlist',
     canActivate: [AuthGuard],
@@ -216,7 +219,6 @@ const routes: Routes = [
     component: SignUpFormComponent
   },
 
-
   { path: 'dashboard', component: DashboardComponent },
   { path: 'allreports', component: AllReportsComponent },
   { path: 'cashflowofdoctor', component: CashflowOfDoctorComponent },
@@ -226,6 +228,10 @@ const routes: Routes = [
 
   { path: 'faultyreports', canActivate: [AuthGuard], component: FaultyReportsComponent }
 
+
+  { path: 'labReports/:id', component: LabReportsComponent },
+
+  { path: 'faultyreports', canActivate: [AuthGuard], component: FaultyReportsComponent }
 
 ];
 
