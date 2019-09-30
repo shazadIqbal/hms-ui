@@ -70,7 +70,6 @@ import { VideoPageComponent } from './video-page/video-page.component';
 // import { NewcompComponent } from "./newcomp/newcomp.component";
 
 const routes: Routes = [
-
   { path: '', component: HmslandingpageComponent },
 
   {
@@ -78,8 +77,6 @@ const routes: Routes = [
     redirectTo: '/opd',
     pathMatch: 'full'
   },
-  
-  
 
   {
     path: 'doctorlist',
@@ -226,17 +223,15 @@ const routes: Routes = [
 
   { path: 'labReports/:id', component: LabReportsComponent },
 
-  { path: 'faultyreports', canActivate: [AuthGuard], component: FaultyReportsComponent }
-
+  { path: 'faultyreports', canActivate: [AuthGuard], component: FaultyReportsComponent },
 
   { path: 'labReports/:id', component: LabReportsComponent },
 
   { path: 'faultyreports', canActivate: [AuthGuard], component: FaultyReportsComponent }
-
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
