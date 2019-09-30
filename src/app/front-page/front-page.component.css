@@ -1,0 +1,142 @@
+body {
+	 background: #f5f7fa;
+	 font-family: 'Oxygen', sans-serif;
+}
+ body {
+	 cursor: pointer;
+}
+ .container {
+	 margin-left: auto;
+	 margin-right: auto;
+	 margin-top: 4rem;
+	 max-width: 900px;
+	 display: flex;
+	 flex-wrap: wrap;
+	 align-items: center;
+	 justify-content: center;
+}
+ .col {
+	 flex-basis: 0;
+	 flex-grow: 1;
+	 max-width: 100%;
+}
+ .shadow--sm {
+	 box-shadow: 0px 25px 15px -25px rgba(151, 163, 184, 1);
+}
+ .shadow--sm:hover {
+	 box-shadow: 0px 10px 10px -10px rgba(151, 163, 184, .5);
+}
+ .shadow--md {
+	 box-shadow: 0px 25px 25px -25px rgba(151, 163, 184, 1);
+}
+ .shadow--md:hover {
+	 box-shadow: 0px 10px 20px -10px rgba(151, 163, 184, .5);
+}
+ .shadow--lg {
+	 box-shadow: 0px 25px 35px -25px rgba(151, 163, 184, 1);
+}
+ .shadow--lg:hover {
+	 box-shadow: 0px 10px 30px -10px rgba(151, 163, 184, .5);
+}
+
+/* .shadow--lg:hover::after{
+    opacity: 0.5;
+} */
+ .card {
+	 background: #fff;
+	 width: 220px;
+	 height: 220px;
+	 border-radius: 1rem;
+	 margin: 1rem auto;
+	 transition: all 0.2s ease-in;
+	 display: flex;
+	 justify-content: center;
+	 flex-direction: column;
+	 text-align: center;
+}
+ .card--text {
+	 font-size: 18px;
+	 font-weight: 700;
+	 color: #000;
+	 margin: 0;
+}
+ .card--size-state {
+	 font-size: 36px;
+}
+ .card:hover {
+     cursor: pointer;
+     transform: scale(1.23);
+     /* opacity: 0.5; */
+}
+
+.lab{
+    
+    background: #185799;
+    width: 254px;
+    height: 244px;
+    border-radius: 1rem;
+    margin: 4rem auto;
+    transition: all 0.2s ease-in;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+}
+
+.opd{
+    background:#108218bf;
+    width: 254px;
+    height: 244px;
+    border-radius: 1rem;
+    margin: 4rem auto;
+    transition: all 0.2s ease-in;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+}
+
+.pharmacy{
+      background:#7c0000;
+    width: 254px;
+    height: 244px;
+    border-radius: 1rem;
+    margin: 4rem auto;
+    transition: all 0.2s ease-in;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+}
+.card--text{
+    color: white;
+}
+
+
+    h1{
+  font-family: "Avant Garde", Avantgarde, "Century Gothic", CenturyGothic, "AppleGothic", sans-serif;
+  font-size: 92px;
+  padding: 80px 50px;
+  text-align: center;
+  text-transform: uppercase;
+  text-rendering: optimizeLegibility;
+}
+h2.heading{
+    text-align: center;
+    text-decoration: underline;
+}
+
+
+@media (min-width: 992px){
+.offset-lg-3{
+    margin-left: 26%;
+}
+}
+
+a {
+  color: inherit; /* blue colors for links too */
+  text-decoration: inherit; /* no underline */
+}
+img {
+  width: 100%;
+}

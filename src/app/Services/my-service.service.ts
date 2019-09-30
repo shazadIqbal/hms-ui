@@ -15,14 +15,7 @@ export class MyServiceService {
       password:pwd
     }
     
-    return this.http.post(environment.baseUrl+"token/generate-token",JSON.stringify(user));
+    return this.http.post(environment.tokenURL+"token/generate-token",JSON.stringify(user));
       
-    // if (uname == 'admin' && pwd == 'admin') {
-    //   sessionStorage.setItem('username' , 'admin');
-    //   // localStorage.setItem('username', 'admin');
-    //   return true;
-    // } else {
-    //   return false;
-    // }
   }
 }
