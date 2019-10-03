@@ -1,57 +1,66 @@
 <!-- Back Button -->
 <div class="ui-g">
-    <div class="ui-lg-1 ui-sm-0 ui-md-1"></div>
-    <div class="ui-g-4 ui-lg-4 ui-sm-12">
-        <button pButton type="button" class="backBtnStyle" (click)="back()" style="width:60%;margin-left:10%;  height:40px;" label="Back"></button>
-    </div>
+  <div class="ui-lg-1 ui-sm-0 ui-md-1"></div>
+  <div class="ui-g-4 ui-lg-4 ui-sm-12">
+    <button
+      pButton
+      type="button"
+      class="backBtnStyle"
+      (click)="back()"
+      style="width:60%;margin-left:10%;  height:40px;"
+      label="Back"
+    ></button>
+  </div>
 </div>
 
 <div class="ui-g-12">
-    <p-toast></p-toast>
-    <p-card header="ADD NEW BEDS" [style]="{
-    width: '80%',
-    'font-size': '26px',
-    'margin-left': '10%',
-    'text-align': 'center',
-    color: 'green'
-  }">
-
-        <div class="ui-g ui-fluid">
-            <hr style="height:2px;width:100%;background-color:green;" />
-            <form style="width:100%;" #myForm="ngForm" (ngSubmit)="submitAdmission(); myForm.reset()">
-                <!-- Add Bed Type dropdwon -->
-                <div class="ui-g">
-                    <div class="ui-md-2 ui-lg-2"></div>
-                    <div class="ui-md-8 ui-lg-8 ui-sm-12">
-                        <div class="ui-inputgroup">
-                            <span class="ui-inputgroup-addon" style="width:37%;font-size:15px;font-weight:bold;">BED TYPE<i style="color: red">*</i></span
-          >
-          <p-dropdown
-          placeholder="Select bed type"
-          [showClear]="true"
-          (onChange)="bedsDropdown()"
-          [options]="bedType"
-          name="bedType"
-          [filter]="true"
-          [style]="{ width: '100%', height: '100%', 'font-size': '20px' }"
-          [ngStyle]="{ width: '80%', 'font-size': '20px' }"
-          required
-          [(ngModel)]="_admission.bedType"
-          ></p-dropdown>
+  <p-toast></p-toast>
+  <p-card
+    header="ADD NEW BEDS"
+    [style]="{
+      width: '80%',
+      'font-size': '26px',
+      'margin-left': '10%',
+      'text-align': 'center',
+      color: 'green'
+    }"
+  >
+    <div class="ui-g ui-fluid">
+      <hr style="height:2px;width:100%;background-color:green;" />
+      <form style="width:100%;" #myForm="ngForm" (ngSubmit)="submitAdmission(); myForm.reset()">
+        <!-- Add Bed Type dropdwon -->
+        <div class="ui-g">
+          <div class="ui-md-2 ui-lg-2"></div>
+          <div class="ui-md-8 ui-lg-8 ui-sm-12">
+            <div class="ui-inputgroup">
+              <span class="ui-inputgroup-addon" style="width:37%;font-size:15px;font-weight:bold;"
+                >BED TYPE<i style="color: red">*</i></span
+              >
+              <p-dropdown
+                placeholder="Select bed type"
+                [showClear]="true"
+                (onChange)="bedsDropdown()"
+                [options]="bedType"
+                name="bedType"
+                [filter]="true"
+                [style]="{ width: '100%', height: '100%', 'font-size': '20px' }"
+                [ngStyle]="{ width: '80%', 'font-size': '20px' }"
+                required
+                [(ngModel)]="_admission.bedType"
+              ></p-dropdown>
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
-    <!-- no of beds Field -->
-    <div class="ui-g">
-      <div class="ui-md-2 ui-lg-2"></div>
-      <div class="ui-md-8 ui-lg-8 ui-sm-12">
-        <div class="ui-inputgroup">
-          <span
-          class="ui-inputgroup-addon"
-          style="width:45%;font-size:15px;font-weight: bold;"
-          >Enter Quantity<i style="color: red">*</i></span
-          >
-          <input
+        <!-- no of beds Field -->
+        <div class="ui-g">
+          <div class="ui-md-2 ui-lg-2"></div>
+          <div class="ui-md-8 ui-lg-8 ui-sm-12">
+            <div class="ui-inputgroup">
+              <span class="ui-inputgroup-addon" style="width:45%;font-size:15px;font-weight: bold;"
+                >Enter Quantity<i style="color: red">*</i></span
+              >
+              <input
+                #bq="ngModel"
                 placeholder="    Please Enter no of beds"
                 type="text"
                 name="bedsQuantity"
@@ -63,54 +72,62 @@
                 [(ngModel)]="_admission.bedsQuantity"
               />
             </div>
+            <div
+              style="padding:0px;margin-bottom:4px;font-size: 55%"
+              [hidden]="bq.valid || bq.pristine"
+              class="alert alert-danger"
+            >
+              Please Enter Bed Quantity
+            </div>
           </div>
         </div>
         <div class="ui-g">
           <div class="ui-md-2 ui-lg-2"></div>
           <div class="ui-md-8 ui-lg-8 ui-sm-12">
             <div class="ui-inputgroup">
-              <span
-              class="ui-inputgroup-addon"
-              style="width:45%;font-size:15px;font-weight: bold;"
-              >Enter Price<i style="color: red">*</i></span
+              <span class="ui-inputgroup-addon" style="width:45%;font-size:15px;font-weight: bold;"
+                >Enter Price<i style="color: red">*</i></span
               >
               <input
-                    placeholder="Select Bed Type Price"
-                    type="text"
-                    (keypress)="numberOnly($event)"
-                    name="price"
-                    pInputText
-                    ngModel
-                    required
-                    style="text-align: center"
-                   
-                    [(ngModel)]="_admission.price"
-                  />
-                </div>
-              </div>
+                #bp="ngModel"
+                placeholder="Select Bed Type Price"
+                type="text"
+                (keypress)="numberOnly($event)"
+                name="price"
+                pInputText
+                ngModel
+                required
+                style="text-align: center"
+                [(ngModel)]="_admission.price"
+              />
             </div>
-     
+            <div
+              style="padding:0px;margin-bottom:4px;font-size: 55%"
+              [hidden]="bp.valid || bp.pristine"
+              class="alert alert-danger"
+            >
+              Please Enter Bed Price
+            </div>
+          </div>
+        </div>
+
         <div class="ui-g-12 ">
           <div class="ui-g ui-fluid">
             <!-- Submit button -->
             <div class="ui-md-2 ui-lg-2"></div>
             <div class="ui-md-8 ui-lg-8 ui-sm-12">
-
-                <button
-                  type="submit"
-                  [disabled]="myForm.invalid"
-                  class="btn btn-success btn-block colorSetAllButtons"
-                >
-                  Submit
-                </button>
-
+              <button
+                type="submit"
+                [disabled]="myForm.invalid"
+                class="btn btn-success btn-block colorSetAllButtons"
+              >
+                Submit
+              </button>
             </div>
           </div>
         </div>
 
-
-            <!-- <p-progressSpinner class="loading-indicator"></p-progressSpinner> -->
-
+        <!-- <p-progressSpinner class="loading-indicator"></p-progressSpinner> -->
       </form>
     </div>
   </p-card>
