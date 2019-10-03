@@ -70,7 +70,7 @@ import { VideoPageComponent } from './video-page/video-page.component';
 // import { NewcompComponent } from "./newcomp/newcomp.component";
 
 const routes: Routes = [
-  { path: '', component: HmslandingpageComponent },
+  // { path: '', component: HmslandingpageComponent },
 
   {
     path: '',

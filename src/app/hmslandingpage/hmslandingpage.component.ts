@@ -23,6 +23,10 @@ export class HmslandingpageComponent implements OnInit {
     private service: MyServiceService,
     private _location: Location
   ) { }
+  token;
+  userName;
+  userType;
+  getType
   msg;
   deleteAllHistory;
   labUrl;
@@ -44,22 +48,44 @@ export class HmslandingpageComponent implements OnInit {
       res => {
         console.log('toker', res);
 
-        sessionStorage.setItem('token', res.result.token);
-        var username = sessionStorage.setItem('username', res.result.username);
-        var userType = sessionStorage.setItem('userType', res.result.userType);
-        var getType = sessionStorage.getItem('userType').toUpperCase();
-        this.succesMethod();
-        this.goToOpd();
+        // sessionStorage.setItem('token', res.result.token);
+        // var username = sessionStorage.setItem('username', res.result.username);
+        // var userType = sessionStorage.setItem('userType', res.result.userType);
+        // var getType = sessionStorage.getItem('userType').toUpperCase();
+
+
+        var getType = res.result.userType.toUpperCase();
+
+        if (getType == "LAB" || getType == "PHARMACY") {
+          this.errorMethod("Unauthorized for " + getType + " application")
+        }
+
+        else if (getType = "ADMIN" || getType=="OPD") {
+          this.credentials(res);
+          this.succesMethod();
+          this.goToOpd();
+        }
+
+        else {
+
+          this.errorMethod("Not Authorized");
+        }
+
       },
       error => {
         console.log(error);
-        this.messageService.add({
-          severity: 'error',
-          summary: 'Service Message',
-          detail: 'Wrong username and password'
-        });
+        this.errorMethod("Not Authorized")
       }
     );
+  }
+
+
+  credentials(res) {
+    sessionStorage.setItem('token', res.result.token);
+    this.userName = sessionStorage.setItem('username', res.result.username);
+    this.userType = sessionStorage.setItem('userType', res.result.userType);
+    this.getType = sessionStorage.getItem('userType').toUpperCase();
+
   }
 
   succesMethod() {
@@ -71,18 +97,32 @@ export class HmslandingpageComponent implements OnInit {
   }
 
 
- 
+
+  errorMethod(msg: String) {
+    this.messageService.add({
+      severity: 'error',
+      summary: msg.toString(),
+      detail: 'retry login'
+    });
+  }
+
+
   goToOpd() {
     setTimeout(() => {
-      this.router.navigate(['mainscreen'])
+      this.router.navigate(['/mainscreen'])
     }, 1000);
   }
 
-  goToPharmacy() {
-    setTimeout(() => {
-      window.location.href = "http://localhost:4202/home"
-    }, 1000);
-  }
+  // goToPharmacy() {
+  //   setTimeout(() => {
+  //     window.location.href = "http://localhost:8081/sales"
+  //   }, 1000);
+  // }
+  // goToLab() {
+  //   setTimeout(() => {
+  //     window.location.href = "http://localhost:8082/showOrProcessReports"
+  //   }, 1000);
+  // }
 
 }
 

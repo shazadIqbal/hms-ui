@@ -16,13 +16,16 @@ export class SignUpFormComponent implements OnInit {
   usertypes : any;
 
   constructor(private signUpFormService: SignUpServiceService,  private messageService: MessageService,private router : Router) {
-    this.usertypes=[
-      {label:"ADMIN", value:"ADMIN"}
+    this.usertypes = [
+      {label:"ADMIN", value:"ADMIN"},
+      { label: "LAB", value: "lab" },
+      { label: "OPD", value: "opd" },
+      { label: "PHARMACY", value: "pharmacy" }
     ]
    }
 
   ngOnInit() {
-
+// this.usertypes;
   }
 
 
