@@ -6,7 +6,7 @@ export const environment = {
   production: false,
   
   tokenURL: 'http://localhost:8080/',
-  baseUrl: 'http://localhost:8081/',
+  baseUrl: 'http://localhost:8080/',
   opdUrl: 'http://localhost:4200/',
   labUrl: 'http://localhost:4201/',
   pharmacyUrl: 'http://localhost:4202/'
