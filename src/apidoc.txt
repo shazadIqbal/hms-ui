@@ -135,7 +135,7 @@ INSERT INTO user
 );
 ////////////////////
 api : vendor
-http://localhost:8081/api/vendor/
+http://localhost:8083/api/vendor/
 
 {
   "name":"Barkhia Hospital",
