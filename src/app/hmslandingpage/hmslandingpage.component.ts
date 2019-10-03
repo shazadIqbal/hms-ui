@@ -32,6 +32,7 @@ export class HmslandingpageComponent implements OnInit {
   labUrl;
   opdUrl;
   pharmacyUrl;
+  showErrorMessage : Boolean = false;
   ngOnInit() {
     this.nav.hide();
     this.deleteAllHistory = this._location.isCurrentPathEqualTo('opd');
@@ -47,33 +48,25 @@ export class HmslandingpageComponent implements OnInit {
     this.service.checkUserandPass(uname, p).subscribe(
       res => {
         console.log('toker', res);
-
-        // sessionStorage.setItem('token', res.result.token);
-        // var username = sessionStorage.setItem('username', res.result.username);
-        // var userType = sessionStorage.setItem('userType', res.result.userType);
-        // var getType = sessionStorage.getItem('userType').toUpperCase();
-
-
         var getType = res.result.userType.toUpperCase();
-
         if (getType == "LAB" || getType == "PHARMACY") {
           this.errorMethod("Unauthorized for OPD application")
+          this.showErrorMessage = true;
         }
-
         else if (getType = "ADMIN" || getType=="OPD") {
           this.credentials(res);
           this.succesMethod();
+          this.showErrorMessage = false;
           this.goToOpd();
         }
-
         else {
-
+          this.showErrorMessage = true;
           this.errorMethod("Not Authorized");
         }
-
       },
       error => {
         console.log(error);
+        this.showErrorMessage = true;
         this.errorMethod("Not Authorized")
       }
     );

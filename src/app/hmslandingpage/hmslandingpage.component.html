@@ -21,7 +21,11 @@
                   placeholder="Username">
                 <span class="focus-input100"
                   data-placeholder="&#xf207;"></span>
+                <div *ngIf="showErrorMessage">
+                  <p style="color:red;font-size:xx-small">Wrong Email</p>
+                </div>
               </div>
+
 
               <div class="wrap-input100 validate-input"
                 data-validate="Enter password">
@@ -32,6 +36,9 @@
                   placeholder="Password">
                 <span class="focus-input100"
                   data-placeholder="&#xf191;"></span>
+                <div *ngIf="showErrorMessage">
+                  <p style="color:red;font-size:xx-small">Wrong Password</p>
+                </div>
               </div>
 
 
@@ -40,6 +47,9 @@
                   class="login100-form-btn">
                   <b>Login</b>
                 </button>
+              </div>
+              <div *ngIf="showErrorMessage">
+                <p style="color:red;font-size:small;text-align: center">Wrong Email or Password</p>
               </div>
             </form>
           </div>
