@@ -44,7 +44,7 @@ export class AddErComponent implements OnInit {
   submitErService(formdata: any) {
     this.erService.saveEr(formdata).subscribe(
       data => {
-        console.log(formdata);
+        // console.log(formdata);
         this.messageService.add({
           severity: "success",
           summary: "Added Succesfully",
@@ -52,7 +52,7 @@ export class AddErComponent implements OnInit {
         });
       },
       error => {
-        console.log(error);
+        // console.log(error);
         this.messageService.add({
           severity: "error",
           summary: "Error Found",
@@ -64,7 +64,7 @@ export class AddErComponent implements OnInit {
 
   onChangeFacility() {
     //let price;
-    console.log("hloo", this.addEmergency.facilities);
+    // console.log("hloo", this.addEmergency.facilities);
     this.addEmergency.price = 0; //it will also work for the negative
     this.addEmergency.total = 0;
     this.addEmergency.extraCharges = 0;
@@ -77,7 +77,7 @@ export class AddErComponent implements OnInit {
   // function for save/add facility
   saveFacility(fields: any) {
     this.display = false;
-    console.log(fields);
+    // console.log(fields);
     this.erService.saveErFacility(fields).subscribe(
       data => {
         this.messageService.add({
@@ -85,11 +85,11 @@ export class AddErComponent implements OnInit {
           summary: "Added Succesfully",
           detail: "Facility Service Added"
         });
-        console.log(data);
+        // console.log(data);
         this.getFacilityDropdown();
       },
       error => {
-        console.log(error);
+        // console.log(error);
         this.messageService.add({
           severity: "error",
           summary: "Error Found",
@@ -101,11 +101,11 @@ export class AddErComponent implements OnInit {
 
   // show values in the dropdown
   getFacilityDropdown() {
-    console.log("hey");
+    // console.log("hey");
     this.multidropdown = [];
     this.erService.getErFacility().subscribe(
       data => {
-        console.log(data);
+        // console.log(data);
         data.map(p => {
           this.multidropdown.push({
             label: p.name,
@@ -114,7 +114,7 @@ export class AddErComponent implements OnInit {
         });
       },
       error => {
-        console.log("error agya yar");
+        // console.log("error agya yar");
       }
     );
   }
@@ -122,7 +122,7 @@ export class AddErComponent implements OnInit {
   // Function for total
   getSum(value: number) {
     this.addEmergency.extraCharges = 0;
-    console.log(value);
+    // console.log(value);
     this.addEmergency.extraCharges = value;
     this.addEmergency.total =
       this.addEmergency.price + this.addEmergency.extraCharges;

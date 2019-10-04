@@ -51,7 +51,6 @@ export class AddAppoinmentListComponent implements OnInit {
         this.showInactive = false;
        }
 
-      console.log('response is here', Response);
       this.showLoading = false;
       for (const i in Response) {
           this._existingPatient.push({
@@ -80,7 +79,6 @@ export class AddAppoinmentListComponent implements OnInit {
   showDate(d) {
     this.showLoading = true;
     this.appointmentService.getDate(d).subscribe(Response => {
-      console.log('response is here', Response);
       this.showLoading = false;
       for (const i in Response) {
         this._existingPatient.push({
@@ -109,7 +107,6 @@ export class AddAppoinmentListComponent implements OnInit {
   showTable() {
     this.showLoading = true;
     this.appointmentService.getAppointment().subscribe(Response => {
-      console.log('response is here', Response);
       this.showLoading = false;
       for (const i in Response) {
         this._existingPatient.push({
@@ -150,16 +147,13 @@ export class AddAppoinmentListComponent implements OnInit {
       summary: 'Status',
       detail: 'Successfully Deleted'
     });
-    console.log(rowData);
     this.appointmentService.deleteById(rowData).subscribe(
       data => {
         this.appointmentService.getAppointment().subscribe((data: any) => {});
 
         this.showTable();
-        console.log(data);
       },
       error => {
-        console.log(error);
       }
     );
   }
@@ -169,16 +163,13 @@ export class AddAppoinmentListComponent implements OnInit {
       summary: 'Status',
       detail: 'Appointment Done'
     });
-    console.log(rowData);
     this.appointmentService.doneById(rowData).subscribe(
       data => {
         this.appointmentService.getAppointment().subscribe((data: any) => {});
 
         this.showTable();
-        console.log(data);
       },
       error => {
-        console.log(error);
       }
     );
   }
@@ -187,38 +178,25 @@ export class AddAppoinmentListComponent implements OnInit {
     this._existingPatient = [];
     this.appointmentService.saveStatus(this._status.status).subscribe(
       data => {
-        console.log(data);
       },
       error => {
-        console.log(error);
       }
     );
     this.showStatus();
   }
-  // saveDate(){
-
-  //   this._existingPatient = [];
-  //   this._appointmentService.saveDate(this._date).subscribe((data) =>{
-  //     console.log(data);
-  // }, error=>{
-  //  console.log(error);
-
-  // })
-  // this.showDate();
-  // }
 
   statusOnClick() {
     this.showStatus();
   }
   dateOnClick() {
-    console.log(this.datefilter);
+    // console.log(this.datefilter);
     const d: string =
       this.datefilter.getFullYear() +
       '-' +
       (this.datefilter.getMonth() + 1) +
       '-' +
       this.datefilter.getDate();
-    console.log(d);
+    // console.log(d);
 
     this.showDate(d);
   }

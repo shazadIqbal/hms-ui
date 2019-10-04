@@ -46,7 +46,7 @@ export class AddDirectoryComponent implements OnInit {
         });
       },
       error => {
-        console.log(error);
+        // console.log(error);
         this.loader = false;
       }
     );
@@ -57,7 +57,7 @@ export class AddDirectoryComponent implements OnInit {
   }
 
   inactive(a) {
-    console.log(a);
+    // console.log(a);
     this.directoryService.deleteDirectory(a).subscribe(
       response => {
         this.tests = [];
