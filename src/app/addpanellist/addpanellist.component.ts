@@ -39,7 +39,7 @@ export class AddpanellistComponent implements OnInit {
 
   getFcilityInIt() {
     this.panelService.getFacility().subscribe(response => {
-      console.log('response is here', response);
+      // console.log('response is here', response);
 
       response.forEach(e => {
         this.multidropdown.push({
@@ -53,7 +53,7 @@ export class AddpanellistComponent implements OnInit {
   save() {
     this.panelService.savePanel(this.panels).subscribe(
       error => {
-        console.log(error);
+        // console.log(error);
         this.messageService.add({
           severity: 'success',
           summary: 'Status',
@@ -61,7 +61,7 @@ export class AddpanellistComponent implements OnInit {
         });
       },
       data => {
-        console.log(data);
+        // console.log(data);
         this.messageService.add({ severity: 'success', summary: 'Status', detail: 'Successfull' });
       }
     );
@@ -81,19 +81,19 @@ export class AddpanellistComponent implements OnInit {
   }
 
   onTest(value) {
-    console.log('test value ', value);
+    // console.log('test value ', value);
   }
   OnFacilitysubmit(value) {
-    console.log('========================', value);
-    console.log('in facility');
+    // console.log('========================', value);
+    // console.log('in facility');
     this.multidropdown = [];
     this.panels.panelFacility = [];
     this.facilityObj.facilityName = this.facilityObj.facilityName.toUpperCase();
     this.panelService.saveFacility(this.facilityObj).subscribe(
       data => {
-        console.log(data);
+        // console.log(data);
         const stat = Object.keys(data);
-        console.log(stat[0]);
+        // console.log(stat[0]);
         // tslint:disable-next-line: triple-equals
         if (stat[0] != 'Already Exsist') {
           this.messageService.add({
@@ -112,7 +112,7 @@ export class AddpanellistComponent implements OnInit {
         this.facilityObj.facilityName = '';
       },
       error => {
-        console.log(error);
+        // console.log(error);
         this.messageService.add({ severity: 'error', summary: 'Failed', detail: 'Failed' });
         this.facilityObj.facilityName = '';
       }
@@ -125,7 +125,7 @@ export class AddpanellistComponent implements OnInit {
     this.getFcilityInIt();
   }
   addpanel() {
-    console.log('jj');
+    // console.log('jj');
     this.router.navigate(['panellist']);
   }
 

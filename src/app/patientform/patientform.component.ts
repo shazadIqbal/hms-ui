@@ -35,11 +35,11 @@ export class PatientformComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log(this.isGynyObs);
+    // console.log(this.isGynyObs);
     console.log(this.isFemale);
     if (this.gender.value === 'Female') {
       this.isFemale = true;
-      console.log(this.isFemale);
+      // console.log(this.isFemale);
     }
     this.patientid = this.activeRoute.snapshot.params['id'];
     if (this.patientid) {
@@ -48,13 +48,13 @@ export class PatientformComponent implements OnInit {
   }
 
   isGynObsFn() {
-    console.log(this.isGynyObs);
+    // console.log(this.isGynyObs);
     this.patient.gynAndObsRegistration = this.isGynyObs;
     if (!this.isGynyObs) {
       this.patient.registrationDate = null;
       this.patient.husbandOfAndFatherOf = null;
     }
-    console.log('mein gynu obs hon', this.patient.gynAndObsRegistration);
+    // console.log('mein gynu obs hon', this.patient.gynAndObsRegistration);
   }
 
   gettingPatientById() {
@@ -69,7 +69,7 @@ export class PatientformComponent implements OnInit {
         this.patient.phoneNo = data.phoneNo;
         this.patient.husbandOfAndFatherOf = data.husbandOfAndFatherOf;
         this.patient.registrationDate = new Date(data.registrationDate);
-        console.log('if main hun');
+        // console.log('if main hun');
       } else if (this.patientid) {
         this.patient.name = data.name;
         this.patient.cnic = data.cnic;
@@ -77,7 +77,7 @@ export class PatientformComponent implements OnInit {
         this.patient.address = data.address;
         this.patient.gender = data.gender;
         this.patient.phoneNo = data.phoneNo;
-        console.log('else if main hun');
+        // console.log('else if main hun');
       }
     });
   }
@@ -132,7 +132,7 @@ export class PatientformComponent implements OnInit {
           });
         },
         error => {
-          console.log(error);
+          // console.log(error);
           this.msgService.add({
             key: 'p',
             severity: 'error',
@@ -141,15 +141,15 @@ export class PatientformComponent implements OnInit {
           });
         }
       );
-      console.log('in update patient', this.patient);
+      // console.log('in update patient', this.patient);
     }
     // Agr new patient aya hay koi add hony toh
     else {
-      console.log('Request payload', this.patient);
+      // console.log('Request payload', this.patient);
 
       this.patientService.postPatient(this.patient).subscribe(
         data => {
-          console.log('dwadawdawdawdawdadawdada');
+          // console.log('dwadawdawdawdawdadawdada');
           if (data['SAVEDSUCCESFULLY'] == 1) {
             this.msgService.add({
               key: 'p',
@@ -167,7 +167,7 @@ export class PatientformComponent implements OnInit {
           }
         },
         error => {
-          console.log(error);
+          // console.log(error);
           this.msgService.add({
             key: 'p',
             severity: 'error',

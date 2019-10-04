@@ -13,7 +13,7 @@ export class PatientInputComponent implements OnInit {
   ngOnInit() {
   }
   onclick(value :any){
-console.log(value);
+// console.log(value);
     
     
 

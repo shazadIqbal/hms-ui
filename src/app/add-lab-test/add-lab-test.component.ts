@@ -38,7 +38,7 @@ export class AddLabTestComponent implements OnInit {
         });
       },
       error => {
-        console.log(error);
+        // console.log(error);
       }
     );
     this.cols = [
@@ -54,7 +54,7 @@ export class AddLabTestComponent implements OnInit {
     this.delete = true;
     this.labServ.deletelabtest(id).subscribe(
       response => {
-        console.log(response);
+        // console.log(response);
         this.tests = [];
         !response.length ? (this.empty = true) : '';
         this.delete = false;
@@ -75,7 +75,7 @@ export class AddLabTestComponent implements OnInit {
         });
       },
       error => {
-        console.log(error);
+        // console.log(error);
 
         this.delete = false;
         this.messageService.add({

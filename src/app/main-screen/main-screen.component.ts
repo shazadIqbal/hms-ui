@@ -54,9 +54,9 @@ export class MainScreenComponent implements OnInit {
     this.patientService.getPatientsByMRNO(mrNo).subscribe(data => {
       // tslint:disable-next-line: triple-equals
       if (data == null || mrNo == '') {
-        console.log(data);
+        // console.log(data);
         // console.log(mrNo+"hello");
-        console.log('patientDoesNoteExists');
+        // console.log('patientDoesNoteExists');
         this.mesgService.add({
           severity: 'error',
           summary: 'No Record Found',
@@ -72,7 +72,7 @@ export class MainScreenComponent implements OnInit {
           summary: 'SUCCESS',
           detail: 'Patient Found'
         });
-        console.log('patientExists');
+        // console.log('patientExists');
         setTimeout(() => {
           this.router.navigate(['/monitor/', mrNo]);
         }, 2000);

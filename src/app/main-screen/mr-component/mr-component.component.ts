@@ -31,9 +31,9 @@ export class MrComponentComponent implements OnInit {
     this.patientService.getPatientsByMRNO(mrNo).subscribe(data => {
       // tslint:disable-next-line: triple-equals
       if (data == null || mrNo == '') {
-        console.log(data);
+        // console.log(data);
         // console.log(mrNo+"hello");
-        console.log('patientDoesNoteExists');
+        // console.log('patientDoesNoteExists');
         this.mesgService.add({
           severity: 'error',
           summary: 'No Record Found',
@@ -50,7 +50,7 @@ export class MrComponentComponent implements OnInit {
           summary: 'SUCCESS',
           detail: 'Patient Found'
         });
-        console.log('patientExists');
+        // console.log('patientExists');
         this.router.navigate(['/patient']);
       }
     }),

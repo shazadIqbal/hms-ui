@@ -52,7 +52,7 @@ export class OpdLabtestComponent implements OnInit {
 
     this.addLabTests.price = 0;
     this.patientService.getPatientsByMRNO(id).subscribe(a => {
-      console.log(a);
+      // console.log(a);
       this.patientName = a.name;
       this.patientMrNo = a.id;
       this.addLabTests.patient = a;
@@ -75,10 +75,10 @@ export class OpdLabtestComponent implements OnInit {
   }
 
   onChangeLabTest() {
-    console.log('yeh id hai' + this.addLabTests.id);
+    // console.log('yeh id hai' + this.addLabTests.id);
     // for(var i in this.addEmergency.facilities)
     //   this.name = (this.addEmergency.facilities[i]["facilities"]);
-    //   console.log(this.name);
+      // console.log(this.name);
     this.printLabTest = [];
     this.labtestArray = [];
 
@@ -94,7 +94,7 @@ export class OpdLabtestComponent implements OnInit {
     this.date = new Date();
     this.printLabTest.join(',');
     ///let printfacilities = this.addEmergency.facilities.join(',')
-    console.log(this.printLabTest);
+    // console.log(this.printLabTest);
 
     this.addLabTests.price = 0;
     this.addLabTests.total = 0;
@@ -105,12 +105,12 @@ export class OpdLabtestComponent implements OnInit {
 
       // this.addLabTests.cashRecieve-(this.addLabTests.discount*this.addLabTests.cashRecieve);
       this.addLabTests.total = this.addLabTests.price;
-      console.log(this.addLabTests.total);
+      // console.log(this.addLabTests.total);
     });
   }
 
   onChangeDiscount() {
-    console.log('hello discount');
+    // console.log('hello discount');
     let discount = this.addLabTests.discount;
     let total = this.addLabTests.price - discount;
     this.addLabTests.total = this.addLabTests.price - this.addLabTests.discount;
@@ -144,7 +144,7 @@ export class OpdLabtestComponent implements OnInit {
           this.hidder = true;
         }
 
-        console.log('hello');
+        // console.log('hello');
         data.map(e => {
           this.multiDropdown.push({
             label: e.name,
@@ -154,10 +154,10 @@ export class OpdLabtestComponent implements OnInit {
       },
       error => {
         this.show = false;
-        console.log(error);
+        // console.log(error);
         this.showspinloading = false;
 
-        console.log('error agya yar');
+        // console.log('error agya yar');
         this.messageservice.add({
           severity: 'error',
           summary: 'Error Found',
@@ -175,7 +175,7 @@ export class OpdLabtestComponent implements OnInit {
     this.addLabTests.patient = this.labtestservice.saveOpdEr(this.addLabTests).subscribe(
       data => {
         this.printer = false;
-        console.log(data);
+        // console.log(data);
         this.messageservice.add({
           severity: 'success',
           summary: 'Added Succesfully',
@@ -184,7 +184,7 @@ export class OpdLabtestComponent implements OnInit {
       },
       error => {
         this.printer = true;
-        console.log(error);
+        // console.log(error);
         this.messageservice.add({
           severity: 'error',
           summary: 'Error Found',

@@ -28,7 +28,7 @@ export class DirectoryFormComponent implements OnInit {
   }
 
   submitDirectory() {
-    console.log('submit directory');
+    // console.log('submit directory');
     this.loader = true;
 
     this.directoryServ.postDirectory(this.directory).subscribe(

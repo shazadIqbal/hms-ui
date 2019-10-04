@@ -31,9 +31,9 @@ export class DashboardgraphsComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    console.log(this.data);
+    // console.log(this.data);
     this.dataSource=this.data;
-    console.log(this.typeofgraph);
+    // console.log(this.typeofgraph);
   }
   
 

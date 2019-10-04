@@ -40,7 +40,7 @@ export class SearchbarComponent implements OnInit {
       this.datasource = [];
       this.datasource = data;
       this.totalRecords = this.datasource.length;
-      console.log(data);
+      // console.log(data);
       for (const p of data) {
         this.patient.push({
           id: p.id,
@@ -86,7 +86,7 @@ export class SearchbarComponent implements OnInit {
         }
       },
       error => {
-        console.log(error);
+        // console.log(error);
         this.mesgService.add({
           severity: 'error',
           summary: 'Service Message',
@@ -124,7 +124,7 @@ export class SearchbarComponent implements OnInit {
   //   }
 
   routeToPatientForm(rowData: any) {
-    console.log('yeh id hai ', rowData);
+    // console.log('yeh id hai ', rowData);
     this.router.navigate(['/patientFormWithId/' + rowData]);
   }
 }

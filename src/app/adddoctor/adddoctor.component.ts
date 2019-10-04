@@ -44,10 +44,10 @@ export class AdddoctorComponent implements OnInit {
 
   ngOnInit() {
     this.id = this.activatedRoute.snapshot.params.id;
-    console.log('This is id ' + this.id);
+    // console.log('This is id ' + this.id);
     if (this.id) {
       this.drservice.getDoctorById(this.id).subscribe(doc => {
-        console.log(doc);
+        // console.log(doc);
         // tslint:disable-next-line: no-string-literal
         this.doctor.fullName = doc.fullName;
         this.doctor.mobile = doc.mobile;
@@ -71,7 +71,7 @@ export class AdddoctorComponent implements OnInit {
         this.doctor.emrNo = doc.emrNo;
         this.doctor.share = doc.share;
         this.oldPhoneNo = this.doctor.mobile;
-        console.log(this.oldPhoneNo);
+        // console.log(this.oldPhoneNo);
       });
 
     }
@@ -85,7 +85,7 @@ export class AdddoctorComponent implements OnInit {
     return true;
   }
   save() {
-    console.log(this.doctor);
+    // console.log(this.doctor);
     // Update an existing doctor
     if (this.id != 0 && this.id != null) {
       this.drservice.updateDoctorById(this.id, this.oldPhoneNo, this.doctor).subscribe(
@@ -97,7 +97,7 @@ export class AdddoctorComponent implements OnInit {
             detail: 'Added'
           });
 
-          console.log(response);
+          // console.log(response);
         }, error => {
           this.mesgService.add({
             key: 'u',
@@ -105,12 +105,12 @@ export class AdddoctorComponent implements OnInit {
             summary: 'Failed',
             detail: 'Something went wrong check your internet connection '
           });
-          console.log(error);
+          // console.log(error);
         }
       );
     }
     else {
-      console.log(this.doctor);
+      // console.log(this.doctor);
       this.drservice.savedoctor(this.doctor).subscribe(
         data => {
           this.mesgService.add({
@@ -145,6 +145,6 @@ export class AdddoctorComponent implements OnInit {
     let tempShare = value;
     tempShare >= 0 && tempShare <=100  ? this.shareCheck = true : this.shareCheck = false;
     this.doctor.share = tempShare;
-    console.log(this.doctor.share);
+    // console.log(this.doctor.share);
   }
 }

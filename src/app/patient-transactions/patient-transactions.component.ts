@@ -54,7 +54,7 @@ export class PatientTransactionsComponent implements OnInit {
     this.totalRecords = 0;
     let id = this.activateRoute.snapshot.params['id'];
     this.transactionsService.getPatientTransactions(id).subscribe(data => {
-      console.log('response is here', data);
+      // console.log('response is here', data);
       this.datasource = [];
       this.datasource = data;
       this.totalRecords = this.datasource.length;
@@ -62,7 +62,7 @@ export class PatientTransactionsComponent implements OnInit {
       // this.transaction = data;
       let i = 1;
       data.map(p => {
-        console.log(p);
+        // console.log(p);
 
 
         this.transaction.push({
@@ -87,7 +87,7 @@ export class PatientTransactionsComponent implements OnInit {
 
 
   editPatientTransaction(id) {
-    console.log(id)
+    // console.log(id)
   }
 
   deletePatientTransaction(transactionRefId) {
@@ -95,7 +95,7 @@ export class PatientTransactionsComponent implements OnInit {
     this.transactionsService.deletePatientTransaction(transactionRefId).subscribe((response) => {
 
       this.messageService.add({ severity: 'success', summary: 'Service Message', detail: response.message });
-      console.log(response)
+      // console.log(response)
       this.showTable();
     }, (error) => {
         this.messageService.add({ severity: 'error', summary: 'Service Message', detail: error });

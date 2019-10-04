@@ -38,7 +38,7 @@ export class SignUpFormComponent implements OnInit {
 
     this.signUpFormService.postSignUpForm(this.signUpObj).subscribe(
       data=>{
-        console.log(data);
+        // console.log(data);
         if(data['result'].status == 200){
         this.messageService.add({
           severity: "success",

@@ -59,7 +59,7 @@ export class OpdEmergencyComponent implements OnInit {
     this.addEmergency.facilities = [];
   }
   ngOnInit() {
-    console.log(this.date);
+    // console.log(this.date);
     this.getfacilitiesInDropdown();
     // if(this.multiDropdown == []){
     //   this.show = true;
@@ -72,7 +72,7 @@ export class OpdEmergencyComponent implements OnInit {
     this.addEmergency.price = 0;
 
     this.patientService.getPatientsByMRNO(id).subscribe(a => {
-      console.log(a);
+      // console.log(a);
       this.patientName = a.name;
       this.patientMrNo = a.id;
     });
@@ -94,11 +94,11 @@ export class OpdEmergencyComponent implements OnInit {
   }
 
   onChangeFacility() {
-    console.log('yeh id hai' + this.addEmergency.id);
+    // console.log('yeh id hai' + this.addEmergency.id);
     // for(var i in this.addEmergency.facilities)
     //   this.name = (this.addEmergency.facilities[i]["facilities"]);
 
-    //   console.log(this.name);
+      // console.log(this.name);
     this.printFacilities = [];
     this.facilitiesArray = [];
 
@@ -161,8 +161,8 @@ export class OpdEmergencyComponent implements OnInit {
       error => {
         this.showspinloading = false;
 
-        console.log(error);
-        console.log('error agya yar');
+        // console.log(error);
+        // console.log('error agya yar');
         this.messageService.add({
           severity: 'error',
           summary: 'Error Found',
@@ -181,11 +181,11 @@ export class OpdEmergencyComponent implements OnInit {
   }
 
   saveOpdEmergency() {
-    console.log(this.addEmergency);
+    // console.log(this.addEmergency);
     this.total = this.addEmergency.total;
     this.discount = this.addEmergency.discount;
 
-    console.log('total,discount', this.total + '  ,' + this.discount);
+    // console.log('total,discount', this.total + '  ,' + this.discount);
     this.addEmergency.facilities = this.printFacilities;
     this.opdEr.saveOpdEr(this.addEmergency).subscribe(
       data => {
@@ -193,7 +193,7 @@ export class OpdEmergencyComponent implements OnInit {
         // this.printId = "print-section";
         //this.showprint = false;
         this.printer = false;
-        console.log(data);
+        // console.log(data);
         this.messageService.add({
           severity: 'success',
           summary: 'Added Succesfully',
@@ -202,7 +202,7 @@ export class OpdEmergencyComponent implements OnInit {
       },
       error => {
         this.printer = true;
-        console.log(error);
+        // console.log(error);
         this.messageService.add({
           severity: 'error',
           summary: 'Error Found',

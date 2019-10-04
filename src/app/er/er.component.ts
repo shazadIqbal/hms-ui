@@ -38,7 +38,7 @@ export class ErComponent implements OnInit {
   }
 
   deleteErByID(id: any) {
-    console.log(id);
+    // console.log(id);
     this.loading = true;
     this.erService.deleteById(id).subscribe(
       data => {
@@ -51,7 +51,7 @@ export class ErComponent implements OnInit {
           });
           this.showTable();
           // this.patientService.getPatients().subscribe((data: any) => {});
-          console.log(data);
+          // console.log(data);
         } else {
           this.loading = true;
           this.messageService.add({
@@ -72,7 +72,7 @@ export class ErComponent implements OnInit {
           summary: "Cant not delete",
           detail: "You are not authorized for this action"
         });
-        console.log(error);
+        // console.log(error);
       }
     );
   }
@@ -85,8 +85,8 @@ export class ErComponent implements OnInit {
       this.datasource = [];
       this.datasource = data;
       this.totalRecords = this.datasource.length;
-      console.log(this.datasource);
-      console.log("here is the table data", data);
+      // console.log(this.datasource);
+      // console.log("here is the table data", data);
       data.map(p => {
         this.erArray.push({
           id: p.id,

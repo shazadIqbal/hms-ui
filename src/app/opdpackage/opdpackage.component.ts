@@ -43,17 +43,17 @@ export class OpdpackageComponent implements OnInit {
   ngOnInit() {
     this.enable = true;
     this.getPackageOption();
-    console.log(this.opdObject, 'packaaaaaage');
+    // console.log(this.opdObject, 'packaaaaaage');
 
     let id = this.activeRoute.snapshot.params['id'];
     this.patientService.getPatientsByMRNO(id).subscribe(a => {
-      console.log(a);
+      // console.log(a);
       this.patientName = a.name;
       this.patientMrNo = a.id;
     });
 
     this.opdObject.id = id;
-    console.log('this is id' + this.opdObject.id);
+    // console.log('this is id' + this.opdObject.id);
   }
 
   getPackageOption() {
@@ -68,7 +68,7 @@ export class OpdpackageComponent implements OnInit {
           this.checkStatus = false;
           // console.log("hey ",data[0]);
           data.forEach(e => {
-            console.log(e);
+            // console.log(e);
             this.packageName.push({
               label: e.pName + ' / ' + e.pFacility,
               value: {
@@ -85,7 +85,7 @@ export class OpdpackageComponent implements OnInit {
         }
       },
       error => {
-        console.log('error');
+        // console.log('error');
         this.show = true;
         this.checkStatus = true;
         this.messageservice.add({
@@ -98,7 +98,7 @@ export class OpdpackageComponent implements OnInit {
   }
 
   packageDropdown() {
-    console.log('Ghuus gye');
+    // console.log('Ghuus gye');
     this.date = new Date();
     this.opdObject.price = 0;
     this.opdObject.total = 0;
@@ -106,7 +106,7 @@ export class OpdpackageComponent implements OnInit {
     this.opdObject.packageFacility = this.opdObject.packageName['pFacility'];
     this.opdObject.price = this.opdObject.packageName['pPrice'];
     this.opdObject.packageName = this.opdObject.packageName['pName'];
-    console.log(this.opdObject.packageName);
+    // console.log(this.opdObject.packageName);
     this.opdObject.total = this.opdObject.price + this.opdObject.discount;
   }
 
@@ -119,7 +119,7 @@ export class OpdpackageComponent implements OnInit {
     // console.log(JSON.stringify(this.opdObject));
     this.opdpackageservice.savePackage(this.opdObject).subscribe(
       data => {
-        console.log(data);
+        // console.log(data);
         this.messageservice.add({
           severity: 'success',
           summary: 'Succesfully',
@@ -128,7 +128,7 @@ export class OpdpackageComponent implements OnInit {
         this.enable = false;
       },
       error => {
-        console.log(error);
+        // console.log(error);
         this.messageservice.add({
           severity: 'error',
           summary: 'Error Found',
@@ -136,7 +136,7 @@ export class OpdpackageComponent implements OnInit {
         });
       }
     );
-    console.log(this.opdObject);
+    // console.log(this.opdObject);
   }
 
   discounter(value) {

@@ -50,9 +50,9 @@ export class PatientObservationComponent implements OnInit {
     this.getDoctorsOption();
     let id = this.activatedRoute.snapshot.params['id'];
     this.patientObservationObject.id = id;
-    console.log('this is id' + this.patientObservationObject.id);
+    // console.log('this is id' + this.patientObservationObject.id);
     this.patientService.getPatientsByMRNO(id).subscribe((a) => {
-      console.log(a)
+      // console.log(a)
       this.patientName = a.name;
       this.patientMrNo = a.id;
     })
@@ -67,20 +67,20 @@ export class PatientObservationComponent implements OnInit {
         if (data) {
           this.show = false;
           this.checkStatus = false; //this is for form hide property
-          console.log(data);
+          // console.log(data);
           data.forEach(e => {
-            console.log(e);
-            console.log('This is doctors id ' + e.mrNo);
+            // console.log(e);
+            // console.log('This is doctors id ' + e.mrNo);
             this.doctors.push({
               label: e.fullName,
               value: { mrNo: e.mrNo, fullName: e.fullName, fees: e.fees }
             });
-            // console.log({id:this.patientObservationObject.doctors});
+            console.log({id:this.patientObservationObject.doctors});
           });
         }
       },
       error => {
-        console.log('error agya yar');
+        // console.log('error agya yar');
         this.show = true;
         this.checkStatus = true;
         this.messageService.add({
@@ -95,12 +95,12 @@ export class PatientObservationComponent implements OnInit {
   doctorDropdown() {
     this.date = new Date();
     // console.log(this.selectedDoctor);
-    console.log(this.patientObservationObject.doctors['fullName']);
+    // console.log(this.patientObservationObject.doctors['fullName']);
     this.patientObservationObject.fees = 0; //it will also work for the negative
     this.patientObservationObject.total = 0;
     this.patientObservationObject.discount = 0;
     this.patientObservationObject.fees = this.patientObservationObject.doctors['fees'];
-    console.log(this.patientObservationObject.fees);
+    // console.log(this.patientObservationObject.fees);
     this.patientObservationObject.total =
       this.patientObservationObject.fees + this.patientObservationObject.discount;
   }
@@ -114,8 +114,8 @@ export class PatientObservationComponent implements OnInit {
 
     this.patientObservationService.savePatientObservation(this.patientObservationObject).subscribe(
       data => {
-        console.log(this.patientObservationObject);
-        console.log(data);
+        // console.log(this.patientObservationObject);
+        // console.log(data);
         this.messageService.add({
           severity: 'success',
           summary: 'Succesfully',
@@ -124,7 +124,7 @@ export class PatientObservationComponent implements OnInit {
         this.enable = false;
       },
       error => {
-        console.log(error);
+        // console.log(error);
         this.messageService.add({
           severity: 'error',
           summary: 'Error Found',
@@ -132,7 +132,7 @@ export class PatientObservationComponent implements OnInit {
         });
       }
     );
-    console.log(this.patientObservationObject);
+    // console.log(this.patientObservationObject);
   }
 
 
@@ -140,7 +140,7 @@ export class PatientObservationComponent implements OnInit {
   //function for totalprice
   getTotal(value: any) {
     this.patientObservationObject.cashRecieved = 0;
-    console.log(value);
+    // console.log(value);
     this.patientObservationObject.cashRecieved = value;
     this.patientObservationObject.total = this.patientObservationObject.fees - this.patientObservationObject.discount;
   }

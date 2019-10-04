@@ -66,8 +66,8 @@ export class OpdGynyComponent implements OnInit {
       this.patientName = data.name;
       this.patientMrNo = data.id;
       this.patientRegistration = data.gynAndObsRegistration;
-      console.log("this is data ", data);
-      console.log("this is local variable in which data.name is assigned" , this.patientRegistration);
+      // console.log("this is data ", data);
+      // console.log("this is local variable in which data.name is assigned" , this.patientRegistration);
 
     })
 
@@ -85,24 +85,24 @@ export class OpdGynyComponent implements OnInit {
         if(data){
         this.show = false;
         this.checkStatus = false; //this is for form hide property
-        console.log(data);
+        // console.log(data);
         data.forEach(e => {
-          console.log(e)
+          // console.log(e)
 
-          console.log("This is fees of every one"+ e.fees);
-          console.log("This is doctors id "+ e.mrNo);
+          // console.log("This is fees of every one"+ e.fees);
+          // console.log("This is doctors id "+ e.mrNo);
           this.doctors.push({
             label: e.fullName,
             value: {mrNo:e.mrNo,fullName:e.fullName,fees:e.fees,registration:e.registration}
           });
-          // console.log({id:this.opdGynyObject.doctors});
+          console.log({id:this.opdGynyObject.doctors});
         });
 
       }
 
     },
     error => {
-      console.log("error agya yar");
+      // console.log("error agya yar");
       this.show = true;
       this.checkStatus = true;
       this.messageService.add({
@@ -123,7 +123,7 @@ getPackage(){
   this.gyne.pFacility = "NOPACKAGE";
   this.packageService.getPackages().subscribe(
   data =>{
-    console.log("th",data)
+    // console.log("th",data)
     if(data){
           data.forEach(e=>{
           this.facilitydrop.push({
@@ -134,7 +134,7 @@ getPackage(){
     }
 
   },error=>{
-    console.log(error);
+    // console.log(error);
 
   });
 
@@ -148,9 +148,9 @@ getPackage(){
     this.opdGynyObject.total = 0;
     this.opdGynyObject.discount = 0;
     this.opdGynyObject.fees=this.gyne.pFacility["pPrice"];
-    console.log(this.facilitydrop["pPrice"])
+    // console.log(this.facilitydrop["pPrice"])
     if(this.gyne.pFacility == "NOPACKAGE"){
-      //this.opdGynyObject.doctors="no doc"; //console.log();
+      // this.opdGynyObject.doctors="no doc"; //console.log();
       dropdown.selectedOption = null;
     }
 
@@ -164,7 +164,7 @@ getPackage(){
 
   doctorDropdown() {
     // console.log(this.selectedDoctor);
-    console.log(this.opdGynyObject.doctors["fullName"]);
+    // console.log(this.opdGynyObject.doctors["fullName"]);
     //it will also work for the negative
     this.opdGynyObject.total = 0;
     this.opdGynyObject.discount = 0;
@@ -172,7 +172,7 @@ getPackage(){
       this.opdGynyObject.fees = 0;
       this.opdGynyObject.fees = this.opdGynyObject.doctors["fees"]*2;
     }
-    console.log(this.opdGynyObject.fees)
+    // console.log(this.opdGynyObject.fees)
     this.opdGynyObject.total = this.opdGynyObject.fees;
   }
 
@@ -187,7 +187,7 @@ getPackage(){
 
   onChangeDiscount(){
     this.onGreaterDiscount();
-    console.log("hello discount")
+    // console.log("hello discount")
    let discount = this.opdGynyObject.discount;
    if(discount <= this.opdGynyObject.fees){
     this.opdGynyObject.total = this.opdGynyObject.fees - discount;
@@ -208,7 +208,7 @@ getPackage(){
     this.date=new Date();
     this.opd_gynyService.saveOpdGyny(this.opdGynyObject).subscribe(
       data => {
-        console.log(this.opdGynyObject);
+        // console.log(this.opdGynyObject);
         this.messageService.add({
           severity: "success",
           summary: "Succesfully",
@@ -218,7 +218,7 @@ getPackage(){
       },
       error => {
 
-        console.log(error);
+        // console.log(error);
         this.messageService.add({
           severity: "error",
           summary: "Error Found",
@@ -226,7 +226,7 @@ getPackage(){
         });
       }
     );
-    console.log(this.opdGynyObject);
+    // console.log(this.opdGynyObject);
   }
 
 

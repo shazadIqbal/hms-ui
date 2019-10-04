@@ -48,14 +48,14 @@ export class PatientMonitorComponent implements OnInit {
   public admitLabel;
   ngOnInit() {
     this.isLoading = true;
-    console.log('hello');
+    // console.log('hello');
     const id = this.activateRoute.snapshot.params.id;
 
     this.patient.getPatientMonitor(id).subscribe(
       response => {
         if (response.id == id) {
           this.isLoading = false;
-          console.log(response);
+          // console.log(response);
           this.id = response.id;
           this.name = response.name;
           this.number = response.number;
@@ -67,8 +67,8 @@ export class PatientMonitorComponent implements OnInit {
           this.er = response.er;
           this.dues = response.dues;
           this.opdPackage = response.patientPackage;
-          console.log(response.opdPackage);
-          console.log(this.opdPackage);
+          // console.log(response.opdPackage);
+          // console.log(this.opdPackage);
           this.total = response.total;
           this.registrationDate = new Date(response.registrationDate).toDateString();
           this.husbandOfAndFatherOf = response.husbandOfAndFatherOf || 'None';
@@ -83,7 +83,7 @@ export class PatientMonitorComponent implements OnInit {
       },
       error => {
         this.isLoading = false;
-        console.log(error);
+        // console.log(error);
       }
     );
   }
@@ -97,7 +97,7 @@ export class PatientMonitorComponent implements OnInit {
 
     this.historyService.addPatientTransactionHistory(id).subscribe(
       success => {
-        console.log(success);
+        // console.log(success);
         this.messageService.add({
           severity: 'success',
           summary: 'Service Message',
@@ -105,7 +105,7 @@ export class PatientMonitorComponent implements OnInit {
         });
       },
       error => {
-        console.log(error);
+        // console.log(error);
         this.messageService.add({
           severity: 'error',
           summary: 'Service Message',

@@ -65,7 +65,7 @@ export class EmployeecashflowComponent implements OnInit {
         this.employeeTransactions = [];
         this.sum = 0;
         data.map(value => {
-          console.log(value);
+          // console.log(value);
           this.employeeTransactions.push({
             id: value.id,
             transactionDate: new Date(value.transactionDate).toDateString(),
@@ -81,7 +81,7 @@ export class EmployeecashflowComponent implements OnInit {
         this.showloading = false;
       },
       error => {
-        console.log('error agya yar');
+        // console.log('error agya yar');
         this.messageservice.add({
           severity: 'error',
           summary: 'Error Found',
@@ -95,10 +95,10 @@ export class EmployeecashflowComponent implements OnInit {
     this.users = [];
     this.suservice.getAllUsers().subscribe(
       data => {
-        //console.log('--==============================', data);
+        // console.log('--==============================', data);
         this.users = [{ label: 'All', value: null }];
         data.map(value => {
-          console.log(value);
+          // console.log(value);
           this.users.push({
             label: value.name,
             value: value.name
@@ -107,7 +107,7 @@ export class EmployeecashflowComponent implements OnInit {
         });
       },
       error => {
-        console.log('error agya yar');
+        // console.log('error agya yar');
         this.messageservice.add({
           severity: 'error',
           summary: 'Error Found',
@@ -146,14 +146,14 @@ export class EmployeecashflowComponent implements OnInit {
       this.employeeCashFlowObj.till = date2;
       this.employeeCashFlowObj.role = role1;
     }
-    console.log(date1, date2, role1);
+    // console.log(date1, date2, role1);
 
     this.service.postEmployeeCashFlow(this.employeeCashFlowObj).subscribe(
       data => {
-        console.log('=======>', data);
+        // console.log('=======>', data);
         this.employeeTransactions = [];
         data.map(value => {
-          console.log(value);
+          // console.log(value);
           this.employeeTransactions.push({
             id: value.id,
             transactionDate: new Date(value.transactionDate).toDateString(),
@@ -168,7 +168,7 @@ export class EmployeecashflowComponent implements OnInit {
         });
       },
       error => {
-        console.log('error agya yar');
+        // console.log('error agya yar');
         this.messageservice.add({
           severity: 'error',
           summary: 'Error Found',

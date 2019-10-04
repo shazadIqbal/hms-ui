@@ -24,14 +24,14 @@ export class ExistingPatientComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log("Hello")
+    // console.log("Hello")
     this.getDoctorsInDropdown()
   }
   
   getDoctorsInDropdown(){
     //this.selectDoctor=[];
     this._doctorService.getdoctors().subscribe((Response)=>{
-      console.log("response is here",Response);
+      // console.log("response is here",Response);
    
        Response.forEach(e => {
          this._selectDoctor.push({
@@ -50,19 +50,19 @@ export class ExistingPatientComponent implements OnInit {
     this.appointments.time=this.appointmentTime.toLocaleTimeString();
    // this.appointmentDateTs = this.appointments.appoinmentDate;
    // this.appointments.appoinmentDate =  this.appointmentDateTs.toLocaleDateString();
-    console.log(this.appointments)
+    // console.log(this.appointments)
   //  console.log(this.appointments.time);
     this._appointmentService.saveAppointment(this.appointments).subscribe((data) =>{
-      console.log(data);
+      // console.log(data);
       this.messageService.add({severity:'success', summary:'Status', detail:'Successfull'});
     
     }, error=>{
-      console.log(error);
+      // console.log(error);
       this.messageService.add({severity:'error', summary:'Status', detail:'Unsuccessfull'});
     })
   }
   Onsubmit(value:any){
-    console.log(value);
+    // console.log(value);
     this._saveAppointment();
   }
   addPanelList(){

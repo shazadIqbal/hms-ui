@@ -32,7 +32,7 @@ export class FacilitiesComponent implements OnChanges {
 
     
 
-    console.log(this.facilities)
+    // console.log(this.facilities)
 
   }
 

@@ -100,8 +100,8 @@ export class CashflowOfDoctorComponent implements OnInit {
       data => {
         if (data) {
           data.forEach(e => {
-            console.log(e);
-            console.log("This is doctors id " + e.mrNo);
+            // console.log(e);
+            // console.log("This is doctors id " + e.mrNo);
             this.doctorsDropdown.push({
               label: e.fullName,
               value: e.accountNo
@@ -110,7 +110,7 @@ export class CashflowOfDoctorComponent implements OnInit {
         }
       },
       error => {
-        console.log("error agya yar");
+        // console.log("error agya yar");
         this.messageservice.add({
           severity: "error",
           summary: "Error Found",
@@ -150,7 +150,7 @@ export class CashflowOfDoctorComponent implements OnInit {
 
     this.service.postCashFlowOfDoctor(this.cashflowofdoctor).subscribe(
       data => {
-        console.log('transaction',data)
+        // console.log('transaction',data)
         this.sum = 0;
         this.transactionsofdoctor = [];
         if(data){
@@ -169,11 +169,11 @@ export class CashflowOfDoctorComponent implements OnInit {
   
         }
         
-        console.log("==========================>", this.sum);
+        // console.log("==========================>", this.sum);
       },
       
       error => {
-        console.log(error);
+        // console.log(error);
         this.messageservice.add({
           severity: "error",
           summary: "Status",

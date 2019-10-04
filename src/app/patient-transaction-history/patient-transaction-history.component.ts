@@ -48,7 +48,7 @@ export class PatientTransactionHistoryComponent implements OnInit {
     this.totalRecords = 0;
     let id=this.activateRoute.snapshot.params['id'];
     this.history.getPatientTransactionHistory(id).subscribe(data=>{
-      console.log("response is here",data);
+      // console.log("response is here",data);
       this.datasource = [];
       this.datasource = data;
       this.totalRecords = this.datasource.length;
@@ -59,7 +59,7 @@ export class PatientTransactionHistoryComponent implements OnInit {
   }
   // Zamar did'nt create the fucntion for delete
   inactive(value:any){
-    console.log(value);
+    // console.log(value);
   }
 
 

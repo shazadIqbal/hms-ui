@@ -45,7 +45,7 @@ export class PackageListComponent implements OnInit {
         });
       },
       error => {
-        console.log(error);
+        // console.log(error);
         this.loader = false;
       }
     );
@@ -60,7 +60,7 @@ export class PackageListComponent implements OnInit {
   }
 
   inactive(a) {
-    console.log(a);
+    // console.log(a);
     this.packageService.deletePackage(a).subscribe(
       response => {
         this.packages = [];
