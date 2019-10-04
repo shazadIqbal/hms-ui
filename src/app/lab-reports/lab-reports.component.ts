@@ -53,16 +53,16 @@ export class LabReportsComponent implements OnInit {
 
   getReportAgainstPatientId(value:any){
     this.labtestSerivce.getCompleteProcessReportAgainstPatient(this.id).subscribe((response=>{
-        console.log(response)
+        // console.log(response)
         
         this.reportId  = response.id;
         this.patientId = response.id;
         this.remarks = response.remarks;
         const  data = response.map(({ patientReportDetails }) => patientReportDetails);
-        console.log(data)
+        // console.log(data)
         this.patientReportDetails.push(data);
         this.totalRecords = this.patientReportDetails.length;
-        console.log("Hey  ",this.patientReportDetails)
+        // console.log("Hey  ",this.patientReportDetails)
 
 
     }),eror=>{

@@ -37,7 +37,7 @@ export class PatientAdmitComponent implements OnInit {
 
     let id = this.activatedRoute.snapshot.params["id"];
     this.patientService.getPatientsByMRNO(id).subscribe((a) => {
-      console.log(a)
+      // console.log(a)
       this.patientName = a.name;
       this.patientMrNo = a.id;
     })
@@ -48,7 +48,7 @@ export class PatientAdmitComponent implements OnInit {
     this._opdPatientToSend.patientID = this.activatedRoute.snapshot.params[
       "id"
     ]; //patientpatientID
-    console.log("this is patientID " + this._opdPatientToSend.patientID);
+    // console.log("this is patientID " + this._opdPatientToSend.patientID);
   }
   backToMonitor() {
     this.router.navigate(["/monitor/" + this._opdPatientAdmit.patientID]);
@@ -76,11 +76,11 @@ export class PatientAdmitComponent implements OnInit {
           this.show = false;
           this.checkStatus = false;
 
-          console.log("selected bed type" + this._opdPatientAdmit.bedType);
+          // console.log("selected bed type" + this._opdPatientAdmit.bedType);
           data.forEach(e => {
-            console.log(e);
+            // console.log(e);
             this._opdPatientAdmit.bedID = e.id;
-            console.log(
+            // console.log(
               "This is bed id  ",
               this._opdPatientAdmit.bedID
             );
@@ -92,7 +92,7 @@ export class PatientAdmitComponent implements OnInit {
           });
         },
         error => {
-          console.log("Error occured");
+          // console.log("Error occured");
           this.show = true;
           this.checkStatus = true;
           this.messageService.add({
@@ -108,7 +108,7 @@ export class PatientAdmitComponent implements OnInit {
   showPrice() {
 
     if (this._opdPatientAdmit.selectedBed["price"] == null) {
-      console.log("error");
+      // console.log("error");
     }
     this._opdPatientAdmit.cashRecieved = 0;
     this._opdPatientAdmit.price = 0;
@@ -121,12 +121,12 @@ export class PatientAdmitComponent implements OnInit {
 
 
 
-    console.log(this._opdPatientAdmit.price);
+    // console.log(this._opdPatientAdmit.price);
   }
 
   submitOpdPatientAdmit() {
     // You can send only patient and bed patientID
-    console.log("Patient admitted model ", this._opdPatientToSend);
+    // console.log("Patient admitted model ", this._opdPatientToSend);
     this._opdPatientToSend.price = this._opdPatientAdmit.price;
     this._opdPatientToSend.bedID = this._opdPatientAdmit.bedID;
     this._opdPatientToSend.patientID = this._opdPatientAdmit.patientID;
@@ -135,7 +135,7 @@ export class PatientAdmitComponent implements OnInit {
     this.admissionSer.savedOpdAdmit(this._opdPatientToSend).subscribe(
       data => {
         if (data) {
-          console.log(data);
+          // console.log(data);
           this.messageService.add({
             severity: "success",
             summary: "OPD ADMIT SUCCESSFULL",
@@ -153,7 +153,7 @@ export class PatientAdmitComponent implements OnInit {
       }
     );
   }
-  showDialog() {
+  // showDialog() {
     // this.display = true;
     this.router.navigate(["/admission/"]);
   }

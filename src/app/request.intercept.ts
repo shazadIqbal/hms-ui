@@ -11,7 +11,7 @@ import { nextContext } from "@angular/core/src/render3";
 @Injectable()
 export class NoopInterceptor implements HttpInterceptor {
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-      console.log("hello interceptor");
+      // console.log("hello interceptor");
 
 
       if(sessionStorage.length>0){

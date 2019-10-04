@@ -30,7 +30,7 @@ export class PanelListComponent implements OnInit {
   showTable() {
     this.showLoading = true;
     this.panelService.getPanel().subscribe(Response => {
-      console.log('response is here', Response);
+      // console.log('response is here', Response);
       this.showLoading = false;
       this.panels = Response;
     });
@@ -58,7 +58,7 @@ export class PanelListComponent implements OnInit {
       data => {
         this.panelService.getPanel().subscribe((data: any) => {});
         this.showTable();
-        console.log(data);
+        // console.log(data);
         this.messageService.add({
           severity: 'success',
           summary: 'Service Message',
@@ -66,7 +66,7 @@ export class PanelListComponent implements OnInit {
         });
       },
       error => {
-        console.log(error);
+        // console.log(error);
         this.messageService.add({
           severity: 'error',
           summary: 'Service Message',

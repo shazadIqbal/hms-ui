@@ -21,7 +21,7 @@ export class MonitorquickviewComponent implements OnInit {
 
   ngOnInit() {
     this.isLoading=true;
-    console.log("hello");
+    // console.log("hello");
     let id=this.activateRoute.snapshot.params['id'];
 
     this.patient.getPatientMonitor(id).subscribe((response)=>
@@ -32,7 +32,7 @@ export class MonitorquickviewComponent implements OnInit {
       if(response.id)
       {
         this.isLoading=false;
-      console.log("yeh raha responcee",response)
+      // console.log("yeh raha responcee",response)
       this.id=response.id;
       this.name=response.name;
       this.number=response.number;
@@ -50,7 +50,7 @@ export class MonitorquickviewComponent implements OnInit {
       }
     },(error)=>{
       this.isLoading=false;
-      console.log(error)
+      // console.log(error)
     })
 
 

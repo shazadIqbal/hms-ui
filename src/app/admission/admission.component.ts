@@ -41,10 +41,10 @@ export class AdmissionComponent implements OnInit {
   }
 
   submitAdmission() {
-    console.log(this._admission);
+    // console.log(this._admission);
     this.admissionSer.saveAdmission(this._admission).subscribe(
       data => {
-        console.log(data);
+        // console.log(data);
         this.messageService.add({
           severity: "success",
           summary: "Succesfully",
@@ -56,17 +56,17 @@ export class AdmissionComponent implements OnInit {
           severity: "error",
           summary: "Error occured,Please Reload Your Page"
         });
-        console.log(error);
+        // console.log(error);
       }
     );
     this.admissionSer.getAvailableBeds().subscribe(data => {
       // tslint:disable-next-line: forin
       for (const i in data) {
-        console.log(data[i]);
+        // console.log(data[i]);
       }
     });
     this.admissionSer.getBedsForSelectBedType(this._admission.bedType).subscribe(data=>{
-        console.log(data);
+        // console.log(data);
     });
   }
 

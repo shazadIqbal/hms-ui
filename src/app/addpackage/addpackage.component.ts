@@ -40,7 +40,7 @@ export class AddpackageComponent implements OnInit {
   }
 
   submitPackage() {
-    console.log('Add Package');
+    // console.log('Add Package');
     this.loader = true;
     this.packageServ.postPackage(this.package).subscribe(
       response => {

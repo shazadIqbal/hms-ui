@@ -47,17 +47,17 @@ export class TransactionEditComponent implements OnInit {
       return value.id == this.transactionId;
     })
 
-    console.log("recoooooooooooord", this.record)
+    // console.log("recoooooooooooord", this.record)
 
-    console.log(this.transactionId)
+    // console.log(this.transactionId)
     this.receivedAmount = this.receivedAmountCpy;
     this.dues = this.duesCpy;
-    console.log("dues======>>>>", this.dues)
-    console.log("received====>>>>", this.receivedAmount)
+    // console.log("dues======>>>>", this.dues)
+    // console.log("received====>>>>", this.receivedAmount)
   }
 
   onDuesChange() {
-    console.log("received====>>>>", this.dues)
+    // console.log("received====>>>>", this.dues)
 
     //disabling update button if dues are increased
     this.btnDisabler = this.dues > this.duesCpy ? true : false;
@@ -81,14 +81,14 @@ export class TransactionEditComponent implements OnInit {
 
     this.record.dues = parseInt(this.dues);
     this.record.receivedAmount = parseInt(this.receivedAmount);
-    console.log(this.record, "recoooooooooooooooooooooooor")
+    // console.log(this.record, "recoooooooooooooooooooooooor")
     this.patientService.updatePatientTransactionById(this.transactionId, this.record)
       .subscribe((response) => {
 
 
         this.messageService.add({ severity: 'success', summary: 'Service Message', detail: response.message });
 
-        console.log("patient updated successfully", response);
+        // console.log("patient updated successfully", response);
         this.display = false;
         this.patientTransactionCompo.showTable();
       }, (error) => {

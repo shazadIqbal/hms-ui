@@ -35,7 +35,7 @@ export class AddTestComponent implements OnInit {
 
   ngOnInit() {
     this.labservice.getcategory().subscribe(data => {
-      console.log(data);
+      // console.log(data);
       data.map(v => {
         let obj = {
           label: v.category,
@@ -54,7 +54,7 @@ export class AddTestComponent implements OnInit {
     this.loader = true;
 
     this.test.category = this.selectedCity1;
-    console.log(this.test);
+    // console.log(this.test);
 
     this.labservice.postlabtest(this.test).subscribe(
       d => {
@@ -65,11 +65,11 @@ export class AddTestComponent implements OnInit {
           detail: Object.keys(d)[0]
         });
 
-        console.log(d);
+        // console.log(d);
       },
       error => {
         this.loader = false;
-        console.log(error);
+        // console.log(error);
       }
     );
   }

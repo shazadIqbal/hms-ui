@@ -31,7 +31,7 @@ export class DoctorListComponent implements OnInit {
   showTable() {
     this.showLoading = true;
     this.doctorService.getdoctors().subscribe(response => {
-      console.log('ye agaya response server se ', response);
+      // console.log('ye agaya response server se ', response);
       // this.showLoading = false;
       if (response) {
         this.showLoading = false;
@@ -53,12 +53,12 @@ export class DoctorListComponent implements OnInit {
   }
 
   onDelete(rowData) {
-    console.log(rowData);
+    // console.log(rowData);
     this.doctorService.deleteDoctorById(rowData).subscribe(
       data => {
         this.doctorService.getdoctors().subscribe((data: any) => {});
         this.showTable();
-        console.log(data);
+        // console.log(data);
         this.messageService.add({
           severity: 'success',
           summary: 'Service Message',

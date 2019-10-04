@@ -56,17 +56,17 @@ export class OpdconsultancyComponent implements OnInit {
     this.enable = true;
     this.getDoctorsOption();
 
-    console.log(this.opdObject, 'opdddddddddddddddddddd');
+    // console.log(this.opdObject, 'opdddddddddddddddddddd');
 
     let id = this.activatedRoute.snapshot.params['id'];
     this.patientService.getPatientsByMRNO(id).subscribe(a => {
-      console.log(a);
+      // console.log(a);
       this.patientName = a.name;
       this.patientMrNo = a.id;
     });
 
     this.opdObject.id = id;
-    console.log('this is id' + this.opdObject.id);
+    // console.log('this is id' + this.opdObject.id);
   }
 
   getDoctorsOption() {
@@ -78,10 +78,10 @@ export class OpdconsultancyComponent implements OnInit {
         if (data) {
           this.show = false;
           this.checkStatus = false; //this is for form hide property
-          console.log(data);
+          // console.log(data);
           data.forEach(e => {
-            console.log(e);
-            console.log('This is doctors id ' + e.mrNo);
+            // console.log(e);
+            // console.log('This is doctors id ' + e.mrNo);
             this.doctors.push({
               label: e.fullName,
               value: {
@@ -96,7 +96,7 @@ export class OpdconsultancyComponent implements OnInit {
         }
       },
       error => {
-        console.log('error agya yar');
+        // console.log('error agya yar');
         this.show = true;
         this.checkStatus = true;
         this.messageService.add({
@@ -109,15 +109,15 @@ export class OpdconsultancyComponent implements OnInit {
   }
 
   doctorDropdown() {
-    console.log(this.opdObject.doctors['fullName']);
-    console.log(this.doctors['fullName']);
+    // console.log(this.opdObject.doctors['fullName']);
+    // console.log(this.doctors['fullName']);
     this.opdObject.sallary = 0; //it will also work for the negative
     this.opdObject.total = 0;
 
-    console.log(this.opdObject.doctors['fees']);
+    // console.log(this.opdObject.doctors['fees']);
     // if(this.opdObject.panels.values() == "free")
 
-    //console.log("yeh hai panels",this.opdObject["opdObject"].panels);
+    // console.log("yeh hai panels",this.opdObject["opdObject"].panels);
     if (this.selectedPanel == 'free') {
       this.opdObject.discount = this.opdObject.doctors['fees'] * 2;
       this.opdObject.discount = this.opdObject.discount;
@@ -131,7 +131,7 @@ export class OpdconsultancyComponent implements OnInit {
       this.editablediscountfield = true;
     }
 
-    //console.log(this.opdObject.sallary)
+    console.log(this.opdObject.sallary)
     // this.opdObject.total = this.opdObject.fees - this.opdObject.discount;
   }
 
@@ -145,7 +145,7 @@ export class OpdconsultancyComponent implements OnInit {
 
     this.opd_Service.saveOPD(this.opdObject).subscribe(
       data => {
-        console.log(this.opdObject, '==========================');
+        // console.log(this.opdObject, '==========================');
         this.messageService.add({
           severity: 'success',
           summary: 'Succesfully',
@@ -154,7 +154,7 @@ export class OpdconsultancyComponent implements OnInit {
         this.enable = false;
       },
       error => {
-        console.log(error);
+        // console.log(error);
         this.messageService.add({
           severity: 'error',
           summary: 'Error Found',
@@ -162,13 +162,13 @@ export class OpdconsultancyComponent implements OnInit {
         });
       }
     );
-    console.log(this.opdObject);
+    // console.log(this.opdObject);
   }
 
   //function for totalprice
   getTotal(value: any) {
     this.opdObject.cashRecieved = 0;
-    console.log(value);
+    // console.log(value);
 
     this.opdObject.cashRecieved = value;
     this.opdObject.total = this.opdObject.fees - this.opdObject.discount;
@@ -178,14 +178,14 @@ export class OpdconsultancyComponent implements OnInit {
     this.panels = [];
 
     this.panelservice.getPanel().subscribe(data => {
-      console.log(data);
+      // console.log(data);
 
       if (data) {
         this.show = false;
         this.checkStatus = false; //this is for form hide property
         this.panels.push({ label: 'No panel', value: 'No panel' });
         data.forEach(e => {
-          console.log(e);
+          // console.log(e);
           this.panels.push({
             label: e.panelType,
             value: e.panelType
@@ -193,7 +193,7 @@ export class OpdconsultancyComponent implements OnInit {
         });
       }
       error => {
-        console.log('error agya yar');
+        // console.log('error agya yar');
         this.show = true;
         this.checkStatus = true;
         this.messageService.add({
@@ -208,7 +208,7 @@ export class OpdconsultancyComponent implements OnInit {
   panelsDropdown() {
     // console.log(this.selectedDoctor);
 
-    console.log('hello', this.selectedPanel);
+    // console.log('hello', this.selectedPanel);
 
     if (!this.isEmpty(this.opdObject.doctors)) {
       if (this.selectedPanel == 'free') {
@@ -237,7 +237,7 @@ export class OpdconsultancyComponent implements OnInit {
     dis > this.opdObject.total ? (this.discountCheck = false) : (this.discountCheck = true);
     if (dis < this.opdObject.fees) {
       this.opdObject.flag = true;
-      console.log('Flag set ho gya hai' + this.opdObject.flag);
+      // console.log('Flag set ho gya hai' + this.opdObject.flag);
     } else {
       this.opdObject.flag = false;
     }

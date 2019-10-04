@@ -36,9 +36,9 @@ export class GynyObsListComponent implements OnInit {
       this.datasource = data;
       this.totalRecords = this.datasource.length;
 
-      console.log(typeof(data.cnic))
+      // console.log(typeof(data.cnic))
      
-      console.log(data);
+      // console.log(data);
       for (const p of data) {
         this.patient.push({
           id: p.id,

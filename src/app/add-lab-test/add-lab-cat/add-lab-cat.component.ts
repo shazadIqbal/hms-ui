@@ -21,7 +21,11 @@ export class AddLabCatComponent implements OnInit {
 
 
   ngOnInit() {
-    this.labServ.getcategory().subscribe(d => console.log(d), error => console.log(error))
+    this.labServ.getcategory().subscribe(d => 
+      console.log(d), 
+      error => 
+      console.log(error)
+      )
   }
 
   submitCategory(data) {
@@ -43,7 +47,7 @@ export class AddLabCatComponent implements OnInit {
 
 
     }, error => {
-      console.log(error);
+      // console.log(error);
       this.messageService.add({ severity: 'warning', summary: 'Service Message', detail: error }); })
 
   }

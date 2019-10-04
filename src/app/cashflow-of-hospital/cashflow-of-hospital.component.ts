@@ -30,8 +30,8 @@ export class CashflowOfHospitalComponent implements OnInit {
   constructor( private router:Router, private service:DashboardserviceService,  private messageservice:MessageService) { }
 
   ngOnInit() {
-    console.log(this.dateToday.getFullYear())
-    console.log("===============================> ",this.convertDate(this.dateToday));
+    // console.log(this.dateToday.getFullYear())
+    // console.log("===============================> ",this.convertDate(this.dateToday));
     this.showdate=this.date.getDate()+"-"+(this.date.getMonth()+1) +"-"+this.date.getFullYear();
 
     this.saveDates();
@@ -147,10 +147,10 @@ export class CashflowOfHospitalComponent implements OnInit {
         this.sum = value.totalAmount  + this.sum ;
       })
       
-      console.log("==========================>",this.sum)
+      // console.log("==========================>",this.sum)
     },
     error => {
-      console.log(error);
+      // console.log(error);
       this.messageservice.add({
         severity: "error",
         summary: "Status",

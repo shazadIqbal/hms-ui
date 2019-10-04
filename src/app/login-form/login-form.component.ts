@@ -16,7 +16,7 @@ export class LoginFormComponent implements OnInit {
   }
 click(value:any){
 
-    console.log(value);
+    // console.log(value);
   }
   showTopCenter() {
     this.messageService.add({key: 'tc', severity:'warn', summary: 'Info Message', detail:'PrimeNG rocks'});

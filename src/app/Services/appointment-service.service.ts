@@ -37,7 +37,7 @@ export class AppointmentServiceService {
   }
 
   public saveDate(date: any): Observable<Object>{
-    console.log(date);
+    // console.log(date);
     return this.http.post(this.dateUrl+date,date);
   }
 

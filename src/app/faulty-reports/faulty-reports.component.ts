@@ -69,7 +69,7 @@ export class FaultyReportsComponent implements OnInit {
         this.faultyTransactions = [];
         this.sum = 0;
         data.map(value => {
-          console.log(value);
+          // console.log(value);
           this.faultyTransactions.push({
             id: value.id,
             transactionDate: new Date(value.transactionDate).toDateString(),
@@ -86,7 +86,7 @@ export class FaultyReportsComponent implements OnInit {
         this.showLoading = false;
       },
       error => {
-        console.log('error agya yar');
+        // console.log('error agya yar');
         this.messageservice.add({
           severity: 'error',
           summary: 'Error Found',
@@ -100,10 +100,10 @@ export class FaultyReportsComponent implements OnInit {
     this.users = [];
     this.suservice.getAllUsers().subscribe(
       data => {
-        //console.log('--==============================', data);
+        // console.log('--==============================', data);
         this.users = [{ label: 'All', value: null }];
         data.map(value => {
-          console.log(value);
+          // console.log(value);
           this.users.push({
             label: value.name,
             value: value.name
@@ -112,7 +112,7 @@ export class FaultyReportsComponent implements OnInit {
         });
       },
       error => {
-        console.log('error agya yar');
+        // console.log('error agya yar');
         this.messageservice.add({
           severity: 'error',
           summary: 'Error Found',
@@ -151,14 +151,14 @@ export class FaultyReportsComponent implements OnInit {
       this.faultyreportsobj.till = date2;
       this.faultyreportsobj.role = role1;
     }
-    console.log(date1, date2, role1);
+    // console.log(date1, date2, role1);
 
     this.service.postFaultyReports(this.faultyreportsobj).subscribe(
       data => {
-        console.log('=======>', data);
+        // console.log('=======>', data);
         this.faultyTransactions = [];
         data.map(value => {
-          console.log(value);
+          // console.log(value);
           this.faultyTransactions.push({
             id: value.id,
             transactionDate: new Date(value.transactionDate).toDateString(),
@@ -174,7 +174,7 @@ export class FaultyReportsComponent implements OnInit {
         });
       },
       error => {
-        console.log('error agya yar');
+        // console.log('error agya yar');
         this.messageservice.add({
           severity: 'error',
           summary: 'Error Found',
