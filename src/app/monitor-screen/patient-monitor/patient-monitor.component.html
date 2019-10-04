@@ -51,7 +51,7 @@
               <div class="ui-lg-12 ui-md-12 ui-sm-12">
                 <label style="color:rgb(127, 128, 126)"
                   >Date:
-                  <span style="color:rgb(17, 17, 17)">{{ date | date: 'short' }}</span></label
+                  <span style="color:rgb(17, 17, 17)">{{ date | date: 'shortDate' }}</span></label
                 >
               </div>
               <div *ngIf="registration">
@@ -116,27 +116,29 @@
 
             <div class="ui-lg-4 ui-md-4 ui-sm-12">
               <p-card [ngStyle]="{ width: '100%' }">
-                <div class="ui-md-12 ui-lg-12 ui-sm-12">
-                  <label style="color:rgb(127, 128, 126)">
-                    Dues: <span style="color:rgb(17, 17, 17)">{{ dues }}</span>
-                  </label>
-                </div>
-                <div class="ui-md-12 ui-lg-12 ui-sm-12">
-                  <label style="color:rgb(127, 128, 126)"
-                    >ER: <span style="color:rgb(17, 17, 17)">{{ er }}</span></label
-                  >
-                </div>
+                <div style="height:215px">
+                  <div class="ui-md-12 ui-lg-12 ui-sm-12">
+                    <label style="color:rgb(127, 128, 126)">
+                      Dues: <span style="color:rgb(17, 17, 17)">{{ dues }}</span>
+                    </label>
+                  </div>
+                  <div class="ui-md-12 ui-lg-12 ui-sm-12">
+                    <label style="color:rgb(127, 128, 126)"
+                      >ER: <span style="color:rgb(17, 17, 17)">{{ er }}</span></label
+                    >
+                  </div>
 
-                <div class="ui-md-12 ui-lg-12 ui-sm-12">
-                  <label style="color:rgb(127, 128, 126)"
-                    >Gyne: <span style="color:rgb(17, 17, 17)">{{ gyne }}</span></label
-                  >
-                </div>
+                  <div class="ui-md-12 ui-lg-12 ui-sm-12">
+                    <label style="color:rgb(127, 128, 126)"
+                      >Gyne: <span style="color:rgb(17, 17, 17)">{{ gyne }}</span></label
+                    >
+                  </div>
 
-                <div class="ui-md-12 ui-lg-12 ui-sm-12">
-                  <label style="color:rgb(127, 128, 126)">
-                    Total <span style="color:rgb(17, 17, 17)">{{ total }}</span></label
-                  >
+                  <div class="ui-md-12 ui-lg-12 ui-sm-12">
+                    <label style="color:rgb(127, 128, 126)">
+                      Total <span style="color:rgb(17, 17, 17)">{{ total }}</span></label
+                    >
+                  </div>
                 </div>
               </p-card>
               <!-- <div class="ui-md-12 ui-lg-12 ui-sm-12">
