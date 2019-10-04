@@ -41,6 +41,7 @@
   <div class="ui-lg-5 ui-md-5 ui-sm-12">
     <button
       pButton
+      *ngIf= "faultyTransactions.length"
       type="button"
       class="backBtnStyle"
       (click)="print()"
