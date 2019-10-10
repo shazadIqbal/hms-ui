@@ -128,7 +128,7 @@ export class DashboardComponent implements OnInit {
 
   saveddate() {
     this.showdate =
-      this.date1.getDate() + '-' + this.date1.getMonth() + '-' + this.date1.getFullYear();
+      this.date1.getDate() + '-' + (this.date1.getMonth() + 1) + '-' + this.date1.getFullYear();
     let datefrom = this.changedatetostring(this.date1);
     let datetill = this.changedatetostring(this.date1);
     this.dashboard.from = datefrom;
