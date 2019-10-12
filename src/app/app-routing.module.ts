@@ -64,6 +64,8 @@ import { LabReportsComponent } from './lab-reports/lab-reports.component';
 // import { FrontPageComponent } from './front-page/front-page.component';
 import { FaultyReportsComponent } from './faulty-reports/faulty-reports.component';
 import { VideoPageComponent } from './video-page/video-page.component';
+import { LabReportDetailsComponent } from './lab-reports/lab-report-details/lab-report-details.component';
+import { UpdatePatientReportsComponent } from './lab-reports/update-patient-reports/update-patient-reports.component';
 
 // import { FaultyReportsComponent } from './faulty-reports/faulty-reports.component';
 
@@ -227,7 +229,10 @@ const routes: Routes = [
 
   { path: 'labReports/:id', component: LabReportsComponent },
 
-  { path: 'faultyreports', canActivate: [AuthGuard], component: FaultyReportsComponent }
+  { path: 'faultyreports', canActivate: [AuthGuard], component: FaultyReportsComponent },
+  { path: 'reportDetails/:id', canActivate: [AuthGuard], component: LabReportDetailsComponent },
+  { path: 'updateReport/:id', canActivate: [AuthGuard], component: 
+  UpdatePatientReportsComponent,data:{reportId:Number}}
 ];
 
 @NgModule({

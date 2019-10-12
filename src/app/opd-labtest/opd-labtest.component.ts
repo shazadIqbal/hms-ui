@@ -41,12 +41,12 @@ export class OpdLabtestComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    // this.labtest.getLabTestCreatedInLabApp().subscribe((res=>{
+    //   console.log(res.bodyList);
+    // }))
+    // this.getfacilitiesInDropdown();
     this.getfacilitiesInDropdown();
-    // if(this.multiDropdown == []){
-    //   this.show = true;
-    //   this.showLoading = true;
-    // }
-    //this.showLoading=true
+
     let id = this.activeRoute.snapshot.params['id'];
     this.addLabTests.id = parseInt(id);
 
@@ -70,15 +70,11 @@ export class OpdLabtestComponent implements OnInit {
   }
 
   hideLoadingSpinnerAndShowForm() {
-    this.show = true;
     this.showspinloading = false;
+    this.show = true;
   }
 
   onChangeLabTest() {
-    // console.log('yeh id hai' + this.addLabTests.id);
-    // for(var i in this.addEmergency.facilities)
-    //   this.name = (this.addEmergency.facilities[i]["facilities"]);
-      // console.log(this.name);
     this.printLabTest = [];
     this.labtestArray = [];
 
@@ -110,7 +106,6 @@ export class OpdLabtestComponent implements OnInit {
   }
 
   onChangeDiscount() {
-    // console.log('hello discount');
     let discount = this.addLabTests.discount;
     let total = this.addLabTests.price - discount;
     this.addLabTests.total = this.addLabTests.price - this.addLabTests.discount;
@@ -134,23 +129,24 @@ export class OpdLabtestComponent implements OnInit {
 
     // this.showLoading = true;
     this.showLoadingSpinnerAndHideForm('Getting labtests');
-    this.labtest.getlabtest().subscribe(
+    this.labtest.getLabTestCreatedInLabApp().subscribe(
       data => {
-        if (data.length) {
+        if (data.length>0) {
           this.hidder = false;
+          // this.show = true;
           this.hideLoadingSpinnerAndShowForm();
-        } else {
+        }
+        else {
           this.showspinloading = false;
           this.hidder = true;
         }
-
-        // console.log('hello');
-        data.map(e => {
+        data.bodyList.map(e => {
           this.multiDropdown.push({
             label: e.name,
             value: e
           });
         });
+        console.log("hello i am data",this.multiDropdown)
       },
       error => {
         this.show = false;
@@ -169,7 +165,6 @@ export class OpdLabtestComponent implements OnInit {
 
   saveOpdLabTest() {
     this.addLabTests.labTests = this.printLabTest;
-
     this.total = this.addLabTests.total;
     this.discount = this.addLabTests.discount;
     this.addLabTests.patient = this.labtestservice.saveOpdEr(this.addLabTests).subscribe(

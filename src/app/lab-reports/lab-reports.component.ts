@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { LabtestServiceService } from '../add-lab-test/labtest-service.service';
 
 @Component({
@@ -17,30 +17,34 @@ export class LabReportsComponent implements OnInit {
   remarks;
   empty :Boolean = false;
   totalRecords;
+  userType;
+  reportDeatils = [];  //this should be send to child component
+  saveWholeReport :any;
+  newDetails: any;
+  hideProgressBar:Boolean = true;
 
-  constructor(private activated:ActivatedRoute,private labtestSerivce:LabtestServiceService) { }
+  constructor(private activated:ActivatedRoute,private labtestSerivce:LabtestServiceService,private router:Router) { }
 
   ngOnInit() {
-   this.getCols();
+    this.hideProgressBar = true;
+    this.userType =sessionStorage.getItem('userType').toLocaleUpperCase();
+    this.getCols();
     this.activated.params.subscribe(params => {
       this.id = params.id;
-
     });
     this.getReportAgainstPatientId(this.id);
   }
 
   backtomain(){
-    history.go(-1);
+    
+    this.router.navigate(['/monitor/'+this.id]);
   }
 
   getCols(){
     this.cols = [
-      { field: 'id', header: 'REPORT ID' },
-      { field: 'subtest', header: 'SUBTESTS' },
-      { field: 'unit', header: 'UNIT VALUES' },
-      { field: 'normal', header: 'NORMAL VALUES' },
-      { field: 'result', header: 'RESULT' },
-      
+      { field: 'id', header: 'PATIENT REPORT ID' },
+      { field: 'reportName', header: 'Report Name' },
+      { field: 'remarks', header: 'Remarks' }
     ];
   }
 
@@ -52,22 +56,38 @@ export class LabReportsComponent implements OnInit {
   }
 
   getReportAgainstPatientId(value:any){
+    this.hideProgressBar  = true;
     this.labtestSerivce.getCompleteProcessReportAgainstPatient(this.id).subscribe((response=>{
-        // console.log(response)
-        
-        this.reportId  = response.id;
-        this.patientId = response.id;
-        this.remarks = response.remarks;
-        const  data = response.map(({ patientReportDetails }) => patientReportDetails);
-        // console.log(data)
-        this.patientReportDetails.push(data);
-        this.totalRecords = this.patientReportDetails.length;
-        // console.log("Hey  ",this.patientReportDetails)
+      console.log(response);
+      this.hideProgressBar = false;
+      this.totalRecords = response.bodyList.length;
+        this.saveWholeReport = response.bodyList;
+        response.bodyList.map(data=>{
+            this.patientReportDetails.push({
+              id:data.id,
+              remarks: data.remarks,
+              reportName:data.labTestName
+            })
+        })
 
 
     }),eror=>{
+        this.hideProgressBar = false;
       this.empty = true;
     })
 
   }
+
+// this.id is patient id
+
+  details(reportId:any){
+    console.log(reportId);
+    localStorage.setItem('reportId',reportId);
+    this.router.navigate(['/reportDetails/'+this.id]);
+  }
+  update(reportId:any,){
+    console.log(reportId);
+    this.router.navigate(['/updateReport/' + this.id,{data:reportId}]);
+  }
 }
+
