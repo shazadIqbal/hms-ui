@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { LabtestServiceService } from 'src/app/add-lab-test/labtest-service.service';
 import { MessageService } from 'primeng/api';
+import { MonitorService } from 'src/app/services/monitor.service';
 
 @Component({
   selector: 'app-update-patient-reports',
@@ -10,7 +11,7 @@ import { MessageService } from 'primeng/api';
 })
 export class UpdatePatientReportsComponent implements OnInit {
 
-  constructor(private activated: ActivatedRoute, private labtestSerivce: LabtestServiceService, private router: Router, private messageService: MessageService) { }
+  constructor(private activated: ActivatedRoute, private labtestSerivce: LabtestServiceService, private router: Router, private messageService: MessageService,private patientService:MonitorService) { }
 
   //Monitor Screen 
   patientId: any;
@@ -30,6 +31,10 @@ export class UpdatePatientReportsComponent implements OnInit {
   generatedReportId: any;
 
 
+  //patientData
+   patientName : any;
+   phoneNumber : any;
+
   //Modal rowData
   display: Boolean = false;
 
@@ -39,6 +44,9 @@ export class UpdatePatientReportsComponent implements OnInit {
   unit: any;
   result: any;
 
+  // Print Report Array
+  printReport:any = [];
+
   //Current Id of Selected Report
   currentSelectedId: any;
 
@@ -46,11 +54,14 @@ export class UpdatePatientReportsComponent implements OnInit {
     this.fillCols();
     this.catchParams();
     this.getReportAgainstPatientReportId(this.reportId);
+    this.populatePatientData();
+  
   }
 
   catchParams() {
     this.patientId = Number(this.activated.snapshot.params.id);
     this.reportId = Number(this.activated.snapshot.params.data);
+  
   }
 
   getReportAgainstPatientReportId(rowData: any) {
@@ -61,7 +72,6 @@ export class UpdatePatientReportsComponent implements OnInit {
         this.allDetails = res;
         console.log(res);
         console.log(this.patientDetails)
-
         this.reportName = res.labTestName;
         this.remarksAgainstReport = res.remarks;
         this.generatedReportId = res.reportId;
@@ -92,6 +102,17 @@ export class UpdatePatientReportsComponent implements OnInit {
       });
     });
   }
+
+
+  // PatientDetails
+    populatePatientData(){
+      this.patientService.getPatientMonitor(this.patientId).subscribe(res=>{
+        console.log(res);
+        this.patientName = res.name;
+        this.phoneNumber = res.number;
+
+      })
+    }
 
 
   //OnRowEdit
@@ -222,6 +243,7 @@ export class UpdatePatientReportsComponent implements OnInit {
 
     }
     if (UpdatedReport != undefined) {
+      this.printReport = this.patientDetails;
       this.postUpdatedReport(this.reportId, UpdatedReport);
       this.showPrintButton = true;
     }
@@ -244,6 +266,25 @@ export class UpdatePatientReportsComponent implements OnInit {
 
     }
 
+  }
+
+  print(): void {
+    let printContents, popupWin;
+    printContents = document.getElementById('print-section').innerHTML;
+    popupWin = window.open('', '_blank', 'top=0,left=0,height=100%,width=auto');
+    popupWin.document.open();
+    popupWin.document.write(`
+      <html>
+        <head>
+          <title>Print tab</title>
+          <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+          <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+          <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+          </head>
+    <body onload="window.print();window.close()">${printContents}</body>
+      </html>`
+    );
+    popupWin.document.close();
   }
 
 
