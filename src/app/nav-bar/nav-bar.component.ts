@@ -41,6 +41,8 @@ export class NavBarComponent implements OnInit {
     sessionStorage.removeItem('token');
     sessionStorage.removeItem('username');
     sessionStorage.removeItem('userType');
+    sessionStorage.clear();
+    localStorage.clear();
     // console.log(sessionStorage.getItem('token'));
     this.isHide = false;
     this.router.navigate(['']);

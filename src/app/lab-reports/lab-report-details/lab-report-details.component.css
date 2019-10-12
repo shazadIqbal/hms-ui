@@ -1,0 +1,17 @@
+.row{
+    display:inherit;
+}
+.table-bordered {
+  border: 5px solid #22693ed4 !important;
+}
+
+span{
+  color:#22693ed4;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+/* .smallTable{
+  border-top:3px solid black !important;
+  border-bottom:3px solid black !important;
+} */

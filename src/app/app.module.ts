@@ -1,6 +1,6 @@
 import { DropdownModule } from 'primeng/dropdown';
 import { FusionChartsModule } from 'angular-fusioncharts';
-
+import {ProgressBarModule} from 'primeng/progressbar';
 import { AddPanelComponent } from './main-screen/add-panel/add-panel.component';
 import { SearchbarComponent } from './searchbar/searchbar.component';
 import { ModalComponent } from './modal/modal.component';
@@ -27,7 +27,7 @@ import { PatientPaymentComponent } from './patient-slip/patient-payment/patient-
 import { TableComponent } from './table/table.component';
 import { DoctorListComponent } from './doctor-list/doctor-list.component';
 import { AdddoctorComponent } from './adddoctor/adddoctor.component';
-
+// import { TableModule } from 'primeng/table'
 import { PaginatorModule } from 'primeng/paginator';
 import { AddLabTestComponent } from './add-lab-test/add-lab-test.component';
 import { AddTestComponent } from './add-lab-test/add-test/add-test.component';
@@ -124,6 +124,8 @@ import { from } from 'rxjs';
 import { FrontPageComponent } from './front-page/front-page.component';
 import { VideoPageComponent } from './video-page/video-page.component';
 import { ExternalLinkDirective } from './hmslandingpage/external-link.directive';
+import { LabReportDetailsComponent } from './lab-reports/lab-report-details/lab-report-details.component';
+import { UpdatePatientReportsComponent } from './lab-reports/update-patient-reports/update-patient-reports.component';
 
 
 // Add dependencies to FusionChartsModule
@@ -214,11 +216,13 @@ FusionChartsModule.fcRoot(FusionCharts, Charts, Fusion);
     FrontPageComponent,
     FaultyReportsComponent,
     VideoPageComponent,
-    ExternalLinkDirective
+    ExternalLinkDirective,
+    LabReportDetailsComponent,
+    UpdatePatientReportsComponent
   ],
   imports: [
     BrowserModule,
-
+    ProgressBarModule,
     FormsModule,
     ProgressSpinnerModule,
     NgxPrintModule,

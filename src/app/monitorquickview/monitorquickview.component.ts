@@ -36,6 +36,8 @@ export class MonitorquickviewComponent implements OnInit {
       this.id=response.id;
       this.name=response.name;
       this.number=response.number;
+    
+      console.log(this.patient.storePatientData(this.name,this.number));
 
       if(response.gynAndObsRegistration)
       this.registration="yes";
