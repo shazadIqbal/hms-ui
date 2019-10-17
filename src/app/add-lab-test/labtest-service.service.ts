@@ -37,12 +37,12 @@ export class LabtestServiceService {
   }
 
   getCompleteProcessReportAgainstPatient(id:any):Observable<any>{
-    return this.http.get(environment.labBackEndUrl+"api/patientReport/patient/" + id);
+    return this.http.get(environment.labBackEndUrl +"api/patientReport/patient/" + id);
   }
 
   getLabTestCreatedInLabApp():Observable<any>
   {
-    return this.http.get(environment.labBackEndUrl+"api/labtestregistration/opd/");
+    return this.http.get(environment.labBackEndUrl+"api/labtestregistration/opd");
   }
 
   getReportDetailsByPatientReportId(id:any):Observable<any>{
