@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {signUpForm} from './signup';
+import { signUpForm } from './signup';
 import { SignUpServiceService } from '../Services/sign-up-service.service';
 import { MessageService } from 'primeng/api';
 import { Router } from '@angular/router';
@@ -10,55 +10,59 @@ import { Router } from '@angular/router';
   styleUrls: ['./sign-up-form.component.css']
 })
 export class SignUpFormComponent implements OnInit {
+  signUpObj: signUpForm = new signUpForm();
+  usertypes: any;
 
-
-  signUpObj : signUpForm = new signUpForm();
-  usertypes : any;
-
-  constructor(private signUpFormService: SignUpServiceService,  private messageService: MessageService,private router : Router) {
+  constructor(
+    private signUpFormService: SignUpServiceService,
+    private messageService: MessageService,
+    private router: Router
+  ) {
     this.usertypes = [
-      {label:"ADMIN", value:"ADMIN"},
-      { label: "LAB", value: "lab" },
-      { label: "OPD", value: "opd" },
-      { label: "PHARMACY", value: "pharmacy" }
-    ]
-   }
+      { label: 'ADMIN', value: 'ADMIN' },
+      { label: 'LAB', value: 'lab' },
+      { label: 'OPD', value: 'opd' },
+      { label: 'PHARMACY', value: 'pharmacy' }
+    ];
+  }
 
   ngOnInit() {
-// this.usertypes;
+    // this.usertypes;
   }
 
-
-  backToMainScreen(){
-    this.router.navigate[('mainscreen')];
-    history.go(-1);
+  backToMainScreen() {
+    this.router.navigate(['mainscreen']);
+    //history.go(-1);
   }
 
-  saveSignUpForm(){
+  activeuserList() {
+    console.log('hamza');
+    this.router.navigate(['/userlist']);
+  }
 
+  saveSignUpForm() {
     this.signUpFormService.postSignUpForm(this.signUpObj).subscribe(
-      data=>{
+      data => {
         // console.log(data);
-        if(data['result'].status == 200){
-        this.messageService.add({
-          severity: "success",
-          summary: "sign up successfull",
-          detail: "new user added"
-
-        });
-      }else{
-        this.messageService.add({
-          severity: "warn",
-          summary: "Failed",
-          detail: "user already exists"
-        });
-      }
+        if (data['result'].status == 200) {
+          this.messageService.add({
+            severity: 'success',
+            summary: 'sign up successfull',
+            detail: 'new user added'
+          });
+        } else {
+          this.messageService.add({
+            severity: 'warn',
+            summary: 'Failed',
+            detail: 'user already exists'
+          });
+        }
       },
-      error =>{
+      error => {
         this.messageService.add({
-            severity: 'error',
-            summary: 'sign up failed',
-            detail: 'Failed'
+          severity: 'error',
+          summary: 'sign up failed',
+          detail: 'Failed'
         });
       }
     );

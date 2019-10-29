@@ -16,4 +16,8 @@ export class SignUpServiceService {
   getAllUsers(): Observable<any> {
     return this.http.get(environment.baseUrl + 'token/getusers/');
   }
+
+  public deleteById(id: any): Observable<any> {
+    return this.http.delete(environment.baseUrl + 'token/' + id);
+  }
 }
