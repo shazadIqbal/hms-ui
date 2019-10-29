@@ -124,6 +124,7 @@ import { from } from 'rxjs';
 import { FrontPageComponent } from './front-page/front-page.component';
 import { VideoPageComponent } from './video-page/video-page.component';
 import { ExternalLinkDirective } from './hmslandingpage/external-link.directive';
+import { UserlistComponent } from './userlist/userlist.component';
 
 
 // Add dependencies to FusionChartsModule
@@ -214,7 +215,8 @@ FusionChartsModule.fcRoot(FusionCharts, Charts, Fusion);
     FrontPageComponent,
     FaultyReportsComponent,
     VideoPageComponent,
-    ExternalLinkDirective
+    ExternalLinkDirective,
+    UserlistComponent
   ],
   imports: [
     BrowserModule,

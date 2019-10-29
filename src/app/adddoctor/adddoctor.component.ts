@@ -22,13 +22,11 @@ export class AdddoctorComponent implements OnInit {
   gender: SelectItem[];
   date1: any;
   id: any;
-  shareCheck : boolean = true;
+  shareCheck: boolean = true;
   oldPhoneNo: any; //this varible will help us to update the record of doctor in directory
   //because we are autogenerating id in directory so we have to find our updated doctor with the phone number
 
   selectedcity1: any;
-
-
 
   constructor(
     private drservice: DoctorService,
@@ -36,10 +34,7 @@ export class AdddoctorComponent implements OnInit {
     private mesgService: MessageService,
     private activatedRoute: ActivatedRoute
   ) {
-    this.gender = [
-      { label: 'Male', value: 'Male ' },
-      { label: 'Female', value: 'Female' }
-    ];
+    this.gender = [{ label: 'Male', value: 'Male ' }, { label: 'Female', value: 'Female' }];
   }
 
   ngOnInit() {
@@ -73,7 +68,6 @@ export class AdddoctorComponent implements OnInit {
         this.oldPhoneNo = this.doctor.mobile;
         // console.log(this.oldPhoneNo);
       });
-
     }
   }
 
@@ -98,7 +92,8 @@ export class AdddoctorComponent implements OnInit {
           });
 
           // console.log(response);
-        }, error => {
+        },
+        error => {
           this.mesgService.add({
             key: 'u',
             severity: 'error',
@@ -108,8 +103,7 @@ export class AdddoctorComponent implements OnInit {
           // console.log(error);
         }
       );
-    }
-    else {
+    } else {
       // console.log(this.doctor);
       this.drservice.savedoctor(this.doctor).subscribe(
         data => {
@@ -119,14 +113,13 @@ export class AdddoctorComponent implements OnInit {
             summary: 'Doctor Added Successfully',
             detail: 'Added'
           });
-
         },
         error => {
           this.mesgService.add({
-            key: 's',
+            key: 'u',
             severity: 'error',
             summary: 'Failed',
-            detail: 'Unable to Add A New Doctor'
+            detail: 'Doctor adding Failed!!!'
           });
         }
       );
@@ -140,10 +133,9 @@ export class AdddoctorComponent implements OnInit {
   routePage() {
     this.router.navigate(['doctorlist']);
   }
-  discounter(value){
-
+  discounter(value) {
     let tempShare = value;
-    tempShare >= 0 && tempShare <=100  ? this.shareCheck = true : this.shareCheck = false;
+    tempShare >= 0 && tempShare <= 100 ? (this.shareCheck = true) : (this.shareCheck = false);
     this.doctor.share = tempShare;
     // console.log(this.doctor.share);
   }

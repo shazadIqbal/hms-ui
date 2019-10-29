@@ -56,8 +56,8 @@
 
                             <span style="width:30%;" class="ui-inputgroup-addon"><b>CNIC&ensp;</b><i></i></span>
                             <input type="text" (keypress)="numberOnly($event)" #position="ngModel" pInputText
-                                placeholder="&ensp;Cnic (Optional)" name="position" [(ngModel)]="patient.cnic"
-                                ngModel />
+                                placeholder="&ensp;Example: 1234567891011" name="position" [(ngModel)]="patient.cnic"
+                                ngModel maxlength="13" />
                             <span class="ui-inputgroup-addon"></span>
                         </div>
 
@@ -118,7 +118,7 @@
                             <span style="width:30%" class="ui-inputgroup-addon"><b>Phone No&ensp;<i
                                         style="color: red">*</i></b><i></i></span>
                             <input type="text" (keypress)="numberOnly($event)" #TelRef="ngModel" pInputText required
-                                placeholder="&ensp;PhoneNo" name="MobileNo" ngModel [(ngModel)]="patient.phoneNo" />
+                                placeholder="&ensp;Example: 03331234567" name="MobileNo" ngModel [(ngModel)]="patient.phoneNo" maxlength="11" />
                             <span class="ui-inputgroup-addon"></span>
 
                         </div>

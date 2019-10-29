@@ -7,9 +7,9 @@ import { MessageService } from 'primeng/api';
 import { isNull } from 'util';
 
 @Component({
-  selector: "app-dashboard",
-  templateUrl: "./dashboard.component.html",
-  styleUrls: ["./dashboard.component.css"]
+  selector: 'app-dashboard',
+  templateUrl: './dashboard.component.html',
+  styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
   dashboard: dashboard = new dashboard();
@@ -128,7 +128,7 @@ export class DashboardComponent implements OnInit {
 
   saveddate() {
     this.showdate =
-      this.date1.getDate() + '-' + this.date1.getMonth() + '-' + this.date1.getFullYear();
+      this.date1.getDate() + '-' + (this.date1.getMonth() + 1) + '-' + this.date1.getFullYear();
     let datefrom = this.changedatetostring(this.date1);
     let datetill = this.changedatetostring(this.date1);
     this.dashboard.from = datefrom;
@@ -357,10 +357,10 @@ export class DashboardComponent implements OnInit {
   }
 
   backToMonitor() {
-    this.router.navigate(["mainscreen"]);
+    this.router.navigate(['mainscreen']);
   }
   allreports() {
-    this.router.navigate(["allreports"]);
+    this.router.navigate(['allreports']);
   }
 
   changedatetostring(

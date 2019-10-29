@@ -59,12 +59,13 @@
                   type="text"
                   required
                   pInputText
-                  placeholder="Mobile"
+                  placeholder="Example: 03331234567"
                   (keypress)="numberOnly($event)"
                   #abd="ngModel"
                   name="mobile"
                   [(ngModel)]="doctor.mobile"
                   ngModel
+                  maxlength="11"
                 />
               </div>
 
@@ -271,7 +272,7 @@
             <div class="ui-g-12 ui-sm-12 ui-md-4">
               <div class="ui-inputgroup">
                 <span style="width:20%;" class="ui-inputgroup-addon spanWidth">CNIC</span>
-                                <input type="text" pInputText #abi="ngModel" (keypress)="numberOnly($event)" placeholder="CNIC" name="cnic" [(ngModel)]="doctor.cnic" ngModel />
+                                <input type="text" pInputText #abi="ngModel" (keypress)="numberOnly($event)" placeholder="Example: 1234567891011" name="cnic" [(ngModel)]="doctor.cnic" ngModel maxlength="13" />
                             </div>
                             <div style="padding:0px;margin-bottom:4px" [hidden]="abi.valid || abi.pristine" class="alert alert-danger">
                                 Please Enter your cnic
@@ -464,7 +465,7 @@
 
                     <button
                       type="button"
-                      (click)="save(); myForm.resetForm()"
+                      (click)="save();"
                       [disabled]="myForm.invalid || !shareCheck"
                       class="btn btn-success btn-block submitBtnStyle"
                     >
