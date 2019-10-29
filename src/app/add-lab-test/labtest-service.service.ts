@@ -1,6 +1,6 @@
 
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import {environment} from '../../environments/environment';
 
@@ -37,9 +37,20 @@ export class LabtestServiceService {
   }
 
   getCompleteProcessReportAgainstPatient(id:any):Observable<any>{
-    return this.http.get(environment.baseUrl +"api/patientReport/" + id);
+    return this.http.get(environment.labBackEndUrl +"api/patientReport/patient/" + id);
   }
 
+  getLabTestCreatedInLabApp():Observable<any>
+  {
+    return this.http.get(environment.labBackEndUrl+"api/labtestregistration/opd");
+  }
+
+  getReportDetailsByPatientReportId(id:any):Observable<any>{
+    return this.http.get(environment.labBackEndUrl +"api/patientReport/"+id)
+  }
+  UpdatePatientReport(id:Number,updatedReport:Object):Observable<any>{
+    return this.http.put(environment.labBackEndUrl +"api/patientReport/patient/update/"+id,updatedReport)
+  }
 
 
 

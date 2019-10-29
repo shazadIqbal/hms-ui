@@ -3,7 +3,8 @@ import {
   HttpEvent,
   HttpInterceptor,
   HttpHandler,
-  HttpRequest
+  HttpRequest,
+  HttpHeaders
 } from "@angular/common/http";
 import { Observable } from "rxjs";
 import { nextContext } from "@angular/core/src/render3";
@@ -12,10 +13,22 @@ import { nextContext } from "@angular/core/src/render3";
 export class NoopInterceptor implements HttpInterceptor {
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
       // console.log("hello interceptor");
-
+   debugger;
 
       if(sessionStorage.length>0){
-        const changedReq = req.clone({headers: req.headers.set('Authorization', sessionStorage.getItem('token'))});
+      
+        // const headers = new HttpHeaders({
+        //   'Authorization': sessionStorage.getItem('token'),
+        //   'Content-Type': 'application/json',
+        //   'Access-Control-Allow-Origin': '*',
+        //   'Access-Control-Allow-Credentials': 'true'
+        // });
+        const headers = new HttpHeaders({
+          'Authorization': sessionStorage.getItem('token'),
+          'Content-Type': 'application/json',
+          'Access-Control-Allow-Credentials': 'true'
+        });
+        const changedReq = req.clone({headers})
         return next.handle(changedReq);
       }else{
         const changedReq = req.clone({headers: req.headers.set('Content-Type', 'application/json')});

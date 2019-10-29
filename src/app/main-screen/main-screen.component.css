@@ -8,7 +8,7 @@ html .backgroundImage {
     background: url('../../assets/back.jpg');
     background-size: cover;
     background-repeat: repeat-y;
-    height: 94vh;
+    height: 98vh;
     /* overflow: hidden; */
     width: 100%;
     background-position: center;
