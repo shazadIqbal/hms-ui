@@ -27,4 +27,10 @@ export class DoctorService {
   updateDoctorById(mrNo, oldPhoneNo, doc): Observable<any> {
     return this.http.post(environment.baseUrl + 'api/doctor/' + mrNo + '/' + oldPhoneNo, doc);
   }
+  getInActiveDoctor(): Observable <any>{
+    return this.http.get(environment.baseUrl+ 'api/doctor/getinactivedoctors');
+  }
+  activateDoctor(mrNo): Observable<any>{
+    return this.http.post(environment.baseUrl+'api/doctor/activedoctor/'+mrNo , mrNo);
+  }
 }
