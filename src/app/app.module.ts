@@ -124,6 +124,7 @@ import { from } from 'rxjs';
 import { FrontPageComponent } from './front-page/front-page.component';
 import { VideoPageComponent } from './video-page/video-page.component';
 import { ExternalLinkDirective } from './hmslandingpage/external-link.directive';
+import { InactiveDoctorListComponent } from './inactive-doctor-list/inactive-doctor-list.component';
 
 import { UserlistComponent } from './userlist/userlist.component';
 
@@ -218,6 +219,7 @@ FusionChartsModule.fcRoot(FusionCharts, Charts, Fusion);
     FaultyReportsComponent,
     VideoPageComponent,
     ExternalLinkDirective,
+    InactiveDoctorListComponent,
     UserlistComponent,
     LabReportDetailsComponent,
     UpdatePatientReportsComponent

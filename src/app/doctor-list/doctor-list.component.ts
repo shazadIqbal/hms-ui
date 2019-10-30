@@ -85,4 +85,8 @@ export class DoctorListComponent implements OnInit {
   editDoctorById(rowData) {
     this.router.navigate(['/adddoctor/' + rowData]);
   }
+
+  inactivedoctor(){
+    this.router.navigate(['inactivedoctorlist']);
+  }
 }

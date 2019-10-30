@@ -64,6 +64,7 @@ import { LabReportsComponent } from './lab-reports/lab-reports.component';
 // import { FrontPageComponent } from './front-page/front-page.component';
 import { FaultyReportsComponent } from './faulty-reports/faulty-reports.component';
 import { VideoPageComponent } from './video-page/video-page.component';
+import { InactiveDoctorListComponent } from './inactive-doctor-list/inactive-doctor-list.component';
 
 import { UserlistComponent } from './userlist/userlist.component';
 
@@ -235,10 +236,14 @@ const routes: Routes = [
 
   { path: 'faultyreports', canActivate: [AuthGuard], component: FaultyReportsComponent },
 
+  {path: 'inactivedoctorlist' , component: InactiveDoctorListComponent},
+
+
   { path: 'userlist', canActivate: [AuthGuard], component: UserlistComponent },
 
   { path: 'reportDetails/:id', canActivate: [AuthGuard], component: LabReportDetailsComponent },
   { path: 'updateReport/:id', canActivate: [AuthGuard], component: UpdatePatientReportsComponent,data:{reportId:Number} }
+
 
 ];
 
