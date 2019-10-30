@@ -55,9 +55,9 @@ export class AddpanellistComponent implements OnInit {
       error => {
         // console.log(error);
         this.messageService.add({
-          severity: 'success',
+          severity: 'error',
           summary: 'Status',
-          detail: 'unSuccessfull'
+          detail: 'Panel already exists.'
         });
       },
       data => {

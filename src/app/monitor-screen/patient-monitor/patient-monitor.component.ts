@@ -95,6 +95,13 @@ export class PatientMonitorComponent implements OnInit {
   dischargePatient() {
     const id = this.activateRoute.snapshot.params.id;
 
+    if(this.dues > 0) {
+      this.messageService.add({
+        severity: 'error',
+        summary: 'Service Message',
+        detail: 'Patient dues are not clear!!!'
+      });
+    } else {
     this.historyService.addPatientTransactionHistory(id).subscribe(
       success => {
         // console.log(success);
@@ -113,5 +120,6 @@ export class PatientMonitorComponent implements OnInit {
         });
       }
     );
+    }
   }
 }

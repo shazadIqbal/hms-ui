@@ -66,6 +66,12 @@ import { FaultyReportsComponent } from './faulty-reports/faulty-reports.componen
 import { VideoPageComponent } from './video-page/video-page.component';
 import { InactiveDoctorListComponent } from './inactive-doctor-list/inactive-doctor-list.component';
 
+import { UserlistComponent } from './userlist/userlist.component';
+
+import { LabReportDetailsComponent } from './lab-reports/lab-report-details/lab-report-details.component';
+import { UpdatePatientReportsComponent } from './lab-reports/update-patient-reports/update-patient-reports.component';
+
+
 // import { FaultyReportsComponent } from './faulty-reports/faulty-reports.component';
 
 // import { NewcompComponent } from "./newcomp/newcomp.component";
@@ -229,7 +235,16 @@ const routes: Routes = [
   { path: 'labReports/:id', component: LabReportsComponent },
 
   { path: 'faultyreports', canActivate: [AuthGuard], component: FaultyReportsComponent },
-  {path: 'inactivedoctorlist' , component: InactiveDoctorListComponent}
+
+  {path: 'inactivedoctorlist' , component: InactiveDoctorListComponent},
+
+
+  { path: 'userlist', canActivate: [AuthGuard], component: UserlistComponent },
+
+  { path: 'reportDetails/:id', canActivate: [AuthGuard], component: LabReportDetailsComponent },
+  { path: 'updateReport/:id', canActivate: [AuthGuard], component: UpdatePatientReportsComponent,data:{reportId:Number} }
+
+
 ];
 
 @NgModule({
