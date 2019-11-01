@@ -52,17 +52,28 @@ export class AddpanellistComponent implements OnInit {
 
   save() {
     this.panelService.savePanel(this.panels).subscribe(
-      error => {
-        // console.log(error);
-        this.messageService.add({
-          severity: 'error',
-          summary: 'Status',
-          detail: 'Panel already exists.'
-        });
-      },
       data => {
         // console.log(data);
-        this.messageService.add({ severity: 'success', summary: 'Status', detail: 'Successfull' });
+        if (data['already exsists'] == 0) {
+          this.messageService.add({
+            severity: 'warn',
+            summary: 'Already exists',
+            detail: 'Panel already exists.'
+          });
+        } else {
+          this.messageService.add({
+            severity: 'success',
+            summary: 'Added Succesfully',
+            detail: 'Panel Added'
+          });
+        }
+      },
+      error => {
+        this.messageService.add({
+          severity: 'error',
+          summary: 'Error Found',
+          detail: 'Something went wrong check your internet connection '
+        });
       }
     );
   }
