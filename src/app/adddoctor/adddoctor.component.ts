@@ -105,6 +105,7 @@ export class AdddoctorComponent implements OnInit {
       );
     } else {
       // console.log(this.doctor);
+      debugger;
       this.drservice.savedoctor(this.doctor).subscribe(
         data => {
           this.mesgService.add({
