@@ -16,6 +16,8 @@ import { Location } from '@angular/common';
 })
 export class PatientMonitorComponent implements OnInit {
   registration: Boolean = false;
+  dischargestatus:any;
+
 
   constructor(
     private patient: MonitorService,
@@ -55,7 +57,7 @@ export class PatientMonitorComponent implements OnInit {
       response => {
         if (response.id == id) {
           this.isLoading = false;
-          // console.log(response);
+          console.log(response);
           this.id = response.id;
           this.name = response.name;
           this.number = response.number;
@@ -77,6 +79,7 @@ export class PatientMonitorComponent implements OnInit {
           this.gyne = response.gyne;
           this.obs = response.obs;
           this.admitLabel = response.admitLabel;
+          this.dischargestatus=response.discharge;
         } else {
           this.route.navigate(['/mainscreen']);
         }
@@ -104,12 +107,17 @@ export class PatientMonitorComponent implements OnInit {
     } else {
     this.historyService.addPatientTransactionHistory(id).subscribe(
       success => {
-        // console.log(success);
+        console.log(success);
+
+
         this.messageService.add({
           severity: 'success',
           summary: 'Service Message',
           detail: 'Patient Discharge Succesful!'
         });
+        if(success['Patient Discharge Successful']==1){
+          this.dischargestatus=true;
+        }
       },
       error => {
         // console.log(error);

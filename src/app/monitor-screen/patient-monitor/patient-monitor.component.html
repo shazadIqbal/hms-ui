@@ -141,7 +141,8 @@
                   </div>
                 </div>
               </p-card>
-              <div class="ui-md-12 ui-lg-12 ui-sm-12">
+
+              <div *ngIf= "!dischargestatus"  class="ui-md-12 ui-lg-12 ui-sm-12">
                 <button
                   class="ui-button-danger"
                   pButton
@@ -151,6 +152,7 @@
                   style="margin-top:3px; width: 100%"
                 ></button>
               </div>
+
             </div>
           </div>
         </div>

@@ -13,10 +13,10 @@ import { nextContext } from "@angular/core/src/render3";
 export class NoopInterceptor implements HttpInterceptor {
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
       // console.log("hello interceptor");
-   debugger;
+   //debugger;
 
       if(sessionStorage.length>0){
-      
+
         // const headers = new HttpHeaders({
         //   'Authorization': sessionStorage.getItem('token'),
         //   'Content-Type': 'application/json',
