@@ -1,14 +1,14 @@
-import { SelectItem, MessageService } from "primeng/api";
-import { ErserviceService } from "./../services/erservice.service";
-import { Component, OnInit } from "@angular/core";
-import { Router } from "@angular/router";
-import { AddEmergency } from "./Add-er";
-import {Location} from '@angular/common'
+import { SelectItem, MessageService } from 'primeng/api';
+import { ErserviceService } from './../services/erservice.service';
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { AddEmergency } from './Add-er';
+import { Location } from '@angular/common';
 
 @Component({
-  selector: "app-add-er",
-  templateUrl: "./add-er.component.html",
-  styleUrls: ["./add-er.component.css"]
+  selector: 'app-add-er',
+  templateUrl: './add-er.component.html',
+  styleUrls: ['./add-er.component.css']
 })
 export class AddErComponent implements OnInit {
   display = false;
@@ -19,12 +19,11 @@ export class AddErComponent implements OnInit {
   total: Number;
   facilityCount;
 
-
   constructor(
     private router: Router,
     private erService: ErserviceService,
     private messageService: MessageService,
-    private location:Location
+    private location: Location
   ) {}
 
   ngOnInit() {
@@ -44,19 +43,27 @@ export class AddErComponent implements OnInit {
   submitErService(formdata: any) {
     this.erService.saveEr(formdata).subscribe(
       data => {
-        // console.log(formdata);
-        this.messageService.add({
-          severity: "success",
-          summary: "Added Succesfully",
-          detail: "Emergency Service Added"
-        });
+        console.log('data', data);
+        if (data['ALREADY EXSIST'] == 0) {
+          this.messageService.add({
+            severity: 'warn',
+            summary: ' already exsist',
+            detail: 'Er service already exsist'
+          });
+        } else {
+          this.messageService.add({
+            severity: 'success',
+            summary: 'Added Succesfully',
+            detail: 'Emergency Service Added'
+          });
+        }
       },
       error => {
-        // console.log(error);
+        console.log('fffffff', error);
         this.messageService.add({
-          severity: "error",
-          summary: "Error Found",
-          detail: "Something went wrong check your internet connection "
+          severity: 'error',
+          summary: 'Error Found',
+          detail: 'Something went wrong check your internet connection '
         });
       }
     );
@@ -69,7 +76,7 @@ export class AddErComponent implements OnInit {
     this.addEmergency.total = 0;
     this.addEmergency.extraCharges = 0;
     this.addEmergency.facilities.map(f => {
-      this.addEmergency.price = this.addEmergency.price + parseInt(f["price"]);
+      this.addEmergency.price = this.addEmergency.price + parseInt(f['price']);
       this.addEmergency.total = this.addEmergency.price + this.addEmergency.extraCharges;
     });
   }
@@ -81,9 +88,9 @@ export class AddErComponent implements OnInit {
     this.erService.saveErFacility(fields).subscribe(
       data => {
         this.messageService.add({
-          severity: "success",
-          summary: "Added Succesfully",
-          detail: "Facility Service Added"
+          severity: 'success',
+          summary: 'Added Succesfully',
+          detail: 'Facility Service Added'
         });
         // console.log(data);
         this.getFacilityDropdown();
@@ -91,9 +98,9 @@ export class AddErComponent implements OnInit {
       error => {
         // console.log(error);
         this.messageService.add({
-          severity: "error",
-          summary: "Error Found",
-          detail: "Something went wrong check your internet connection "
+          severity: 'error',
+          summary: 'Error Found',
+          detail: 'Something went wrong check your internet connection '
         });
       }
     );
@@ -124,8 +131,7 @@ export class AddErComponent implements OnInit {
     this.addEmergency.extraCharges = 0;
     // console.log(value);
     this.addEmergency.extraCharges = value;
-    this.addEmergency.total =
-      this.addEmergency.price + this.addEmergency.extraCharges;
+    this.addEmergency.total = this.addEmergency.price + this.addEmergency.extraCharges;
   }
   numberOnly(event): boolean {
     const charCode = event.which ? event.which : event.keyCode;
@@ -134,5 +140,4 @@ export class AddErComponent implements OnInit {
     }
     return true;
   }
-
 }

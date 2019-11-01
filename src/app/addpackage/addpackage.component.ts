@@ -45,11 +45,19 @@ export class AddpackageComponent implements OnInit {
     this.packageServ.postPackage(this.package).subscribe(
       response => {
         this.loader = false;
-        this.messageService.add({
-          severity: 'success',
-          summary: 'Service Message',
-          detail: Object.keys(response)[0]
-        });
+        if (response.code == '208') {
+          this.messageService.add({
+            severity: 'warn',
+            summary: 'Duplicate Already Present',
+            detail: Object.keys(response)[0]
+          });
+        } else {
+          this.messageService.add({
+            severity: 'success',
+            summary: 'Added',
+            detail: Object.keys(response)[0]
+          });
+        }
       },
       error => {
         this.loader = false;
