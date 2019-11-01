@@ -141,3 +141,9 @@ http://localhost:8083/api/vendor/
   "name":"Barkhia Hospital",
   "description":"This is a Welfare Hospital"
 }
+
+
+//////////keey generator https
+
+
+keytool -genkey -alias bootsecurity -storetype PKCS12 -keyalg RSA -keysize 2048 -keystore bootsecurity.p12 -validity 3650

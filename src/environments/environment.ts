@@ -4,17 +4,12 @@
 
 export const environment = {
   production: false,
-  // tokenURL: 'http://localhost:8080/',
-  // baseUrl: 'http://localhost:8080/',
-  // opdUrl: 'http://localhost:8080/',
-  // labUrl: 'http://localhost:8081/',
-  // pharmacyUrl: 'http://localhost:8082/'
-  tokenURL: 'http://localhost:8080/',
-  baseUrl: 'http://localhost:8080/',
-  opdUrl: 'http://localhost:4200/',
-  labUrl: 'http://localhost:4201/',
-  pharmacyUrl: 'http://localhost:4202/',
-  labBackEndUrl:'http://localhost:8081/',
+  tokenURL: 'https://localhost:8444/',
+  baseUrl: 'https://localhost:8444/',
+  opdUrl: 'https://localhost:8444/',
+  labUrl: 'https://localhost:8446/',
+  pharmacyUrl: 'https://localhost:8447/',
+  labBackEndUrl:'https://localhost:8446/',
 
   // huzaifaUrl: 'http://192.168.0.137:8080'
 };
