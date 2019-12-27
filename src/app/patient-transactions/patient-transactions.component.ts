@@ -16,8 +16,9 @@ export class PatientTransactionsComponent implements OnInit {
   totalRecords = 0;
   datasource: any = [];
   cols: any[];
+  printingDataArray =  [];
 
-
+ 
 
   constructor(
     private messageService: MessageService
@@ -28,7 +29,7 @@ export class PatientTransactionsComponent implements OnInit {
     private activateRoute: ActivatedRoute
   ) {
     this.cols = [
-      { field: 'id', header: 'ID' },
+       { field: 'id', header: 'ID' },
       { field: 'transactionDate', header: 'Transaction Date' },
       { field: 'receivedAmount', header: 'Received Amount' },
       { field: 'totalAmount', header: 'Total Amount' },
@@ -39,6 +40,8 @@ export class PatientTransactionsComponent implements OnInit {
       { field: 'dues', header: 'Dues' }
     ];
   }
+
+  
 
   ngOnInit() {
     this.showTable();
@@ -78,12 +81,25 @@ export class PatientTransactionsComponent implements OnInit {
           dues: p.dues
         });
         i++;
+        this.printingDataArray = [...this.printingDataArray, {
+          id: p.id,
+          transactionDate: p.transactionDate,
+          receivedAmount: p.receivedAmount,
+          totalAmount: p.totalAmount,
+          transactionType: p.transactionType,
+          description: p.description,
+          currency: p.currency,
+          operationType:p.operationType,
+          dues:p.dues
+          
+        }];
       });
       //this.loading = false;
     });
+    
   }
 
-
+  
 
 
   editPatientTransaction(id) {
@@ -101,4 +117,22 @@ export class PatientTransactionsComponent implements OnInit {
         this.messageService.add({ severity: 'error', summary: 'Service Message', detail: error });
       })
   }
+  print(): void {
+    let printContents, popupWin;
+    printContents = document.getElementById('print').innerHTML;
+    popupWin = window.open('', '_blank', 'top=0,left=0,height=100%,width=auto');
+    popupWin.document.open();
+    popupWin.document.write(`
+      <html>
+        <head>
+          <title>Print tab</title>
+          <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+          <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+          <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+          </head>
+    <body onload="window.print();window.close()">${printContents}</body>
+      </html>`
+    );
+    popupWin.document.close();
+}
 }

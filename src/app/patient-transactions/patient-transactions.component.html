@@ -1,8 +1,13 @@
 <p-toast></p-toast>
-<div class="ui-g-12">
+<div class="ui-g">
     <div class="ui-lg-5 ui-md-5 ui-sm-12">
-        <button pButton type="button" class="backBtnStyle" (click)="backToMonitor()" style="width:45%;margin-left:30% " label="Back"></button>
+    <button pButton type="button" class="backBtnStyle" (click)="backToMonitor()" style="width:45%;margin-left:30% " label="Back"></button>
     </div>
+    <div class="ui-g-2"> </div>
+    <div class="ui-lg-5 ui-md-5 ui-sm-12">
+    <button pButton type="button" class="backBtnStyle ui-button-success"  (click)="print()" 
+         style="width:45%; margin-left:30%;background: #dd2f2f; " label="Print Patient Transaction"></button>
+</div>
 </div>
 <div class="ui-g-12">
     <app-monitorquickview> </app-monitorquickview>
@@ -59,4 +64,39 @@
             </tr>
         </ng-template>
     </p-table>
+</div>
+
+<div id="print" [hidden]="true">
+    
+        <img style="width: 100%;height:100px;margin-bottom: 60px;" src="../../assets/logo.jpg">
+
+
+        <table class="table table-striped">
+          <thead>
+              <th *ngFor="let col of cols">
+                  {{ col.header }} &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; 
+              </th>
+          </thead>
+          <tbody>
+                  <tr *ngFor="let details of printingDataArray" style="overflow: auto;">
+                        <td>{{details.id}}</td>
+                        <td>{{details.transactionDate}}</td>
+                        <td>{{details.receivedAmount}}</td>
+                        <td>{{details.totalAmount}}</td>
+                        <td>{{details.transactionType}}</td>
+                        <td>{{details.description}}</td>
+                        <td>{{details.currency}}</td>
+                        <td>{{details.operationType}}</td>
+                        <td>{{details.dues}}</td>
+
+                  </tr>
+
+          </tbody>
+          <tfoot>
+                <tr *ngIf="!printingDataArray?.length>0">
+                    <td colspan="4">No Fields Available</td>
+                </tr>
+            </tfoot>
+        </table>
+      
 </div>
